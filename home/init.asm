@@ -23,8 +23,8 @@ rLCDC_DEFAULT EQU %11100011
 	a = 0;
 	*rIF = 0;
 	*rIE = 0;
-	ld [rSCX], a
-	ld [rSCY], a
+	*rSCX = 0;
+	*rSCY = 0;
 	ld [rSB], a
 	ld [rSC], a
 	ld [rWX], a
