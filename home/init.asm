@@ -20,9 +20,9 @@ rLCDC_DEFAULT EQU %11100011
 
 	di
 
-	xor a
-	ld [rIF], a
-	ld [rIE], a
+	a = 0;
+	*rIF = 0;
+	*rIE = 0;
 	ld [rSCX], a
 	ld [rSCY], a
 	ld [rSB], a
