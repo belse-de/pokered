@@ -30,10 +30,10 @@ DungeonWarpData:
 	FLYWARP_DATA MANSION_1_WIDTH,14,16
 	FLYWARP_DATA MANSION_2_WIDTH,14,18
 
-;Format:
-;	db Map_id
-;	FLYWARP_DATA [Map Width][Y-pos][X-pos]
-;	db Tileset_id
+// Format:
+// 	db Map_id
+// 	FLYWARP_DATA [Map Width][Y-pos][X-pos]
+// 	db Tileset_id
 FirstMapSpec:
 	db REDS_HOUSE_2F
 	FLYWARP_DATA REDS_HOUSE_2F_WIDTH,6,3

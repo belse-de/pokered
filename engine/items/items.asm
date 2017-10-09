@@ -1,7 +1,7 @@
 UseItem_:
 	ld a,1
 	ld [wActionResultOrTookBattleTurn],a // initialise to success value
-	ld a,[wcf91] ;contains item_ID
+	ld a,[wcf91] // contains item_ID
 	cp a,HM_01
 	jp nc,ItemUseTMHM
 	ld hl,ItemUsePtrTable
@@ -584,45 +584,45 @@ ItemUseBall:
 	jp RemoveItemFromInventory
 
 ItemUseBallText00:
-;"It dodged the thrown ball!"
-;"This pokemon can't be caught"
+// "It dodged the thrown ball!"
+// "This pokemon can't be caught"
 	TX_FAR _ItemUseBallText00
 	db "@"
 ItemUseBallText01:
-;"You missed the pokemon!"
+// "You missed the pokemon!"
 	TX_FAR _ItemUseBallText01
 	db "@"
 ItemUseBallText02:
-;"Darn! The pokemon broke free!"
+// "Darn! The pokemon broke free!"
 	TX_FAR _ItemUseBallText02
 	db "@"
 ItemUseBallText03:
-;"Aww! It appeared to be caught!"
+// "Aww! It appeared to be caught!"
 	TX_FAR _ItemUseBallText03
 	db "@"
 ItemUseBallText04:
-;"Shoot! It was so close too!"
+// "Shoot! It was so close too!"
 	TX_FAR _ItemUseBallText04
 	db "@"
 ItemUseBallText05:
-;"All right! {MonName} was caught!"
-;play sound
+// "All right! {MonName} was caught!"
+// play sound
 	TX_FAR _ItemUseBallText05
 	TX_SFX_CAUGHT_MON
 	TX_BLINK
 	db "@"
 ItemUseBallText07:
-;"X was transferred to Bill's PC"
+// "X was transferred to Bill's PC"
 	TX_FAR _ItemUseBallText07
 	db "@"
 ItemUseBallText08:
-;"X was transferred to someone's PC"
+// "X was transferred to someone's PC"
 	TX_FAR _ItemUseBallText08
 	db "@"
 
 ItemUseBallText06:
-;"New DEX data will be added..."
-;play sound
+// "New DEX data will be added..."
+// play sound
 	TX_FAR _ItemUseBallText06
 	TX_SFX_DEX_PAGE_ADDED
 	TX_BLINK
@@ -989,7 +989,7 @@ ItemUseMedicine:
 	jp .cureStatusAilment
 .notFullHP // if the pokemon's current HP doesn't equal its max HP
 	xor a
-	ld [wLowHealthAlarm],a ;disable low health alarm
+	ld [wLowHealthAlarm],a // disable low health alarm
 	ld [wChannelSoundIDs + Ch4],a
 	push hl
 	push de

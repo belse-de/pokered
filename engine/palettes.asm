@@ -324,7 +324,7 @@ UpdatePartyMenuBlkPacket:
 	ret
 
 SendSGBPacket:
-;check number of packets
+// check number of packets
 	ld a,[hl]
 	and a,$07
 	ret z
@@ -342,10 +342,10 @@ SendSGBPacket:
 // set P14=HIGH, P15=HIGH
 	ld a,$30
 	ld [rJOYP],a
-;load length of packets (16 bytes)
+// load length of packets (16 bytes)
 	ld b,$10
 .nextByte
-;set bit counter (8 bits per byte)
+// set bit counter (8 bits per byte)
 	ld e,$08
 // get next byte in the packet
 	ld a,[hli]

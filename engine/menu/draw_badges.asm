@@ -49,8 +49,8 @@ DrawBadges:
 
 	coord hl, 2, 14
 	ld de, wTempObtainedBadgesBooleans + 4
-;	call .DrawBadgeRow
-;	ret
+// 	call .DrawBadgeRow
+// 	ret
 
 .DrawBadgeRow
 // Draw 4 badges.

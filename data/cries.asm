@@ -1,5 +1,5 @@
 CryData:
-	;$BaseCry, $Pitch, $Length
+	// $BaseCry, $Pitch, $Length
 	db $11, $00, $80// Rhydon
 	db $03, $00, $80// Kangaskhan
 	db $00, $00, $80// Nidoran♂

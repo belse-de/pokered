@@ -50,10 +50,10 @@ validateCoords: MACRO
 	ENDC
 ENDM
 
-;\1 = r
-;\2 = X
-;\3 = Y
-;\4 = which tilemap (optional)
+// \1 = r
+// \2 = X
+// \3 = Y
+// \4 = which tilemap (optional)
 coord: MACRO
 	validateCoords \2, \3
 	IF _NARG >= 4
@@ -63,9 +63,9 @@ coord: MACRO
 	ENDC
 ENDM
 
-;\1 = X
-;\2 = Y
-;\3 = which tilemap (optional)
+// \1 = X
+// \2 = Y
+// \3 = which tilemap (optional)
 aCoord: MACRO
 	validateCoords \1, \2
 	IF _NARG >= 3
@@ -75,9 +75,9 @@ aCoord: MACRO
 	ENDC
 ENDM
 
-;\1 = X
-;\2 = Y
-;\3 = which tilemap (optional)
+// \1 = X
+// \2 = Y
+// \3 = which tilemap (optional)
 Coorda: MACRO
 	validateCoords \1, \2
 	IF _NARG >= 3
@@ -87,9 +87,9 @@ Coorda: MACRO
 	ENDC
 ENDM
 
-;\1 = X
-;\2 = Y
-;\3 = which tilemap (optional)
+// \1 = X
+// \2 = Y
+// \3 = which tilemap (optional)
 dwCoord: MACRO
 	validateCoords \1, \2
 	IF _NARG >= 3
@@ -99,10 +99,10 @@ dwCoord: MACRO
 	ENDC
 ENDM
 
-;\1 = r
-;\2 = X
-;\3 = Y
-;\4 = map width
+// \1 = r
+// \2 = X
+// \3 = Y
+// \4 = map width
 overworldMapCoord: MACRO
 	ld \1, wOverworldMap + ((\2) + 3) + (((\3) + 3) * ((\4) + (3 * 2)))
 ENDM

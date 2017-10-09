@@ -152,7 +152,7 @@ charmap "@", $50
 charmap "<PLAYER>", $52
 charmap "<RIVAL>", $53
 charmap "#", $54
-;charmap "POKé", $54
+// charmap "POKé", $54
 charmap "<TARGET>", $59
 charmap "<USER>", $5A
 charmap "′", $71
@@ -197,7 +197,7 @@ charmap "Z", $99
 charmap "(", $9A
 charmap ")", $9B
 charmap ":", $9C
-charmap ";", $9D
+charmap "// ", $9D
 charmap "[", $9E
 charmap "]", $9F
 charmap "a", $A0

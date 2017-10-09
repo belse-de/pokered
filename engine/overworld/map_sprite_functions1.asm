@@ -45,7 +45,7 @@ UpdateNonPlayerSprite:
 // is going to collide with another sprite by looping over the other sprites.
 // The current sprite's offset will be labelled with i (e.g. $c1i0).
 // The loop sprite's offset will labelled with j (e.g. $c1j0).
-;
+// 
 // Note that the Y coordinate of the sprite (in [$c1k4]) is one of the following
 // 9 values when the sprite is aligned with the grid: $fc, $0c, $1c, $2c, ..., $7c.
 // The reason that 4 is added below to the coordinate is to make it align with a

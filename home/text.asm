@@ -314,7 +314,7 @@ Char4B::
 	pop de
 	ld a, " "
 	Coorda 18, 16
-	;fall through
+	// fall through
 Char4C::
 	push de
 	call ScrollTextUpOneLine

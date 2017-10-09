@@ -40,7 +40,7 @@ MapHeaderPointers::
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
 	dw BluesHouse_h
-	dw OaksLab_h ;id=40
+	dw OaksLab_h // id=40
 	dw ViridianPokecenter_h
 	dw ViridianMart_h
 	dw School_h
@@ -50,7 +50,7 @@ MapHeaderPointers::
 	dw ViridianForestExit_h
 	dw Route2House_h
 	dw Route2Gate_h
-	dw ViridianForestEntrance_h ;id=50
+	dw ViridianForestEntrance_h // id=50
 	dw ViridianForest_h
 	dw Museum1F_h
 	dw Museum2F_h
@@ -60,7 +60,7 @@ MapHeaderPointers::
 	dw PewterHouse2_h
 	dw PewterPokecenter_h
 	dw MtMoon1_h
-	dw MtMoon2_h ;id=60
+	dw MtMoon2_h // id=60
 	dw MtMoon3_h
 	dw CeruleanHouseTrashed_h
 	dw CeruleanHouse1_h
@@ -80,7 +80,7 @@ MapHeaderPointers::
 	dw UndergroundPathEntranceRoute7_h
 	dw UndergroundPathEntranceRoute7Copy_h
 	dw Route8Gate_h
-	dw UndergroundPathEntranceRoute8_h ;id=80
+	dw UndergroundPathEntranceRoute8_h // id=80
 	dw RockTunnelPokecenter_h
 	dw RockTunnel1_h
 	dw PowerPlant_h
@@ -90,7 +90,7 @@ MapHeaderPointers::
 	dw Route12Gate_h
 	dw BillsHouse_h
 	dw VermilionPokecenter_h
-	dw FanClub_h ;id=90
+	dw FanClub_h // id=90
 	dw VermilionMart_h
 	dw VermilionGym_h
 	dw VermilionHouse1_h
@@ -100,7 +100,7 @@ MapHeaderPointers::
 	dw SSAnne3_h
 	dw SSAnne4_h
 	dw SSAnne5_h
-	dw SSAnne6_h ;id=100
+	dw SSAnne6_h // id=100
 	dw SSAnne7_h
 	dw SSAnne8_h
 	dw SSAnne9_h
@@ -110,7 +110,7 @@ MapHeaderPointers::
 	dw Lance_h // unused
 	dw VictoryRoad1_h
 	dw Lance_h // unused
-	dw Lance_h // unused ;id=110
+	dw Lance_h // unused // id=110
 	dw Lance_h // unused
 	dw Lance_h // unused
 	dw Lance_h
@@ -120,7 +120,7 @@ MapHeaderPointers::
 	dw Lance_h // unused
 	dw HallofFameRoom_h
 	dw UndergroundPathNS_h
-	dw Gary_h ;id=120
+	dw Gary_h // id=120
 	dw UndergroundPathWE_h
 	dw CeladonMart1_h
 	dw CeladonMart2_h
@@ -130,7 +130,7 @@ MapHeaderPointers::
 	dw CeladonMartElevator_h
 	dw CeladonMansion1_h
 	dw CeladonMansion2_h
-	dw CeladonMansion3_h ;id=130
+	dw CeladonMansion3_h // id=130
 	dw CeladonMansion4_h
 	dw CeladonMansion5_h
 	dw CeladonPokecenter_h
@@ -140,7 +140,7 @@ MapHeaderPointers::
 	dw CeladonPrizeRoom_h
 	dw CeladonDiner_h
 	dw CeladonHouse_h
-	dw CeladonHotel_h ;id=140
+	dw CeladonHotel_h // id=140
 	dw LavenderPokecenter_h
 	dw PokemonTower1_h
 	dw PokemonTower2_h
@@ -150,7 +150,7 @@ MapHeaderPointers::
 	dw PokemonTower6_h
 	dw PokemonTower7_h
 	dw LavenderHouse1_h
-	dw LavenderMart_h ;id=150
+	dw LavenderMart_h // id=150
 	dw LavenderHouse2_h
 	dw FuchsiaMart_h
 	dw FuchsiaHouse1_h
@@ -160,7 +160,7 @@ MapHeaderPointers::
 	dw FuchsiaGym_h
 	dw FuchsiaMeetingRoom_h
 	dw SeafoamIslands2_h
-	dw SeafoamIslands3_h ;id=160
+	dw SeafoamIslands3_h // id=160
 	dw SeafoamIslands4_h
 	dw SeafoamIslands5_h
 	dw VermilionHouse2_h
@@ -170,7 +170,7 @@ MapHeaderPointers::
 	dw Lab1_h
 	dw Lab2_h
 	dw Lab3_h
-	dw Lab4_h ;id=170
+	dw Lab4_h // id=170
 	dw CinnabarPokecenter_h
 	dw CinnabarMart_h
 	dw CinnabarMart_h // unused
@@ -180,7 +180,7 @@ MapHeaderPointers::
 	dw FightingDojo_h
 	dw SaffronGym_h
 	dw SaffronHouse1_h
-	dw SaffronMart_h ;id=180
+	dw SaffronMart_h // id=180
 	dw SilphCo1_h
 	dw SaffronPokecenter_h
 	dw SaffronHouse2_h
@@ -190,7 +190,7 @@ MapHeaderPointers::
 	dw Route16GateUpstairs_h
 	dw Route16House_h
 	dw Route12House_h
-	dw Route18Gate_h ;id=190
+	dw Route18Gate_h // id=190
 	dw Route18GateUpstairs_h
 	dw SeafoamIslands1_h
 	dw Route22Gate_h
@@ -200,7 +200,7 @@ MapHeaderPointers::
 	dw DiglettsCave_h
 	dw VictoryRoad3_h
 	dw RocketHideout1_h
-	dw RocketHideout2_h ;200
+	dw RocketHideout2_h // 200
 	dw RocketHideout3_h
 	dw RocketHideout4_h
 	dw RocketHideoutElevator_h
@@ -210,7 +210,7 @@ MapHeaderPointers::
 	dw SilphCo2_h
 	dw SilphCo3_h
 	dw SilphCo4_h
-	dw SilphCo5_h ;210
+	dw SilphCo5_h // 210
 	dw SilphCo6_h
 	dw SilphCo7_h
 	dw SilphCo8_h
@@ -220,7 +220,7 @@ MapHeaderPointers::
 	dw SafariZoneEast_h
 	dw SafariZoneNorth_h
 	dw SafariZoneWest_h
-	dw SafariZoneCenter_h ;220
+	dw SafariZoneCenter_h // 220
 	dw SafariZoneRestHouse1_h
 	dw SafariZoneSecretHouse_h
 	dw SafariZoneRestHouse2_h
@@ -247,4 +247,4 @@ MapHeaderPointers::
 	dw SilphCo2_h // unused
 	dw Lorelei_h
 	dw Bruno_h
-	dw Agatha_h ;247
+	dw Agatha_h // 247

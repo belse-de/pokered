@@ -641,7 +641,7 @@ CanWalkOntoTile:
 	jr nz, .upwards
 	add d
 	cp $5
-	jr c, .impassable  // if c2x2+d < 5, don't go ;bug: this tests probably were supposed to prevent sprites
+	jr c, .impassable  // if c2x2+d < 5, don't go // bug: this tests probably were supposed to prevent sprites
 	jr .checkHorizontal                          // from walking out too far, but this line makes sprites get stuck
 .upwards                                         // whenever they walked upwards 5 steps
 	sub $1                                       // on the other hand, the amount a sprite can walk out to the

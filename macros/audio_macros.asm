@@ -48,7 +48,7 @@ unknownnoise0x20: MACRO
 	db \3
 ENDM
 
-;format: pitch length (in 16ths)
+// format: pitch length (in 16ths)
 C_: MACRO
 	db $00 | (\1 - 1)
 ENDM
@@ -97,7 +97,7 @@ B_: MACRO
 	db $B0 | (\1 - 1)
 ENDM
 
-;format: instrument length (in 16ths)
+// format: instrument length (in 16ths)
 snare1: MACRO
 	db $B0 | (\1 - 1)
 	db $01
@@ -193,7 +193,7 @@ mutedsnare4: MACRO
 	db $13
 ENDM
 
-;format: rest length (in 16ths)
+// format: rest length (in 16ths)
 rest: MACRO
 	db $C0 | (\1 - 1)
 ENDM
@@ -216,7 +216,7 @@ toggleperfectpitch: MACRO
 	db $E8
 ENDM
 
-;format: vibrato delay, rate, depth
+// format: vibrato delay, rate, depth
 vibrato: MACRO
 	db $EA
 	db \1
@@ -259,13 +259,13 @@ dutycycle: MACRO
 	db \1
 ENDM
 
-;format: callchannel address
+// format: callchannel address
 callchannel: MACRO
 	db $FD
 	dw \1
 ENDM
 
-;format: loopchannel count, address
+// format: loopchannel count, address
 loopchannel: MACRO
 	db $FE
 	db \1

@@ -162,7 +162,7 @@ Audio2_PlayNextNote:
 	ld a, c
 	cp Ch4
 	jr nz, .beginChecks
-	ld a, [wLowHealthAlarm] ;low health alarm enabled?
+	ld a, [wLowHealthAlarm] // low health alarm enabled?
 	bit 7, a
 	ret nz
 .beginChecks

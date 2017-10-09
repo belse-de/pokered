@@ -45,14 +45,14 @@ CheckForceBikeOrSurf:
 .loop
 	ld a, [hli]
 	cp $ff
-	ret z ;if we reach FF then it's not part of the list
-	cp d ;compare to current map
+	ret z // if we reach FF then it's not part of the list
+	cp d // compare to current map
 	jr nz, .incorrectMap
 	ld a, [hli]
-	cp b ;compare y-coord
+	cp b // compare y-coord
 	jr nz, .incorrectY
 	ld a, [hli]
-	cp c ;compare x-coord
+	cp c // compare x-coord
 	jr nz, .loop // incorrect x-coord, check next item
 	ld a, [wCurMap]
 	cp SEAFOAM_ISLANDS_4
@@ -64,7 +64,7 @@ CheckForceBikeOrSurf:
 	ld a, $2
 	ld [wSeafoamIslands5CurScript], a
 	jr z, .forceSurfing
-	;force bike riding
+	// force bike riding
 	ld hl, wd732
 	set 5, [hl]
 	ld a, $1

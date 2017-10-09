@@ -33,9 +33,9 @@ RocketHideout2Script0:
 	ld [wCurMapScript], a
 	ret
 
-;format:
-;db y,x
-;dw pointer to movement
+// format:
+// db y,x
+// dw pointer to movement
 RocketHideout2ArrowTilePlayerMovement:
 	db $9,$4
 	dw RocketHideout2ArrowMovement1
@@ -125,8 +125,8 @@ RocketHideout2ArrowTilePlayerMovement:
 	dw RocketHideout2ArrowMovement36
 	db $FF
 
-;format: direction, count
-;each list is read starting from the $FF and working backwards
+// format: direction, count
+// each list is read starting from the $FF and working backwards
 RocketHideout2ArrowMovement1:
 	db D_LEFT,$02
 	db $FF

@@ -3240,7 +3240,7 @@ GetName::
 // [wd0b5] = which name
 // [wNameListType] = which list
 // [wPredefBank] = bank of list
-;
+// 
 // returns pointer to name in de
 	ld a,[wd0b5]
 	ld [wd11e],a
@@ -3255,10 +3255,10 @@ GetName::
 	push hl
 	push bc
 	push de
-	ld a,[wNameListType]    ;List3759_entrySelector
+	ld a,[wNameListType]    // List3759_entrySelector
 	dec a
 	jr nz,.otherEntries
-	;1 = MON_NAMES
+	// 1 = MON_NAMES
 	call GetMonName
 	ld hl,NAME_LENGTH
 	add hl,de
@@ -3266,11 +3266,11 @@ GetName::
 	ld d,h
 	jr .gotPtr
 .otherEntries
-	;2-7 = OTHER ENTRIES
+	// 2-7 = OTHER ENTRIES
 	ld a,[wPredefBank]
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
-	ld a,[wNameListType]    ;VariousNames' entryID
+	ld a,[wNameListType]    // VariousNames' entryID
 	dec a
 	add a
 	ld d,0
@@ -3298,8 +3298,8 @@ GetName::
 	ld a,[hli]
 	cp "@"
 	jr nz,.nextChar
-	inc c           ;entry counter
-	ld a,b          ;wanted entry
+	inc c           // entry counter
+	ld a,b          // wanted entry
 	cp c
 	jr nz,.nextName
 	ld h,d

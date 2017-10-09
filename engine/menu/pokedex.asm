@@ -88,7 +88,7 @@ HandlePokedexSideMenu:
 	inc hl
 	ld a,3
 	ld [hli],a // max menu item ID
-	;ld a, A_BUTTON | B_BUTTON
+	// ld a, A_BUTTON | B_BUTTON
 	ld [hli],a // menu watched keys (A button and B button)
 	xor a
 	ld [hli],a // old menu item ID

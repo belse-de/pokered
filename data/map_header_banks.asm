@@ -1,6 +1,6 @@
 // see also MapHeaderPointers
 MapHeaderBanks:
-	db BANK(PalletTown_h) ;PALLET_TOWN
+	db BANK(PalletTown_h) // PALLET_TOWN
 	db BANK(ViridianCity_h) // VIRIDIAN_CITY
 	db BANK(PewterCity_h) // PEWTER_CITY
 	db BANK(CeruleanCity_h) // CERULEAN_CITY
@@ -75,10 +75,10 @@ MapHeaderBanks:
 	db BANK(DayCareM_h)
 	db BANK(Route6Gate_h)
 	db BANK(UndergroundPathEntranceRoute6_h)
-	db BANK(UndergroundPathEntranceRoute6_h) ;FREEZE
+	db BANK(UndergroundPathEntranceRoute6_h) // FREEZE
 	db BANK(Route7Gate_h)
 	db BANK(UndergroundPathEntranceRoute7_h)
-	db BANK(UndergroundPathEntranceRoute7Copy_h) ;FREEZE
+	db BANK(UndergroundPathEntranceRoute7Copy_h) // FREEZE
 	db BANK(Route8Gate_h)
 	db BANK(UndergroundPathEntranceRoute8_h)
 	db BANK(RockTunnelPokecenter_h)
@@ -105,19 +105,19 @@ MapHeaderBanks:
 	db BANK(SSAnne8_h)
 	db BANK(SSAnne9_h)
 	db BANK(SSAnne10_h)
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
+	db $1D // unused
+	db $1D // unused
+	db $1D // unused
 	db BANK(VictoryRoad1_h)
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
+	db $1D // unused
+	db $1D // unused
+	db $1D // unused
+	db $1D // unused
 	db BANK(Lance_h)
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
+	db $1D // unused
+	db $1D // unused
+	db $1D // unused
+	db $1D // unused
 	db BANK(HallofFameRoom_h)
 	db BANK(UndergroundPathNS_h)
 	db BANK(Gary_h)

@@ -49,9 +49,9 @@ ViridianGymScript0:
 	ld [wCurMapScript], a
 	ret
 
-;format:
-;db y,x
-;dw pointer to movement
+// format:
+// db y,x
+// dw pointer to movement
 ViridianGymArrowTilePlayerMovement:
 	db $b,$13
 	dw ViridianGymArrowMovement1
@@ -79,7 +79,7 @@ ViridianGymArrowTilePlayerMovement:
 	dw ViridianGymArrowMovement12
 	db $FF
 
-;format: direction, count
+// format: direction, count
 ViridianGymArrowMovement1:
 	db D_UP,$09,$FF
 

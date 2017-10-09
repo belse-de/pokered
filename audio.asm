@@ -460,26 +460,26 @@ Music_DoLowHealthAlarm::
 	cp $ff
 	jr z, .disableAlarm
 
-	bit 7, a  ;alarm enabled?
-	ret z     ;nope
+	bit 7, a  // alarm enabled?
+	ret z     // nope
 
-	and $7f   ;low 7 bits are the timer.
-	jr nz, .asm_21383 ;if timer > 0, play low tone.
+	and $7f   // low 7 bits are the timer.
+	jr nz, .asm_21383 // if timer > 0, play low tone.
 
 	call .playToneHi
-	ld a, 30 ;keep this tone for 30 frames.
-	jr .asm_21395 ;reset the timer.
+	ld a, 30 // keep this tone for 30 frames.
+	jr .asm_21395 // reset the timer.
 
 .asm_21383
 	cp 20
-	jr nz, .asm_2138a ;if timer == 20,
-	call .playToneLo  ;actually set the sound registers.
+	jr nz, .asm_2138a // if timer == 20,
+	call .playToneLo  // actually set the sound registers.
 
 .asm_2138a
 	ld a, $86
-	ld [wChannelSoundIDs + Ch4], a ;disable sound channel?
+	ld [wChannelSoundIDs + Ch4], a // disable sound channel?
 	ld a, [wLowHealthAlarm]
-	and $7f ;decrement alarm timer.
+	and $7f // decrement alarm timer.
 	dec a
 
 .asm_21395
@@ -490,13 +490,13 @@ Music_DoLowHealthAlarm::
 
 .disableAlarm
 	xor a
-	ld [wLowHealthAlarm], a  ;disable alarm
-	ld [wChannelSoundIDs + Ch4], a  ;re-enable sound channel?
+	ld [wLowHealthAlarm], a  // disable alarm
+	ld [wChannelSoundIDs + Ch4], a  // re-enable sound channel?
 	ld de, .toneDataSilence
 	jr .playTone
 
-;update the sound registers to change the frequency.
-;the tone set here stays until we change it.
+// update the sound registers to change the frequency.
+// the tone set here stays until we change it.
 .playToneHi
 	ld de, .toneDataHi
 	jr .playTone
@@ -504,9 +504,9 @@ Music_DoLowHealthAlarm::
 .playToneLo
 	ld de, .toneDataLo
 
-;update sound channel 1 to play the alarm, overriding all other sounds.
+// update sound channel 1 to play the alarm, overriding all other sounds.
 .playTone
-	ld hl, rNR10 ;channel 1 sound register
+	ld hl, rNR10 // channel 1 sound register
 	ld c, $5
 	xor a
 
@@ -518,16 +518,16 @@ Music_DoLowHealthAlarm::
 	jr nz, .copyLoop
 	ret
 
-;bytes to write to sound channel 1 registers for health alarm.
-;starting at FF11 (FF10 is always zeroed), so these bytes are:
-;length, envelope, freq lo, freq hi
+// bytes to write to sound channel 1 registers for health alarm.
+// starting at FF11 (FF10 is always zeroed), so these bytes are:
+// length, envelope, freq lo, freq hi
 .toneDataHi
 	db $A0,$E2,$50,$87
 
 .toneDataLo
 	db $B0,$E2,$EE,$86
 
-;written to stop the alarm
+// written to stop the alarm
 .toneDataSilence
 	db $00,$00,$00,$80
 

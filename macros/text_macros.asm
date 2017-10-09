@@ -28,7 +28,7 @@ ENDM
 
 TX_LINE    EQUS "db $05"
 TX_BLINK   EQUS "db $06"
-;TX_SCROLL EQUS "db $07"
+// TX_SCROLL EQUS "db $07"
 TX_ASM     EQUS "db $08"
 
 TX_NUM: MACRO
@@ -44,16 +44,16 @@ ENDM
 TX_DELAY              EQUS "db $0a"
 TX_SFX_ITEM_1         EQUS "db $0b"
 TX_SFX_LEVEL_UP       EQUS "db $0b"
-;TX_ELLIPSES          EQUS "db $0c"
+// TX_ELLIPSES          EQUS "db $0c"
 TX_WAIT               EQUS "db $0d"
-;TX_SFX_DEX_RATING    EQUS "db $0e"
+// TX_SFX_DEX_RATING    EQUS "db $0e"
 TX_SFX_ITEM_2         EQUS "db $10"
 TX_SFX_KEY_ITEM       EQUS "db $11"
 TX_SFX_CAUGHT_MON     EQUS "db $12"
 TX_SFX_DEX_PAGE_ADDED EQUS "db $13"
 TX_CRY_NIDORINA       EQUS "db $14"
 TX_CRY_PIDGEOT        EQUS "db $15"
-;TX_CRY_DEWGONG       EQUS "db $16"
+// TX_CRY_DEWGONG       EQUS "db $16"
 
 TX_FAR: MACRO
 	db $17

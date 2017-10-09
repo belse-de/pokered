@@ -1,6 +1,6 @@
 LoadSAV:
-;(if carry -> write
-;"the file data is destroyed")
+// (if carry -> write
+// "the file data is destroyed")
 	call ClearScreen
 	call LoadFontTilePatterns
 	call LoadTextBoxTilePatterns
@@ -141,7 +141,7 @@ SaveSAV:
 	callba PrintSaveScreenText
 	ld hl,WouldYouLikeToSaveText
 	call SaveSAVConfirm
-	and a   ;|0 = Yes|1 = No|
+	and a   // |0 = Yes|1 = No|
 	ret nz
 	ld a,[wSaveFileStatus]
 	dec a
@@ -279,7 +279,7 @@ SaveSAVtoSRAM:
 	jp SaveSAVtoSRAM2
 
 SAVCheckSum:
-;Check Sum (result[1 byte] is complemented)
+// Check Sum (result[1 byte] is complemented)
 	ld d, 0
 .loop
 	ld a, [hli]
@@ -601,9 +601,9 @@ GetMonCountsForBoxesInBank:
 	ret
 
 SAVCheckRandomID:
-;checks if Sav file is the same by checking player's name 1st letter ($a598)
+// checks if Sav file is the same by checking player's name 1st letter ($a598)
 // and the two random numbers generated at game beginning
-;(which are stored at wPlayerID)s
+// (which are stored at wPlayerID)s
 	ld a,$0a
 	ld [MBC1SRamEnable],a
 	ld a,$01

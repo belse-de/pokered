@@ -8,4 +8,4 @@ ForcedBikeOrSurfMaps:
 	db SEAFOAM_ISLANDS_4,$07,$13
 	db SEAFOAM_ISLANDS_5,$0E,$04
 	db SEAFOAM_ISLANDS_5,$0E,$05
-	db $FF ;end
+	db $FF // end

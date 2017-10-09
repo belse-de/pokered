@@ -1102,7 +1102,7 @@ RemoveFaintedPlayerMon:
 	bit 7, a      // skip sound flag (red bar (?))
 	jr z, .skipWaitForSound
 	ld a, $ff
-	ld [wLowHealthAlarm], a ;disable low health alarm
+	ld [wLowHealthAlarm], a // disable low health alarm
 	call WaitForSoundToFinish
 .skipWaitForSound
 // a is 0, so this zeroes the enemy's accumulated damage.
@@ -1950,7 +1950,7 @@ DrawPlayerHUDAndHPBar:
 	jr z, .setLowHealthAlarm
 .fainted
 	ld hl, wLowHealthAlarm
-	bit 7, [hl] ;low health alarm enabled?
+	bit 7, [hl] // low health alarm enabled?
 	ld [hl], $0
 	ret z
 	xor a
@@ -1958,7 +1958,7 @@ DrawPlayerHUDAndHPBar:
 	ret
 .setLowHealthAlarm
 	ld hl, wLowHealthAlarm
-	set 7, [hl] ;enable low health alarm
+	set 7, [hl] // enable low health alarm
 	ret
 
 DrawEnemyHUDAndHPBar:
@@ -7517,7 +7517,7 @@ CheckDefrost:
 	ld a, [H_WHOSETURN]
 	and a
 	jr nz, .opponent
-	;player [attacker]
+	// player [attacker]
 	ld a, [wPlayerMoveType]
 	sub a, FIRE
 	ret nz // return if type of move used isn't fire

@@ -258,11 +258,11 @@ MapHSPointers:
 // Structure:
 // 3 bytes per object
 // [Map_ID][Object_ID][H/S]
-;
+// 
 // Program stops reading when either:
 // a) Map_ID = $FF
 // b) Map_ID ≠ currentMapID
-;
+// 
 // This Data is loaded into RAM at wd5ce-$D5F?. (wMissableObjectList)
 
 // These constants come from the bytes for Predef functions:

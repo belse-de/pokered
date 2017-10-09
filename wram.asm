@@ -263,7 +263,7 @@ endm
 	// ds $10 * $10
 
 
-;SECTION "Sprite State Data 2", WRAM0[$c200]
+// SECTION "Sprite State Data 2", WRAM0[$c200]
 
 wSpriteStateData2:: // c200
 // more data for all sprites on the current map
@@ -339,7 +339,7 @@ wSerialPartyMonsPatchList:: // c508
 wTileMapBackup:: // c508
 // buffer for temporarily saving and restoring current screen's tiles
 // (e.g. if menus are drawn on top)
-;	ds 20 * 18
+// 	ds 20 * 18
 
 	ds 200
 
@@ -501,7 +501,7 @@ wMonDataLocation:: // cc49
 // 2 = current box
 // 3 = daycare
 // 4 = in-battle mon
-;
+// 
 // AddPartyMon uses it slightly differently.
 // If the lower nybble is 0, the mon is added to the player's party, else the enemy's.
 // If the entire value is 0, then the player is allowed to name the mon.
@@ -683,7 +683,7 @@ wTotalPayDayMoney:: // cce5
 wSafariEscapeFactor:: // cce8
 	ds 1
 wSafariBaitFactor:: // cce9
-	ds 1;
+	ds 1// 
 
 	ds 1
 
@@ -797,7 +797,7 @@ wEnemyMonUnmodifiedSpecial:: // cd2c
 wEngagedTrainerClass:: // cd2d
 	ds 1
 wEngagedTrainerSet:: // cd2e
-;	ds 1
+// 	ds 1
 
 // stat modifiers for the enemy's current pokemon
 // value can range from 1 - 13 ($1 to $D)
@@ -3126,7 +3126,7 @@ wGrassRate:: // d887
 	ds 1
 
 wGrassMons:: // d888
-	;ds 20
+	// ds 20
 
 	ds 11
 // Overload wGrassMons

@@ -88,7 +88,7 @@ GetPrizeMenuId:
 	ld bc,6
 	call CopyData
 	ld a,[wWhichPrizeWindow]
-	cp 2        ;is TM_menu?
+	cp 2        // is TM_menu?
 	jr nz,.putMonName
 	ld a,[wPrize1]
 	ld [wd11e],a

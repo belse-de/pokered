@@ -1,5 +1,5 @@
 MapSongBanks:
-	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ;PALLET_TOWN
+	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) // PALLET_TOWN
 	db MUSIC_CITIES1, BANK(Music_Cities1) // VIRIDIAN_CITY
 	db MUSIC_CITIES1, BANK(Music_Cities1) // PEWTER_CITY
 	db MUSIC_CITIES2, BANK(Music_Cities2) // CERULEAN_CITY
@@ -77,7 +77,7 @@ MapSongBanks:
 	db MUSIC_VERMILION, BANK(Music_Vermilion) // FREEZE
 	db MUSIC_CITIES1, BANK(Music_Cities1) // Route7Gate
 	db MUSIC_CITIES1, BANK(Music_Cities1) // UndergroundPathEntranceRoute7
-	db MUSIC_CELADON, BANK(Music_Celadon) ;FREEZE
+	db MUSIC_CELADON, BANK(Music_Celadon) // FREEZE
 	db MUSIC_CITIES1, BANK(Music_Cities1) // Route8Gate
 	db MUSIC_CITIES1, BANK(Music_Cities1) // UndergroundPathEntranceRoute8
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) // RockTunnelPokecenter
@@ -104,19 +104,19 @@ MapSongBanks:
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // SSAnne8
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // SSAnne9
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // SSAnne10
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;unused
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;unused
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) // unused
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) // unused
+	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // unused
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) // VictoryRoad1
-	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ;unused
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ;unused
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ;unused
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ;unused
+	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) // unused
+	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) // unused
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) // unused
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) // unused
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) // Lance
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
+	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // unused
+	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // unused
+	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // unused
+	db MUSIC_SS_ANNE, BANK(Music_SSAnne) // unused
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) // HallofFameRoom
 	db MUSIC_ROUTES1, BANK(Music_Routes1) // UndergroundPathNS
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) // Gary

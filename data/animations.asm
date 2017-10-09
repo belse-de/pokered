@@ -205,9 +205,9 @@ AttackAnimationPointers:
 
 // each animation is a list of subanimations and special effects
 // if first byte < $56
-;	db tileset_and_delay, sound_id, subanimation_id
+// 	db tileset_and_delay, sound_id, subanimation_id
 // if first byte >= $D8
-;	db special_effect_id, sound_id
+// 	db special_effect_id, sound_id
 // $FF terminated
 ZigZagScreenAnim:
 	db SE_WAVY_SCREEN, $FF
@@ -2331,7 +2331,7 @@ FrameBlockPointers:
 
 // FrameBlock format is as follows:
 // first byte = number of tiles in FrameBlock
-;
+// 
 // Next, each group of 4 bytes describes a tile in the FrameBlock
 // first byte = y offset
 // second byte = x offset
