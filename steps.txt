@@ -1,0 +1,6 @@
+grep --include="*.asm" -rn ";" .
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/; /\/\/ /g'
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/;/\/\/ /g'
+
+grep --include="*.asm" -rn "INCLUDE" .
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/INCLUDE "/#include "/g'
