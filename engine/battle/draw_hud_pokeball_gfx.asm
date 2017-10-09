@@ -3,7 +3,7 @@ DrawAllPokeballs:
 	call SetupOwnPartyPokeballs
 	ld a, [wIsInBattle]
 	dec a
-	ret z ; return if wild pokémon
+	ret z // return if wild pokémon
 	jp SetupEnemyPartyPokeballs
 
 DrawEnemyPokeballs:
@@ -49,7 +49,7 @@ SetupPokeballs:
 	push af
 	ld de, wBuffer
 	ld c, PARTY_LENGTH
-	ld a, $34 ; empty pokeball
+	ld a, $34 // empty pokeball
 .emptyloop
 	ld [de], a
 	inc de
@@ -73,16 +73,16 @@ PickPokeball:
 	jr nz, .alive
 	ld a, [hl]
 	and a
-	ld b, $33 ; crossed ball (fainted)
+	ld b, $33 // crossed ball (fainted)
 	jr z, .done_fainted
 .alive
 	inc hl
 	inc hl
-	ld a, [hl] ; status
+	ld a, [hl] // status
 	and a
-	ld b, $32 ; black ball (status)
+	ld b, $32 // black ball (status)
 	jr nz, .done
-	dec b ; regular ball
+	dec b // regular ball
 	jr .done
 .done_fainted
 	inc hl
@@ -91,7 +91,7 @@ PickPokeball:
 	ld a, b
 	ld [de], a
 	ld bc, wPartyMon2 - wPartyMon1Status
-	add hl, bc ; next mon struct
+	add hl, bc // next mon struct
 	ret
 
 WritePokeballOAMData:
@@ -126,10 +126,10 @@ PlacePlayerHUDTiles:
 	jr PlaceHUDTiles
 
 PlayerBattleHUDGraphicsTiles:
-; The tile numbers for specific parts of the battle display for the player's pokemon
-	db $73 ; unused ($73 is hardcoded into the routine that uses these bytes)
-	db $77 ; lower-right corner tile of the HUD
-	db $6F ; lower-left triangle tile of the HUD
+// The tile numbers for specific parts of the battle display for the player's pokemon
+	db $73 // unused ($73 is hardcoded into the routine that uses these bytes)
+	db $77 // lower-right corner tile of the HUD
+	db $6F // lower-left triangle tile of the HUD
 
 PlaceEnemyHUDTiles:
 	ld hl, EnemyBattleHUDGraphicsTiles
@@ -141,16 +141,16 @@ PlaceEnemyHUDTiles:
 	jr PlaceHUDTiles
 
 EnemyBattleHUDGraphicsTiles:
-; The tile numbers for specific parts of the battle display for the enemy
-	db $73 ; unused ($73 is hardcoded in the routine that uses these bytes)
-	db $74 ; lower-left corner tile of the HUD
-	db $78 ; lower-right triangle tile of the HUD
+// The tile numbers for specific parts of the battle display for the enemy
+	db $73 // unused ($73 is hardcoded in the routine that uses these bytes)
+	db $74 // lower-left corner tile of the HUD
+	db $78 // lower-right triangle tile of the HUD
 
 PlaceHUDTiles:
 	ld [hl], $73
 	ld bc, SCREEN_WIDTH
 	add hl, bc
-	ld a, [wHUDGraphicsTiles + 1] ; leftmost tile
+	ld a, [wHUDGraphicsTiles + 1] // leftmost tile
 	ld [hl], a
 	ld a, 8
 .loop
@@ -159,7 +159,7 @@ PlaceHUDTiles:
 	dec a
 	jr nz, .loop
 	add hl, de
-	ld a, [wHUDGraphicsTiles + 2] ; rightmost tile
+	ld a, [wHUDGraphicsTiles + 2] // rightmost tile
 	ld [hl], a
 	ret
 
@@ -186,7 +186,7 @@ SetupPlayerAndEnemyPokeballs:
 	ld hl, wOAMBuffer + $18
 	jp WritePokeballOAMData
 
-; four tiles: pokeball, black pokeball (status ailment), crossed out pokeball (fainted) and pokeball slot (no mon)
+// four tiles: pokeball, black pokeball (status ailment), crossed out pokeball (fainted) and pokeball slot (no mon)
 PokeballTileGraphics::
 	INCBIN "gfx/pokeball.2bpp"
 PokeballTileGraphicsEnd:

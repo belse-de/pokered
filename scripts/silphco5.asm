@@ -85,39 +85,39 @@ SilphCo5TextPointers:
 
 SilphCo5TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_0
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_5F_TRAINER_0
-	dw SilphCo5BattleText2 ; TextBeforeBattle
-	dw SilphCo5AfterBattleText2 ; TextAfterBattle
-	dw SilphCo5EndBattleText2 ; TextEndBattle
-	dw SilphCo5EndBattleText2 ; TextEndBattle
+	dw SilphCo5BattleText2 // TextBeforeBattle
+	dw SilphCo5AfterBattleText2 // TextAfterBattle
+	dw SilphCo5EndBattleText2 // TextEndBattle
+	dw SilphCo5EndBattleText2 // TextEndBattle
 
 SilphCo5TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_5F_TRAINER_1
-	dw SilphCo5BattleText3 ; TextBeforeBattle
-	dw SilphCo5AfterBattleText3 ; TextAfterBattle
-	dw SilphCo5EndBattleText3 ; TextEndBattle
-	dw SilphCo5EndBattleText3 ; TextEndBattle
+	dw SilphCo5BattleText3 // TextBeforeBattle
+	dw SilphCo5AfterBattleText3 // TextAfterBattle
+	dw SilphCo5EndBattleText3 // TextEndBattle
+	dw SilphCo5EndBattleText3 // TextEndBattle
 
 SilphCo5TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_2
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_5F_TRAINER_2
-	dw SilphCo5BattleText4 ; TextBeforeBattle
-	dw SilphCo5AfterBattleText4 ; TextAfterBattle
-	dw SilphCo5EndBattleText4 ; TextEndBattle
-	dw SilphCo5EndBattleText4 ; TextEndBattle
+	dw SilphCo5BattleText4 // TextBeforeBattle
+	dw SilphCo5AfterBattleText4 // TextAfterBattle
+	dw SilphCo5EndBattleText4 // TextEndBattle
+	dw SilphCo5EndBattleText4 // TextEndBattle
 
 SilphCo5TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_5F_TRAINER_3
-	dw SilphCo5BattleText5 ; TextBeforeBattle
-	dw SilphCo5AfterBattleText5 ; TextAfterBattle
-	dw SilphCo5EndBattleText5 ; TextEndBattle
-	dw SilphCo5EndBattleText5 ; TextEndBattle
+	dw SilphCo5BattleText5 // TextBeforeBattle
+	dw SilphCo5AfterBattleText5 // TextAfterBattle
+	dw SilphCo5EndBattleText5 // TextEndBattle
+	dw SilphCo5EndBattleText5 // TextEndBattle
 
 	db $ff
 

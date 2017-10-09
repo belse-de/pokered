@@ -1,5 +1,5 @@
 ResetStatusAndHalveMoneyOnBlackout::
-; Reset player status on blackout.
+// Reset player status on blackout.
 	xor a
 	ld [wBattleResult], a
 	ld [wWalkBikeSurfState], a
@@ -14,9 +14,9 @@ ResetStatusAndHalveMoneyOnBlackout::
 	ld [hMoney + 1], a
 	ld [hMoney + 2], a
 	call HasEnoughMoney
-	jr c, .lostmoney ; never happens
+	jr c, .lostmoney // never happens
 
-	; Halve the player's money.
+	// Halve the player's money.
 	ld a, [wPlayerMoney]
 	ld [hMoney], a
 	ld a, [wPlayerMoney + 1]

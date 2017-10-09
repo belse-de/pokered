@@ -11,7 +11,7 @@ BluesHouseScriptPointers:
 BluesHouseScript0:
 	SetEvent EVENT_ENTERED_BLUES_HOUSE
 
-	; trigger the next script
+	// trigger the next script
 	ld a, 1
 	ld [wBluesHouseCurScript], a
 	ret
@@ -42,7 +42,7 @@ BluesHouseText1:
 	jr nc, .BagFull
 	ld a, HS_TOWN_MAP
 	ld [wMissableObjectIndex], a
-	predef HideObject ; hide table map object
+	predef HideObject // hide table map object
 	ld hl, GotMapText
 	call PrintText
 	SetEvent EVENT_GOT_TOWN_MAP
@@ -80,10 +80,10 @@ DaisyUseMapText:
 	TX_FAR _DaisyUseMapText
 	db "@"
 
-BluesHouseText2: ; Daisy, walking around
+BluesHouseText2: // Daisy, walking around
 	TX_FAR _BluesHouseText2
 	db "@"
 
-BluesHouseText3: ; map on table
+BluesHouseText3: // map on table
 	TX_FAR _BluesHouseText3
 	db "@"

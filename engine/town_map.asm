@@ -10,7 +10,7 @@ DisplayTownMap:
 	ld a, [wCurMap]
 	push af
 	ld b, $0
-	call DrawPlayerOrBirdSprite ; player sprite
+	call DrawPlayerOrBirdSprite // player sprite
 	coord hl, 1, 0
 	ld de, wcd6d
 	call PlaceString
@@ -46,7 +46,7 @@ DisplayTownMap:
 	ld a, $4
 	ld [wOAMBaseTile], a
 	ld hl, wOAMBuffer + $10
-	call WriteTownMapSpriteOAM ; town map cursor sprite
+	call WriteTownMapSpriteOAM // town map cursor sprite
 	pop hl
 	ld de, wcd6d
 .copyMapName
@@ -87,7 +87,7 @@ DisplayTownMap:
 .pressedUp
 	ld a, [wWhichTownMapLocation]
 	inc a
-	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
+	cp TownMapOrderEnd - TownMapOrder // number of list items + 1
 	jr nz, .noOverflow
 	xor a
 .noOverflow
@@ -98,12 +98,12 @@ DisplayTownMap:
 	dec a
 	cp -1
 	jr nz, .noUnderflow
-	ld a, TownMapOrderEnd - TownMapOrder - 1 ; number of list items
+	ld a, TownMapOrderEnd - TownMapOrder - 1 // number of list items
 .noUnderflow
 	ld [wWhichTownMapLocation], a
 	jp .townMapLoop
 
-INCLUDE "data/town_map_order.asm"
+#include "data/town_map_order.asm"
 
 TownMapCursor:
 	INCBIN "gfx/town_map_cursor.1bpp"
@@ -172,7 +172,7 @@ LoadTownMap_Fly:
 	pop hl
 	ld a, [hl]
 	ld b, $4
-	call DrawPlayerOrBirdSprite ; draw bird sprite
+	call DrawPlayerOrBirdSprite // draw bird sprite
 	coord hl, 3, 0
 	ld de, wcd6d
 	call PlaceString
@@ -225,7 +225,7 @@ LoadTownMap_Fly:
 	cp $ff
 	jr z, .wrapToStartOfList
 	cp $fe
-	jr z, .pressedUp ; skip past unvisited towns
+	jr z, .pressedUp // skip past unvisited towns
 	jp .townMapFlyLoop
 .wrapToStartOfList
 	ld hl, wFlyLocationsList
@@ -237,7 +237,7 @@ LoadTownMap_Fly:
 	cp $ff
 	jr z, .wrapToEndOfList
 	cp $fe
-	jr z, .pressedDown ; skip past unvisited towns
+	jr z, .pressedDown // skip past unvisited towns
 	jp .townMapFlyLoop
 .wrapToEndOfList
 	ld hl, wFlyLocationsList + 11
@@ -258,9 +258,9 @@ BuildFlyLocationsList:
 .loop
 	srl d
 	rr e
-	ld a, $fe ; store $fe if the town hasn't been visited
+	ld a, $fe // store $fe if the town hasn't been visited
 	jr nc, .notVisited
-	ld a, b ; store the map number of the town if it has been visited
+	ld a, b // store the map number of the town if it has been visited
 .notVisited
 	ld [hl], a
 	inc hl
@@ -325,11 +325,11 @@ LoadTownMap:
 	ret
 
 CompressedMap:
-; you can decompress this file with the redrle program in the extras/ dir
+// you can decompress this file with the redrle program in the extras/ dir
 	INCBIN "gfx/town_map.rle"
 
 ExitTownMap:
-; clear town map graphics data and load usual graphics data
+// clear town map graphics data and load usual graphics data
 	xor a
 	ld [wTownMapSpriteBlinkingEnabled], a
 	call GBPalWhiteOut
@@ -341,8 +341,8 @@ ExitTownMap:
 	jp RunDefaultPaletteCommand
 
 DrawPlayerOrBirdSprite:
-; a = map number
-; b = OAM base tile
+// a = map number
+// b = OAM base tile
 	push af
 	ld a, b
 	ld [wOAMBaseTile], a
@@ -381,10 +381,10 @@ DisplayWildLocations:
 	call LoadTownMapEntry
 	pop hl
 	ld a, [de]
-	cp $19 ; Cerulean Cave's coordinates
-	jr z, .nextEntry ; skip Cerulean Cave
+	cp $19 // Cerulean Cave's coordinates
+	jr z, .nextEntry // skip Cerulean Cave
 	call TownMapCoordsToOAMCoords
-	ld a, $4 ; nest icon tile no.
+	ld a, $4 // nest icon tile no.
 	ld [hli], a
 	xor a
 	ld [hli], a
@@ -393,9 +393,9 @@ DisplayWildLocations:
 	jr .loop
 .exitLoop
 	ld a, l
-	and a ; were any OAM entries written?
+	and a // were any OAM entries written?
 	jr nz, .drawPlayerSprite
-; if no OAM entries were written, print area unknown text
+// if no OAM entries were written, print area unknown text
 	coord hl, 1, 7
 	ld b, 2
 	ld c, 15
@@ -418,8 +418,8 @@ AreaUnknownText:
 	db " AREA UNKNOWN@"
 
 TownMapCoordsToOAMCoords:
-; in: lower nybble of a = x, upper nybble of a = y
-; out: b and [hl] = (y * 8) + 24, c and [hl+1] = (x * 8) + 24
+// in: lower nybble of a = x, upper nybble of a = y
+// out: b and [hl] = (y * 8) + 24, c and [hl+1] = (x * 8) + 24
 	push af
 	and $f0
 	srl a
@@ -438,15 +438,15 @@ TownMapCoordsToOAMCoords:
 WritePlayerOrBirdSpriteOAM:
 	ld a, [wOAMBaseTile]
 	and a
-	ld hl, wOAMBuffer + $90 ; for player sprite
+	ld hl, wOAMBuffer + $90 // for player sprite
 	jr z, WriteTownMapSpriteOAM
-	ld hl, wOAMBuffer + $80 ; for bird sprite
+	ld hl, wOAMBuffer + $80 // for bird sprite
 
 WriteTownMapSpriteOAM:
 	push hl
 
-; Subtract 4 from c (X coord) and 4 from b (Y coord). However, the carry from c
-; is added to b, so the net result is that only 3 is subtracted from b.
+// Subtract 4 from c (X coord) and 4 from b (Y coord). However, the carry from c
+// is added to b, so the net result is that only 3 is subtracted from b.
 	lb hl, -4, -4
 	add hl, bc
 
@@ -455,8 +455,8 @@ WriteTownMapSpriteOAM:
 	pop hl
 
 WriteAsymmetricMonPartySpriteOAM:
-; Writes 4 OAM blocks for a helix mon party sprite, since it does not have
-; a vertical line of symmetry.
+// Writes 4 OAM blocks for a helix mon party sprite, since it does not have
+// a vertical line of symmetry.
 	lb de, 2, 2
 .loop
 	push de
@@ -488,10 +488,10 @@ WriteAsymmetricMonPartySpriteOAM:
 	ret
 
 WriteSymmetricMonPartySpriteOAM:
-; Writes 4 OAM blocks for a mon party sprite other than a helix. All the
-; sprites other than the helix one have a vertical line of symmetry which allows
-; the X-flip OAM bit to be used so that only 2 rather than 4 tile patterns are
-; needed.
+// Writes 4 OAM blocks for a mon party sprite other than a helix. All the
+// sprites other than the helix one have a vertical line of symmetry which allows
+// the X-flip OAM bit to be used so that only 2 rather than 4 tile patterns are
+// needed.
 	xor a
 	ld [wSymmetricSpriteOAMAttributes], a
 	lb de, 2, 2
@@ -500,13 +500,13 @@ WriteSymmetricMonPartySpriteOAM:
 	push bc
 .innerLoop
 	ld a, b
-	ld [hli], a ; Y
+	ld [hli], a // Y
 	ld a, c
-	ld [hli], a ; X
+	ld [hli], a // X
 	ld a, [wOAMBaseTile]
-	ld [hli], a ; tile
+	ld [hli], a // tile
 	ld a, [wSymmetricSpriteOAMAttributes]
-	ld [hli], a ; attributes
+	ld [hli], a // attributes
 	xor (1 << OAM_X_FLIP)
 	ld [wSymmetricSpriteOAMAttributes], a
 	inc d
@@ -530,7 +530,7 @@ WriteSymmetricMonPartySpriteOAM:
 	ret
 
 ZeroOutDuplicatesInList:
-; replace duplicate bytes in the list of wild pokemon locations with 0
+// replace duplicate bytes in the list of wild pokemon locations with 0
 	ld de, wBuffer
 .loop
 	ld a, [de]
@@ -553,8 +553,8 @@ ZeroOutDuplicatesInList:
 	jr .zeroDuplicatesLoop
 
 LoadTownMapEntry:
-; in: a = map number
-; out: lower nybble of [de] = x, upper nybble of [de] = y, hl = address of name
+// in: a = map number
+// out: lower nybble of [de] = x, upper nybble of [de] = y, hl = address of name
 	cp REDS_HOUSE_1F
 	jr c, .external
 	ld bc, 4
@@ -582,9 +582,9 @@ LoadTownMapEntry:
 	ld l, a
 	ret
 
-INCLUDE "data/town_map_entries.asm"
+#include "data/town_map_entries.asm"
 
-INCLUDE "text/map_names.asm"
+#include "text/map_names.asm"
 
 MonNestIcon:
 	INCBIN "gfx/mon_nest_icon.1bpp"
@@ -597,7 +597,7 @@ TownMapSpriteBlinkingAnimation:
 	jr z, .hideSprites
 	cp 50
 	jr nz, .done
-; show sprites when the counter reaches 50
+// show sprites when the counter reaches 50
 	ld hl, wTileMapBackup
 	ld de, wOAMBuffer
 	ld bc, $90

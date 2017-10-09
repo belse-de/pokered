@@ -22,12 +22,12 @@ Route4TextPointers:
 
 Route4TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_4_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_4_TRAINER_0
-	dw Route4BattleText1 ; TextBeforeBattle
-	dw Route4AfterBattleText1 ; TextAfterBattle
-	dw Route4EndBattleText1 ; TextEndBattle
-	dw Route4EndBattleText1 ; TextEndBattle
+	dw Route4BattleText1 // TextBeforeBattle
+	dw Route4AfterBattleText1 // TextAfterBattle
+	dw Route4EndBattleText1 // TextEndBattle
+	dw Route4EndBattleText1 // TextEndBattle
 
 	db $ff
 

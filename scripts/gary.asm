@@ -53,7 +53,7 @@ GaryScript2:
 	xor a
 	ld [wJoyIgnore], a
 	ld hl, wOptions
-	res 7, [hl]  ; Turn on battle animations to make the battle feel more epic.
+	res 7, [hl]  // Turn on battle animations to make the battle feel more epic.
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -67,7 +67,7 @@ GaryScript2:
 	ld a, OPP_SONY3
 	ld [wCurOpponent], a
 
-	; select which team to use during the encounter
+	// select which team to use during the encounter
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .NotStarter2
@@ -147,7 +147,7 @@ GaryScript5:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $2
 	ld [H_SPRITEINDEX], a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $3
@@ -173,7 +173,7 @@ GaryScript6:
 GaryScript7:
 	ld a, $2
 	ld [H_SPRITEINDEX], a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $5

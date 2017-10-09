@@ -365,10 +365,10 @@ LoadSpinnerArrowTiles:
 	ret
 
 spinner: MACRO
-; \1: source
-; \2: offset (BANK() chokes on literals)
-; \3: length
-; \4: dest
+// \1: source
+// \2: offset (BANK() chokes on literals)
+// \3: length
+// \4: dest
 	dw \1 + \2
 	db \3, BANK(\1)
 	dw \4
@@ -401,15 +401,15 @@ vGymSpinner EQU vTileset + GYM_SPINNER
 	spinner Gym_GFX, GYM_SPINNER + $110, 1, vGymSpinner + $110
 
 SpinnerPlayerFacingDirections:
-; This isn't the order of the facing directions.  Rather, it's a list of
-; the facing directions that come next. For example, when the player is
-; facing down (00), the next facing direction is left (08).
-	db $08 ; down -> left
-	db $0C ; up -> right
-	db $04 ; left -> up
-	db $00 ; right -> down
+// This isn't the order of the facing directions.  Rather, it's a list of
+// the facing directions that come next. For example, when the player is
+// facing down (00), the next facing direction is left (08).
+	db $08 // down -> left
+	db $0C // up -> right
+	db $04 // left -> up
+	db $00 // right -> down
 
-; these tiles are the animation for the tiles that push the player in dungeons like Rocket HQ
+// these tiles are the animation for the tiles that push the player in dungeons like Rocket HQ
 SpinnerArrowAnimTiles:
 	INCBIN "gfx/spinner_arrow.2bpp"
 
@@ -422,12 +422,12 @@ RocketHideout2TextPointers:
 
 RocketHideout2TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_0
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_0
-	dw RocketHideout2BattleText2 ; TextBeforeBattle
-	dw RocketHideout2AfterBattleTxt2 ; TextAfterBattle
-	dw RocketHideout2EndBattleText2 ; TextEndBattle
-	dw RocketHideout2EndBattleText2 ; TextEndBattle
+	dw RocketHideout2BattleText2 // TextBeforeBattle
+	dw RocketHideout2AfterBattleTxt2 // TextAfterBattle
+	dw RocketHideout2EndBattleText2 // TextEndBattle
+	dw RocketHideout2EndBattleText2 // TextEndBattle
 
 	db $ff
 

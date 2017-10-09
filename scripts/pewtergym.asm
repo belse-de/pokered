@@ -74,7 +74,7 @@ PewterGymScript_5c3df:
 
 	ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 
-	; deactivate gym trainers
+	// deactivate gym trainers
 	SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
 
 	jp PewterGymScript_5c3bf
@@ -89,12 +89,12 @@ PewterGymTextPointers:
 
 PewterGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_PEWTER_GYM_TRAINER_0
-	db ($5 << 4) ; trainer's view range
+	db ($5 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_PEWTER_GYM_TRAINER_0
-	dw PewterGymBattleText1 ; TextBeforeBattle
-	dw PewterGymAfterBattleText1 ; TextAfterBattle
-	dw PewterGymEndBattleText1 ; TextEndBattle
-	dw PewterGymEndBattleText1 ; TextEndBattle
+	dw PewterGymBattleText1 // TextBeforeBattle
+	dw PewterGymAfterBattleText1 // TextAfterBattle
+	dw PewterGymEndBattleText1 // TextEndBattle
+	dw PewterGymEndBattleText1 // TextEndBattle
 
 	db $ff
 
@@ -158,7 +158,7 @@ PewterGymText6:
 
 PewterGymText_5c4bc:
 	TX_FAR _PewterGymText_5c4bc
-	TX_SFX_LEVEL_UP ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	TX_SFX_LEVEL_UP // probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	TX_FAR _PewterGymText_5c4c1
 	db "@"
 

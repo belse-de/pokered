@@ -203,12 +203,12 @@ AttackAnimationPointers:
 	dw ThrowBaitAnim
 	dw ZigZagScreenAnim
 
-; each animation is a list of subanimations and special effects
-; if first byte < $56
+// each animation is a list of subanimations and special effects
+// if first byte < $56
 ;	db tileset_and_delay, sound_id, subanimation_id
-; if first byte >= $D8
+// if first byte >= $D8
 ;	db special_effect_id, sound_id
-; $FF terminated
+// $FF terminated
 ZigZagScreenAnim:
 	db SE_WAVY_SCREEN, $FF
 	db $FF
@@ -2329,14 +2329,14 @@ FrameBlockPointers:
 	dw FrameBlock78
 	dw FrameBlock79
 
-; FrameBlock format is as follows:
-; first byte = number of tiles in FrameBlock
+// FrameBlock format is as follows:
+// first byte = number of tiles in FrameBlock
 ;
-; Next, each group of 4 bytes describes a tile in the FrameBlock
-; first byte = y offset
-; second byte = x offset
-; third byte = tile id (it's actually tile id - $31)
-; fourth byte = tile properties (xflip/yflip/etc.)
+// Next, each group of 4 bytes describes a tile in the FrameBlock
+// first byte = y offset
+// second byte = x offset
+// third byte = tile id (it's actually tile id - $31)
+// fourth byte = tile properties (xflip/yflip/etc.)
 FrameBlock01:
 	db $09
 	db $00,$00,$2c,$00
@@ -3312,7 +3312,7 @@ FrameBlock62:
 	db $18,$08,$49,$00
 	db $18,$18,$49,$00
 	db $18,$28,$49,$00
-	db $18,$38,$49,$00 ; unused
+	db $18,$38,$49,$00 // unused
 
 FrameBlock63:
 	db $06

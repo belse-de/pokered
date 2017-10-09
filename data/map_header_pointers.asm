@@ -1,4 +1,4 @@
-; see also MapHeaderBanks
+// see also MapHeaderBanks
 MapHeaderPointers::
 	dw PalletTown_h
 	dw ViridianCity_h
@@ -69,13 +69,13 @@ MapHeaderPointers::
 	dw BikeShop_h
 	dw CeruleanMart_h
 	dw MtMoonPokecenter_h
-	dw CeruleanHouseTrashed_h ; copy
+	dw CeruleanHouseTrashed_h // copy
 	dw Route5Gate_h
 	dw UndergroundPathEntranceRoute5_h
 	dw DayCareM_h
 	dw Route6Gate_h
 	dw UndergroundPathEntranceRoute6_h
-	dw UndergroundPathEntranceRoute6_h ; unused
+	dw UndergroundPathEntranceRoute6_h // unused
 	dw Route7Gate_h
 	dw UndergroundPathEntranceRoute7_h
 	dw UndergroundPathEntranceRoute7Copy_h
@@ -105,19 +105,19 @@ MapHeaderPointers::
 	dw SSAnne8_h
 	dw SSAnne9_h
 	dw SSAnne10_h
-	dw Lance_h ; unused
-	dw Lance_h ; unused
-	dw Lance_h ; unused
+	dw Lance_h // unused
+	dw Lance_h // unused
+	dw Lance_h // unused
 	dw VictoryRoad1_h
-	dw Lance_h ; unused
-	dw Lance_h ; unused ;id=110
-	dw Lance_h ; unused
-	dw Lance_h ; unused
+	dw Lance_h // unused
+	dw Lance_h // unused ;id=110
+	dw Lance_h // unused
+	dw Lance_h // unused
 	dw Lance_h
-	dw Lance_h ; unused
-	dw Lance_h ; unused
-	dw Lance_h ; unused
-	dw Lance_h ; unused
+	dw Lance_h // unused
+	dw Lance_h // unused
+	dw Lance_h // unused
+	dw Lance_h // unused
 	dw HallofFameRoom_h
 	dw UndergroundPathNS_h
 	dw Gary_h ;id=120
@@ -173,7 +173,7 @@ MapHeaderPointers::
 	dw Lab4_h ;id=170
 	dw CinnabarPokecenter_h
 	dw CinnabarMart_h
-	dw CinnabarMart_h ; unused
+	dw CinnabarMart_h // unused
 	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
@@ -204,9 +204,9 @@ MapHeaderPointers::
 	dw RocketHideout3_h
 	dw RocketHideout4_h
 	dw RocketHideoutElevator_h
-	dw RocketHideoutElevator_h ; unused
-	dw RocketHideoutElevator_h ; unused
-	dw RocketHideoutElevator_h ; unused
+	dw RocketHideoutElevator_h // unused
+	dw RocketHideoutElevator_h // unused
+	dw RocketHideoutElevator_h // unused
 	dw SilphCo2_h
 	dw SilphCo3_h
 	dw SilphCo4_h
@@ -231,20 +231,20 @@ MapHeaderPointers::
 	dw UnknownDungeon1_h
 	dw NameRater_h
 	dw CeruleanHouse2_h
-	dw Route16Gate_h ; unused
+	dw Route16Gate_h // unused
 	dw RockTunnel2_h
 	dw SilphCo9_h
 	dw SilphCo10_h
 	dw SilphCo11_h
 	dw SilphCoElevator_h
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
+	dw SilphCo2_h // unused
+	dw SilphCo2_h // unused
 	dw TradeCenter_h
 	dw Colosseum_h
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
+	dw SilphCo2_h // unused
+	dw SilphCo2_h // unused
+	dw SilphCo2_h // unused
+	dw SilphCo2_h // unused
 	dw Lorelei_h
 	dw Bruno_h
 	dw Agatha_h ;247

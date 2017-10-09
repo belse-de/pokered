@@ -1,11 +1,11 @@
 Route21Object:
-	db $43 ; border block
+	db $43 // border block
 
-	db $0 ; warps
+	db $0 // warps
 
-	db $0 ; signs
+	db $0 // signs
 
-	db $9 ; objects
+	db $9 // objects
 	object SPRITE_FISHER2, $4, $18, STAY, LEFT, $1, OPP_FISHER, $7
 	object SPRITE_FISHER2, $6, $19, STAY, DOWN, $2, OPP_FISHER, $9
 	object SPRITE_SWIMMER, $a, $1f, STAY, UP, $3, OPP_SWIMMER, $c

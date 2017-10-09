@@ -97,15 +97,15 @@ BillsPC_::
 	set 6, [hl]
 	xor a
 	ld [wParentMenuItem], a
-	inc a               ; MONSTER_NAME
+	inc a               // MONSTER_NAME
 	ld [wNameListType], a
 	call LoadHpBarAndStatusTilePatterns
 	ld a, [wListScrollOffset]
 	push af
 	ld a, [wFlags_0xcd60]
-	bit 3, a ; accessing Bill's PC through another PC?
+	bit 3, a // accessing Bill's PC through another PC?
 	jr nz, BillsPCMenu
-; accessing it directly
+// accessing it directly
 	ld a, $99
 	call PlaySound
 	ld hl, SwitchOnText
@@ -128,21 +128,21 @@ BillsPCMenu:
 	call PlaceString
 	ld hl, wTopMenuItemY
 	ld a, 2
-	ld [hli], a ; wTopMenuItemY
+	ld [hli], a // wTopMenuItemY
 	dec a
-	ld [hli], a ; wTopMenuItemX
+	ld [hli], a // wTopMenuItemX
 	inc hl
 	inc hl
 	ld a, 4
-	ld [hli], a ; wMaxMenuItem
+	ld [hli], a // wMaxMenuItem
 	ld a, A_BUTTON | B_BUTTON
-	ld [hli], a ; wMenuWatchedKeys
+	ld [hli], a // wMenuWatchedKeys
 	xor a
-	ld [hli], a ; wLastMenuItem
-	ld [hli], a ; wPartyAndBillsPCSavedMenuItem
+	ld [hli], a // wLastMenuItem
+	ld [hli], a // wPartyAndBillsPCSavedMenuItem
 	ld hl, wListScrollOffset
-	ld [hli], a ; wListScrollOffset
-	ld [hl], a ; wMenuWatchMovingOutOfBounds
+	ld [hli], a // wListScrollOffset
+	ld [hl], a // wMenuWatchMovingOutOfBounds
 	ld [wPlayerMonNumber], a
 	ld hl, WhatText
 	call PrintText
@@ -154,7 +154,7 @@ BillsPCMenu:
 	and $7f
 	cp 9
 	jr c, .singleDigitBoxNum
-; two digit box num
+// two digit box num
 	sub 9
 	coord hl, 17, 16
 	ld [hl], "1"
@@ -172,24 +172,24 @@ BillsPCMenu:
 	call Delay3
 	call HandleMenuInput
 	bit 1, a
-	jp nz, ExitBillsPC ; b button
+	jp nz, ExitBillsPC // b button
 	call PlaceUnfilledArrowMenuCursor
 	ld a, [wCurrentMenuItem]
 	ld [wParentMenuItem], a
 	and a
-	jp z, BillsPCWithdraw ; withdraw
+	jp z, BillsPCWithdraw // withdraw
 	cp $1
-	jp z, BillsPCDeposit ; deposit
+	jp z, BillsPCDeposit // deposit
 	cp $2
-	jp z, BillsPCRelease ; release
+	jp z, BillsPCRelease // release
 	cp $3
-	jp z, BillsPCChangeBox ; change box
+	jp z, BillsPCChangeBox // change box
 
 ExitBillsPC:
 	ld a, [wFlags_0xcd60]
-	bit 3, a ; accessing Bill's PC through another PC?
+	bit 3, a // accessing Bill's PC through another PC?
 	jr nz, .next
-; accessing it directly
+// accessing it directly
 	call LoadTextBoxTilePatterns
 	ld a, $9a
 	call PlaySound
@@ -279,7 +279,7 @@ BillsPCWithdraw:
 	ld a, [wcf91]
 	call GetCryData
 	call PlaySoundWaitForCurrent
-	xor a ; BOX_TO_PARTY
+	xor a // BOX_TO_PARTY
 	ld [wMoveMonType], a
 	call MoveMon
 	ld a, 1
@@ -329,7 +329,7 @@ DisplayMonListMenu:
 	xor a
 	ld [wPrintItemPrices], a
 	ld [wListMenuID], a
-	inc a                ; MONSTER_NAME
+	inc a                // MONSTER_NAME
 	ld [wNameListType], a
 	ld a, [wPartyAndBillsPCSavedMenuItem]
 	ld [wCurrentMenuItem], a
@@ -350,11 +350,11 @@ BoxNoPCText:
 	db "BOX No.@"
 
 KnowsHMMove::
-; returns whether mon with party index [wWhichPokemon] knows an HM move
+// returns whether mon with party index [wWhichPokemon] knows an HM move
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
 	jr .next
-; unreachable
+// unreachable
 	ld hl, wBoxMon1Moves
 	ld bc, wBoxMon2 - wBoxMon1
 .next
@@ -390,7 +390,7 @@ DisplayDepositWithdrawMenu:
 	ld c, 9
 	call TextBoxBorder
 	ld a, [wParentMenuItem]
-	and a ; was the Deposit or Withdraw item selected in the parent menu?
+	and a // was the Deposit or Withdraw item selected in the parent menu?
 	ld de, DepositPCText
 	jr nz, .next
 	ld de, WithdrawPCText
@@ -402,26 +402,26 @@ DisplayDepositWithdrawMenu:
 	call PlaceString
 	ld hl, wTopMenuItemY
 	ld a, 12
-	ld [hli], a ; wTopMenuItemY
+	ld [hli], a // wTopMenuItemY
 	ld a, 10
-	ld [hli], a ; wTopMenuItemX
+	ld [hli], a // wTopMenuItemX
 	xor a
-	ld [hli], a ; wCurrentMenuItem
+	ld [hli], a // wCurrentMenuItem
 	inc hl
 	ld a, 2
-	ld [hli], a ; wMaxMenuItem
+	ld [hli], a // wMaxMenuItem
 	ld a, A_BUTTON | B_BUTTON
-	ld [hli], a ; wMenuWatchedKeys
+	ld [hli], a // wMenuWatchedKeys
 	xor a
-	ld [hl], a ; wLastMenuItem
+	ld [hl], a // wLastMenuItem
 	ld hl, wListScrollOffset
-	ld [hli], a ; wListScrollOffset
-	ld [hl], a ; wMenuWatchMovingOutOfBounds
+	ld [hli], a // wListScrollOffset
+	ld [hl], a // wMenuWatchMovingOutOfBounds
 	ld [wPlayerMonNumber], a
 	ld [wPartyAndBillsPCSavedMenuItem], a
 .loop
 	call HandleMenuInput
-	bit 1, a ; pressed B?
+	bit 1, a // pressed B?
 	jr nz, .exit
 	ld a, [wCurrentMenuItem]
 	and a
@@ -509,14 +509,14 @@ CableClubLeftGameboy::
 	ld a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	ret z
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
 	cp SPRITE_FACING_RIGHT
 	ret nz
 	ld a, [wCurMap]
 	cp TRADE_CENTER
 	ld a, LINK_STATE_START_TRADE
 	jr z, .next
-	inc a ; LINK_STATE_START_BATTLE
+	inc a // LINK_STATE_START_BATTLE
 .next
 	ld [wLinkState], a
 	call EnableAutoTextBoxDrawing
@@ -526,14 +526,14 @@ CableClubRightGameboy::
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	ret z
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
 	cp SPRITE_FACING_LEFT
 	ret nz
 	ld a, [wCurMap]
 	cp TRADE_CENTER
 	ld a, LINK_STATE_START_TRADE
 	jr z, .next
-	inc a ; LINK_STATE_START_BATTLE
+	inc a // LINK_STATE_START_BATTLE
 .next
 	ld [wLinkState], a
 	call EnableAutoTextBoxDrawing
@@ -543,12 +543,12 @@ JustAMomentText::
 	TX_FAR _JustAMomentText
 	db "@"
 
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
 	tx_pre_jump OpenBillsPCText
 
 OpenBillsPCText::
-	db $FD ; FuncTX_BillsPC
+	db $FD // FuncTX_BillsPC
 

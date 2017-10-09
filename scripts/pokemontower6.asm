@@ -105,30 +105,30 @@ PokemonTower6TextPointers:
 
 PokemonTower6TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_0
-	dw PokemonTower6BattleText1 ; TextBeforeBattle
-	dw PokemonTower6AfterBattleText1 ; TextAfterBattle
-	dw PokemonTower6EndBattleText1 ; TextEndBattle
-	dw PokemonTower6EndBattleText1 ; TextEndBattle
+	dw PokemonTower6BattleText1 // TextBeforeBattle
+	dw PokemonTower6AfterBattleText1 // TextAfterBattle
+	dw PokemonTower6EndBattleText1 // TextEndBattle
+	dw PokemonTower6EndBattleText1 // TextEndBattle
 
 PokemonTower6TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_1
-	dw PokemonTower6BattleText2 ; TextBeforeBattle
-	dw PokemonTower6AfterBattleText2 ; TextAfterBattle
-	dw PokemonTower6EndBattleText2 ; TextEndBattle
-	dw PokemonTower6EndBattleText2 ; TextEndBattle
+	dw PokemonTower6BattleText2 // TextBeforeBattle
+	dw PokemonTower6AfterBattleText2 // TextAfterBattle
+	dw PokemonTower6EndBattleText2 // TextEndBattle
+	dw PokemonTower6EndBattleText2 // TextEndBattle
 
 PokemonTower6TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_2
-	dw PokemonTower6BattleText3 ; TextBeforeBattle
-	dw PokemonTower6AfterBattleText3 ; TextAfterBattle
-	dw PokemonTower6EndBattleText3 ; TextEndBattle
-	dw PokemonTower6EndBattleText3 ; TextEndBattle
+	dw PokemonTower6BattleText3 // TextBeforeBattle
+	dw PokemonTower6AfterBattleText3 // TextAfterBattle
+	dw PokemonTower6EndBattleText3 // TextEndBattle
+	dw PokemonTower6EndBattleText3 // TextEndBattle
 
 	db $ff
 

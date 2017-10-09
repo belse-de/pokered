@@ -17,7 +17,7 @@ BillsHouseScript0:
 
 BillsHouseScript1:
 	ld a, [wSpriteStateData1 + 9]
-	and a ; cp SPRITE_FACING_DOWN
+	and a // cp SPRITE_FACING_DOWN
 	ld de, MovementData_1e79c
 	jr nz, .notDown
 	ld de, MovementData_1e7a0
@@ -35,7 +35,7 @@ MovementData_1e79c:
 	db NPC_MOVEMENT_UP
 	db $FF
 
-; make Bill walk around the player
+// make Bill walk around the player
 MovementData_1e7a0:
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_UP
@@ -101,7 +101,7 @@ BillsHouseScript4:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	SetEvent EVENT_MET_BILL_2 ; this event seems redundant
+	SetEvent EVENT_MET_BILL_2 // this event seems redundant
 	SetEvent EVENT_MET_BILL
 	ld a, $0
 	ld [wBillsHouseCurScript], a

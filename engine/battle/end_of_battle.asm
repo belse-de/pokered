@@ -2,7 +2,7 @@ EndOfBattle:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr nz, .notLinkBattle
-; link battle
+// link battle
 	ld a, [wEnemyMonPartyPos]
 	ld hl, wEnemyMon1Status
 	ld bc, wEnemyMon2 - wEnemyMon1
@@ -33,7 +33,7 @@ EndOfBattle:
 	or [hl]
 	inc hl
 	or [hl]
-	jr z, .evolution ; if pay day money is 0, jump
+	jr z, .evolution // if pay day money is 0, jump
 	ld de, wPlayerMoney + 2
 	ld c, $3
 	predef AddBCDPredef

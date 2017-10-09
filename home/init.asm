@@ -3,20 +3,20 @@ SoftReset::
 	call GBPalWhiteOut
 	ld c, 32
 	call DelayFrames
-	; fallthrough
+	// fallthrough
 
 Init::
-;  Program init.
+//  Program init.
 
 rLCDC_DEFAULT EQU %11100011
-; * LCD enabled
-; * Window tile map at $9C00
-; * Window display enabled
-; * BG and window tile data at $8800
-; * BG tile map at $9800
-; * 8x8 OBJ size
-; * OBJ display enabled
-; * BG display enabled
+// * LCD enabled
+// * Window tile map at $9C00
+// * Window display enabled
+// * BG and window tile data at $8800
+// * BG tile map at $9800
+// * 8x8 OBJ size
+// * OBJ display enabled
+// * BG display enabled
 
 	di
 
@@ -41,8 +41,8 @@ rLCDC_DEFAULT EQU %11100011
 
 	ld sp, wStack
 
-	ld hl, $c000 ; start of WRAM
-	ld bc, $2000 ; size of WRAM
+	ld hl, $c000 // start of WRAM
+	ld bc, $2000 // size of WRAM
 .loop
 	ld [hl], 0
 	inc hl
@@ -73,7 +73,7 @@ rLCDC_DEFAULT EQU %11100011
 	ld a, 1 << VBLANK + 1 << TIMER + 1 << SERIAL
 	ld [rIE], a
 
-	ld a, 144 ; move the window off-screen
+	ld a, 144 // move the window off-screen
 	ld [hWY], a
 	ld [rWY], a
 	ld a, 7

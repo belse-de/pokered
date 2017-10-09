@@ -45,7 +45,7 @@ PewterJigglypuffText:
 	ld a, [hl]
 	ld [Sprite03SpriteImageIdx], a
 
-; rotate the array
+// rotate the array
 	push hl
 	ld hl, wJigglypuffFacingDirections
 	ld de, wJigglypuffFacingDirections - 1

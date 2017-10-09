@@ -281,47 +281,47 @@ SilphCo7TextPointers:
 
 SilphCo7TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_0
-	dw SilphCo7BattleText1 ; TextBeforeBattle
-	dw SilphCo7AfterBattleText1 ; TextAfterBattle
-	dw SilphCo7EndBattleText1 ; TextEndBattle
-	dw SilphCo7EndBattleText1 ; TextEndBattle
+	dw SilphCo7BattleText1 // TextBeforeBattle
+	dw SilphCo7AfterBattleText1 // TextAfterBattle
+	dw SilphCo7EndBattleText1 // TextEndBattle
+	dw SilphCo7EndBattleText1 // TextEndBattle
 
 SilphCo7TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_1
-	dw SilphCo7BattleText2 ; TextBeforeBattle
-	dw SilphCo7AfterBattleText2 ; TextAfterBattle
-	dw SilphCo7EndBattleText2 ; TextEndBattle
-	dw SilphCo7EndBattleText2 ; TextEndBattle
+	dw SilphCo7BattleText2 // TextBeforeBattle
+	dw SilphCo7AfterBattleText2 // TextAfterBattle
+	dw SilphCo7EndBattleText2 // TextEndBattle
+	dw SilphCo7EndBattleText2 // TextEndBattle
 
 SilphCo7TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_2
-	dw SilphCo7BattleText3 ; TextBeforeBattle
-	dw SilphCo7AfterBattleText3 ; TextAfterBattle
-	dw SilphCo7EndBattleText3 ; TextEndBattle
-	dw SilphCo7EndBattleText3 ; TextEndBattle
+	dw SilphCo7BattleText3 // TextBeforeBattle
+	dw SilphCo7AfterBattleText3 // TextAfterBattle
+	dw SilphCo7EndBattleText3 // TextEndBattle
+	dw SilphCo7EndBattleText3 // TextEndBattle
 
 SilphCo7TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_3, 1
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_3, 1
-	dw SilphCo7BattleText4 ; TextBeforeBattle
-	dw SilphCo7AfterBattleText4 ; TextAfterBattle
-	dw SilphCo7EndBattleText4 ; TextEndBattle
-	dw SilphCo7EndBattleText4 ; TextEndBattle
+	dw SilphCo7BattleText4 // TextBeforeBattle
+	dw SilphCo7AfterBattleText4 // TextAfterBattle
+	dw SilphCo7EndBattleText4 // TextEndBattle
+	dw SilphCo7EndBattleText4 // TextEndBattle
 
 	db $ff
 
 SilphCo7Text1:
-; lapras guy
+// lapras guy
 	TX_ASM
 	ld a, [wd72e]
-	bit 0, a ; got lapras?
+	bit 0, a // got lapras?
 	jr z, .givelapras
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	jr nz, .savedsilph

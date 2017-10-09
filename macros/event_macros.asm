@@ -74,7 +74,7 @@ event_byte = ((\1) / 8)
 	bit (\1) % 8, [hl]
 	ENDM
 
-; dangerous, only use when HL is guaranteed to be the desired value
+// dangerous, only use when HL is guaranteed to be the desired value
 ;\1 = event index
 CheckEventForceReuseHL: MACRO
 event_byte = ((\1) / 8)
@@ -154,7 +154,7 @@ event_byte = ((\1) / 8)
 	set (\1) % 8, [hl]
 	ENDM
 
-; dangerous, only use when HL is guaranteed to be the desired value
+// dangerous, only use when HL is guaranteed to be the desired value
 ;\1 = event index
 SetEventForceReuseHL: MACRO
 event_byte = ((\1) / 8)
@@ -201,7 +201,7 @@ event_byte = ((\1) / 8)
 	res (\1) % 8, [hl]
 	ENDM
 
-; dangerous, only use when HL is guaranteed to be the desired value
+// dangerous, only use when HL is guaranteed to be the desired value
 ;\1 = event index
 ResetEventForceReuseHL: MACRO
 event_byte = ((\1) / 8)
@@ -339,7 +339,7 @@ event_fill_count = event_fill_count + 1
 		IF event_fill_count > 1
 			ld hl, wEventFlags + event_fill_start
 
-			; force xor a if we just to wrote to it above
+			// force xor a if we just to wrote to it above
 			IF (_NARG < 3) || (((\1) % 8) != 0)
 				xor a
 			ENDC
@@ -364,9 +364,9 @@ event_fill_count = event_fill_count + 1
 	ENDC
 	ENDM
 
-; returns whether both events are set in Z flag
-; This is counter-intuitive because the other event checks set the Z flag when
-; the event is not set, but this sets the Z flag when the event is set.
+// returns whether both events are set in Z flag
+// This is counter-intuitive because the other event checks set the Z flag when
+// the event is not set, but this sets the Z flag when the event is set.
 ;\1 = event index 1
 ;\2 = event index 2
 ;\3 = try to reuse a (optional)
@@ -379,7 +379,7 @@ event_byte = ((\1) / 8)
 		and (1 << ((\1) % 8)) | (1 << ((\2) % 8))
 		cp (1 << ((\1) % 8)) | (1 << ((\2) % 8))
 	ELSE
-		; This case doesn't happen in the original ROM.
+		// This case doesn't happen in the original ROM.
 		IF ((\1) % 8) == ((\2) % 8)
 			push hl
 			ld a, [wEventFlags + ((\1) / 8)]
@@ -402,7 +402,7 @@ event_byte = ((\1) / 8)
 	ENDC
 	ENDM
 
-; returns the complement of whether either event is set in Z flag
+// returns the complement of whether either event is set in Z flag
 ;\1 = event index 1
 ;\2 = event index 2
 CheckEitherEventSet: MACRO
@@ -410,7 +410,7 @@ CheckEitherEventSet: MACRO
 		ld a, [wEventFlags + ((\1) / 8)]
 		and (1 << ((\1) % 8)) | (1 << ((\2) % 8))
 	ELSE
-		; This case doesn't happen in the original ROM.
+		// This case doesn't happen in the original ROM.
 		IF ((\1) % 8) == ((\2) % 8)
 			push hl
 			ld a, [wEventFlags + ((\1) / 8)]
@@ -431,7 +431,7 @@ CheckEitherEventSet: MACRO
 	ENDC
 	ENDM
 
-; for handling fixed event bits when events are inserted/removed
+// for handling fixed event bits when events are inserted/removed
 ;\1 = event index
 ;\2 = fixed flag bit
 AdjustEventBit: MACRO

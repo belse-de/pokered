@@ -1,6 +1,6 @@
 UseItem_:
 	ld a,1
-	ld [wActionResultOrTookBattleTurn],a ; initialise to success value
+	ld [wActionResultOrTookBattleTurn],a // initialise to success value
 	ld a,[wcf91] ;contains item_ID
 	cp a,HM_01
 	jp nc,ItemUseTMHM
@@ -16,110 +16,110 @@ UseItem_:
 	jp hl
 
 ItemUsePtrTable:
-	dw ItemUseBall       ; MASTER_BALL
-	dw ItemUseBall       ; ULTRA_BALL
-	dw ItemUseBall       ; GREAT_BALL
-	dw ItemUseBall       ; POKE_BALL
-	dw ItemUseTownMap    ; TOWN_MAP
-	dw ItemUseBicycle    ; BICYCLE
-	dw ItemUseSurfboard  ; out-of-battle Surf effect
-	dw ItemUseBall       ; SAFARI_BALL
-	dw ItemUsePokedex    ; POKEDEX
-	dw ItemUseEvoStone   ; MOON_STONE
-	dw ItemUseMedicine   ; ANTIDOTE
-	dw ItemUseMedicine   ; BURN_HEAL
-	dw ItemUseMedicine   ; ICE_HEAL
-	dw ItemUseMedicine   ; AWAKENING
-	dw ItemUseMedicine   ; PARLYZ_HEAL
-	dw ItemUseMedicine   ; FULL_RESTORE
-	dw ItemUseMedicine   ; MAX_POTION
-	dw ItemUseMedicine   ; HYPER_POTION
-	dw ItemUseMedicine   ; SUPER_POTION
-	dw ItemUseMedicine   ; POTION
-	dw ItemUseBait       ; BOULDERBADGE
-	dw ItemUseRock       ; CASCADEBADGE
-	dw UnusableItem      ; THUNDERBADGE
-	dw UnusableItem      ; RAINBOWBADGE
-	dw UnusableItem      ; SOULBADGE
-	dw UnusableItem      ; MARSHBADGE
-	dw UnusableItem      ; VOLCANOBADGE
-	dw UnusableItem      ; EARTHBADGE
-	dw ItemUseEscapeRope ; ESCAPE_ROPE
-	dw ItemUseRepel      ; REPEL
-	dw UnusableItem      ; OLD_AMBER
-	dw ItemUseEvoStone   ; FIRE_STONE
-	dw ItemUseEvoStone   ; THUNDER_STONE
-	dw ItemUseEvoStone   ; WATER_STONE
-	dw ItemUseVitamin    ; HP_UP
-	dw ItemUseVitamin    ; PROTEIN
-	dw ItemUseVitamin    ; IRON
-	dw ItemUseVitamin    ; CARBOS
-	dw ItemUseVitamin    ; CALCIUM
-	dw ItemUseVitamin    ; RARE_CANDY
-	dw UnusableItem      ; DOME_FOSSIL
-	dw UnusableItem      ; HELIX_FOSSIL
-	dw UnusableItem      ; SECRET_KEY
+	dw ItemUseBall       // MASTER_BALL
+	dw ItemUseBall       // ULTRA_BALL
+	dw ItemUseBall       // GREAT_BALL
+	dw ItemUseBall       // POKE_BALL
+	dw ItemUseTownMap    // TOWN_MAP
+	dw ItemUseBicycle    // BICYCLE
+	dw ItemUseSurfboard  // out-of-battle Surf effect
+	dw ItemUseBall       // SAFARI_BALL
+	dw ItemUsePokedex    // POKEDEX
+	dw ItemUseEvoStone   // MOON_STONE
+	dw ItemUseMedicine   // ANTIDOTE
+	dw ItemUseMedicine   // BURN_HEAL
+	dw ItemUseMedicine   // ICE_HEAL
+	dw ItemUseMedicine   // AWAKENING
+	dw ItemUseMedicine   // PARLYZ_HEAL
+	dw ItemUseMedicine   // FULL_RESTORE
+	dw ItemUseMedicine   // MAX_POTION
+	dw ItemUseMedicine   // HYPER_POTION
+	dw ItemUseMedicine   // SUPER_POTION
+	dw ItemUseMedicine   // POTION
+	dw ItemUseBait       // BOULDERBADGE
+	dw ItemUseRock       // CASCADEBADGE
+	dw UnusableItem      // THUNDERBADGE
+	dw UnusableItem      // RAINBOWBADGE
+	dw UnusableItem      // SOULBADGE
+	dw UnusableItem      // MARSHBADGE
+	dw UnusableItem      // VOLCANOBADGE
+	dw UnusableItem      // EARTHBADGE
+	dw ItemUseEscapeRope // ESCAPE_ROPE
+	dw ItemUseRepel      // REPEL
+	dw UnusableItem      // OLD_AMBER
+	dw ItemUseEvoStone   // FIRE_STONE
+	dw ItemUseEvoStone   // THUNDER_STONE
+	dw ItemUseEvoStone   // WATER_STONE
+	dw ItemUseVitamin    // HP_UP
+	dw ItemUseVitamin    // PROTEIN
+	dw ItemUseVitamin    // IRON
+	dw ItemUseVitamin    // CARBOS
+	dw ItemUseVitamin    // CALCIUM
+	dw ItemUseVitamin    // RARE_CANDY
+	dw UnusableItem      // DOME_FOSSIL
+	dw UnusableItem      // HELIX_FOSSIL
+	dw UnusableItem      // SECRET_KEY
 	dw UnusableItem
-	dw UnusableItem      ; BIKE_VOUCHER
-	dw ItemUseXAccuracy  ; X_ACCURACY
-	dw ItemUseEvoStone   ; LEAF_STONE
-	dw ItemUseCardKey    ; CARD_KEY
-	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; ??? PP_UP
-	dw ItemUsePokedoll   ; POKE_DOLL
-	dw ItemUseMedicine   ; FULL_HEAL
-	dw ItemUseMedicine   ; REVIVE
-	dw ItemUseMedicine   ; MAX_REVIVE
-	dw ItemUseGuardSpec  ; GUARD_SPEC
-	dw ItemUseSuperRepel ; SUPER_REPL
-	dw ItemUseMaxRepel   ; MAX_REPEL
-	dw ItemUseDireHit    ; DIRE_HIT
-	dw UnusableItem      ; COIN
-	dw ItemUseMedicine   ; FRESH_WATER
-	dw ItemUseMedicine   ; SODA_POP
-	dw ItemUseMedicine   ; LEMONADE
-	dw UnusableItem      ; S_S_TICKET
-	dw UnusableItem      ; GOLD_TEETH
-	dw ItemUseXStat      ; X_ATTACK
-	dw ItemUseXStat      ; X_DEFEND
-	dw ItemUseXStat      ; X_SPEED
-	dw ItemUseXStat      ; X_SPECIAL
-	dw ItemUseCoinCase   ; COIN_CASE
-	dw ItemUseOaksParcel ; OAKS_PARCEL
-	dw ItemUseItemfinder ; ITEMFINDER
-	dw UnusableItem      ; SILPH_SCOPE
-	dw ItemUsePokeflute  ; POKE_FLUTE
-	dw UnusableItem      ; LIFT_KEY
-	dw UnusableItem      ; EXP_ALL
-	dw ItemUseOldRod     ; OLD_ROD
-	dw ItemUseGoodRod    ; GOOD_ROD
-	dw ItemUseSuperRod   ; SUPER_ROD
-	dw ItemUsePPUp       ; PP_UP (real one)
-	dw ItemUsePPRestore  ; ETHER
-	dw ItemUsePPRestore  ; MAX_ETHER
-	dw ItemUsePPRestore  ; ELIXER
-	dw ItemUsePPRestore  ; MAX_ELIXER
+	dw UnusableItem      // BIKE_VOUCHER
+	dw ItemUseXAccuracy  // X_ACCURACY
+	dw ItemUseEvoStone   // LEAF_STONE
+	dw ItemUseCardKey    // CARD_KEY
+	dw UnusableItem      // NUGGET
+	dw UnusableItem      // ??? PP_UP
+	dw ItemUsePokedoll   // POKE_DOLL
+	dw ItemUseMedicine   // FULL_HEAL
+	dw ItemUseMedicine   // REVIVE
+	dw ItemUseMedicine   // MAX_REVIVE
+	dw ItemUseGuardSpec  // GUARD_SPEC
+	dw ItemUseSuperRepel // SUPER_REPL
+	dw ItemUseMaxRepel   // MAX_REPEL
+	dw ItemUseDireHit    // DIRE_HIT
+	dw UnusableItem      // COIN
+	dw ItemUseMedicine   // FRESH_WATER
+	dw ItemUseMedicine   // SODA_POP
+	dw ItemUseMedicine   // LEMONADE
+	dw UnusableItem      // S_S_TICKET
+	dw UnusableItem      // GOLD_TEETH
+	dw ItemUseXStat      // X_ATTACK
+	dw ItemUseXStat      // X_DEFEND
+	dw ItemUseXStat      // X_SPEED
+	dw ItemUseXStat      // X_SPECIAL
+	dw ItemUseCoinCase   // COIN_CASE
+	dw ItemUseOaksParcel // OAKS_PARCEL
+	dw ItemUseItemfinder // ITEMFINDER
+	dw UnusableItem      // SILPH_SCOPE
+	dw ItemUsePokeflute  // POKE_FLUTE
+	dw UnusableItem      // LIFT_KEY
+	dw UnusableItem      // EXP_ALL
+	dw ItemUseOldRod     // OLD_ROD
+	dw ItemUseGoodRod    // GOOD_ROD
+	dw ItemUseSuperRod   // SUPER_ROD
+	dw ItemUsePPUp       // PP_UP (real one)
+	dw ItemUsePPRestore  // ETHER
+	dw ItemUsePPRestore  // MAX_ETHER
+	dw ItemUsePPRestore  // ELIXER
+	dw ItemUsePPRestore  // MAX_ELIXER
 
 ItemUseBall:
 
-; Balls can't be used out of battle.
+// Balls can't be used out of battle.
 	ld a,[wIsInBattle]
 	and a
 	jp z,ItemUseNotTime
 
-; Balls can't catch trainers' Pokémon.
+// Balls can't catch trainers' Pokémon.
 	dec a
 	jp nz,ThrowBallAtTrainerMon
 
-; If this is for the old man battle, skip checking if the party & box are full.
+// If this is for the old man battle, skip checking if the party & box are full.
 	ld a,[wBattleType]
 	dec a
 	jr z,.canUseBall
 
-	ld a,[wPartyCount] ; is party full?
+	ld a,[wPartyCount] // is party full?
 	cp a,PARTY_LENGTH
 	jr nz,.canUseBall
-	ld a,[wNumInBox] ; is box full?
+	ld a,[wNumInBox] // is box full?
 	cp a,MONS_PER_BOX
 	jp z,BoxFullCannotThrowBall
 
@@ -133,22 +133,22 @@ ItemUseBall:
 
 .safariZone
 	ld hl,wNumSafariBalls
-	dec [hl] ; remove a Safari Ball
+	dec [hl] // remove a Safari Ball
 
 .skipSafariZoneCode
 	call RunDefaultPaletteCommand
 
-	ld a,$43 ; successful capture value
+	ld a,$43 // successful capture value
 	ld [wPokeBallAnimData],a
 
 	call LoadScreenTilesFromBuffer1
 	ld hl,ItemUseText00
 	call PrintText
 
-; If the player is fighting an unidentified ghost, set the value that indicates
-; the Pokémon can't be caught and skip the capture calculations.
+// If the player is fighting an unidentified ghost, set the value that indicates
+// the Pokémon can't be caught and skip the capture calculations.
 	callab IsGhostBattle
-	ld b,$10 ; can't be caught value
+	ld b,$10 // can't be caught value
 	jp z,.setAnimData
 
 	ld a,[wBattleType]
@@ -159,71 +159,71 @@ ItemUseBall:
 	ld hl,wGrassRate
 	ld de,wPlayerName
 	ld bc,NAME_LENGTH
-	call CopyData ; save the player's name in the Wild Monster data (part of the Cinnabar Island Missingno. glitch)
+	call CopyData // save the player's name in the Wild Monster data (part of the Cinnabar Island Missingno. glitch)
 	jp .captured
 
 .notOldManBattle
-; If the player is fighting the ghost Marowak, set the value that indicates the
-; Pokémon can't be caught and skip the capture calculations.
+// If the player is fighting the ghost Marowak, set the value that indicates the
+// Pokémon can't be caught and skip the capture calculations.
 	ld a,[wCurMap]
 	cp a,POKEMONTOWER_6
 	jr nz,.loop
 	ld a,[wEnemyMonSpecies2]
 	cp a,MAROWAK
-	ld b,$10 ; can't be caught value
+	ld b,$10 // can't be caught value
 	jp z,.setAnimData
 
-; Get the first random number. Let it be called Rand1.
-; Rand1 must be within a certain range according the kind of ball being thrown.
-; The ranges are as follows.
-; Poké Ball:         [0, 255]
-; Great Ball:        [0, 200]
-; Ultra/Safari Ball: [0, 150]
-; Loop until an acceptable number is found.
+// Get the first random number. Let it be called Rand1.
+// Rand1 must be within a certain range according the kind of ball being thrown.
+// The ranges are as follows.
+// Poké Ball:         [0, 255]
+// Great Ball:        [0, 200]
+// Ultra/Safari Ball: [0, 150]
+// Loop until an acceptable number is found.
 
 .loop
 	call Random
 	ld b,a
 
-; Get the item ID.
+// Get the item ID.
 	ld hl,wcf91
 	ld a,[hl]
 
-; The Master Ball always succeeds.
+// The Master Ball always succeeds.
 	cp a,MASTER_BALL
 	jp z,.captured
 
-; Anything will do for the basic Poké Ball.
+// Anything will do for the basic Poké Ball.
 	cp a,POKE_BALL
 	jr z,.checkForAilments
 
-; If it's a Great/Ultra/Safari Ball and Rand1 is greater than 200, try again.
+// If it's a Great/Ultra/Safari Ball and Rand1 is greater than 200, try again.
 	ld a,200
 	cp b
 	jr c,.loop
 
-; Less than or equal to 200 is good enough for a Great Ball.
+// Less than or equal to 200 is good enough for a Great Ball.
 	ld a,[hl]
 	cp a,GREAT_BALL
 	jr z,.checkForAilments
 
-; If it's an Ultra/Safari Ball and Rand1 is greater than 150, try again.
+// If it's an Ultra/Safari Ball and Rand1 is greater than 150, try again.
 	ld a,150
 	cp b
 	jr c,.loop
 
 .checkForAilments
-; Pokémon can be caught more easily with a status ailment.
-; Depending on the status ailment, a certain value will be subtracted from
-; Rand1. Let this value be called Status.
-; The larger Status is, the more easily the Pokémon can be caught.
-; no status ailment:     Status = 0
-; Burn/Paralysis/Poison: Status = 12
-; Freeze/Sleep:          Status = 25
-; If Status is greater than Rand1, the Pokémon will be caught for sure.
+// Pokémon can be caught more easily with a status ailment.
+// Depending on the status ailment, a certain value will be subtracted from
+// Rand1. Let this value be called Status.
+// The larger Status is, the more easily the Pokémon can be caught.
+// no status ailment:     Status = 0
+// Burn/Paralysis/Poison: Status = 12
+// Freeze/Sleep:          Status = 25
+// If Status is greater than Rand1, the Pokémon will be caught for sure.
 	ld a,[wEnemyMonStatus]
 	and a
-	jr z,.skipAilmentValueSubtraction ; no ailments
+	jr z,.skipAilmentValueSubtraction // no ailments
 	and a, 1 << FRZ | SLP
 	ld c,12
 	jr z,.notFrozenOrAsleep
@@ -235,9 +235,9 @@ ItemUseBall:
 	ld b,a
 
 .skipAilmentValueSubtraction
-	push bc ; save (Rand1 - Status)
+	push bc // save (Rand1 - Status)
 
-; Calculate MaxHP * 255.
+// Calculate MaxHP * 255.
 	xor a
 	ld [H_MULTIPLICAND],a
 	ld hl,wEnemyMonMaxHP
@@ -249,7 +249,7 @@ ItemUseBall:
 	ld [H_MULTIPLIER],a
 	call Multiply
 
-; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
+// Determine BallFactor. It's 8 for Great Balls and 12 for the others.
 	ld a,[wcf91]
 	cp a,GREAT_BALL
 	ld a,12
@@ -257,16 +257,16 @@ ItemUseBall:
 	ld a,8
 
 .skip1
-; Note that the results of all division operations are floored.
+// Note that the results of all division operations are floored.
 
-; Calculate (MaxHP * 255) / BallFactor.
+// Calculate (MaxHP * 255) / BallFactor.
 	ld [H_DIVISOR],a
-	ld b,4 ; number of bytes in dividend
+	ld b,4 // number of bytes in dividend
 	call Divide
 
-; Divide the enemy's current HP by 4. HP is not supposed to exceed 999 so
-; the result should fit in a. If the division results in a quotient of 0,
-; change it to 1.
+// Divide the enemy's current HP by 4. HP is not supposed to exceed 999 so
+// the result should fit in a. If the division results in a quotient of 0,
+// change it to 1.
 	ld hl,wEnemyMonHP
 	ld a,[hli]
 	ld b,a
@@ -280,13 +280,13 @@ ItemUseBall:
 	inc a
 
 .skip2
-; Let W = ((MaxHP * 255) / BallFactor) / max(HP / 4, 1). Calculate W.
+// Let W = ((MaxHP * 255) / BallFactor) / max(HP / 4, 1). Calculate W.
 	ld [H_DIVISOR],a
 	ld b,4
 	call Divide
 
-; If W > 255, store 255 in [H_QUOTIENT + 3].
-; Let X = min(W, 255) = [H_QUOTIENT + 3].
+// If W > 255, store 255 in [H_QUOTIENT + 3].
+// Let X = min(W, 255) = [H_QUOTIENT + 3].
 	ld a,[H_QUOTIENT + 2]
 	and a
 	jr z,.skip3
@@ -294,21 +294,21 @@ ItemUseBall:
 	ld [H_QUOTIENT + 3],a
 
 .skip3
-	pop bc ; b = Rand1 - Status
+	pop bc // b = Rand1 - Status
 
-; If Rand1 - Status > CatchRate, the ball fails to capture the Pokémon.
+// If Rand1 - Status > CatchRate, the ball fails to capture the Pokémon.
 	ld a,[wEnemyMonCatchRate]
 	cp b
 	jr c,.failedToCapture
 
-; If W > 255, the ball captures the Pokémon.
+// If W > 255, the ball captures the Pokémon.
 	ld a,[H_QUOTIENT + 2]
 	and a
 	jr nz,.captured
 
-	call Random ; Let this random number be called Rand2.
+	call Random // Let this random number be called Rand2.
 
-; If Rand2 > X, the ball fails to capture the Pokémon.
+// If Rand2 > X, the ball fails to capture the Pokémon.
 	ld b,a
 	ld a,[H_QUOTIENT + 3]
 	cp b
@@ -319,9 +319,9 @@ ItemUseBall:
 
 .failedToCapture
 	ld a,[H_QUOTIENT + 3]
-	ld [wPokeBallCaptureCalcTemp],a ; Save X.
+	ld [wPokeBallCaptureCalcTemp],a // Save X.
 
-; Calculate CatchRate * 100.
+// Calculate CatchRate * 100.
 	xor a
 	ld [H_MULTIPLICAND],a
 	ld [H_MULTIPLICAND + 1],a
@@ -331,10 +331,10 @@ ItemUseBall:
 	ld [H_MULTIPLIER],a
 	call Multiply
 
-; Determine BallFactor2.
-; Poké Ball:         BallFactor2 = 255
-; Great Ball:        BallFactor2 = 200
-; Ultra/Safari Ball: BallFactor2 = 150
+// Determine BallFactor2.
+// Poké Ball:         BallFactor2 = 255
+// Great Ball:        BallFactor2 = 200
+// Ultra/Safari Ball: BallFactor2 = 150
 	ld a,[wcf91]
 	ld b,255
 	cp a,POKE_BALL
@@ -347,35 +347,35 @@ ItemUseBall:
 	jr z,.skip4
 
 .skip4
-; Let Y = (CatchRate * 100) / BallFactor2. Calculate Y.
+// Let Y = (CatchRate * 100) / BallFactor2. Calculate Y.
 	ld a,b
 	ld [H_DIVISOR],a
 	ld b,4
 	call Divide
 
-; If Y > 255, there are 3 shakes.
-; Note that this shouldn't be possible.
-; The maximum value of Y is (255 * 100) / 150 = 170.
+// If Y > 255, there are 3 shakes.
+// Note that this shouldn't be possible.
+// The maximum value of Y is (255 * 100) / 150 = 170.
 	ld a,[H_QUOTIENT + 2]
 	and a
-	ld b,$63 ; 3 shakes
+	ld b,$63 // 3 shakes
 	jr nz,.setAnimData
 
-; Calculate X * Y.
+// Calculate X * Y.
 	ld a,[wPokeBallCaptureCalcTemp]
 	ld [H_MULTIPLIER],a
 	call Multiply
 
-; Calculate (X * Y) / 255.
+// Calculate (X * Y) / 255.
 	ld a,255
 	ld [H_DIVISOR],a
 	ld b,4
 	call Divide
 
-; Determine Status2.
-; no status ailment:     Status2 = 0
-; Burn/Paralysis/Poison: Status2 = 5
-; Freeze/Sleep:          Status2 = 10
+// Determine Status2.
+// no status ailment:     Status2 = 0
+// Burn/Paralysis/Poison: Status2 = 5
+// Freeze/Sleep:          Status2 = 10
 	ld a,[wEnemyMonStatus]
 	and a
 	jr z,.skip5
@@ -385,19 +385,19 @@ ItemUseBall:
 	ld b,10
 
 .addAilmentValue
-; If the Pokémon has a status ailment, add Status2.
+// If the Pokémon has a status ailment, add Status2.
 	ld a,[H_QUOTIENT + 3]
 	add b
 	ld [H_QUOTIENT + 3],a
 
 .skip5
-; Finally determine the number of shakes.
-; Let Z = ((X * Y) / 255) + Status2 = [H_QUOTIENT + 3].
-; The number of shakes depend on the range Z is in.
-; 0  ≤ Z < 10: 0 shakes (the ball misses)
-; 10 ≤ Z < 30: 1 shake
-; 30 ≤ Z < 70: 2 shakes
-; 70 ≤ Z:      3 shakes
+// Finally determine the number of shakes.
+// Let Z = ((X * Y) / 255) + Status2 = [H_QUOTIENT + 3].
+// The number of shakes depend on the range Z is in.
+// 0  ≤ Z < 10: 0 shakes (the ball misses)
+// 10 ≤ Z < 30: 1 shake
+// 30 ≤ Z < 70: 2 shakes
+// 70 ≤ Z:      3 shakes
 	ld a,[H_QUOTIENT + 3]
 	cp a,10
 	ld b,$20
@@ -418,7 +418,7 @@ ItemUseBall:
 	ld c,20
 	call DelayFrames
 
-; Do the animation.
+// Do the animation.
 	ld a,TOSS_ANIM
 	ld [wAnimationID],a
 	xor a
@@ -435,7 +435,7 @@ ItemUseBall:
 	pop af
 	ld [wWhichPokemon],a
 
-; Determine the message to display from the animation.
+// Determine the message to display from the animation.
 	ld a,[wPokeBallAnimData]
 	cp a,$10
 	ld hl,ItemUseBallText00
@@ -453,23 +453,23 @@ ItemUseBall:
 	ld hl,ItemUseBallText04
 	jp z,.printMessage
 
-; Save current HP.
+// Save current HP.
 	ld hl,wEnemyMonHP
 	ld a,[hli]
 	push af
 	ld a,[hli]
 	push af
 
-; Save status ailment.
+// Save status ailment.
 	inc hl
 	ld a,[hl]
 	push af
 
 	push hl
 
-; If the Pokémon is transformed, the Pokémon is assumed to be a Ditto.
-; This is a bug because a wild Pokémon could have used Transform via
-; Mirror Move even though the only wild Pokémon that knows Transform is Ditto.
+// If the Pokémon is transformed, the Pokémon is assumed to be a Ditto.
+// This is a bug because a wild Pokémon could have used Transform via
+// Mirror Move even though the only wild Pokémon that knows Transform is Ditto.
 	ld hl,wEnemyBattleStatus3
 	bit Transformed,[hl]
 	jr z,.notTransformed
@@ -478,9 +478,9 @@ ItemUseBall:
 	jr .skip6
 
 .notTransformed
-; If the Pokémon is not transformed, set the transformed bit and copy the
-; DVs to wTransformedEnemyMonOriginalDVs so that LoadEnemyMonData won't generate
-; new DVs.
+// If the Pokémon is not transformed, set the transformed bit and copy the
+// DVs to wTransformedEnemyMonOriginalDVs so that LoadEnemyMonData won't generate
+// new DVs.
 	set Transformed,[hl]
 	ld hl,wTransformedEnemyMonOriginalDVs
 	ld a,[wEnemyMonDVs]
@@ -511,13 +511,13 @@ ItemUseBall:
 	ld [wcf91],a
 	ld [wd11e],a
 	ld a,[wBattleType]
-	dec a ; is this the old man battle?
-	jr z,.oldManCaughtMon ; if so, don't give the player the caught Pokémon
+	dec a // is this the old man battle?
+	jr z,.oldManCaughtMon // if so, don't give the player the caught Pokémon
 
 	ld hl,ItemUseBallText05
 	call PrintText
 
-; Add the caught Pokémon to the Pokédex.
+// Add the caught Pokémon to the Pokédex.
 	predef IndexToPokedex
 	ld a,[wd11e]
 	dec a
@@ -534,8 +534,8 @@ ItemUseBall:
 	predef FlagActionPredef
 	pop af
 
-	and a ; was the Pokémon already in the Pokédex?
-	jr nz,.skipShowingPokedexData ; if so, don't show the Pokédex data
+	and a // was the Pokémon already in the Pokédex?
+	jr nz,.skipShowingPokedexData // if so, don't show the Pokédex data
 
 	ld hl,ItemUseBallText06
 	call PrintText
@@ -546,9 +546,9 @@ ItemUseBall:
 
 .skipShowingPokedexData
 	ld a,[wPartyCount]
-	cp a,PARTY_LENGTH ; is party full?
+	cp a,PARTY_LENGTH // is party full?
 	jr z,.sendToBox
-	xor a ; PLAYER_PARTY_DATA
+	xor a // PLAYER_PARTY_DATA
 	ld [wMonDataLocation],a
 	call ClearSprites
 	call AddPartyMon
@@ -574,10 +574,10 @@ ItemUseBall:
 
 .done
 	ld a,[wBattleType]
-	and a ; is this the old man battle?
-	ret nz ; if so, don't remove a ball from the bag
+	and a // is this the old man battle?
+	ret nz // if so, don't remove a ball from the bag
 
-; Remove a ball from the bag.
+// Remove a ball from the bag.
 	ld hl,wNumBagItems
 	inc a
 	ld [wItemQuantity],a
@@ -640,35 +640,35 @@ ItemUseBicycle:
 	jp nz,ItemUseNotTime
 	ld a,[wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy],a
-	cp a,2 ; is the player surfing?
+	cp a,2 // is the player surfing?
 	jp z,ItemUseNotTime
-	dec a ; is player already bicycling?
+	dec a // is player already bicycling?
 	jr nz,.tryToGetOnBike
 .getOffBike
 	call ItemUseReloadOverworldData
 	xor a
-	ld [wWalkBikeSurfState],a ; change player state to walking
-	call PlayDefaultMusic ; play walking music
+	ld [wWalkBikeSurfState],a // change player state to walking
+	call PlayDefaultMusic // play walking music
 	ld hl,GotOffBicycleText
 	jr .printText
 .tryToGetOnBike
 	call IsBikeRidingAllowed
 	jp nc,NoCyclingAllowedHere
 	call ItemUseReloadOverworldData
-	xor a ; no keys pressed
-	ld [hJoyHeld],a ; current joypad state
+	xor a // no keys pressed
+	ld [hJoyHeld],a // current joypad state
 	inc a
-	ld [wWalkBikeSurfState],a ; change player state to bicycling
+	ld [wWalkBikeSurfState],a // change player state to bicycling
 	ld hl,GotOnBicycleText
-	call PlayDefaultMusic ; play bike riding music
+	call PlayDefaultMusic // play bike riding music
 .printText
 	jp PrintText
 
-; used for Surf out-of-battle effect
+// used for Surf out-of-battle effect
 ItemUseSurfboard:
 	ld a,[wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy],a
-	cp a,2 ; is the player already surfing?
+	cp a,2 // is the player already surfing?
 	jr z,.tryToStopSurfing
 .tryToSurf
 	call IsNextTileShoreOrWater
@@ -681,27 +681,27 @@ ItemUseSurfboard:
 	ld hl,wd730
 	set 7,[hl]
 	ld a,2
-	ld [wWalkBikeSurfState],a ; change player state to surfing
-	call PlayDefaultMusic ; play surfing music
+	ld [wWalkBikeSurfState],a // change player state to surfing
+	call PlayDefaultMusic // play surfing music
 	ld hl,SurfingGotOnText
 	jp PrintText
 .tryToStopSurfing
 	xor a
 	ld [hSpriteIndexOrTextID],a
-	ld d,16 ; talking range in pixels (normal range)
+	ld d,16 // talking range in pixels (normal range)
 	call IsSpriteInFrontOfPlayer2
 	res 7,[hl]
 	ld a,[hSpriteIndexOrTextID]
-	and a ; is there a sprite in the way?
+	and a // is there a sprite in the way?
 	jr nz,.cannotStopSurfing
 	ld hl,TilePairCollisionsWater
 	call CheckForTilePairCollisions
 	jr c,.cannotStopSurfing
-	ld hl,wTilesetCollisionPtr ; pointer to list of passable tiles
+	ld hl,wTilesetCollisionPtr // pointer to list of passable tiles
 	ld a,[hli]
 	ld h,[hl]
-	ld l,a ; hl now points to passable tiles
-	ld a,[wTileInFrontOfPlayer] ; tile in front of the player
+	ld l,a // hl now points to passable tiles
+	ld a,[wTileInFrontOfPlayer] // tile in front of the player
 	ld b,a
 .passableTileLoop
 	ld a,[hli]
@@ -717,14 +717,14 @@ ItemUseSurfboard:
 	ld hl,wd730
 	set 7,[hl]
 	xor a
-	ld [wWalkBikeSurfState],a ; change player state to walking
+	ld [wWalkBikeSurfState],a // change player state to walking
 	dec a
 	ld [wJoyIgnore],a
-	call PlayDefaultMusic ; play walking music
+	call PlayDefaultMusic // play walking music
 	jp LoadWalkingPlayerSpriteGraphics
-; uses a simulated button press to make the player move forward
+// uses a simulated button press to make the player move forward
 .makePlayerMoveForward
-	ld a,[wPlayerDirection] ; direction the player is going
+	ld a,[wPlayerDirection] // direction the player is going
 	bit PLAYER_DIR_BIT_UP,a
 	ld b,D_UP
 	jr nz,.storeSimulatedButtonPress
@@ -778,21 +778,21 @@ ItemUseEvoStone:
 	ld a,SFX_HEAL_AILMENT
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
-	callab TryEvolvingMon ; try to evolve pokemon
+	callab TryEvolvingMon // try to evolve pokemon
 	ld a,[wEvolutionOccurred]
 	and a
 	jr z,.noEffect
 	pop af
 	ld [wWhichPokemon],a
 	ld hl,wNumBagItems
-	ld a,1 ; remove 1 stone
+	ld a,1 // remove 1 stone
 	ld [wItemQuantity],a
 	jp RemoveItemFromInventory
 .noEffect
 	call ItemUseNoEffect
 .canceledItemUse
 	xor a
-	ld [wActionResultOrTookBattleTurn],a ; item not used
+	ld [wActionResultOrTookBattleTurn],a // item not used
 	pop af
 	ret
 
@@ -814,15 +814,15 @@ ItemUseMedicine:
 	ld a,$ff
 	ld [wUpdateSpritesEnabled],a
 	ld a,[wPseudoItemID]
-	and a ; using Softboiled?
+	and a // using Softboiled?
 	jr z,.notUsingSoftboiled
-; if using softboiled
+// if using softboiled
 	call GoBackToPartyMenu
 	jr .getPartyMonDataAddress
 .emptyParty
 	ld hl,.emptyPartyText
 	xor a
-	ld [wActionResultOrTookBattleTurn],a ; item use failed
+	ld [wActionResultOrTookBattleTurn],a // item use failed
 	jp PrintText
 .emptyPartyText
 	text "You don't have"
@@ -847,26 +847,26 @@ ItemUseMedicine:
 	pop af
 	ld [wWhichPokemon],a
 	ld a,[wPseudoItemID]
-	and a ; using Softboiled?
+	and a // using Softboiled?
 	jr z,.checkItemType
-; if using softboiled
+// if using softboiled
 	ld a,[wWhichPokemon]
-	cp d ; is the pokemon trying to use softboiled on itself?
-	jr z,ItemUseMedicine ; if so, force another choice
+	cp d // is the pokemon trying to use softboiled on itself?
+	jr z,ItemUseMedicine // if so, force another choice
 .checkItemType
 	ld a,[wcf91]
 	cp a,REVIVE
-	jr nc,.healHP ; if it's a Revive or Max Revive
+	jr nc,.healHP // if it's a Revive or Max Revive
 	cp a,FULL_HEAL
-	jr z,.cureStatusAilment ; if it's a Full Heal
+	jr z,.cureStatusAilment // if it's a Full Heal
 	cp a,HP_UP
-	jp nc,.useVitamin ; if it's a vitamin or Rare Candy
+	jp nc,.useVitamin // if it's a vitamin or Rare Candy
 	cp a,FULL_RESTORE
-	jr nc,.healHP ; if it's a Full Restore or one of the potions
-; fall through if it's one of the status-specific healing items
+	jr nc,.healHP // if it's a Full Restore or one of the potions
+// fall through if it's one of the status-specific healing items
 .cureStatusAilment
 	ld bc,wPartyMon1Status - wPartyMon1
-	add hl,bc ; hl now points to status
+	add hl,bc // hl now points to status
 	ld a,[wcf91]
 	lb bc, ANTIDOTE_MSG, 1 << PSN
 	cp a,ANTIDOTE
@@ -883,41 +883,41 @@ ItemUseMedicine:
 	lb bc, PARALYZ_HEAL_MSG, 1 << PAR
 	cp a,PARLYZ_HEAL
 	jr z,.checkMonStatus
-	lb bc, FULL_HEAL_MSG, $ff ; Full Heal
+	lb bc, FULL_HEAL_MSG, $ff // Full Heal
 .checkMonStatus
-	ld a,[hl] ; pokemon's status
-	and c ; does the pokemon have a status ailment the item can cure?
+	ld a,[hl] // pokemon's status
+	and c // does the pokemon have a status ailment the item can cure?
 	jp z,.healingItemNoEffect
-; if the pokemon has a status the item can heal
+// if the pokemon has a status the item can heal
 	xor a
-	ld [hl],a ; remove the status ailment in the party data
+	ld [hl],a // remove the status ailment in the party data
 	ld a,b
-	ld [wPartyMenuTypeOrMessageID],a ; the message to display for the item used
+	ld [wPartyMenuTypeOrMessageID],a // the message to display for the item used
 	ld a,[wPlayerMonNumber]
-	cp d ; is pokemon the item was used on active in battle?
+	cp d // is pokemon the item was used on active in battle?
 	jp nz,.doneHealing
-; if it is active in battle
+// if it is active in battle
 	xor a
-	ld [wBattleMonStatus],a ; remove the status ailment in the in-battle pokemon data
+	ld [wBattleMonStatus],a // remove the status ailment in the in-battle pokemon data
 	push hl
 	ld hl,wPlayerBattleStatus3
-	res BadlyPoisoned,[hl] ; heal Toxic status
+	res BadlyPoisoned,[hl] // heal Toxic status
 	pop hl
 	ld bc,wPartyMon1Stats - wPartyMon1Status
-	add hl,bc ; hl now points to party stats
+	add hl,bc // hl now points to party stats
 	ld de,wBattleMonStats
 	ld bc,NUM_STATS * 2
-	call CopyData ; copy party stats to in-battle stat data
+	call CopyData // copy party stats to in-battle stat data
 	predef DoubleOrHalveSelectedStats
 	jp .doneHealing
 .healHP
-	inc hl ; hl = address of current HP
+	inc hl // hl = address of current HP
 	ld a,[hli]
 	ld b,a
 	ld [wHPBarOldHP+1],a
 	ld a,[hl]
 	ld c,a
-	ld [wHPBarOldHP],a ; current HP stored at wHPBarOldHP (2 bytes, big-endian)
+	ld [wHPBarOldHP],a // current HP stored at wHPBarOldHP (2 bytes, big-endian)
 	or b
 	jr nz,.notFainted
 .fainted
@@ -962,24 +962,24 @@ ItemUseMedicine:
 	push hl
 	push bc
 	ld bc,wPartyMon1MaxHP - (wPartyMon1HP + 1)
-	add hl,bc ; hl now points to max HP
+	add hl,bc // hl now points to max HP
 	pop bc
 	ld a,[hli]
 	cp b
-	jr nz,.skipComparingLSB ; no need to compare the LSB's if the MSB's don't match
+	jr nz,.skipComparingLSB // no need to compare the LSB's if the MSB's don't match
 	ld a,[hl]
 	cp c
 .skipComparingLSB
 	pop hl
 	jr nz,.notFullHP
-.fullHP ; if the pokemon's current HP equals its max HP
+.fullHP // if the pokemon's current HP equals its max HP
 	ld a,[wcf91]
 	cp a,FULL_RESTORE
 	jp nz,.healingItemNoEffect
 	inc hl
 	inc hl
-	ld a,[hld] ; status ailment
-	and a ; does the pokemon have a status ailment?
+	ld a,[hld] // status ailment
+	and a // does the pokemon have a status ailment?
 	jp z,.healingItemNoEffect
 	ld a,FULL_HEAL
 	ld [wcf91],a
@@ -987,22 +987,22 @@ ItemUseMedicine:
 	dec hl
 	dec hl
 	jp .cureStatusAilment
-.notFullHP ; if the pokemon's current HP doesn't equal its max HP
+.notFullHP // if the pokemon's current HP doesn't equal its max HP
 	xor a
 	ld [wLowHealthAlarm],a ;disable low health alarm
 	ld [wChannelSoundIDs + Ch4],a
 	push hl
 	push de
 	ld bc,wPartyMon1MaxHP - (wPartyMon1HP + 1)
-	add hl,bc ; hl now points to max HP
+	add hl,bc // hl now points to max HP
 	ld a,[hli]
 	ld [wHPBarMaxHP+1],a
 	ld a,[hl]
-	ld [wHPBarMaxHP],a ; max HP stored at wHPBarMaxHP (2 bytes, big-endian)
+	ld [wHPBarMaxHP],a // max HP stored at wHPBarMaxHP (2 bytes, big-endian)
 	ld a,[wPseudoItemID]
-	and a ; using Softboiled?
+	and a // using Softboiled?
 	jp z,.notUsingSoftboiled2
-; if using softboiled
+// if using softboiled
 	ld hl,wHPBarMaxHP
 	ld a,[hli]
 	push af
@@ -1024,11 +1024,11 @@ ItemUseMedicine:
 	ld [H_DIVIDEND + 1],a
 	ld a,5
 	ld [H_DIVISOR],a
-	ld b,2 ; number of bytes
-	call Divide ; get 1/5 of max HP of pokemon that used Softboiled
+	ld b,2 // number of bytes
+	call Divide // get 1/5 of max HP of pokemon that used Softboiled
 	ld bc,(wPartyMon1HP + 1) - (wPartyMon1MaxHP + 1)
-	add hl,bc ; hl now points to LSB of current HP of pokemon that used Softboiled
-; subtract 1/5 of max HP from current HP of pokemon that used Softboiled
+	add hl,bc // hl now points to LSB of current HP of pokemon that used Softboiled
+// subtract 1/5 of max HP from current HP of pokemon that used Softboiled
 	ld a,[H_QUOTIENT + 3]
 	push af
 	ld b,a
@@ -1047,7 +1047,7 @@ ItemUseMedicine:
 	coord hl, 4, 1
 	ld a,[wWhichPokemon]
 	ld bc,2 * SCREEN_WIDTH
-	call AddNTimes ; calculate coordinates of HP bar of pokemon that used Softboiled
+	call AddNTimes // calculate coordinates of HP bar of pokemon that used Softboiled
 	ld a,SFX_HEAL_HP
 	call PlaySoundWaitForCurrent
 	ld a,[hFlags_0xFFF6]
@@ -1055,12 +1055,12 @@ ItemUseMedicine:
 	ld [hFlags_0xFFF6],a
 	ld a,$02
 	ld [wHPBarType],a
-	predef UpdateHPBar2 ; animate HP bar decrease of pokemon that used Softboiled
+	predef UpdateHPBar2 // animate HP bar decrease of pokemon that used Softboiled
 	ld a,[hFlags_0xFFF6]
 	res 0,a
 	ld [hFlags_0xFFF6],a
 	pop af
-	ld b,a ; store heal amount (1/5 of max HP)
+	ld b,a // store heal amount (1/5 of max HP)
 	ld hl,wHPBarOldHP + 1
 	pop af
 	ld [hld],a
@@ -1074,19 +1074,19 @@ ItemUseMedicine:
 .notUsingSoftboiled2
 	ld a,[wcf91]
 	cp a,SODA_POP
-	ld b,60 ; Soda Pop heal amount
+	ld b,60 // Soda Pop heal amount
 	jr z,.addHealAmount
-	ld b,80 ; Lemonade heal amount
+	ld b,80 // Lemonade heal amount
 	jr nc,.addHealAmount
 	cp a,FRESH_WATER
-	ld b,50 ; Fresh Water heal amount
+	ld b,50 // Fresh Water heal amount
 	jr z,.addHealAmount
 	cp a,SUPER_POTION
-	ld b,200 ; Hyper Potion heal amount
+	ld b,200 // Hyper Potion heal amount
 	jr c,.addHealAmount
-	ld b,50 ; Super Potion heal amount
+	ld b,50 // Super Potion heal amount
 	jr z,.addHealAmount
-	ld b,20 ; Potion heal amount
+	ld b,20 // Potion heal amount
 .addHealAmount
 	pop de
 	pop hl
@@ -1104,9 +1104,9 @@ ItemUseMedicine:
 	push de
 	inc hl
 	ld d,h
-	ld e,l ; de now points to current HP
+	ld e,l // de now points to current HP
 	ld hl,(wPartyMon1MaxHP + 1) - (wPartyMon1HP + 1)
-	add hl,de ; hl now points to max HP
+	add hl,de // hl now points to max HP
 	ld a,[wcf91]
 	cp a,REVIVE
 	jr z,.setCurrentHPToHalfMaxHP
@@ -1118,12 +1118,12 @@ ItemUseMedicine:
 	ld b,[hl]
 	ld a,[de]
 	sbc b
-	jr nc,.setCurrentHPToMaxHp ; if current HP exceeds max HP after healing
+	jr nc,.setCurrentHPToMaxHp // if current HP exceeds max HP after healing
 	ld a,[wcf91]
 	cp a,HYPER_POTION
-	jr c,.setCurrentHPToMaxHp ; if using a Full Restore or Max Potion
+	jr c,.setCurrentHPToMaxHp // if using a Full Restore or Max Potion
 	cp a,MAX_REVIVE
-	jr z,.setCurrentHPToMaxHp ; if using a Max Revive
+	jr z,.setCurrentHPToMaxHp // if using a Max Revive
 	jr .updateInBattleData
 .setCurrentHPToHalfMaxHP
 	dec hl
@@ -1148,22 +1148,22 @@ ItemUseMedicine:
 	ld [de],a
 	ld [wHPBarNewHP],a
 	dec de
-.doneHealingPartyHP ; done updating the pokemon's current HP in the party data structure
+.doneHealingPartyHP // done updating the pokemon's current HP in the party data structure
 	ld a,[wcf91]
 	cp a,FULL_RESTORE
 	jr nz,.updateInBattleData
 	ld bc,wPartyMon1Status - (wPartyMon1MaxHP + 1)
 	add hl,bc
 	xor a
-	ld [hl],a ; remove the status ailment in the party data
+	ld [hl],a // remove the status ailment in the party data
 .updateInBattleData
 	ld h,d
 	ld l,e
 	pop de
 	ld a,[wPlayerMonNumber]
-	cp d ; is pokemon the item was used on active in battle?
+	cp d // is pokemon the item was used on active in battle?
 	jr nz,.calculateHPBarCoords
-; copy party HP to in-battle HP
+// copy party HP to in-battle HP
 	ld a,[hli]
 	ld [wBattleMonHP],a
 	ld a,[hld]
@@ -1172,7 +1172,7 @@ ItemUseMedicine:
 	cp a,FULL_RESTORE
 	jr nz,.calculateHPBarCoords
 	xor a
-	ld [wBattleMonStatus],a ; remove the status ailment in the in-battle pokemon data
+	ld [wBattleMonStatus],a // remove the status ailment in the in-battle pokemon data
 .calculateHPBarCoords
 	ld hl,wOAMBuffer + $90
 	ld bc,2 * SCREEN_WIDTH
@@ -1187,8 +1187,8 @@ ItemUseMedicine:
 	jp .done
 .doneHealing
 	ld a,[wPseudoItemID]
-	and a ; using Softboiled?
-	jr nz,.skipRemovingItem ; no item to remove if using Softboiled
+	and a // using Softboiled?
+	jr nz,.skipRemovingItem // no item to remove if using Softboiled
 	push hl
 	call RemoveUsedItem
 	pop hl
@@ -1205,7 +1205,7 @@ ItemUseMedicine:
 	ld [hFlags_0xFFF6],a
 	ld a,$02
 	ld [wHPBarType],a
-	predef UpdateHPBar2 ; animate the HP bar lengthening
+	predef UpdateHPBar2 // animate the HP bar lengthening
 	ld a,[hFlags_0xFFF6]
 	res 0,a
 	ld [hFlags_0xFFF6],a
@@ -1228,7 +1228,7 @@ ItemUseMedicine:
 	call ClearScreen
 	dec a
 	ld [wUpdateSpritesEnabled],a
-	call RedrawPartyMenu ; redraws the party menu and displays the message
+	call RedrawPartyMenu // redraws the party menu and displays the message
 	ld a,1
 	ld [H_AUTOBGTRANSFERENABLED],a
 	ld c,50
@@ -1237,13 +1237,13 @@ ItemUseMedicine:
 	jr .done
 .canceledItemUse
 	xor a
-	ld [wActionResultOrTookBattleTurn],a ; item use failed
+	ld [wActionResultOrTookBattleTurn],a // item use failed
 	pop af
 	pop af
 .done
 	ld a,[wPseudoItemID]
-	and a ; using Softboiled?
-	ret nz ; if so, return
+	and a // using Softboiled?
+	ret nz // if so, return
 	call GBPalWhiteOut
 	call z,RunDefaultPaletteCommand
 	ld a,[wIsInBattle]
@@ -1256,9 +1256,9 @@ ItemUseMedicine:
 	ld [wd0b5],a
 	ld [wd11e],a
 	ld bc,wPartyMon1Level - wPartyMon1
-	add hl,bc ; hl now points to level
-	ld a,[hl] ; a = level
-	ld [wCurEnemyLVL],a ; store level
+	add hl,bc // hl now points to level
+	ld a,[hl] // a = level
+	ld [wCurEnemyLVL],a // store level
 	call GetMonHeader
 	push de
 	ld a,d
@@ -1281,11 +1281,11 @@ ItemUseMedicine:
 .noCarry2
 	ld a,10
 	ld b,a
-	ld a,[hl] ; a = MSB of stat experience of the appropriate stat
-	cp a,100 ; is there already at least 25600 (256 * 100) stat experience?
-	jr nc,.vitaminNoEffect ; if so, vitamins can't add any more
-	add b ; add 2560 (256 * 10) stat experience
-	jr nc,.noCarry3 ; a carry should be impossible here, so this will always jump
+	ld a,[hl] // a = MSB of stat experience of the appropriate stat
+	cp a,100 // is there already at least 25600 (256 * 100) stat experience?
+	jr nc,.vitaminNoEffect // if so, vitamins can't add any more
+	add b // add 2560 (256 * 10) stat experience
+	jr nc,.noCarry3 // a carry should be impossible here, so this will always jump
 	ld a,255
 .noCarry3
 	ld [hl],a
@@ -1295,7 +1295,7 @@ ItemUseMedicine:
 	ld a,[wcf91]
 	sub a,HP_UP - 1
 	ld c,a
-.statNameLoop ; loop to get the address of the name of the stat the vitamin increases
+.statNameLoop // loop to get the address of the name of the stat the vitamin increases
 	dec c
 	jr z,.gotStatName
 .statNameInnerLoop
@@ -1308,7 +1308,7 @@ ItemUseMedicine:
 .gotStatName
 	ld de,wcf4b
 	ld bc,10
-	call CopyData ; copy the stat's name to wcf4b
+	call CopyData // copy the stat's name to wcf4b
 	ld a,SFX_HEAL_AILMENT
 	call PlaySound
 	ld hl,VitaminStatRoseText
@@ -1323,30 +1323,30 @@ ItemUseMedicine:
 	ld bc,wPartyMon1Stats - wPartyMon1
 	add hl,bc
 	ld d,h
-	ld e,l ; de now points to stats
+	ld e,l // de now points to stats
 	ld bc,(wPartyMon1Exp + 2) - wPartyMon1Stats
-	add hl,bc ; hl now points to LSB of experience
+	add hl,bc // hl now points to LSB of experience
 	ld b,1
-	jp CalcStats ; recalculate stats
+	jp CalcStats // recalculate stats
 .useRareCandy
 	push hl
 	ld bc,wPartyMon1Level - wPartyMon1
-	add hl,bc ; hl now points to level
-	ld a,[hl] ; a = level
+	add hl,bc // hl now points to level
+	ld a,[hl] // a = level
 	cp a, MAX_LEVEL
-	jr z,.vitaminNoEffect ; can't raise level above 100
+	jr z,.vitaminNoEffect // can't raise level above 100
 	inc a
-	ld [hl],a ; store incremented level
+	ld [hl],a // store incremented level
 	ld [wCurEnemyLVL],a
 	push hl
 	push de
 	ld d,a
-	callab CalcExperience ; calculate experience for next level and store it at $ff96
+	callab CalcExperience // calculate experience for next level and store it at $ff96
 	pop de
 	pop hl
 	ld bc,wPartyMon1Exp - wPartyMon1Level
-	add hl,bc ; hl now points to MSB of experience
-; update experience to minimum for new level
+	add hl,bc // hl now points to MSB of experience
+// update experience to minimum for new level
 	ld a,[hExperience]
 	ld [hli],a
 	ld a,[hExperience + 1]
@@ -1361,7 +1361,7 @@ ItemUseMedicine:
 	push de
 	push hl
 	ld bc,wPartyMon1MaxHP - wPartyMon1
-	add hl,bc ; hl now points to MSB of max HP
+	add hl,bc // hl now points to MSB of max HP
 	ld a,[hli]
 	ld b,a
 	ld c,[hl]
@@ -1371,17 +1371,17 @@ ItemUseMedicine:
 	call .recalculateStats
 	pop hl
 	ld bc,(wPartyMon1MaxHP + 1) - wPartyMon1
-	add hl,bc ; hl now points to LSB of max HP
+	add hl,bc // hl now points to LSB of max HP
 	pop bc
 	ld a,[hld]
 	sub c
 	ld c,a
 	ld a,[hl]
 	sbc b
-	ld b,a ; bc = the amount of max HP gained from leveling up
-; add the amount gained to the current HP
+	ld b,a // bc = the amount of max HP gained from leveling up
+// add the amount gained to the current HP
 	ld de,(wPartyMon1HP + 1) - wPartyMon1MaxHP
-	add hl,de ; hl now points to LSB of current HP
+	add hl,de // hl now points to LSB of current HP
 	ld a,[hl]
 	add c
 	ld [hld],a
@@ -1396,18 +1396,18 @@ ItemUseMedicine:
 	ld [wWhichPokemon],a
 	ld a,e
 	ld [wd11e],a
-	xor a ; PLAYER_PARTY_DATA
+	xor a // PLAYER_PARTY_DATA
 	ld [wMonDataLocation],a
 	call LoadMonData
 	ld d,$01
-	callab PrintStatsBox ; display new stats text box
-	call WaitForTextScrollButtonPress ; wait for button press
-	xor a ; PLAYER_PARTY_DATA
+	callab PrintStatsBox // display new stats text box
+	call WaitForTextScrollButtonPress // wait for button press
+	xor a // PLAYER_PARTY_DATA
 	ld [wMonDataLocation],a
-	predef LearnMoveFromLevelUp ; learn level up move, if any
+	predef LearnMoveFromLevelUp // learn level up move, if any
 	xor a
 	ld [wForceEvolution],a
-	callab TryEvolvingMon ; evolve pokemon, if appropriate
+	callab TryEvolvingMon // evolve pokemon, if appropriate
 	ld a,$01
 	ld [wUpdateSpritesEnabled],a
 	pop af
@@ -1434,47 +1434,47 @@ VitaminText:
 ItemUseBait:
 	ld hl,ThrewBaitText
 	call PrintText
-	ld hl,wEnemyMonCatchRate ; catch rate
-	srl [hl] ; halve catch rate
+	ld hl,wEnemyMonCatchRate // catch rate
+	srl [hl] // halve catch rate
 	ld a,BAIT_ANIM
-	ld hl,wSafariBaitFactor ; bait factor
-	ld de,wSafariEscapeFactor ; escape factor
+	ld hl,wSafariBaitFactor // bait factor
+	ld de,wSafariEscapeFactor // escape factor
 	jr BaitRockCommon
 
 ItemUseRock:
 	ld hl,ThrewRockText
 	call PrintText
-	ld hl,wEnemyMonCatchRate ; catch rate
+	ld hl,wEnemyMonCatchRate // catch rate
 	ld a,[hl]
-	add a ; double catch rate
+	add a // double catch rate
 	jr nc,.noCarry
 	ld a,$ff
 .noCarry
 	ld [hl],a
 	ld a,ROCK_ANIM
-	ld hl,wSafariEscapeFactor ; escape factor
-	ld de,wSafariBaitFactor ; bait factor
+	ld hl,wSafariEscapeFactor // escape factor
+	ld de,wSafariBaitFactor // bait factor
 
 BaitRockCommon:
 	ld [wAnimationID],a
 	xor a
 	ld [wAnimationType],a
 	ld [H_WHOSETURN],a
-	ld [de],a ; zero escape factor (for bait), zero bait factor (for rock)
-.randomLoop ; loop until a random number less than 5 is generated
+	ld [de],a // zero escape factor (for bait), zero bait factor (for rock)
+.randomLoop // loop until a random number less than 5 is generated
 	call Random
 	and a,7
 	cp a,5
 	jr nc,.randomLoop
-	inc a ; increment the random number, giving a range from 1 to 5 inclusive
+	inc a // increment the random number, giving a range from 1 to 5 inclusive
 	ld b,a
 	ld a,[hl]
-	add b ; increase bait factor (for bait), increase escape factor (for rock)
+	add b // increase bait factor (for bait), increase escape factor (for rock)
 	jr nc,.noCarry
 	ld a,$ff
 .noCarry
 	ld [hl],a
-	predef MoveAnimation ; do animation
+	predef MoveAnimation // do animation
 	ld c,70
 	jp DelayFrames
 
@@ -1486,7 +1486,7 @@ ThrewRockText:
 	TX_FAR _ThrewRockText
 	db "@"
 
-; also used for Dig out-of-battle effect
+// also used for Dig out-of-battle effect
 ItemUseEscapeRope:
 	ld a,[wIsInBattle]
 	and a
@@ -1514,10 +1514,10 @@ ItemUseEscapeRope:
 	ld [wSafariZoneEntranceCurScript],a
 	inc a
 	ld [wEscapedFromBattle],a
-	ld [wActionResultOrTookBattleTurn],a ; item used
+	ld [wActionResultOrTookBattleTurn],a // item used
 	ld a,[wPseudoItemID]
-	and a ; using Dig?
-	ret nz ; if so, return
+	and a // using Dig?
+	ret nz // if so, return
 	call ItemUseReloadOverworldData
 	ld c,30
 	call DelayFrames
@@ -1527,7 +1527,7 @@ ItemUseEscapeRope:
 
 EscapeRopeTilesets:
 	db FOREST, CEMETERY, CAVERN, FACILITY, INTERIOR
-	db $ff ; terminator
+	db $ff // terminator
 
 ItemUseRepel:
 	ld b,100
@@ -1540,17 +1540,17 @@ ItemUseRepelCommon:
 	ld [wRepelRemainingSteps],a
 	jp PrintItemUseTextAndRemoveItem
 
-; handles X Accuracy item
+// handles X Accuracy item
 ItemUseXAccuracy:
 	ld a,[wIsInBattle]
 	and a
 	jp z,ItemUseNotTime
 	ld hl,wPlayerBattleStatus2
-	set UsingXAccuracy,[hl] ; X Accuracy bit
+	set UsingXAccuracy,[hl] // X Accuracy bit
 	jp PrintItemUseTextAndRemoveItem
 
-; This function is bugged and never works. It always jumps to ItemUseNotTime.
-; The Card Key is handled in a different way.
+// This function is bugged and never works. It always jumps to ItemUseNotTime.
+// The Card Key is handled in a different way.
 ItemUseCardKey:
 	xor a
 	ld [wUnusedD71F],a
@@ -1601,15 +1601,15 @@ ItemUseCardKey:
 	set 7,[hl]
 	ret
 
-; These tables are probably supposed to be door locations in Silph Co.,
-; but they are unused.
-; The reason there are 3 tables is unknown.
+// These tables are probably supposed to be door locations in Silph Co.,
+// but they are unused.
+// The reason there are 3 tables is unknown.
 
-; Format:
-; 00: Map ID
-; 01: Y
-; 02: X
-; 03: ID?
+// Format:
+// 00: Map ID
+// 01: Y
+// 02: X
+// 03: ID?
 
 CardKeyTable1:
 	db  SILPH_CO_2F,$04,$04,$00
@@ -1655,7 +1655,7 @@ ItemUseGuardSpec:
 	and a
 	jp z,ItemUseNotTime
 	ld hl,wPlayerBattleStatus2
-	set ProtectedByMist,[hl] ; Mist bit
+	set ProtectedByMist,[hl] // Mist bit
 	jp PrintItemUseTextAndRemoveItem
 
 ItemUseSuperRepel:
@@ -1671,7 +1671,7 @@ ItemUseDireHit:
 	and a
 	jp z,ItemUseNotTime
 	ld hl,wPlayerBattleStatus2
-	set GettingPumped,[hl] ; Focus Energy bit
+	set GettingPumped,[hl] // Focus Energy bit
 	jp PrintItemUseTextAndRemoveItem
 
 ItemUseXStat:
@@ -1680,45 +1680,45 @@ ItemUseXStat:
 	jr nz,.inBattle
 	call ItemUseNotTime
 	ld a,2
-	ld [wActionResultOrTookBattleTurn],a ; item not used
+	ld [wActionResultOrTookBattleTurn],a // item not used
 	ret
 .inBattle
 	ld hl,wPlayerMoveNum
 	ld a,[hli]
-	push af ; save [wPlayerMoveNum]
+	push af // save [wPlayerMoveNum]
 	ld a,[hl]
-	push af ; save [wPlayerMoveEffect]
+	push af // save [wPlayerMoveEffect]
 	push hl
 	ld a,[wcf91]
 	sub a,X_ATTACK - ATTACK_UP1_EFFECT
-	ld [hl],a ; store player move effect
+	ld [hl],a // store player move effect
 	call PrintItemUseTextAndRemoveItem
-	ld a,XSTATITEM_ANIM ; X stat item animation ID
+	ld a,XSTATITEM_ANIM // X stat item animation ID
 	ld [wPlayerMoveNum],a
-	call LoadScreenTilesFromBuffer1 ; restore saved screen
+	call LoadScreenTilesFromBuffer1 // restore saved screen
 	call Delay3
 	xor a
-	ld [H_WHOSETURN],a ; set turn to player's turn
-	callba StatModifierUpEffect ; do stat increase move
+	ld [H_WHOSETURN],a // set turn to player's turn
+	callba StatModifierUpEffect // do stat increase move
 	pop hl
 	pop af
-	ld [hld],a ; restore [wPlayerMoveEffect]
+	ld [hld],a // restore [wPlayerMoveEffect]
 	pop af
-	ld [hl],a ; restore [wPlayerMoveNum]
+	ld [hl],a // restore [wPlayerMoveNum]
 	ret
 
 ItemUsePokeflute:
 	ld a,[wIsInBattle]
 	and a
 	jr nz,.inBattle
-; if not in battle
+// if not in battle
 	call ItemUseReloadOverworldData
 	ld a,[wCurMap]
 	cp a,ROUTE_12
 	jr nz,.notRoute12
 	CheckEvent EVENT_BEAT_ROUTE12_SNORLAX
 	jr nz,.noSnorlaxToWakeUp
-; if the player hasn't beaten Route 12 Snorlax
+// if the player hasn't beaten Route 12 Snorlax
 	ld hl,Route12SnorlaxFluteCoords
 	call ArePlayerCoordsInArray
 	jr nc,.noSnorlaxToWakeUp
@@ -1731,7 +1731,7 @@ ItemUsePokeflute:
 	jr nz,.noSnorlaxToWakeUp
 	CheckEvent EVENT_BEAT_ROUTE16_SNORLAX
 	jr nz,.noSnorlaxToWakeUp
-; if the player hasn't beaten Route 16 Snorlax
+// if the player hasn't beaten Route 16 Snorlax
 	ld hl,Route16SnorlaxFluteCoords
 	call ArePlayerCoordsInArray
 	jr nc,.noSnorlaxToWakeUp
@@ -1749,84 +1749,84 @@ ItemUsePokeflute:
 	ld hl,wPartyMon1Status
 	call WakeUpEntireParty
 	ld a,[wIsInBattle]
-	dec a ; is it a trainer battle?
+	dec a // is it a trainer battle?
 	jr z,.skipWakingUpEnemyParty
-; if it's a trainer battle
+// if it's a trainer battle
 	ld hl,wEnemyMon1Status
 	call WakeUpEntireParty
 .skipWakingUpEnemyParty
 	ld hl,wBattleMonStatus
 	ld a,[hl]
-	and b ; remove Sleep status
+	and b // remove Sleep status
 	ld [hl],a
 	ld hl,wEnemyMonStatus
 	ld a,[hl]
-	and b ; remove Sleep status
+	and b // remove Sleep status
 	ld [hl],a
-	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	call LoadScreenTilesFromBuffer2 // restore saved screen
 	ld a,[wWereAnyMonsAsleep]
-	and a ; were any pokemon asleep before playing the flute?
+	and a // were any pokemon asleep before playing the flute?
 	ld hl,PlayedFluteNoEffectText
-	jp z,PrintText ; if no pokemon were asleep
-; if some pokemon were asleep
+	jp z,PrintText // if no pokemon were asleep
+// if some pokemon were asleep
 	ld hl,PlayedFluteHadEffectText
 	call PrintText
 	ld a,[wLowHealthAlarm]
 	and a,$80
 	jr nz,.skipMusic
-	call WaitForSoundToFinish ; wait for sound to end
-	callba Music_PokeFluteInBattle ; play in-battle pokeflute music
-.musicWaitLoop ; wait for music to finish playing
+	call WaitForSoundToFinish // wait for sound to end
+	callba Music_PokeFluteInBattle // play in-battle pokeflute music
+.musicWaitLoop // wait for music to finish playing
 	ld a,[wChannelSoundIDs + Ch6]
-	and a ; music off?
+	and a // music off?
 	jr nz,.musicWaitLoop
 .skipMusic
 	ld hl,FluteWokeUpText
 	jp PrintText
 
-; wakes up all party pokemon
-; INPUT:
-; hl must point to status of first pokemon in party (player's or enemy's)
-; b must equal ~SLP
-; [wWereAnyMonsAsleep] should be initialized to 0
-; OUTPUT:
-; [wWereAnyMonsAsleep]: set to 1 if any pokemon were asleep
+// wakes up all party pokemon
+// INPUT:
+// hl must point to status of first pokemon in party (player's or enemy's)
+// b must equal ~SLP
+// [wWereAnyMonsAsleep] should be initialized to 0
+// OUTPUT:
+// [wWereAnyMonsAsleep]: set to 1 if any pokemon were asleep
 WakeUpEntireParty:
 	ld de,44
 	ld c,6
 .loop
 	ld a,[hl]
 	push af
-	and a,SLP ; is pokemon asleep?
+	and a,SLP // is pokemon asleep?
 	jr z,.notAsleep
 	ld a,1
-	ld [wWereAnyMonsAsleep],a ; indicate that a pokemon had to be woken up
+	ld [wWereAnyMonsAsleep],a // indicate that a pokemon had to be woken up
 .notAsleep
 	pop af
-	and b ; remove Sleep status
+	and b // remove Sleep status
 	ld [hl],a
 	add hl,de
 	dec c
 	jr nz,.loop
 	ret
 
-; Format:
-; 00: Y
-; 01: X
+// Format:
+// 00: Y
+// 01: X
 Route12SnorlaxFluteCoords:
-	db 62,9  ; one space West of Snorlax
-	db 61,10 ; one space North of Snorlax
-	db 63,10 ; one space South of Snorlax
-	db 62,11 ; one space East of Snorlax
-	db $ff ; terminator
+	db 62,9  // one space West of Snorlax
+	db 61,10 // one space North of Snorlax
+	db 63,10 // one space South of Snorlax
+	db 62,11 // one space East of Snorlax
+	db $ff // terminator
 
-; Format:
-; 00: Y
-; 01: X
+// Format:
+// 00: Y
+// 01: X
 Route16SnorlaxFluteCoords:
-	db 10,27 ; one space East of Snorlax
-	db 10,25 ; one space West of Snorlax
-	db $ff ; terminator
+	db 10,27 // one space East of Snorlax
+	db 10,25 // one space West of Snorlax
+	db $ff // terminator
 
 PlayedFluteNoEffectText:
 	TX_FAR _PlayedFluteNoEffectText
@@ -1843,19 +1843,19 @@ PlayedFluteHadEffectText:
 	ld a,[wIsInBattle]
 	and a
 	jr nz,.done
-; play out-of-battle pokeflute music
+// play out-of-battle pokeflute music
 	ld a,$ff
-	call PlaySound ; turn off music
+	call PlaySound // turn off music
 	ld a, SFX_POKEFLUTE
 	ld c, BANK(SFX_Pokeflute)
 	call PlayMusic
-.musicWaitLoop ; wait for music to finish playing
+.musicWaitLoop // wait for music to finish playing
 	ld a,[wChannelSoundIDs + Ch2]
 	cp a, SFX_POKEFLUTE
 	jr z,.musicWaitLoop
-	call PlayDefaultMusic ; start playing normal music again
+	call PlayDefaultMusic // start playing normal music again
 .done
-	jp TextScriptEnd ; end text
+	jp TextScriptEnd // end text
 
 ItemUseCoinCase:
 	ld a,[wIsInBattle]
@@ -1872,7 +1872,7 @@ ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	lb bc, 5, MAGIKARP
-	ld a, $1 ; set bite
+	ld a, $1 // set bite
 	jr RodResponse
 
 ItemUseGoodRod:
@@ -1885,7 +1885,7 @@ ItemUseGoodRod:
 	and %11
 	cp 2
 	jr nc, .RandomLoop
-	; choose which monster appears
+	// choose which monster appears
 	ld hl,GoodRodMons
 	add a,a
 	ld c,a
@@ -1901,7 +1901,7 @@ ItemUseGoodRod:
 	xor 1
 	jr RodResponse
 
-INCLUDE "data/good_rod.asm"
+#include "data/good_rod.asm"
 
 ItemUseSuperRod:
 	call FishingInit
@@ -1911,19 +1911,19 @@ ItemUseSuperRod:
 RodResponse:
 	ld [wRodResponse], a
 
-	dec a ; is there a bite?
+	dec a // is there a bite?
 	jr nz, .next
-	; if yes, store level and species data
+	// if yes, store level and species data
 	ld a, 1
 	ld [wMoveMissed], a
-	ld a, b ; level
+	ld a, b // level
 	ld [wCurEnemyLVL], a
-	ld a, c ; species
+	ld a, c // species
 	ld [wCurOpponent], a
 
 .next
 	ld hl, wWalkBikeSurfState
-	ld a, [hl] ; store the value in a
+	ld a, [hl] // store the value in a
 	push af
 	push hl
 	ld [hl], 0
@@ -1933,19 +1933,19 @@ RodResponse:
 	ld [hl], a
 	ret
 
-; checks if fishing is possible and if so, runs initialization code common to all rods
-; unsets carry if fishing is possible, sets carry if not
+// checks if fishing is possible and if so, runs initialization code common to all rods
+// unsets carry if fishing is possible, sets carry if not
 FishingInit:
 	ld a,[wIsInBattle]
 	and a
 	jr z,.notInBattle
-	scf ; can't fish during battle
+	scf // can't fish during battle
 	ret
 .notInBattle
 	call IsNextTileShoreOrWater
 	ret c
 	ld a,[wWalkBikeSurfState]
-	cp a,2 ; Surfing?
+	cp a,2 // Surfing?
 	jr z,.surfing
 	call ItemUseReloadOverworldData
 	ld hl,ItemUseText00
@@ -1957,7 +1957,7 @@ FishingInit:
 	and a
 	ret
 .surfing
-	scf ; can't fish when surfing
+	scf // can't fish when surfing
 	ret
 
 ItemUseOaksParcel:
@@ -1968,9 +1968,9 @@ ItemUseItemfinder:
 	and a
 	jp nz,ItemUseNotTime
 	call ItemUseReloadOverworldData
-	callba HiddenItemNear ; check for hidden items
+	callba HiddenItemNear // check for hidden items
 	ld hl,ItemfinderFoundNothingText
-	jr nc,.printText ; if no hidden items
+	jr nc,.printText // if no hidden items
 	ld c,4
 .loop
 	ld a,SFX_HEALING_MACHINE
@@ -2012,19 +2012,19 @@ ItemUsePPRestore:
 .chooseMove
 	ld a,[wPPRestoreItem]
 	cp a,ELIXER
-	jp nc,.useElixir ; if Elixir or Max Elixir
+	jp nc,.useElixir // if Elixir or Max Elixir
 	ld a,$02
 	ld [wMoveMenuType],a
 	ld hl,RaisePPWhichTechniqueText
 	ld a,[wPPRestoreItem]
-	cp a,ETHER ; is it a PP Up?
-	jr c,.printWhichTechniqueMessage ; if so, print the raise PP message
-	ld hl,RestorePPWhichTechniqueText ; otherwise, print the restore PP message
+	cp a,ETHER // is it a PP Up?
+	jr c,.printWhichTechniqueMessage // if so, print the raise PP message
+	ld hl,RestorePPWhichTechniqueText // otherwise, print the restore PP message
 .printWhichTechniqueMessage
 	call PrintText
 	xor a
 	ld [wPlayerMoveListIndex],a
-	callab MoveSelectionMenu ; move selection menu
+	callab MoveSelectionMenu // move selection menu
 	ld a,0
 	ld [wPlayerMoveListIndex],a
 	jr nz,.chooseMon
@@ -2035,27 +2035,27 @@ ItemUsePPRestore:
 	ld a,[hl]
 	ld [wd11e],a
 	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF4B // copy name to wcf4b
 	pop hl
 	ld a,[wPPRestoreItem]
 	cp a,ETHER
-	jr nc,.useEther ; if Ether or Max Ether
+	jr nc,.useEther // if Ether or Max Ether
 .usePPUp
 	ld bc,wPartyMon1PP - wPartyMon1Moves
 	add hl,bc
-	ld a,[hl] ; move PP
-	cp a,3 << 6 ; have 3 PP Ups already been used?
+	ld a,[hl] // move PP
+	cp a,3 << 6 // have 3 PP Ups already been used?
 	jr c,.PPNotMaxedOut
 	ld hl,PPMaxedOutText
 	call PrintText
 	jr .chooseMove
 .PPNotMaxedOut
 	ld a,[hl]
-	add a,1 << 6 ; increase PP Up count by 1
+	add a,1 << 6 // increase PP Up count by 1
 	ld [hl],a
-	ld a,1 ; 1 PP Up used
+	ld a,1 // 1 PP Up used
 	ld [wd11e],a
-	call RestoreBonusPP ; add the bonus PP to current PP
+	call RestoreBonusPP // add the bonus PP to current PP
 	ld hl,PPIncreasedText
 	call PrintText
 .done
@@ -2064,18 +2064,18 @@ ItemUsePPRestore:
 	call GBPalWhiteOut
 	call RunDefaultPaletteCommand
 	jp RemoveUsedItem
-.afterRestoringPP ; after using a (Max) Ether/Elixir
+.afterRestoringPP // after using a (Max) Ether/Elixir
 	ld a,[wWhichPokemon]
 	ld b,a
 	ld a,[wPlayerMonNumber]
-	cp b ; is the pokemon whose PP was restored active in battle?
+	cp b // is the pokemon whose PP was restored active in battle?
 	jr nz,.skipUpdatingInBattleData
 	ld hl,wPartyMon1PP
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 	ld de,wBattleMonPP
 	ld bc,4
-	call CopyData ; copy party data to in-battle data
+	call CopyData // copy party data to in-battle data
 .skipUpdatingInBattleData
 	ld a,SFX_HEAL_AILMENT
 	call PlaySound
@@ -2086,72 +2086,72 @@ ItemUsePPRestore:
 	call .restorePP
 	jr nz,.afterRestoringPP
 	jp .noEffect
-; unsets zero flag if PP was restored, sets zero flag if not
-; however, this is bugged for Max Ethers and Max Elixirs (see below)
+// unsets zero flag if PP was restored, sets zero flag if not
+// however, this is bugged for Max Ethers and Max Elixirs (see below)
 .restorePP
-	xor a ; PLAYER_PARTY_DATA
+	xor a // PLAYER_PARTY_DATA
 	ld [wMonDataLocation],a
 	call GetMaxPP
 	ld hl,wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
 	call GetSelectedMoveOffset
 	ld bc, wPartyMon1PP - wPartyMon1Moves
-	add hl,bc ; hl now points to move's PP
+	add hl,bc // hl now points to move's PP
 	ld a,[wMaxPP]
 	ld b,a
 	ld a,[wPPRestoreItem]
 	cp a,MAX_ETHER
 	jr z,.fullyRestorePP
-	ld a,[hl] ; move PP
-	and a,%00111111 ; lower 6 bit bits store current PP
-	cp b ; does current PP equal max PP?
-	ret z ; if so, return
-	add a,10 ; increase current PP by 10
-; b holds the max PP amount and b will hold the new PP amount.
-; So, if the new amount meets or exceeds the max amount,
-; cap the amount to the max amount by leaving b unchanged.
-; Otherwise, store the new amount in b.
-	cp b ; does the new amount meet or exceed the maximum?
+	ld a,[hl] // move PP
+	and a,%00111111 // lower 6 bit bits store current PP
+	cp b // does current PP equal max PP?
+	ret z // if so, return
+	add a,10 // increase current PP by 10
+// b holds the max PP amount and b will hold the new PP amount.
+// So, if the new amount meets or exceeds the max amount,
+// cap the amount to the max amount by leaving b unchanged.
+// Otherwise, store the new amount in b.
+	cp b // does the new amount meet or exceed the maximum?
 	jr nc,.storeNewAmount
 	ld b,a
 .storeNewAmount
-	ld a,[hl] ; move PP
-	and a,%11000000 ; PP Up counter bits
+	ld a,[hl] // move PP
+	and a,%11000000 // PP Up counter bits
 	add b
 	ld [hl],a
 	ret
 .fullyRestorePP
-	ld a,[hl] ; move PP
-; Note that this code has a bug. It doesn't mask out the upper two bits, which
-; are used to count how many PP Ups have been used on the move. So, Max Ethers
-; and Max Elixirs will not be detected as having no effect on a move with full
-; PP if the move has had any PP Ups used on it.
-	cp b ; does current PP equal max PP?
+	ld a,[hl] // move PP
+// Note that this code has a bug. It doesn't mask out the upper two bits, which
+// are used to count how many PP Ups have been used on the move. So, Max Ethers
+// and Max Elixirs will not be detected as having no effect on a move with full
+// PP if the move has had any PP Ups used on it.
+	cp b // does current PP equal max PP?
 	ret z
 	jr .storeNewAmount
 .useElixir
-; decrement the item ID so that ELIXER becomes ETHER and MAX_ELIXER becomes MAX_ETHER
+// decrement the item ID so that ELIXER becomes ETHER and MAX_ELIXER becomes MAX_ETHER
 	ld hl,wPPRestoreItem
 	dec [hl]
 	dec [hl]
 	xor a
 	ld hl,wCurrentMenuItem
 	ld [hli],a
-	ld [hl],a ; zero the counter for number of moves that had their PP restored
+	ld [hl],a // zero the counter for number of moves that had their PP restored
 	ld b,4
-; loop through each move and restore PP
+// loop through each move and restore PP
 .elixirLoop
 	push bc
 	ld hl,wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
 	call GetSelectedMoveOffset
 	ld a,[hl]
-	and a ; does the current slot have a move?
+	and a // does the current slot have a move?
 	jr z,.nextMove
 	call .restorePP
 	jr z,.nextMove
-; if some PP was restored
-	ld hl,wTileBehindCursor ; counter for number of moves that had their PP restored
+// if some PP was restored
+	ld hl,wTileBehindCursor // counter for number of moves that had their PP restored
 	inc [hl]
 .nextMove
 	ld hl,wCurrentMenuItem
@@ -2160,7 +2160,7 @@ ItemUsePPRestore:
 	dec b
 	jr nz,.elixirLoop
 	ld a,[wTileBehindCursor]
-	and a ; did any moves have their PP restored?
+	and a // did any moves have their PP restored?
 	jp nz,.afterRestoringPP
 .noEffect
 	call ItemUseNoEffect
@@ -2169,7 +2169,7 @@ ItemUsePPRestore:
 	call RunDefaultPaletteCommand
 	pop af
 	xor a
-	ld [wActionResultOrTookBattleTurn],a ; item use failed
+	ld [wActionResultOrTookBattleTurn],a // item use failed
 	ret
 
 RaisePPWhichTechniqueText:
@@ -2192,7 +2192,7 @@ PPRestoredText:
 	TX_FAR _PPRestoredText
 	db "@"
 
-; for items that can't be used from the Item menu
+// for items that can't be used from the Item menu
 UnusableItem:
 	jp ItemUseNotTime
 
@@ -2204,15 +2204,15 @@ ItemUseTMHM:
 	sub a,TM_01
 	push af
 	jr nc,.skipAdding
-	add a,55 ; if item is an HM, add 55
+	add a,55 // if item is an HM, add 55
 .skipAdding
 	inc a
 	ld [wd11e],a
-	predef TMToMove ; get move ID from TM/HM ID
+	predef TMToMove // get move ID from TM/HM ID
 	ld a,[wd11e]
 	ld [wMoveNum],a
 	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF4B // copy name to wcf4b
 	pop af
 	ld hl,BootedUpTMText
 	jr nc,.printBootedUpMachineText
@@ -2225,12 +2225,12 @@ ItemUseTMHM:
 	lb bc, 8, 15
 	ld a,TWO_OPTION_MENU
 	ld [wTextBoxID],a
-	call DisplayTextBoxID ; yes/no menu
+	call DisplayTextBoxID // yes/no menu
 	ld a,[wCurrentMenuItem]
 	and a
 	jr z,.useMachine
 	ld a,2
-	ld [wActionResultOrTookBattleTurn],a ; item not used
+	ld [wActionResultOrTookBattleTurn],a // item not used
 	ret
 .useMachine
 	ld a,[wWhichPokemon]
@@ -2241,7 +2241,7 @@ ItemUseTMHM:
 	ld hl,wcf4b
 	ld de,wTempMoveNameBuffer
 	ld bc,14
-	call CopyData ; save the move name because DisplayPartyMenu will overwrite it
+	call CopyData // save the move name because DisplayPartyMenu will overwrite it
 	ld a,$ff
 	ld [wUpdateSpritesEnabled],a
 	ld a,TMHM_PARTY_MENU
@@ -2254,33 +2254,33 @@ ItemUseTMHM:
 	call CopyData
 	pop af
 	jr nc,.checkIfAbleToLearnMove
-; if the player canceled teaching the move
+// if the player canceled teaching the move
 	pop af
 	pop af
 	call GBPalWhiteOutWithDelay3
 	call ClearSprites
 	call RunDefaultPaletteCommand
-	jp LoadScreenTilesFromBuffer1 ; restore saved screen
+	jp LoadScreenTilesFromBuffer1 // restore saved screen
 .checkIfAbleToLearnMove
-	predef CanLearnTM ; check if the pokemon can learn the move
+	predef CanLearnTM // check if the pokemon can learn the move
 	push bc
 	ld a,[wWhichPokemon]
 	ld hl,wPartyMonNicks
 	call GetPartyMonName
 	pop bc
 	ld a,c
-	and a ; can the pokemon learn the move?
+	and a // can the pokemon learn the move?
 	jr nz,.checkIfAlreadyLearnedMove
-; if the pokemon can't learn the move
+// if the pokemon can't learn the move
 	ld a,SFX_DENIED
 	call PlaySoundWaitForCurrent
 	ld hl,MonCannotLearnMachineMoveText
 	call PrintText
 	jr .chooseMon
 .checkIfAlreadyLearnedMove
-	callab CheckIfMoveIsKnown ; check if the pokemon already knows the move
+	callab CheckIfMoveIsKnown // check if the pokemon already knows the move
 	jr c,.chooseMon
-	predef LearnMove ; teach move
+	predef LearnMove // teach move
 	pop af
 	ld [wcf91],a
 	pop af
@@ -2314,11 +2314,11 @@ PrintItemUseTextAndRemoveItem:
 	call PrintText
 	ld a,SFX_HEAL_AILMENT
 	call PlaySound
-	call WaitForTextScrollButtonPress ; wait for button press
+	call WaitForTextScrollButtonPress // wait for button press
 
 RemoveUsedItem:
 	ld hl,wNumBagItems
-	ld a,1 ; one item
+	ld a,1 // one item
 	ld [wItemQuantity],a
 	jp RemoveItemFromInventory
 
@@ -2336,11 +2336,11 @@ ItemUseNotYoursToUse:
 
 ThrowBallAtTrainerMon:
 	call RunDefaultPaletteCommand
-	call LoadScreenTilesFromBuffer1 ; restore saved screen
+	call LoadScreenTilesFromBuffer1 // restore saved screen
 	call Delay3
 	ld a,TOSS_ANIM
 	ld [wAnimationID],a
-	predef MoveAnimation ; do animation
+	predef MoveAnimation // do animation
 	ld hl,ThrowBallAtTrainerMonText1
 	call PrintText
 	ld hl,ThrowBallAtTrainerMonText2
@@ -2360,7 +2360,7 @@ SurfingAttemptFailed:
 
 ItemUseFailed:
 	xor a
-	ld [wActionResultOrTookBattleTurn],a ; item use failed
+	ld [wActionResultOrTookBattleTurn],a // item use failed
 	jp PrintText
 
 ItemUseNotTimeText:
@@ -2413,11 +2413,11 @@ GotOffBicycleText:
 	TX_FAR _GotOffBicycleText2
 	db "@"
 
-; restores bonus PP (from PP Ups) when healing at a pokemon center
-; also, when a PP Up is used, it increases the current PP by one PP Up bonus
-; INPUT:
-; [wWhichPokemon] = index of pokemon in party
-; [wCurrentMenuItem] = index of move (when using a PP Up)
+// restores bonus PP (from PP Ups) when healing at a pokemon center
+// also, when a PP Up is used, it increases the current PP by one PP Up bonus
+// INPUT:
+// [wWhichPokemon] = index of pokemon in party
+// [wCurrentMenuItem] = index of move (when using a PP Up)
 RestoreBonusPP:
 	ld hl,wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
@@ -2425,44 +2425,44 @@ RestoreBonusPP:
 	call AddNTimes
 	push hl
 	ld de,wNormalMaxPPList - 1
-	predef LoadMovePPs ; loads the normal max PP of each of the pokemon's moves to wNormalMaxPPList
+	predef LoadMovePPs // loads the normal max PP of each of the pokemon's moves to wNormalMaxPPList
 	pop hl
 	ld c, wPartyMon1PP - wPartyMon1Moves
 	ld b,0
-	add hl,bc ; hl now points to move 1 PP
+	add hl,bc // hl now points to move 1 PP
 	ld de,wNormalMaxPPList
-	ld b,0 ; initialize move counter to zero
-; loop through the pokemon's moves
+	ld b,0 // initialize move counter to zero
+// loop through the pokemon's moves
 .loop
 	inc b
 	ld a,b
-	cp a,5 ; reached the end of the pokemon's moves?
-	ret z ; if so, return
+	cp a,5 // reached the end of the pokemon's moves?
+	ret z // if so, return
 	ld a,[wUsingPPUp]
-	dec a ; using a PP Up?
+	dec a // using a PP Up?
 	jr nz,.skipMenuItemIDCheck
-; if using a PP Up, check if this is the move it's being used on
+// if using a PP Up, check if this is the move it's being used on
 	ld a,[wCurrentMenuItem]
 	inc a
 	cp b
 	jr nz,.nextMove
 .skipMenuItemIDCheck
 	ld a,[hl]
-	and a,%11000000 ; have any PP Ups been used?
-	call nz,AddBonusPP ; if so, add bonus PP
+	and a,%11000000 // have any PP Ups been used?
+	call nz,AddBonusPP // if so, add bonus PP
 .nextMove
 	inc hl
 	inc de
 	jr .loop
 
-; adds bonus PP from PP Ups to current PP
-; 1/5 of normal max PP (capped at 7) is added for each PP Up
-; INPUT:
-; [de] = normal max PP
-; [hl] = move PP
+// adds bonus PP from PP Ups to current PP
+// 1/5 of normal max PP (capped at 7) is added for each PP Up
+// INPUT:
+// [de] = normal max PP
+// [hl] = move PP
 AddBonusPP:
 	push bc
-	ld a,[de] ; normal max PP of move
+	ld a,[de] // normal max PP of move
 	ld [H_DIVIDEND + 3],a
 	xor a
 	ld [H_DIVIDEND],a
@@ -2472,24 +2472,24 @@ AddBonusPP:
 	ld [H_DIVISOR],a
 	ld b,4
 	call Divide
-	ld a,[hl] ; move PP
+	ld a,[hl] // move PP
 	ld b,a
 	swap a
 	and a,%00001111
 	srl a
 	srl a
-	ld c,a ; c = number of PP Ups used
+	ld c,a // c = number of PP Ups used
 .loop
 	ld a,[H_QUOTIENT + 3]
-	cp a,8 ; is the amount greater than or equal to 8?
+	cp a,8 // is the amount greater than or equal to 8?
 	jr c,.addAmount
-	ld a,7 ; cap the amount at 7
+	ld a,7 // cap the amount at 7
 .addAmount
 	add b
 	ld b,a
 	ld a,[wUsingPPUp]
-	dec a ; is the player using a PP Up right now?
-	jr z,.done ; if so, only add the bonus once
+	dec a // is the player using a PP Up right now?
+	jr z,.done // if so, only add the bonus once
 	dec c
 	jr nz,.loop
 .done
@@ -2497,18 +2497,18 @@ AddBonusPP:
 	pop bc
 	ret
 
-; gets max PP of a pokemon's move (including PP from PP Ups)
-; INPUT:
-; [wWhichPokemon] = index of pokemon within party/box
-; [wMonDataLocation] = pokemon source
-; 00: player's party
-; 01: enemy's party
-; 02: current box
-; 03: daycare
-; 04: player's in-battle pokemon
-; [wCurrentMenuItem] = move index
-; OUTPUT:
-; [wMaxPP] = max PP
+// gets max PP of a pokemon's move (including PP from PP Ups)
+// INPUT:
+// [wWhichPokemon] = index of pokemon within party/box
+// [wMonDataLocation] = pokemon source
+// 00: player's party
+// 01: enemy's party
+// 02: current box
+// 03: daycare
+// 04: player's in-battle pokemon
+// [wCurrentMenuItem] = move index
+// OUTPUT:
+// [wMaxPP] = max PP
 GetMaxPP:
 	ld a,[wMonDataLocation]
 	and a
@@ -2525,7 +2525,7 @@ GetMaxPP:
 	ld hl,wDayCareMonMoves
 	dec a
 	jr z,.sourceWithOneMon
-	ld hl,wBattleMonMoves ; player's in-battle pokemon
+	ld hl,wBattleMonMoves // player's in-battle pokemon
 .sourceWithOneMon
 	call GetSelectedMoveOffset2
 	jr .next
@@ -2541,32 +2541,32 @@ GetMaxPP:
 	ld de,wcd6d
 	ld a,BANK(Moves)
 	call FarCopyData
-	ld de,wcd6d + 5 ; PP is byte 5 of move data
+	ld de,wcd6d + 5 // PP is byte 5 of move data
 	ld a,[de]
-	ld b,a ; b = normal max PP
+	ld b,a // b = normal max PP
 	pop hl
 	push bc
-	ld bc,wPartyMon1PP - wPartyMon1Moves ; PP offset if not player's in-battle pokemon data
+	ld bc,wPartyMon1PP - wPartyMon1Moves // PP offset if not player's in-battle pokemon data
 	ld a,[wMonDataLocation]
-	cp a,4 ; player's in-battle pokemon?
+	cp a,4 // player's in-battle pokemon?
 	jr nz,.addPPOffset
-	ld bc,wBattleMonPP - wBattleMonMoves ; PP offset if player's in-battle pokemon data
+	ld bc,wBattleMonPP - wBattleMonMoves // PP offset if player's in-battle pokemon data
 .addPPOffset
 	add hl,bc
-	ld a,[hl] ; a = current PP
-	and a,%11000000 ; get PP Up count
+	ld a,[hl] // a = current PP
+	and a,%11000000 // get PP Up count
 	pop bc
-	or b ; place normal max PP in 6 lower bits of a
+	or b // place normal max PP in 6 lower bits of a
 	ld h,d
 	ld l,e
-	inc hl ; hl = wcd73
+	inc hl // hl = wcd73
 	ld [hl],a
-	xor a ; add the bonus for the existing PP Up count
+	xor a // add the bonus for the existing PP Up count
 	ld [wUsingPPUp],a
-	call AddBonusPP ; add bonus PP from PP Ups
+	call AddBonusPP // add bonus PP from PP Ups
 	ld a,[hl]
-	and a,%00111111 ; mask out the PP Up count
-	ld [wMaxPP],a ; store max PP
+	and a,%00111111 // mask out the PP Up count
+	ld [wMaxPP],a // store max PP
 	ret
 
 GetSelectedMoveOffset:
@@ -2580,14 +2580,14 @@ GetSelectedMoveOffset2:
 	add hl,bc
 	ret
 
-; confirms the item toss and then tosses the item
-; INPUT:
-; hl = address of inventory (either wNumBagItems or wNumBoxItems)
-; [wcf91] = item ID
-; [wWhichPokemon] = index of item within inventory
-; [wItemQuantity] = quantity to toss
-; OUTPUT:
-; clears carry flag if the item is tossed, sets carry flag if not
+// confirms the item toss and then tosses the item
+// INPUT:
+// hl = address of inventory (either wNumBagItems or wNumBoxItems)
+// [wcf91] = item ID
+// [wWhichPokemon] = index of item within inventory
+// [wItemQuantity] = quantity to toss
+// OUTPUT:
+// clears carry flag if the item is tossed, sets carry flag if not
 TossItem_:
 	push hl
 	ld a,[wcf91]
@@ -2604,27 +2604,27 @@ TossItem_:
 	ld a,[wcf91]
 	ld [wd11e],a
 	call GetItemName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF4B // copy name to wcf4b
 	ld hl,IsItOKToTossItemText
 	call PrintText
 	coord hl, 14, 7
 	lb bc, 8, 15
 	ld a,TWO_OPTION_MENU
 	ld [wTextBoxID],a
-	call DisplayTextBoxID ; yes/no menu
+	call DisplayTextBoxID // yes/no menu
 	ld a,[wMenuExitMethod]
 	cp a,CHOSE_SECOND_ITEM
 	pop hl
 	scf
-	ret z ; return if the player chose No
-; if the player chose Yes
+	ret z // return if the player chose No
+// if the player chose Yes
 	push hl
 	ld a,[wWhichPokemon]
 	call RemoveItemFromInventory
 	ld a,[wcf91]
 	ld [wd11e],a
 	call GetItemName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF4B // copy name to wcf4b
 	ld hl,ThrewAwayItemText
 	call PrintText
 	pop hl
@@ -2650,24 +2650,24 @@ TooImportantToTossText:
 	TX_FAR _TooImportantToTossText
 	db "@"
 
-; checks if an item is a key item
-; INPUT:
-; [wcf91] = item ID
-; OUTPUT:
-; [wIsKeyItem] = result
-; 00: item is not key item
-; 01: item is key item
+// checks if an item is a key item
+// INPUT:
+// [wcf91] = item ID
+// OUTPUT:
+// [wIsKeyItem] = result
+// 00: item is not key item
+// 01: item is key item
 IsKeyItem_:
 	ld a,$01
 	ld [wIsKeyItem],a
 	ld a,[wcf91]
-	cp a,HM_01 ; is the item an HM or TM?
+	cp a,HM_01 // is the item an HM or TM?
 	jr nc,.checkIfItemIsHM
-; if the item is not an HM or TM
+// if the item is not an HM or TM
 	push af
 	ld hl,KeyItemBitfield
 	ld de,wBuffer
-	ld bc,15 ; only 11 bytes are actually used
+	ld bc,15 // only 11 bytes are actually used
 	call CopyData
 	pop af
 	dec a
@@ -2686,7 +2686,7 @@ IsKeyItem_:
 	ld [wIsKeyItem],a
 	ret
 
-INCLUDE "data/key_items.asm"
+#include "data/key_items.asm"
 
 SendNewMonToBox:
 	ld de, wNumInBox
@@ -2854,9 +2854,9 @@ SendNewMonToBox:
 	jr nz, .asm_e8b1
 	ret
 
-; checks if the tile in front of the player is a shore or water tile
-; used for surfing and fishing
-; unsets carry if it is, sets carry if not
+// checks if the tile in front of the player is a shore or water tile
+// used for surfing and fishing
+// unsets carry if it is, sets carry if not
 IsNextTileShoreOrWater:
 	ld a, [wCurMapTileset]
 	ld hl, WaterTilesets
@@ -2864,15 +2864,15 @@ IsNextTileShoreOrWater:
 	call IsInArray
 	jr nc, .notShoreOrWater
 	ld a, [wCurMapTileset]
-	cp SHIP_PORT ; Vermilion Dock tileset
-	ld a, [wTileInFrontOfPlayer] ; tile in front of player
-	jr z, .skipShoreTiles ; if it's the Vermilion Dock tileset
-	cp $48 ; eastern shore tile in Safari Zone
+	cp SHIP_PORT // Vermilion Dock tileset
+	ld a, [wTileInFrontOfPlayer] // tile in front of player
+	jr z, .skipShoreTiles // if it's the Vermilion Dock tileset
+	cp $48 // eastern shore tile in Safari Zone
 	jr z, .shoreOrWater
-	cp $32 ; usual eastern shore tile
+	cp $32 // usual eastern shore tile
 	jr z, .shoreOrWater
 .skipShoreTiles
-	cp $14 ; water tile
+	cp $14 // water tile
 	jr z, .shoreOrWater
 .notShoreOrWater
 	scf
@@ -2881,66 +2881,66 @@ IsNextTileShoreOrWater:
 	and a
 	ret
 
-; tilesets with water
+// tilesets with water
 WaterTilesets:
 	db OVERWORLD, FOREST, DOJO, GYM, SHIP, SHIP_PORT, CAVERN, FACILITY, PLATEAU
-	db $ff ; terminator
+	db $ff // terminator
 
 ReadSuperRodData:
-; return e = 2 if no fish on this map
-; return e = 1 if a bite, bc = level,species
-; return e = 0 if no bite
+// return e = 2 if no fish on this map
+// return e = 1 if a bite, bc = level,species
+// return e = 0 if no bite
 	ld a, [wCurMap]
-	ld de, 3 ; each fishing group is three bytes wide
+	ld de, 3 // each fishing group is three bytes wide
 	ld hl, SuperRodData
 	call IsInArray
 	jr c, .ReadFishingGroup
-	ld e, $2 ; $2 if no fishing groups found
+	ld e, $2 // $2 if no fishing groups found
 	ret
 
 .ReadFishingGroup
-; hl points to the fishing group entry in the index
-	inc hl ; skip map id
+// hl points to the fishing group entry in the index
+	inc hl // skip map id
 
-	; read fishing group address
+	// read fishing group address
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
-	ld b, [hl] ; how many mons in group
-	inc hl ; point to data
-	ld e, $0 ; no bite yet
+	ld b, [hl] // how many mons in group
+	inc hl // point to data
+	ld e, $0 // no bite yet
 
 .RandomLoop
 	call Random
 	srl a
-	ret c ; 50% chance of no battle
+	ret c // 50% chance of no battle
 
-	and %11 ; 2-bit random number
+	and %11 // 2-bit random number
 	cp b
-	jr nc, .RandomLoop ; if a is greater than the number of mons, regenerate
+	jr nc, .RandomLoop // if a is greater than the number of mons, regenerate
 
-	; get the mon
+	// get the mon
 	add a
 	ld c, a
 	ld b, $0
 	add hl, bc
-	ld b, [hl] ; level
+	ld b, [hl] // level
 	inc hl
-	ld c, [hl] ; species
-	ld e, $1 ; $1 if there's a bite
+	ld c, [hl] // species
+	ld e, $1 // $1 if there's a bite
 	ret
 
-INCLUDE "data/super_rod.asm"
+#include "data/super_rod.asm"
 
-; reloads map view and processes sprite data
-; for items that cause the overworld to be displayed
+// reloads map view and processes sprite data
+// for items that cause the overworld to be displayed
 ItemUseReloadOverworldData:
 	call LoadCurrentMapView
 	jp UpdateSprites
 
-; creates a list at wBuffer of maps where the mon in [wd11e] can be found.
-; this is used by the pokedex to display locations the mon can be found on the map.
+// creates a list at wBuffer of maps where the mon in [wd11e] can be found.
+// this is used by the pokedex to display locations the mon can be found on the map.
 FindWildLocationsOfMon:
 	ld hl, WildDataPointers
 	ld de, wBuffer
@@ -2956,17 +2956,17 @@ FindWildLocationsOfMon:
 	ld l, a
 	ld a, [hli]
 	and a
-	call nz, CheckMapForMon ; land
+	call nz, CheckMapForMon // land
 	ld a, [hli]
 	and a
-	call nz, CheckMapForMon ; water
+	call nz, CheckMapForMon // water
 	pop hl
 	inc hl
 	inc hl
 	inc c
 	jr .loop
 .done
-	ld a, $ff ; list terminator
+	ld a, $ff // list terminator
 	ld [de], a
 	ret
 

@@ -21,23 +21,23 @@ PalletTownScript0:
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
 	ret nz
 	ld a,[wYCoord]
-	cp 1 ; is player near north exit?
+	cp 1 // is player near north exit?
 	ret nz
 	xor a
 	ld [hJoyHeld],a
 	ld a,PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection],a
 	ld a,$FF
-	call PlaySound ; stop music
+	call PlaySound // stop music
 	ld a, BANK(Music_MeetProfOak)
 	ld c,a
-	ld a, MUSIC_MEET_PROF_OAK ; “oak appears” music
+	ld a, MUSIC_MEET_PROF_OAK // “oak appears” music
 	call PlayMusic
 	ld a,$FC
 	ld [wJoyIgnore],a
 	SetEvent EVENT_OAK_APPEARED_IN_PALLET
 
-	; trigger the next script
+	// trigger the next script
 	ld a,1
 	ld [wPalletTownCurScript],a
 	ret
@@ -54,7 +54,7 @@ PalletTownScript1:
 	ld [wMissableObjectIndex],a
 	predef ShowObject
 
-	; trigger the next script
+	// trigger the next script
 	ld a,2
 	ld [wPalletTownCurScript],a
 	ret
@@ -76,15 +76,15 @@ PalletTownScript2:
 	predef CalcPositionOfPlayerRelativeToNPC
 	ld hl,hNPCPlayerYDistance
 	dec [hl]
-	predef FindPathToPlayer ; load Oak’s movement into wNPCMovementDirections2
+	predef FindPathToPlayer // load Oak’s movement into wNPCMovementDirections2
 	ld de,wNPCMovementDirections2
-	ld a,1 ; oak
+	ld a,1 // oak
 	ld [H_SPRITEINDEX],a
 	call MoveSprite
 	ld a,$FF
 	ld [wJoyIgnore],a
 
-	; trigger the next script
+	// trigger the next script
 	ld a,3
 	ld [wPalletTownCurScript],a
 	ret
@@ -93,7 +93,7 @@ PalletTownScript3:
 	ld a,[wd730]
 	bit 0,a
 	ret nz
-	xor a ; ld a, SPRITE_FACING_DOWN
+	xor a // ld a, SPRITE_FACING_DOWN
 	ld [wSpriteStateData1 + 9],a
 	ld a,1
 	ld [wcf0d],a
@@ -102,7 +102,7 @@ PalletTownScript3:
 	ld a,1
 	ld [hSpriteIndexOrTextID],a
 	call DisplayTextID
-; set up movement script that causes the player to follow Oak to his lab
+// set up movement script that causes the player to follow Oak to his lab
 	ld a,$FF
 	ld [wJoyIgnore],a
 	ld a,1
@@ -114,17 +114,17 @@ PalletTownScript3:
 	ld a,[H_LOADEDROMBANK]
 	ld [wNPCMovementScriptBank],a
 
-	; trigger the next script
+	// trigger the next script
 	ld a,4
 	ld [wPalletTownCurScript],a
 	ret
 
 PalletTownScript4:
 	ld a,[wNPCMovementScriptPointerTableNum]
-	and a ; is the movement script over?
+	and a // is the movement script over?
 	ret nz
 
-	; trigger the next script
+	// trigger the next script
 	ld a,5
 	ld [wPalletTownCurScript],a
 	ret
@@ -178,8 +178,8 @@ OakAppearsText:
 	ld c,10
 	call DelayFrames
 	xor a
-	ld [wEmotionBubbleSpriteIndex],a ; player's sprite
-	ld [wWhichEmotionBubble],a ; EXCLAMATION_BUBBLE
+	ld [wEmotionBubbleSpriteIndex],a // player's sprite
+	ld [wWhichEmotionBubble],a // EXCLAMATION_BUBBLE
 	predef EmotionBubble
 	ld a,PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection],a
@@ -189,26 +189,26 @@ OakWalksUpText:
 	TX_FAR _OakWalksUpText
 	db "@"
 
-PalletTownText2: ; girl
+PalletTownText2: // girl
 	TX_FAR _PalletTownText2
 	db "@"
 
-PalletTownText3: ; fat man
+PalletTownText3: // fat man
 	TX_FAR _PalletTownText3
 	db "@"
 
-PalletTownText4: ; sign by lab
+PalletTownText4: // sign by lab
 	TX_FAR _PalletTownText4
 	db "@"
 
-PalletTownText5: ; sign by fence
+PalletTownText5: // sign by fence
 	TX_FAR _PalletTownText5
 	db "@"
 
-PalletTownText6: ; sign by Red’s house
+PalletTownText6: // sign by Red’s house
 	TX_FAR _PalletTownText6
 	db "@"
 
-PalletTownText7: ; sign by Blue’s house
+PalletTownText7: // sign by Blue’s house
 	TX_FAR _PalletTownText7
 	db "@"

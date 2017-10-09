@@ -5,9 +5,9 @@ MistEffect_:
 	jr z, .mistEffect
 	ld hl, wEnemyBattleStatus2
 .mistEffect
-	bit ProtectedByMist, [hl] ; is mon protected by mist?
+	bit ProtectedByMist, [hl] // is mon protected by mist?
 	jr nz, .mistAlreadyInUse
-	set ProtectedByMist, [hl] ; mon is now protected by mist
+	set ProtectedByMist, [hl] // mon is now protected by mist
 	callab PlayCurrentMoveAnimation
 	ld hl, ShroudedInMistText
 	jp PrintText

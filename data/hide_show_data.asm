@@ -1,9 +1,9 @@
-; data for default hidden/shown
-; objects for each map ($00-$F8)
+// data for default hidden/shown
+// objects for each map ($00-$F8)
 
-; Table of 2-Byte pointers, one pointer per map,
-; goes up to Map_F7, ends with $FFFF.
-; points to table listing all missable object in the area
+// Table of 2-Byte pointers, one pointer per map,
+// goes up to Map_F7, ends with $FFFF.
+// points to table listing all missable object in the area
 MapHSPointers:
 	dw MapHS00
 	dw MapHS01
@@ -255,17 +255,17 @@ MapHSPointers:
 	dw MapHSXX
 	dw $FFFF
 
-; Structure:
-; 3 bytes per object
-; [Map_ID][Object_ID][H/S]
+// Structure:
+// 3 bytes per object
+// [Map_ID][Object_ID][H/S]
 ;
-; Program stops reading when either:
-; a) Map_ID = $FF
-; b) Map_ID ≠ currentMapID
+// Program stops reading when either:
+// a) Map_ID = $FF
+// b) Map_ID ≠ currentMapID
 ;
-; This Data is loaded into RAM at wd5ce-$D5F?. (wMissableObjectList)
+// This Data is loaded into RAM at wd5ce-$D5F?. (wMissableObjectList)
 
-; These constants come from the bytes for Predef functions:
+// These constants come from the bytes for Predef functions:
 Hide equ $11
 Show equ $15
 

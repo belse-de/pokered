@@ -1,4 +1,4 @@
-; only used for setting bit 2 of wd736 upon entering a new map
+// only used for setting bit 2 of wd736 upon entering a new map
 IsPlayerStandingOnWarp:
 	ld a, [wNumberOfWarps]
 	and a
@@ -14,12 +14,12 @@ IsPlayerStandingOnWarp:
 	cp [hl]
 	jr nz, .nextWarp2
 	inc hl
-	ld a, [hli] ; target warp
+	ld a, [hli] // target warp
 	ld [wDestinationWarpID], a
-	ld a, [hl] ; target map
+	ld a, [hl] // target map
 	ld [hWarpDestinationMap], a
 	ld hl, wd736
-	set 2, [hl] ; standing on warp flag
+	set 2, [hl] // standing on warp flag
 	ret
 .nextWarp1
 	inc hl
@@ -53,7 +53,7 @@ CheckForceBikeOrSurf:
 	jr nz, .incorrectY
 	ld a, [hli]
 	cp c ;compare x-coord
-	jr nz, .loop ; incorrect x-coord, check next item
+	jr nz, .loop // incorrect x-coord, check next item
 	ld a, [wCurMap]
 	cp SEAFOAM_ISLANDS_4
 	ld a, $2
@@ -82,13 +82,13 @@ CheckForceBikeOrSurf:
 	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 
-INCLUDE "data/force_bike_surf.asm"
+#include "data/force_bike_surf.asm"
 
 IsPlayerFacingEdgeOfMap:
 	push hl
 	push de
 	push bc
-	ld a, [wSpriteStateData1 + 9] ; player sprite's facing direction
+	ld a, [wSpriteStateData1 + 9] // player sprite's facing direction
 	srl a
 	ld c, a
 	ld b, $0
@@ -158,7 +158,7 @@ IsWarpTileInFrontOfPlayer:
 	ld a, [wCurMap]
 	cp SS_ANNE_5
 	jr z, .ssAnne5
-	ld a, [wSpriteStateData1 + 9] ; player sprite's facing direction
+	ld a, [wSpriteStateData1 + 9] // player sprite's facing direction
 	srl a
 	ld c, a
 	ld b, 0
@@ -231,7 +231,7 @@ IsPlayerStandingOnDoorTileOrWarpTile:
 	pop hl
 	ret
 
-INCLUDE "data/warp_tile_ids.asm"
+#include "data/warp_tile_ids.asm"
 
 PrintSafariZoneSteps:
 	ld a, [wCurMap]
@@ -279,31 +279,31 @@ _GetTileAndCoordsInFrontOfPlayer:
 	ld d, a
 	ld a, [wXCoord]
 	ld e, a
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
-	and a ; cp SPRITE_FACING_DOWN
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
+	and a // cp SPRITE_FACING_DOWN
 	jr nz, .notFacingDown
-; facing down
+// facing down
 	aCoord 8, 11
 	inc d
 	jr .storeTile
 .notFacingDown
 	cp SPRITE_FACING_UP
 	jr nz, .notFacingUp
-; facing up
+// facing up
 	aCoord 8, 7
 	dec d
 	jr .storeTile
 .notFacingUp
 	cp SPRITE_FACING_LEFT
 	jr nz, .notFacingLeft
-; facing left
+// facing left
 	aCoord 6, 9
 	dec e
 	jr .storeTile
 .notFacingLeft
 	cp SPRITE_FACING_RIGHT
 	jr nz, .storeTile
-; facing right
+// facing right
 	aCoord 10, 9
 	inc e
 .storeTile
@@ -318,10 +318,10 @@ GetTileTwoStepsInFrontOfPlayer:
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
-	and a ; cp SPRITE_FACING_DOWN
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
+	and a // cp SPRITE_FACING_DOWN
 	jr nz, .notFacingDown
-; facing down
+// facing down
 	ld hl, $ffdb
 	set 0, [hl]
 	aCoord 8, 13
@@ -330,7 +330,7 @@ GetTileTwoStepsInFrontOfPlayer:
 .notFacingDown
 	cp SPRITE_FACING_UP
 	jr nz, .notFacingUp
-; facing up
+// facing up
 	ld hl, $ffdb
 	set 1, [hl]
 	aCoord 8, 5
@@ -339,7 +339,7 @@ GetTileTwoStepsInFrontOfPlayer:
 .notFacingUp
 	cp SPRITE_FACING_LEFT
 	jr nz, .notFacingLeft
-; facing left
+// facing left
 	ld hl, $ffdb
 	set 2, [hl]
 	aCoord 4, 9
@@ -348,7 +348,7 @@ GetTileTwoStepsInFrontOfPlayer:
 .notFacingLeft
 	cp SPRITE_FACING_RIGHT
 	jr nz, .storeTile
-; facing right
+// facing right
 	ld hl, $ffdb
 	set 3, [hl]
 	aCoord 12, 9
@@ -368,23 +368,23 @@ CheckForCollisionWhenPushingBoulder:
 .loop
 	ld a, [hli]
 	cp $ff
-	jr z, .done ; if the tile two steps ahead is not passable
+	jr z, .done // if the tile two steps ahead is not passable
 	cp c
 	jr nz, .loop
 	ld hl, TilePairCollisionsLand
 	call CheckForTilePairCollisions2
 	ld a, $ff
-	jr c, .done ; if there is an elevation difference between the current tile and the one two steps ahead
+	jr c, .done // if there is an elevation difference between the current tile and the one two steps ahead
 	ld a, [wTileInFrontOfBoulderAndBoulderCollisionResult]
-	cp $15 ; stairs tile
+	cp $15 // stairs tile
 	ld a, $ff
-	jr z, .done ; if the tile two steps ahead is stairs
+	jr z, .done // if the tile two steps ahead is stairs
 	call CheckForBoulderCollisionWithSprites
 .done
 	ld [wTileInFrontOfBoulderAndBoulderCollisionResult], a
 	ret
 
-; sets a to $ff if there is a collision and $00 if there is no collision
+// sets a to $ff if there is a collision and $00 if there is no collision
 CheckForBoulderCollisionWithSprites:
 	ld a, [wBoulderSpriteIndex]
 	dec a
@@ -393,29 +393,29 @@ CheckForBoulderCollisionWithSprites:
 	ld e, a
 	ld hl, wSpriteStateData2 + $14
 	add hl, de
-	ld a, [hli] ; map Y position
+	ld a, [hli] // map Y position
 	ld [$ffdc], a
-	ld a, [hl] ; map X position
+	ld a, [hl] // map X position
 	ld [$ffdd], a
 	ld a, [wNumSprites]
 	ld c, a
 	ld de, $f
 	ld hl, wSpriteStateData2 + $14
 	ld a, [$ffdb]
-	and $3 ; facing up or down?
+	and $3 // facing up or down?
 	jr z, .pushingHorizontallyLoop
 .pushingVerticallyLoop
 	inc hl
 	ld a, [$ffdd]
 	cp [hl]
-	jr nz, .nextSprite1 ; if X coordinates don't match
+	jr nz, .nextSprite1 // if X coordinates don't match
 	dec hl
 	ld a, [hli]
 	ld b, a
 	ld a, [$ffdb]
 	rrca
 	jr c, .pushingDown
-; pushing up
+// pushing up
 	ld a, [$ffdc]
 	dec a
 	jr .compareYCoords
@@ -440,7 +440,7 @@ CheckForBoulderCollisionWithSprites:
 	ld a, [$ffdb]
 	bit 2, a
 	jr nz, .pushingLeft
-; pushing right
+// pushing right
 	ld a, [$ffdd]
 	inc a
 	jr .compareXCoords

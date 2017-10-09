@@ -9,7 +9,7 @@ AgathaScript:
 	ret
 
 AgathaShowOrHideExitBlock:
-; Blocks or clears the exit to the next room.
+// Blocks or clears the exit to the next room.
 	ld hl, wCurrentMapScriptFlags
 	bit 5, [hl]
 	res 5, [hl]
@@ -41,7 +41,7 @@ AgathaScript4:
 	ret
 
 AgathaScriptWalkIntoRoom:
-; Walk six steps upward.
+// Walk six steps upward.
 	ld hl, wSimulatedJoypadStatesEnd
 	ld a, D_UP
 	ld [hli], a
@@ -68,14 +68,14 @@ AgathaScript0:
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, [wCoordIndex]
-	cp $3  ; Is player standing one tile above the exit?
+	cp $3  // Is player standing one tile above the exit?
 	jr c, .stopPlayerFromLeaving
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
 	jr z, AgathaScriptWalkIntoRoom
 .stopPlayerFromLeaving
 	ld a, $2
 	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID  ; "Don't run away!"
+	call DisplayTextID  // "Don't run away!"
 	ld a, D_UP
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, $1
@@ -122,12 +122,12 @@ AgathaTextPointers:
 
 AgathaTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($0 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
-	dw AgathaBeforeBattleText ; TextBeforeBattle
-	dw AgathaAfterBattleText ; TextAfterBattle
-	dw AgathaEndBattleText ; TextEndBattle
-	dw AgathaEndBattleText ; TextEndBattle
+	dw AgathaBeforeBattleText // TextBeforeBattle
+	dw AgathaAfterBattleText // TextAfterBattle
+	dw AgathaEndBattleText // TextEndBattle
+	dw AgathaEndBattleText // TextEndBattle
 
 	db $ff
 

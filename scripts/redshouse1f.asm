@@ -5,11 +5,11 @@ RedsHouse1FTextPointers:
 	dw RedsHouse1FText1
 	dw RedsHouse1FText2
 
-RedsHouse1FText1: ; Mom
+RedsHouse1FText1: // Mom
 	TX_ASM
 	ld a, [wd72e]
 	bit 3, a
-	jr nz, .heal ; if player has received a Pokémon from Oak, heal team
+	jr nz, .heal // if player has received a Pokémon from Oak, heal team
 	ld hl, MomWakeUpText
 	call PrintText
 	jr .done
@@ -49,7 +49,7 @@ MomHealText2:
 	TX_FAR _MomHealText2
 	db "@"
 
-RedsHouse1FText2: ; TV
+RedsHouse1FText2: // TV
 	TX_ASM
 	ld a,[wSpriteStateData1 + 9]
 	cp SPRITE_FACING_UP

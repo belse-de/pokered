@@ -65,7 +65,7 @@ FuchsiaGymScript3_75497:
 	ld hl, wBeatGymFlags
 	set 4, [hl]
 
-	; deactivate gym trainers
+	// deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
 
 	jp FuchsiaGymScript_75477
@@ -85,57 +85,57 @@ FuchsiaGymTextPointers:
 
 FuchsiaGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
-	dw FuchsiaGymBattleText1 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText1 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText1 ; TextEndBattle
-	dw FuchsiaGymEndBattleText1 ; TextEndBattle
+	dw FuchsiaGymBattleText1 // TextBeforeBattle
+	dw FuchsiaGymAfterBattleText1 // TextAfterBattle
+	dw FuchsiaGymEndBattleText1 // TextEndBattle
+	dw FuchsiaGymEndBattleText1 // TextEndBattle
 
 FuchsiaGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
-	dw FuchsiaGymBattleText2 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText2 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText2 ; TextEndBattle
-	dw FuchsiaGymEndBattleText2 ; TextEndBattle
+	dw FuchsiaGymBattleText2 // TextBeforeBattle
+	dw FuchsiaGymAfterBattleText2 // TextAfterBattle
+	dw FuchsiaGymEndBattleText2 // TextEndBattle
+	dw FuchsiaGymEndBattleText2 // TextEndBattle
 
 FuchsiaGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
-	dw FuchsiaGymBattleText3 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText3 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText3 ; TextEndBattle
-	dw FuchsiaGymEndBattleText3 ; TextEndBattle
+	dw FuchsiaGymBattleText3 // TextBeforeBattle
+	dw FuchsiaGymAfterBattleText3 // TextAfterBattle
+	dw FuchsiaGymEndBattleText3 // TextEndBattle
+	dw FuchsiaGymEndBattleText3 // TextEndBattle
 
 FuchsiaGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
-	dw FuchsiaGymBattleText4 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText4 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText4 ; TextEndBattle
-	dw FuchsiaGymEndBattleText4 ; TextEndBattle
+	dw FuchsiaGymBattleText4 // TextBeforeBattle
+	dw FuchsiaGymAfterBattleText4 // TextAfterBattle
+	dw FuchsiaGymEndBattleText4 // TextEndBattle
+	dw FuchsiaGymEndBattleText4 // TextEndBattle
 
 FuchsiaGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
-	dw FuchsiaGymBattleText5 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText5 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText5 ; TextEndBattle
-	dw FuchsiaGymEndBattleText5 ; TextEndBattle
+	dw FuchsiaGymBattleText5 // TextBeforeBattle
+	dw FuchsiaGymAfterBattleText5 // TextAfterBattle
+	dw FuchsiaGymEndBattleText5 // TextEndBattle
+	dw FuchsiaGymEndBattleText5 // TextEndBattle
 
 FuchsiaGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
-	dw FuchsiaGymBattleText6 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText6 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText6 ; TextEndBattle
-	dw FuchsiaGymEndBattleText6 ; TextEndBattle
+	dw FuchsiaGymBattleText6 // TextBeforeBattle
+	dw FuchsiaGymAfterBattleText6 // TextAfterBattle
+	dw FuchsiaGymEndBattleText6 // TextEndBattle
+	dw FuchsiaGymEndBattleText6 // TextEndBattle
 
 	db $ff
 

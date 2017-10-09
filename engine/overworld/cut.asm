@@ -1,21 +1,21 @@
 UsedCut:
 	xor a
-	ld [wActionResultOrTookBattleTurn], a ; initialise to failure value
+	ld [wActionResultOrTookBattleTurn], a // initialise to failure value
 	ld a, [wCurMapTileset]
-	and a ; OVERWORLD
+	and a // OVERWORLD
 	jr z, .overworld
 	cp GYM
 	jr nz, .nothingToCut
 	ld a, [wTileInFrontOfPlayer]
-	cp $50 ; gym cut tree
+	cp $50 // gym cut tree
 	jr nz, .nothingToCut
 	jr .canCut
 .overworld
 	dec a
 	ld a, [wTileInFrontOfPlayer]
-	cp $3d ; cut tree
+	cp $3d // cut tree
 	jr z, .canCut
-	cp $52 ; grass
+	cp $52 // grass
 	jr z, .canCut
 .nothingToCut
 	ld hl, .NothingToCutText
@@ -28,7 +28,7 @@ UsedCut:
 .canCut
 	ld [wCutTile], a
 	ld a, 1
-	ld [wActionResultOrTookBattleTurn], a ; used cut
+	ld [wActionResultOrTookBattleTurn], a // used cut
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
@@ -79,12 +79,12 @@ InitCutAnimOAM:
 	ld a, [wCutTile]
 	cp $52
 	jr z, .grass
-; tree
-	ld de, Overworld_GFX + $2d0 ; cuttable tree sprite top row
+// tree
+	ld de, Overworld_GFX + $2d0 // cuttable tree sprite top row
 	ld hl, vChars1 + $7c0
 	lb bc, BANK(Overworld_GFX), $02
 	call CopyVideoData
-	ld de, Overworld_GFX + $3d0 ; cuttable tree sprite bottom row
+	ld de, Overworld_GFX + $3d0 // cuttable tree sprite bottom row
 	ld hl, vChars1 + $7e0
 	lb bc, BANK(Overworld_GFX), $02
 	call CopyVideoData
@@ -112,7 +112,7 @@ InitCutAnimOAM:
 	ret
 
 LoadCutGrassAnimationTilePattern:
-	ld de, AnimationTileset2 + $60 ; tile depicting a leaf
+	ld de, AnimationTileset2 + $60 // tile depicting a leaf
 	lb bc, BANK(AnimationTileset2), $01
 	jp CopyVideoData
 
@@ -128,17 +128,17 @@ CutOrBoulderDustAnimationTilesAndAttributes:
 
 GetCutOrBoulderDustAnimationOffsets:
 	ld hl, wSpriteStateData1 + 4
-	ld a, [hli] ; player's sprite screen Y position
+	ld a, [hli] // player's sprite screen Y position
 	ld b, a
 	inc hl
-	ld a, [hli] ; player's sprite screen X position
-	ld c, a ; bc holds ypos/xpos of player's sprite
+	ld a, [hli] // player's sprite screen X position
+	ld c, a // bc holds ypos/xpos of player's sprite
 	inc hl
 	inc hl
-	ld a, [hl] ; a holds direction of player (00: down, 04: up, 08: left, 0C: right)
+	ld a, [hl] // a holds direction of player (00: down, 04: up, 08: left, 0C: right)
 	srl a
 	ld e, a
-	ld d, $0 ; de holds direction (00: down, 02: up, 04: left, 06: right)
+	ld d, $0 // de holds direction (00: down, 02: up, 04: left, 06: right)
 	ld a, [wWhichAnimationOffsets]
 	and a
 	ld hl, CutAnimationOffsets
@@ -158,24 +158,24 @@ GetCutOrBoulderDustAnimationOffsets:
 	ret
 
 CutAnimationOffsets:
-; Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
-	db  8, 36 ; player is facing down
-	db  8,  4 ; player is facing up
-	db -8, 20 ; player is facing left
-	db 24, 20 ; player is facing right
+// Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
+	db  8, 36 // player is facing down
+	db  8,  4 // player is facing up
+	db -8, 20 // player is facing left
+	db 24, 20 // player is facing right
 
 BoulderDustAnimationOffsets:
-; Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
-; These offsets represent 2 blocks away from the player
-	db  8,  52 ; player is facing down
-	db  8, -12 ; player is facing up
-	db -24, 20 ; player is facing left
-	db 40,  20 ; player is facing right
+// Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
+// These offsets represent 2 blocks away from the player
+	db  8,  52 // player is facing down
+	db  8, -12 // player is facing up
+	db -24, 20 // player is facing left
+	db 40,  20 // player is facing right
 
 ReplaceTreeTileBlock:
-; Determine the address of the tile block that contains the tile in front of the
-; player (i.e. where the tree is) and replace it with the corresponding tile
-; block that doesn't have the tree.
+// Determine the address of the tile block that contains the tile in front of the
+// player (i.e. where the tree is) and replace it with the corresponding tile
+// block that doesn't have the tree.
 	push de
 	ld a, [wCurMapWidth]
 	add 6
@@ -187,14 +187,14 @@ ReplaceTreeTileBlock:
 	ld h, [hl]
 	ld l, a
 	add hl, bc
-	ld a, [wSpriteStateData1 + 9] ; player sprite's facing direction
+	ld a, [wSpriteStateData1 + 9] // player sprite's facing direction
 	and a
 	jr z, .down
 	cp SPRITE_FACING_UP
 	jr z, .up
 	cp SPRITE_FACING_LEFT
 	jr z, .left
-; right
+// right
 	ld a, [wXBlockCoord]
 	and a
 	jr z, .centerTileBlock
@@ -235,7 +235,7 @@ ReplaceTreeTileBlock:
 	pop de
 	ld a, [hl]
 	ld c, a
-.loop ; find the matching tile block in the array
+.loop // find the matching tile block in the array
 	ld a, [de]
 	inc de
 	inc de
@@ -244,13 +244,13 @@ ReplaceTreeTileBlock:
 	cp c
 	jr nz, .loop
 	dec de
-	ld a, [de] ; replacement tile block from matching array entry
+	ld a, [de] // replacement tile block from matching array entry
 	ld [hl], a
 	ret
 
 CutTreeBlockSwaps:
-; first byte = tileset block containing the cut tree
-; second byte = corresponding tileset block after the cut animation happens
+// first byte = tileset block containing the cut tree
+// second byte = corresponding tileset block after the cut animation happens
 	db $32, $6D
 	db $33, $6C
 	db $34, $6F
@@ -260,4 +260,4 @@ CutTreeBlockSwaps:
 	db $3C, $35
 	db $3F, $35
 	db $3D, $36
-	db $FF ; list terminator
+	db $FF // list terminator

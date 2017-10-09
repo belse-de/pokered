@@ -1,5 +1,5 @@
 DisplayPokemonCenterDialogue_:
-	call SaveScreenTilesToBuffer1 ; save screen
+	call SaveScreenTilesToBuffer1 // save screen
 	ld hl, PokemonCenterWelcomeText
 	call PrintText
 	ld hl, wd72e
@@ -10,19 +10,19 @@ DisplayPokemonCenterDialogue_:
 	ld hl, ShallWeHealYourPokemonText
 	call PrintText
 .skipShallWeHealYourPokemon
-	call YesNoChoicePokeCenter ; yes/no menu
+	call YesNoChoicePokeCenter // yes/no menu
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .declinedHealing ; if the player chose No
+	jr nz, .declinedHealing // if the player chose No
 	call SetLastBlackoutMap
-	call LoadScreenTilesFromBuffer1 ; restore screen
+	call LoadScreenTilesFromBuffer1 // restore screen
 	ld hl, NeedYourPokemonText
 	call PrintText
 	ld a, $18
-	ld [wSpriteStateData1 + $12], a ; make the nurse turn to face the machine
+	ld [wSpriteStateData1 + $12], a // make the nurse turn to face the machine
 	call Delay3
 	predef HealParty
-	callba AnimateHealingMachine ; do the healing machine animation
+	callba AnimateHealingMachine // do the healing machine animation
 	xor a
 	ld [wAudioFadeOutControl], a
 	ld a, [wAudioSavedROMBank]
@@ -34,12 +34,12 @@ DisplayPokemonCenterDialogue_:
 	ld hl, PokemonFightingFitText
 	call PrintText
 	ld a, $14
-	ld [wSpriteStateData1 + $12], a ; make the nurse bow
+	ld [wSpriteStateData1 + $12], a // make the nurse bow
 	ld c, a
 	call DelayFrames
 	jr .done
 .declinedHealing
-	call LoadScreenTilesFromBuffer1 ; restore screen
+	call LoadScreenTilesFromBuffer1 // restore screen
 .done
 	ld hl, PokemonCenterFarewellText
 	call PrintText

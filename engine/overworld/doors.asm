@@ -1,4 +1,4 @@
-; returns whether the player is standing on a door tile in carry
+// returns whether the player is standing on a door tile in carry
 IsPlayerStandingOnDoorTile:
 	push de
 	ld hl, DoorTileIDPointers
@@ -11,7 +11,7 @@ IsPlayerStandingOnDoorTile:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	aCoord 8, 9 ; a = lower left background tile under player's sprite
+	aCoord 8, 9 // a = lower left background tile under player's sprite
 	ld b, a
 .loop
 	ld a, [hli]

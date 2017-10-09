@@ -1,6 +1,6 @@
 TrainerPicAndMoneyPointers:
-; trainer pic pointers and base money.
-; money received after battle = base money × level of highest-level enemy mon
+// trainer pic pointers and base money.
+// money received after battle = base money × level of highest-level enemy mon
 	dw YoungsterPic
 	money 1500
 

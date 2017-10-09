@@ -1,5 +1,5 @@
 TitleMons:
-; mons on the title screen are randomly chosen from here
+// mons on the title screen are randomly chosen from here
 IF DEF(_RED)
 	db CHARMANDER
 	db SQUIRTLE

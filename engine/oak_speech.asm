@@ -33,7 +33,7 @@ SetDefaultNames:
 
 OakSpeech:
 	ld a,$FF
-	call PlaySound ; stop music
+	call PlaySound // stop music
 	ld a, BANK(Music_Routes2)
 	ld c,a
 	ld a, MUSIC_ROUTES2
@@ -47,14 +47,14 @@ OakSpeech:
 	ld [wcf91],a
 	ld a,1
 	ld [wItemQuantity],a
-	call AddItemToInventory  ; give one potion
+	call AddItemToInventory  // give one potion
 	ld a,[wDefaultMap]
 	ld [wDestinationMap],a
 	call SpecialWarpIn
 	xor a
 	ld [hTilesetType],a
 	ld a,[wd732]
-	bit 1,a ; possibly a debug mode bit
+	bit 1,a // possibly a debug mode bit
 	jp nz,.skipChoosingNames
 	ld de,ProfOakPic
 	lb bc, Bank(ProfOakPic), $00
@@ -135,7 +135,7 @@ OakSpeech:
 	ld [wAudioFadeOutControl],a
 	ld a,$FF
 	ld [wNewSoundID],a
-	call PlaySound ; stop music
+	call PlaySound // stop music
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
@@ -209,9 +209,9 @@ MovePicLeft:
 DisplayPicCenteredOrUpperRight:
 	call GetPredefRegisters
 IntroDisplayPicCenteredOrUpperRight:
-; b = bank
-; de = address of compressed pic
-; c: 0 = centred, non-zero = upper-right
+// b = bank
+// de = address of compressed pic
+// c: 0 = centred, non-zero = upper-right
 	push bc
 	ld a,b
 	call UncompressSpriteFromDE

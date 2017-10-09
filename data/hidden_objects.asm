@@ -87,7 +87,7 @@ HiddenObjectMaps:
 	db $FF
 
 HiddenObjectPointers:
-; each of these pointers is for the corresponding map in HiddenObjectMaps
+// each of these pointers is for the corresponding map in HiddenObjectMaps
 	dw RedsHouse2FHiddenObjects
 	dw BluesHouseHiddenObjects
 	dw OaksLabHiddenObjects
@@ -174,7 +174,7 @@ HiddenObjectPointers:
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
 
-; format: y-coord, x-coord, text id/item id, object routine
+// format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
 	db $04,$05,$d0
 	db BANK(CableClubRightGameboy)
@@ -368,13 +368,13 @@ GameCornerHiddenObjects:
 	dbw BANK(StartSlotMachine), StartSlotMachine
 	db $0b,$12,$d0
 	dbw BANK(StartSlotMachine), StartSlotMachine
-	db $0a,$12,$ff ; "Someone's Keys"
+	db $0a,$12,$ff // "Someone's Keys"
 	dbw BANK(StartSlotMachine), StartSlotMachine
 	db $0a,$0d,$d0
 	dbw BANK(StartSlotMachine), StartSlotMachine
 	db $0b,$0d,$d0
 	dbw BANK(StartSlotMachine), StartSlotMachine
-	db $0c,$0d,$fe ; "Out To Lunch"
+	db $0c,$0d,$fe // "Out To Lunch"
 	dbw BANK(StartSlotMachine), StartSlotMachine
 	db $0d,$0d,$d0
 	dbw BANK(StartSlotMachine), StartSlotMachine
@@ -412,7 +412,7 @@ GameCornerHiddenObjects:
 	dbw BANK(StartSlotMachine), StartSlotMachine
 	db $0d,$06,$d0
 	dbw BANK(StartSlotMachine), StartSlotMachine
-	db $0c,$06,$fd ; "Out Of Order"
+	db $0c,$06,$fd // "Out Of Order"
 	dbw BANK(StartSlotMachine), StartSlotMachine
 	db $0b,$06,$d0
 	dbw BANK(StartSlotMachine), StartSlotMachine

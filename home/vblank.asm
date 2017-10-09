@@ -26,13 +26,13 @@ VBlank::
 	call VBlankCopy
 	call VBlankCopyDouble
 	call UpdateMovingBgTiles
-	call $ff80 ; hOAMDMA
+	call $ff80 // hOAMDMA
 	ld a, BANK(PrepareOAMData)
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 	call PrepareOAMData
 
-	; VBlank-sensitive operations end.
+	// VBlank-sensitive operations end.
 
 	call Random
 
@@ -52,7 +52,7 @@ VBlank::
 .skipDec
 	call FadeOutAudio
 
-	ld a, [wAudioROMBank] ; music ROM bank
+	ld a, [wAudioROMBank] // music ROM bank
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 
@@ -72,7 +72,7 @@ VBlank::
 	call Audio3_UpdateMusic
 .afterMusic
 
-	callba TrackPlayTime ; keep track of time played
+	callba TrackPlayTime // keep track of time played
 
 	ld a, [hDisableJoypadPolling]
 	and a
@@ -90,8 +90,8 @@ VBlank::
 
 
 DelayFrame::
-; Wait for the next vblank interrupt.
-; As a bonus, this saves battery.
+// Wait for the next vblank interrupt.
+// As a bonus, this saves battery.
 
 NOT_VBLANKED EQU 1
 

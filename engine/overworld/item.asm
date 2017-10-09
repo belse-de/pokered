@@ -25,8 +25,8 @@ PickUpItem:
 	ld e, a
 	add hl, de
 	ld a, [hl]
-	ld b, a ; item
-	ld c, 1 ; quantity
+	ld b, a // item
+	ld c, 1 // quantity
 	call GiveItem
 	jr nc, .BagFull
 

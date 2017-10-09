@@ -1,4 +1,4 @@
-; does nothing since no stats are ever selected (barring glitches)
+// does nothing since no stats are ever selected (barring glitches)
 DoubleSelectedStats:
 	ld a, [H_WHOSETURN]
 	and a
@@ -28,7 +28,7 @@ DoubleSelectedStats:
 	ld [hli], a
 	ret
 
-; does nothing since no stats are ever selected (barring glitches)
+// does nothing since no stats are ever selected (barring glitches)
 HalveSelectedStats:
 	ld a, [H_WHOSETURN]
 	and a

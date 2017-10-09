@@ -1,13 +1,13 @@
 Predef::
-; Call predefined function a.
-; To preserve other registers, have the
-; destination call GetPredefRegisters.
+// Call predefined function a.
+// To preserve other registers, have the
+// destination call GetPredefRegisters.
 
-	; Save the predef id for GetPredefPointer.
+	// Save the predef id for GetPredefPointer.
 	ld [wPredefID], a
 
-	; A hack for LoadDestinationWarpPosition.
-	; See LoadTilesetHeader (predef $19).
+	// A hack for LoadDestinationWarpPosition.
+	// See LoadTilesetHeader (predef $19).
 	ld a, [H_LOADEDROMBANK]
 	ld [wPredefParentBank], a
 
@@ -33,8 +33,8 @@ Predef::
 	ret
 
 GetPredefRegisters::
-; Restore the contents of register pairs
-; when GetPredefPointer was called.
+// Restore the contents of register pairs
+// when GetPredefPointer was called.
 	ld a, [wPredefRegisters + 0]
 	ld h, a
 	ld a, [wPredefRegisters + 1]

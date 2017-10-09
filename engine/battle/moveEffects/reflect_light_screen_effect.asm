@@ -10,15 +10,15 @@ ReflectLightScreenEffect_:
 	ld a, [de]
 	cp LIGHT_SCREEN_EFFECT
 	jr nz, .reflect
-	bit HasLightScreenUp, [hl] ; is mon already protected by light screen?
+	bit HasLightScreenUp, [hl] // is mon already protected by light screen?
 	jr nz, .moveFailed
-	set HasLightScreenUp, [hl] ; mon is now protected by light screen
+	set HasLightScreenUp, [hl] // mon is now protected by light screen
 	ld hl, LightScreenProtectedText
 	jr .playAnim
 .reflect
-	bit HasReflectUp, [hl] ; is mon already protected by reflect?
+	bit HasReflectUp, [hl] // is mon already protected by reflect?
 	jr nz, .moveFailed
-	set HasReflectUp, [hl] ; mon is now protected by reflect
+	set HasReflectUp, [hl] // mon is now protected by reflect
 	ld hl, ReflectGainedArmorText
 .playAnim
 	push hl

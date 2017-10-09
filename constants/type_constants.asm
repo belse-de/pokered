@@ -1,4 +1,4 @@
-; Elemental types
+// Elemental types
 NORMAL   EQU $00
 FIGHTING EQU $01
 FLYING   EQU $02

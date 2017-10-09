@@ -12,7 +12,7 @@ ChoosePlayerName:
 	jr .done
 .customName
 	ld hl, wPlayerName
-	xor a ; NAME_PLAYER_SCREEN
+	xor a // NAME_PLAYER_SCREEN
 	ld [wNamingScreenType], a
 	call DisplayNamingScreen
 	ld a, [wcf4b]
@@ -68,7 +68,7 @@ OakSpeechSlidePicLeft:
 	push de
 	coord hl, 0, 0
 	lb bc, 12, 11
-	call ClearScreenArea ; clear the name list text box
+	call ClearScreenArea // clear the name list text box
 	ld c, 10
 	call DelayFrames
 	pop de
@@ -99,7 +99,7 @@ OakSpeechSlidePicCommon:
 	ld a, [hSlideDirection]
 	and a
 	jr nz, .next
-; If sliding right, point hl to the end of the pic's tiles.
+// If sliding right, point hl to the end of the pic's tiles.
 	ld d, 0
 	add hl, de
 .next
@@ -111,7 +111,7 @@ OakSpeechSlidePicCommon:
 	ld a, [hSlideDirection]
 	and a
 	jr nz, .slideLeft
-; sliding right
+// sliding right
 	ld a, [hli]
 	ld [hld], a
 	dec hl
@@ -126,9 +126,9 @@ OakSpeechSlidePicCommon:
 	ld a, [hSlideDirection]
 	and a
 	jr z, .next3
-; If sliding left, we need to zero the last tile in the pic (there is no need
-; to take a corresponding action when sliding right because hl initially points
-; to a 0 tile in that case).
+// If sliding left, we need to zero the last tile in the pic (there is no need
+// to take a corresponding action when sliding right because hl initially points
+// to a 0 tile in that case).
 	xor a
 	dec hl
 	ld [hl], a
@@ -177,7 +177,7 @@ DisplayIntroNameTextBox:
 	ld [wLastMenuItem], a
 	inc a
 	ld [wTopMenuItemX], a
-	ld [wMenuWatchedKeys], a ; A_BUTTON
+	ld [wMenuWatchedKeys], a // A_BUTTON
 	inc a
 	ld [wTopMenuItemY], a
 	inc a
@@ -220,8 +220,8 @@ DefaultNamesRival:
 ENDC
 
 GetDefaultName:
-; a = name index
-; hl = name list
+// a = name index
+// hl = name list
 	ld b, a
 	ld c, 0
 .loop

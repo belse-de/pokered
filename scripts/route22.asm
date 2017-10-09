@@ -70,7 +70,7 @@ Route22Script0:
 	ld [wPlayerMovingDirection], a
 	CheckEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
 	jr nz, .firstRivalBattle
-	CheckEventReuseA EVENT_2ND_ROUTE22_RIVAL_BATTLE ; is this the rival at the end of the game?
+	CheckEventReuseA EVENT_2ND_ROUTE22_RIVAL_BATTLE // is this the rival at the end of the game?
 	jp nz, Route22Script_5104e
 	ret
 
@@ -82,7 +82,7 @@ Route22Script0:
 .firstRivalBattle
 	ld a, $1
 	ld [wEmotionBubbleSpriteIndex], a
-	xor a ; EXCLAMATION_BUBBLE
+	xor a // EXCLAMATION_BUBBLE
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
 	ld a, [wWalkBikeSurfState]
@@ -140,7 +140,7 @@ Route22Script1:
 	ret
 
 StarterMons_50faf:
-; starter the rival picked, rival trainer number
+// starter the rival picked, rival trainer number
 	db STARTER2,$04
 	db STARTER3,$05
 	db STARTER1,$06
@@ -150,7 +150,7 @@ Route22Script2:
 	cp $ff
 	jp z, Route22Script_50ece
 	ld a, [wSpriteStateData1 + 9]
-	and a ; cp SPRITE_FACING_DOWN
+	and a // cp SPRITE_FACING_DOWN
 	jr nz, .notDown
 	ld a, SPRITE_FACING_UP
 	jr .done
@@ -235,7 +235,7 @@ Route22Script3:
 Route22Script_5104e:
 	ld a, $2
 	ld [wEmotionBubbleSpriteIndex], a
-	xor a ; EXCLAMATION_BUBBLE
+	xor a // EXCLAMATION_BUBBLE
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
 	ld a, [wWalkBikeSurfState]

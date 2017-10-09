@@ -13,7 +13,7 @@ Serial::
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	jr z, .done
-; using external clock
+// using external clock
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	ld [rSC], a
 	jr .done
@@ -23,7 +23,7 @@ Serial::
 	ld [hSerialConnectionStatus], a
 	cp USING_INTERNAL_CLOCK
 	jr z, .usingInternalClock
-; using external clock
+// using external clock
 	xor a
 	ld [rSB], a
 	ld a, $3
@@ -49,9 +49,9 @@ Serial::
 	pop af
 	reti
 
-; hl = send data
-; de = receive data
-; bc = length of data
+// hl = send data
+// de = receive data
+// bc = length of data
 Serial_ExchangeBytes::
 	ld a, 1
 	ld [hSerialIgnoringInitialData], a
@@ -189,19 +189,19 @@ IsUnknownCounterZero::
 	pop hl
 	ret
 
-; a is always 0 when this is called
+// a is always 0 when this is called
 SetUnknownCounterToFFFF::
 	dec a
 	ld [wUnknownSerialCounter], a
 	ld [wUnknownSerialCounter + 1], a
 	ret
 
-; This is used to exchange the button press and selected menu item on the link menu.
-; The data is sent thrice and read twice to increase reliability.
+// This is used to exchange the button press and selected menu item on the link menu.
+// The data is sent thrice and read twice to increase reliability.
 Serial_ExchangeLinkMenuSelection::
 	ld hl, wLinkMenuSelectionSendBuffer
 	ld de, wLinkMenuSelectionReceiveBuffer
-	ld c, 2 ; number of bytes to save
+	ld c, 2 // number of bytes to save
 	ld a, 1
 	ld [hSerialIgnoringInitialData], a
 .loop

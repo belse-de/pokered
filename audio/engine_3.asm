@@ -1,4 +1,4 @@
-; The third of three duplicated sound engines.
+// The third of three duplicated sound engines.
 
 Audio3_UpdateMusic::
 	ld c, Ch0
@@ -11,7 +11,7 @@ Audio3_UpdateMusic::
 	jr z, .nextChannel
 	ld a, c
 	cp Ch4
-	jr nc, .applyAffects ; if sfx channel
+	jr nc, .applyAffects // if sfx channel
 	ld a, [wMuteAudioAndPauseMusic]
 	and a
 	jr z, .applyAffects
@@ -29,31 +29,31 @@ Audio3_UpdateMusic::
 	call Audio3_ApplyMusicAffects
 .nextChannel
 	ld a, c
-	inc c ; inc channel number
+	inc c // inc channel number
 	cp Ch7
 	jr nz, .loop
 	ret
 
-; this routine checks flags for music effects currently applied
-; to the channel and calls certain functions based on flags.
-; known flags for wChannelFlags1:
-;   0: toggleperfectpitch has been used
-;   1: call has been used
-;   3: a toggle used only by this routine for vibrato
-;   4: pitchbend flag
-;   6: dutycycle flag
+// this routine checks flags for music effects currently applied
+// to the channel and calls certain functions based on flags.
+// known flags for wChannelFlags1:
+//   0: toggleperfectpitch has been used
+//   1: call has been used
+//   3: a toggle used only by this routine for vibrato
+//   4: pitchbend flag
+//   6: dutycycle flag
 Audio3_ApplyMusicAffects:
 	ld b, $0
-	ld hl, wChannelNoteDelayCounters ; delay until next note
+	ld hl, wChannelNoteDelayCounters // delay until next note
 	add hl, bc
 	ld a, [hl]
-	cp $1 ; if delay is 1, play next note
+	cp $1 // if delay is 1, play next note
 	jp z, Audio3_PlayNextNote
-	dec a ; otherwise, decrease the delay timer
+	dec a // otherwise, decrease the delay timer
 	ld [hl], a
 	ld a, c
 	cp Ch4
-	jr nc, .startChecks ; if a sfx channel
+	jr nc, .startChecks // if a sfx channel
 	ld hl, wChannelSoundIDs + Ch4
 	add hl, bc
 	ld a, [hl]
@@ -63,7 +63,7 @@ Audio3_ApplyMusicAffects:
 .startChecks
 	ld hl, wChannelFlags1
 	add hl, bc
-	bit 6, [hl] ; dutycycle
+	bit 6, [hl] // dutycycle
 	jr z, .checkForExecuteMusic
 	call Audio3_ApplyDutyCycle
 .checkForExecuteMusic
@@ -79,25 +79,25 @@ Audio3_ApplyMusicAffects:
 .checkForPitchBend
 	ld hl, wChannelFlags1
 	add hl, bc
-	bit 4, [hl] ; pitchbend
+	bit 4, [hl] // pitchbend
 	jr z, .checkVibratoDelay
 	jp Audio3_ApplyPitchBend
 .checkVibratoDelay
-	ld hl, wChannelVibratoDelayCounters ; vibrato delay
+	ld hl, wChannelVibratoDelayCounters // vibrato delay
 	add hl, bc
 	ld a, [hl]
-	and a ; check if delay is over
+	and a // check if delay is over
 	jr z, .checkForVibrato
-	dec [hl] ; otherwise, dec delay
+	dec [hl] // otherwise, dec delay
 .disablePitchBendVibrato
 	ret
 .checkForVibrato
-	ld hl, wChannelVibratoExtents ; vibrato rate
+	ld hl, wChannelVibratoExtents // vibrato rate
 	add hl, bc
 	ld a, [hl]
 	and a
 	jr nz, .vibrato
-	ret ; no vibrato
+	ret // no vibrato
 .vibrato
 	ld d, a
 	ld hl, wChannelVibratoRates
@@ -106,20 +106,20 @@ Audio3_ApplyMusicAffects:
 	and $f
 	and a
 	jr z, .vibratoAlreadyDone
-	dec [hl] ; apply vibrato pitch change
+	dec [hl] // apply vibrato pitch change
 	ret
 .vibratoAlreadyDone
 	ld a, [hl]
 	swap [hl]
 	or [hl]
-	ld [hl], a ; reset the vibrato value and start again
+	ld [hl], a // reset the vibrato value and start again
 	ld hl, wChannelFrequencyLowBytes
 	add hl, bc
-	ld e, [hl] ; get note pitch
+	ld e, [hl] // get note pitch
 	ld hl, wChannelFlags1
 	add hl, bc
-	bit 3, [hl] ; this is the only code that sets/resets bit three so
-	jr z, .unset ; it continuously alternates which path it takes
+	bit 3, [hl] // this is the only code that sets/resets bit three so
+	jr z, .unset // it continuously alternates which path it takes
 	res 3, [hl]
 	ld a, d
 	and $f
@@ -145,9 +145,9 @@ Audio3_ApplyMusicAffects:
 	ld [hl], d
 	ret
 
-; this routine executes all music commands that take up no time,
-; like tempo changes, duty changes etc. and doesn't return
-; until the first note is reached
+// this routine executes all music commands that take up no time,
+// like tempo changes, duty changes etc. and doesn't return
+// until the first note is reached
 Audio3_PlayNextNote:
 	ld hl, wChannelVibratoDelayCounterReloadValues
 	add hl, bc
@@ -165,9 +165,9 @@ Audio3_PlayNextNote:
 Audio3_endchannel:
 	call Audio3_GetNextMusicByte
 	ld d, a
-	cp $ff ; is this command an endchannel?
-	jp nz, Audio3_callchannel ; no
-	ld b, $0 ; yes
+	cp $ff // is this command an endchannel?
+	jp nz, Audio3_callchannel // no
+	ld b, $0 // yes
 	ld hl, wChannelFlags1
 	add hl, bc
 	bit 1, [hl]
@@ -205,7 +205,7 @@ Audio3_endchannel:
 	ld e, a
 	ld hl, wChannelCommandPointers
 	add hl, de
-	push hl ; store current channel address
+	push hl // store current channel address
 	ld hl, wChannelReturnAddresses
 	add hl, de
 	ld e, l
@@ -215,7 +215,7 @@ Audio3_endchannel:
 	ld [hli], a
 	inc de
 	ld a, [de]
-	ld [hl], a ; loads channel address to return to
+	ld [hl], a // loads channel address to return to
 	jp Audio3_endchannel
 .asm_7d2b3
 	ld hl, Unknown_7db93
@@ -252,15 +252,15 @@ Audio3_endchannel:
 	ret
 
 Audio3_callchannel:
-	cp $fd ; is this command a callchannel?
-	jp nz, Audio3_loopchannel ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $fd // is this command a callchannel?
+	jp nz, Audio3_loopchannel // no
+	call Audio3_GetNextMusicByte // yes
 	push af
 	call Audio3_GetNextMusicByte
 	ld d, a
 	pop af
 	ld e, a
-	push de ; store pointer
+	push de // store pointer
 	ld d, $0
 	ld a, c
 	add a
@@ -277,21 +277,21 @@ Audio3_callchannel:
 	ld [de], a
 	inc de
 	ld a, [hld]
-	ld [de], a ; copy current channel address
+	ld [de], a // copy current channel address
 	pop de
 	ld [hl], e
 	inc hl
-	ld [hl], d ; overwrite current address with pointer
+	ld [hl], d // overwrite current address with pointer
 	ld b, $0
 	ld hl, wChannelFlags1
 	add hl, bc
-	set 1, [hl] ; set the call flag
+	set 1, [hl] // set the call flag
 	jp Audio3_endchannel
 
 Audio3_loopchannel:
-	cp $fe ; is this command a loopchannel?
-	jp nz, Audio3_notetype ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $fe // is this command a loopchannel?
+	jp nz, Audio3_notetype // no
+	call Audio3_GetNextMusicByte // yes
 	ld e, a
 	and a
 	jr z, .infiniteLoop
@@ -301,16 +301,16 @@ Audio3_loopchannel:
 	ld a, [hl]
 	cp e
 	jr nz, .loopAgain
-	ld a, $1 ; if no more loops to make
+	ld a, $1 // if no more loops to make
 	ld [hl], a
-	call Audio3_GetNextMusicByte ; skip pointer
+	call Audio3_GetNextMusicByte // skip pointer
 	call Audio3_GetNextMusicByte
 	jp Audio3_endchannel
-.loopAgain ; inc loop count
+.loopAgain // inc loop count
 	inc a
 	ld [hl], a
-	; fall through
-.infiniteLoop ; overwrite current address with pointer
+	// fall through
+.infiniteLoop // overwrite current address with pointer
 	call Audio3_GetNextMusicByte
 	push af
 	call Audio3_GetNextMusicByte
@@ -328,17 +328,17 @@ Audio3_loopchannel:
 
 Audio3_notetype:
 	and $f0
-	cp $d0 ; is this command a notetype?
-	jp nz, Audio3_toggleperfectpitch ; no
-	ld a, d ; yes
+	cp $d0 // is this command a notetype?
+	jp nz, Audio3_toggleperfectpitch // no
+	ld a, d // yes
 	and $f
 	ld b, $0
 	ld hl, wChannelNoteSpeeds
 	add hl, bc
-	ld [hl], a ; store low nibble as speed
+	ld [hl], a // store low nibble as speed
 	ld a, c
 	cp Ch3
-	jr z, .noiseChannel ; noise channel has 0 params
+	jr z, .noiseChannel // noise channel has 0 params
 	call Audio3_GetNextMusicByte
 	ld d, a
 	ld a, c
@@ -353,15 +353,15 @@ Audio3_notetype:
 .sfxChannel3
 	ld a, d
 	and $f
-	ld [hl], a ; store low nibble of param as duty
+	ld [hl], a // store low nibble of param as duty
 	ld a, d
 	and $30
 	sla a
 	ld d, a
-	; fall through
+	// fall through
 
-	; if channel 3, store high nibble as volume
-	; else, store volume (high nibble) and fade (low nibble)
+	// if channel 3, store high nibble as volume
+	// else, store volume (high nibble) and fade (low nibble)
 .notChannel3
 	ld b, $0
 	ld hl, wChannelVolumes
@@ -372,27 +372,27 @@ Audio3_notetype:
 
 Audio3_toggleperfectpitch:
 	ld a, d
-	cp $e8 ; is this command a toggleperfectpitch?
-	jr nz, Audio3_vibrato ; no
-	ld b, $0 ; yes
+	cp $e8 // is this command a toggleperfectpitch?
+	jr nz, Audio3_vibrato // no
+	ld b, $0 // yes
 	ld hl, wChannelFlags1
 	add hl, bc
 	ld a, [hl]
 	xor $1
-	ld [hl], a ; flip bit 0 of wChannelFlags1
+	ld [hl], a // flip bit 0 of wChannelFlags1
 	jp Audio3_endchannel
 
 Audio3_vibrato:
-	cp $ea ; is this command a vibrato?
-	jr nz, Audio3_pitchbend ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $ea // is this command a vibrato?
+	jr nz, Audio3_pitchbend // no
+	call Audio3_GetNextMusicByte // yes
 	ld b, $0
 	ld hl, wChannelVibratoDelayCounters
 	add hl, bc
-	ld [hl], a ; store delay
+	ld [hl], a // store delay
 	ld hl, wChannelVibratoDelayCounterReloadValues
 	add hl, bc
-	ld [hl], a ; store delay
+	ld [hl], a // store delay
 	call Audio3_GetNextMusicByte
 	ld d, a
 	and $f0
@@ -405,7 +405,7 @@ Audio3_vibrato:
 	adc b
 	swap a
 	or e
-	ld [hl], a ; store rate as both high and low nibbles
+	ld [hl], a // store rate as both high and low nibbles
 	ld a, d
 	and $f
 	ld d, a
@@ -413,17 +413,17 @@ Audio3_vibrato:
 	add hl, bc
 	swap a
 	or d
-	ld [hl], a ; store depth as both high and low nibbles
+	ld [hl], a // store depth as both high and low nibbles
 	jp Audio3_endchannel
 
 Audio3_pitchbend:
-	cp $eb ; is this command a pitchbend?
-	jr nz, Audio3_duty ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $eb // is this command a pitchbend?
+	jr nz, Audio3_duty // no
+	call Audio3_GetNextMusicByte // yes
 	ld b, $0
 	ld hl, wChannelPitchBendLengthModifiers
 	add hl, bc
-	ld [hl], a ; store first param
+	ld [hl], a // store first param
 	call Audio3_GetNextMusicByte
 	ld d, a
 	and $f0
@@ -435,54 +435,54 @@ Audio3_pitchbend:
 	ld b, $0
 	ld hl, wChannelPitchBendTargetFrequencyHighBytes
 	add hl, bc
-	ld [hl], d ; store unknown part of second param
+	ld [hl], d // store unknown part of second param
 	ld hl, wChannelPitchBendTargetFrequencyLowBytes
 	add hl, bc
-	ld [hl], e ; store unknown part of second param
+	ld [hl], e // store unknown part of second param
 	ld b, $0
 	ld hl, wChannelFlags1
 	add hl, bc
-	set 4, [hl] ; set pitchbend flag
+	set 4, [hl] // set pitchbend flag
 	call Audio3_GetNextMusicByte
 	ld d, a
 	jp Audio3_notelength
 
 Audio3_duty:
-	cp $ec ; is this command a duty?
-	jr nz, Audio3_tempo ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $ec // is this command a duty?
+	jr nz, Audio3_tempo // no
+	call Audio3_GetNextMusicByte // yes
 	rrca
 	rrca
 	and $c0
 	ld b, $0
 	ld hl, wChannelDuties
 	add hl, bc
-	ld [hl], a ; store duty
+	ld [hl], a // store duty
 	jp Audio3_endchannel
 
 Audio3_tempo:
-	cp $ed ; is this command a tempo?
-	jr nz, Audio3_stereopanning ; no
-	ld a, c ; yes
+	cp $ed // is this command a tempo?
+	jr nz, Audio3_stereopanning // no
+	ld a, c // yes
 	cp Ch4
 	jr nc, .sfxChannel
 	call Audio3_GetNextMusicByte
-	ld [wMusicTempo], a ; store first param
+	ld [wMusicTempo], a // store first param
 	call Audio3_GetNextMusicByte
-	ld [wMusicTempo + 1], a ; store second param
+	ld [wMusicTempo + 1], a // store second param
 	xor a
-	ld [wChannelNoteDelayCountersFractionalPart], a ; clear RAM
+	ld [wChannelNoteDelayCountersFractionalPart], a // clear RAM
 	ld [wChannelNoteDelayCountersFractionalPart + 1], a
 	ld [wChannelNoteDelayCountersFractionalPart + 2], a
 	ld [wChannelNoteDelayCountersFractionalPart + 3], a
 	jr .musicChannelDone
 .sfxChannel
 	call Audio3_GetNextMusicByte
-	ld [wSfxTempo], a ; store first param
+	ld [wSfxTempo], a // store first param
 	call Audio3_GetNextMusicByte
-	ld [wSfxTempo + 1], a ; store second param
+	ld [wSfxTempo + 1], a // store second param
 	xor a
-	ld [wChannelNoteDelayCountersFractionalPart + 4], a ; clear RAM
+	ld [wChannelNoteDelayCountersFractionalPart + 4], a // clear RAM
 	ld [wChannelNoteDelayCountersFractionalPart + 5], a
 	ld [wChannelNoteDelayCountersFractionalPart + 6], a
 	ld [wChannelNoteDelayCountersFractionalPart + 7], a
@@ -490,17 +490,17 @@ Audio3_tempo:
 	jp Audio3_endchannel
 
 Audio3_stereopanning:
-	cp $ee ; is this command a stereopanning?
-	jr nz, Audio3_unknownmusic0xef ; no
-	call Audio3_GetNextMusicByte ; yes
-	ld [wStereoPanning], a ; store panning
+	cp $ee // is this command a stereopanning?
+	jr nz, Audio3_unknownmusic0xef // no
+	call Audio3_GetNextMusicByte // yes
+	ld [wStereoPanning], a // store panning
 	jp Audio3_endchannel
 
-; this appears to never be used
+// this appears to never be used
 Audio3_unknownmusic0xef:
-	cp $ef ; is this command an unknownmusic0xef?
-	jr nz, Audio3_dutycycle ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $ef // is this command an unknownmusic0xef?
+	jr nz, Audio3_dutycycle // no
+	call Audio3_GetNextMusicByte // yes
 	push bc
 	call Audio3_PlaySound
 	pop bc
@@ -515,33 +515,33 @@ Audio3_unknownmusic0xef:
 	jp Audio3_endchannel
 
 Audio3_dutycycle:
-	cp $fc ; is this command a dutycycle?
-	jr nz, Audio3_volume ; no
-	call Audio3_GetNextMusicByte ; yes
+	cp $fc // is this command a dutycycle?
+	jr nz, Audio3_volume // no
+	call Audio3_GetNextMusicByte // yes
 	ld b, $0
 	ld hl, wChannelDutyCycles
 	add hl, bc
-	ld [hl], a ; store full cycle
+	ld [hl], a // store full cycle
 	and $c0
 	ld hl, wChannelDuties
 	add hl, bc
-	ld [hl], a ; store first duty
+	ld [hl], a // store first duty
 	ld hl, wChannelFlags1
 	add hl, bc
-	set 6, [hl] ; set duty flag
+	set 6, [hl] // set duty flag
 	jp Audio3_endchannel
 
 Audio3_volume:
-	cp $f0 ; is this command a volume?
-	jr nz, Audio3_executemusic ; no
-	call Audio3_GetNextMusicByte ; yes
-	ld [rNR50], a ; store volume
+	cp $f0 // is this command a volume?
+	jr nz, Audio3_executemusic // no
+	call Audio3_GetNextMusicByte // yes
+	ld [rNR50], a // store volume
 	jp Audio3_endchannel
 
 Audio3_executemusic:
-	cp $f8 ; is this command an executemusic?
-	jr nz, Audio3_octave ; no
-	ld b, $0 ; yes
+	cp $f8 // is this command an executemusic?
+	jr nz, Audio3_octave // no
+	ld b, $0 // yes
 	ld hl, wChannelFlags2
 	add hl, bc
 	set 0, [hl]
@@ -549,28 +549,28 @@ Audio3_executemusic:
 
 Audio3_octave:
 	and $f0
-	cp $e0 ; is this command an octave?
-	jr nz, Audio3_unknownsfx0x20 ; no
-	ld hl, wChannelOctaves ; yes
+	cp $e0 // is this command an octave?
+	jr nz, Audio3_unknownsfx0x20 // no
+	ld hl, wChannelOctaves // yes
 	ld b, $0
 	add hl, bc
 	ld a, d
 	and $f
-	ld [hl], a ; store low nibble as octave
+	ld [hl], a // store low nibble as octave
 	jp Audio3_endchannel
 
 Audio3_unknownsfx0x20:
-	cp $20 ; is this command an unknownsfx0x20?
-	jr nz, Audio3_unknownsfx0x10 ; no
+	cp $20 // is this command an unknownsfx0x20?
+	jr nz, Audio3_unknownsfx0x10 // no
 	ld a, c
-	cp Ch3 ; is this a noise or sfx channel?
-	jr c, Audio3_unknownsfx0x10 ; no
+	cp Ch3 // is this a noise or sfx channel?
+	jr c, Audio3_unknownsfx0x10 // no
 	ld b, $0
 	ld hl, wChannelFlags2
 	add hl, bc
 	bit 0, [hl]
-	jr nz, Audio3_unknownsfx0x10 ; no
-	call Audio3_notelength ; yes
+	jr nz, Audio3_unknownsfx0x10 // no
+	call Audio3_notelength // yes
 	ld d, a
 	ld b, $0
 	ld hl, wChannelDuties
@@ -591,7 +591,7 @@ Audio3_unknownsfx0x20:
 	ld a, c
 	cp Ch7
 	ld a, $0
-	jr z, .sfxNoiseChannel ; only two params for noise channel
+	jr z, .sfxNoiseChannel // only two params for noise channel
 	push de
 	call Audio3_GetNextMusicByte
 	pop de
@@ -607,28 +607,28 @@ Audio3_unknownsfx0x20:
 Audio3_unknownsfx0x10:
 	ld a, c
 	cp Ch4
-	jr c, Audio3_note ; if not a sfx
+	jr c, Audio3_note // if not a sfx
 	ld a, d
-	cp $10 ; is this command an unknownsfx0x10?
-	jr nz, Audio3_note ; no
+	cp $10 // is this command an unknownsfx0x10?
+	jr nz, Audio3_note // no
 	ld b, $0
 	ld hl, wChannelFlags2
 	add hl, bc
 	bit 0, [hl]
-	jr nz, Audio3_note ; no
-	call Audio3_GetNextMusicByte ; yes
+	jr nz, Audio3_note // no
+	call Audio3_GetNextMusicByte // yes
 	ld [rNR10], a
 	jp Audio3_endchannel
 
 Audio3_note:
 	ld a, c
 	cp Ch3
-	jr nz, Audio3_notelength ; if not noise channel
+	jr nz, Audio3_notelength // if not noise channel
 	ld a, d
 	and $f0
-	cp $b0 ; is this command a dnote?
-	jr z, Audio3_dnote ; yes
-	jr nc, Audio3_notelength ; no
+	cp $b0 // is this command a dnote?
+	jr z, Audio3_dnote // yes
+	jr nc, Audio3_notelength // no
 	swap a
 	ld b, a
 	ld a, d
@@ -644,7 +644,7 @@ Audio3_dnote:
 	and $f
 	push af
 	push bc
-	call Audio3_GetNextMusicByte ; get dnote instrument
+	call Audio3_GetNextMusicByte // get dnote instrument
 asm_7d571
 	ld d, a
 	ld a, [wDisableChannelOutputWhenSfxEnds]
@@ -662,7 +662,7 @@ Audio3_notelength:
 	and $f
 	inc a
 	ld b, $0
-	ld e, a  ; store note length (in 16ths)
+	ld e, a  // store note length (in 16ths)
 	ld d, b
 	ld hl, wChannelNoteSpeeds
 	add hl, bc
@@ -681,7 +681,7 @@ Audio3_notelength:
 	ld d, $1
 	ld e, $0
 	cp Ch7
-	jr z, .skip ; if noise channel
+	jr z, .skip // if noise channel
 	call Audio3_7d707
 	ld a, [wSfxTempo]
 	ld d, a
@@ -717,7 +717,7 @@ Audio3_notelength:
 Audio3_notepitch:
 	pop af
 	and $f0
-	cp $c0 ; compare to rest
+	cp $c0 // compare to rest
 	jr nz, .notRest
 	ld a, c
 	cp Ch4
@@ -727,7 +727,7 @@ Audio3_notepitch:
 	ld a, [hl]
 	and a
 	jr nz, .quit
-	; fall through
+	// fall through
 .sfxChannel
 	ld a, c
 	cp Ch2
@@ -769,7 +769,7 @@ Audio3_notepitch:
 	push de
 	ld a, c
 	cp Ch4
-	jr nc, .skip ; if sfx Channel
+	jr nc, .skip // if sfx Channel
 	ld hl, wChannelSoundIDs + Ch4
 	ld d, $0
 	ld e, a
@@ -795,9 +795,9 @@ Audio3_notepitch:
 	ld b, $0
 	ld hl, wChannelFlags1
 	add hl, bc
-	bit 0, [hl]   ; has toggleperfectpitch been used?
+	bit 0, [hl]   // has toggleperfectpitch been used?
 	jr z, .skip2
-	inc e         ; if yes, increment the pitch by 1
+	inc e         // if yes, increment the pitch by 1
 	jr nc, .skip2
 	inc d
 .skip2
@@ -818,7 +818,7 @@ Audio3_7d66c:
 	cp Ch7
 	jr z, .sfxNoiseChannel
 	cp Ch4
-	jr nc, .skip ; if sfx channel
+	jr nc, .skip // if sfx channel
 	ld hl, wChannelSoundIDs + Ch4
 	add hl, bc
 	ld a, [hl]
@@ -848,9 +848,9 @@ Audio3_7d69d:
 	ld d, [hl]
 	ld a, c
 	cp Ch2
-	jr z, .channel3 ; if music channel 3
+	jr z, .channel3 // if music channel 3
 	cp Ch6
-	jr z, .channel3 ; if sfx channel 3
+	jr z, .channel3 // if sfx channel 3
 	ld a, d
 	and $3f
 	ld d, a
@@ -871,7 +871,7 @@ Audio3_7d6bf:
 	jr z, .channel3
 	cp Ch6
 	jr nz, .notSfxChannel3
-	; fall through
+	// fall through
 .channel3
 	push de
 	ld de, wMusicWaveInstrument
@@ -1213,9 +1213,9 @@ Audio3_GetNextMusicByte:
 	ld e, a
 	ld a, [hld]
 	ld d, a
-	ld a, [de] ; get next music command
+	ld a, [de] // get next music command
 	inc de
-	ld [hl], e ; store address of next command
+	ld [hl], e // store address of next command
 	inc hl
 	ld [hl], d
 	ret
@@ -1547,7 +1547,7 @@ Audio3_7daa8:
 	ld [wStereoPanning], a
 	ret
 
-; fills d bytes at hl with a
+// fills d bytes at hl with a
 FillAudioRAM3:
 	ld b, d
 .loop
@@ -1569,7 +1569,7 @@ Audio3_7db03:
 	ld e, l
 	ld d, h
 	ld hl, wChannelCommandPointers
-	ld a, [de] ; get channel number
+	ld a, [de] // get channel number
 	ld b, a
 	rlca
 	rlca
@@ -1607,7 +1607,7 @@ Audio3_7db03:
 .asm_7db46
 	pop bc
 	pop hl
-	ld a, [de] ; get channel pointer
+	ld a, [de] // get channel pointer
 	ld [hli], a
 	inc de
 	ld a, [de]
@@ -1636,11 +1636,11 @@ Audio3_7db03:
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
-	ld hl, wChannelCommandPointers + Ch6 * 2 ; sfx noise channel pointer
+	ld hl, wChannelCommandPointers + Ch6 * 2 // sfx noise channel pointer
 	ld de, Noise3_endchannel
 	ld [hl], e
 	inc hl
-	ld [hl], d ; overwrite pointer to point to endchannel
+	ld [hl], d // overwrite pointer to point to endchannel
 	ld a, [wSavedVolume]
 	and a
 	jr nz, .asm_7db89
@@ -1655,29 +1655,29 @@ Noise3_endchannel:
 	endchannel
 
 Unknown_7db8b:
-	db $10, $15, $1A, $1F ; channels 0-3
-	db $10, $15, $1A, $1F ; channels 4-7
+	db $10, $15, $1A, $1F // channels 0-3
+	db $10, $15, $1A, $1F // channels 4-7
 
 Unknown_7db93:
-	db $EE, $DD, $BB, $77 ; channels 0-3
-	db $EE, $DD, $BB, $77 ; channels 4-7
+	db $EE, $DD, $BB, $77 // channels 0-3
+	db $EE, $DD, $BB, $77 // channels 4-7
 
 Unknown_7db9b:
-	db $11, $22, $44, $88 ; channels 0-3
-	db $11, $22, $44, $88 ; channels 4-7
+	db $11, $22, $44, $88 // channels 0-3
+	db $11, $22, $44, $88 // channels 4-7
 
 Audio3_Pitches:
-	dw $F82C ; C_
-	dw $F89D ; C#
-	dw $F907 ; D_
-	dw $F96B ; D#
-	dw $F9CA ; E_
-	dw $FA23 ; F_
-	dw $FA77 ; F#
-	dw $FAC7 ; G_
-	dw $FB12 ; G#
-	dw $FB58 ; A_
-	dw $FB9B ; A#
-	dw $FBDA ; B_
+	dw $F82C // C_
+	dw $F89D // C#
+	dw $F907 // D_
+	dw $F96B // D#
+	dw $F9CA // E_
+	dw $FA23 // F_
+	dw $FA77 // F#
+	dw $FAC7 // G_
+	dw $FB12 // G#
+	dw $FB58 // A_
+	dw $FB9B // A#
+	dw $FBDA // B_
 
 

@@ -1,4 +1,4 @@
-; display "[player] VS [enemy]" text box with pokeballs representing their parties next to the names
+// display "[player] VS [enemy]" text box with pokeballs representing their parties next to the names
 DisplayLinkBattleVersusTextBox:
 	call LoadTextBoxTilePatterns
 	coord hl, 3, 4
@@ -11,7 +11,7 @@ DisplayLinkBattleVersusTextBox:
 	coord hl, 4, 10
 	ld de, wLinkEnemyTrainerName
 	call PlaceString
-; place bold "VS" tiles between the names
+// place bold "VS" tiles between the names
 	coord hl, 9, 8
 	ld a, $69
 	ld [hli], a

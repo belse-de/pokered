@@ -1,6 +1,6 @@
-; Format: (size 2 bytes)
-; 00: target map ID
-; 01: which dungeon warp in the source map was used
+// Format: (size 2 bytes)
+// 00: target map ID
+// 01: which dungeon warp in the source map was used
 DungeonWarpList:
 	db SEAFOAM_ISLANDS_2,$01
 	db SEAFOAM_ISLANDS_2,$02
@@ -87,10 +87,10 @@ FlyWarpDataPtr:
 	db ROUTE_10, 0
 	dw Route10FlyWarp
 
-; Original Format:
-;   [Event Displacement][Y-block][X-block][Y-sub_block][X-sub_block]
-; Macro Format:
-;   FLYWARP_DATA [Map Width][Y-pos][X-pos]
+// Original Format:
+//   [Event Displacement][Y-block][X-block][Y-sub_block][X-sub_block]
+// Macro Format:
+//   FLYWARP_DATA [Map Width][Y-pos][X-pos]
 PalletTownFlyWarp:
 	FLYWARP_DATA PALLET_TOWN_WIDTH,      6,  5
 ViridianCityFlyWarp:

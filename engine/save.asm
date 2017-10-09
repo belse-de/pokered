@@ -10,7 +10,7 @@ LoadSAV:
 	jr c, .badsum
 	call LoadSAV2
 	jr c, .badsum
-	ld a, $2 ; good checksum
+	ld a, $2 // good checksum
 	jr .goodsum
 .badsum
 	ld hl, wd730
@@ -22,7 +22,7 @@ LoadSAV:
 	call DelayFrames
 	pop hl
 	res 6, [hl]
-	ld a, $1 ; bad checksum
+	ld a, $1 // bad checksum
 .goodsum
 	ld [wSaveFileStatus], a
 	ret
@@ -37,20 +37,20 @@ LoadSAV0:
 	ld a, $1
 	ld [MBC1SRamBankingMode], a
 	ld [MBC1SRamBank], a
-	ld hl, sPlayerName ; hero name located in SRAM
-	ld bc, sMainDataCheckSum - sPlayerName ; but here checks the full SAV
+	ld hl, sPlayerName // hero name located in SRAM
+	ld bc, sMainDataCheckSum - sPlayerName // but here checks the full SAV
 	call SAVCheckSum
 	ld c, a
-	ld a, [sMainDataCheckSum] ; SAV's checksum
+	ld a, [sMainDataCheckSum] // SAV's checksum
 	cp c
 	jp z, .checkSumsMatched
 
-; If the computed checksum didn't match the saved on, try again.
+// If the computed checksum didn't match the saved on, try again.
 	ld hl, sPlayerName
 	ld bc, sMainDataCheckSum - sPlayerName
 	call SAVCheckSum
 	ld c, a
-	ld a, [sMainDataCheckSum] ; SAV's checksum
+	ld a, [sMainDataCheckSum] // SAV's checksum
 	cp c
 	jp nz, SAVBadCheckSum
 
@@ -84,11 +84,11 @@ LoadSAV1:
 	ld a, $1
 	ld [MBC1SRamBankingMode], a
 	ld [MBC1SRamBank], a
-	ld hl, sPlayerName ; hero name located in SRAM
-	ld bc, sMainDataCheckSum - sPlayerName  ; but here checks the full SAV
+	ld hl, sPlayerName // hero name located in SRAM
+	ld bc, sMainDataCheckSum - sPlayerName  // but here checks the full SAV
 	call SAVCheckSum
 	ld c, a
-	ld a, [sMainDataCheckSum] ; SAV's checksum
+	ld a, [sMainDataCheckSum] // SAV's checksum
 	cp c
 	jr nz, SAVBadCheckSum
 	ld hl, sCurBoxData
@@ -104,11 +104,11 @@ LoadSAV2:
 	ld a, $1
 	ld [MBC1SRamBankingMode], a
 	ld [MBC1SRamBank], a
-	ld hl, sPlayerName ; hero name located in SRAM
-	ld bc, sMainDataCheckSum - sPlayerName  ; but here checks the full SAV
+	ld hl, sPlayerName // hero name located in SRAM
+	ld bc, sMainDataCheckSum - sPlayerName  // but here checks the full SAV
 	call SAVCheckSum
 	ld c, a
-	ld a, [sMainDataCheckSum] ; SAV's checksum
+	ld a, [sMainDataCheckSum] // SAV's checksum
 	cp c
 	jp nz, SAVBadCheckSum
 	ld hl, sPartyData
@@ -132,7 +132,7 @@ SAVGoodChecksum:
 	ret
 
 LoadSAVIgnoreBadCheckSum:
-; unused function that loads save data and ignores bad checksums
+// unused function that loads save data and ignores bad checksums
 	call LoadSAV0
 	call LoadSAV1
 	jp LoadSAV2
@@ -179,7 +179,7 @@ SaveSAVConfirm:
 	lb bc, 8, 1
 	ld a,TWO_OPTION_MENU
 	ld [wTextBoxID],a
-	call DisplayTextBoxID ; yes/no menu
+	call DisplayTextBoxID // yes/no menu
 	ld a,[wCurrentMenuItem]
 	ret
 
@@ -229,7 +229,7 @@ SaveSAVtoSRAM0:
 	ret
 
 SaveSAVtoSRAM1:
-; stored pokémon
+// stored pokémon
 	ld a, SRAM_ENABLE
 	ld [MBC1SRamEnable], a
 	ld a, $1
@@ -258,7 +258,7 @@ SaveSAVtoSRAM2:
 	ld de, sPartyData
 	ld bc, wPartyDataEnd - wPartyDataStart
 	call CopyData
-	ld hl, wPokedexOwned ; pokédex only
+	ld hl, wPokedexOwned // pokédex only
 	ld de, sMainData
 	ld bc, wPokedexSeenEnd - wPokedexOwned
 	call CopyData
@@ -294,8 +294,8 @@ SAVCheckSum:
 	ret
 
 CalcIndividualBoxCheckSums:
-	ld hl, sBox1 ; sBox7
-	ld de, sBank2IndividualBoxChecksums ; sBank3IndividualBoxChecksums
+	ld hl, sBox1 // sBox7
+	ld de, sBank2IndividualBoxChecksums // sBank3IndividualBoxChecksums
 	ld b, NUM_BOXES / 2
 .loop
 	push bc
@@ -311,8 +311,8 @@ CalcIndividualBoxCheckSums:
 	ret
 
 GetBoxSRAMLocation:
-; in: a = box num
-; out: b = box SRAM bank, hl = pointer to start of box
+// in: a = box num
+// out: b = box SRAM bank, hl = pointer to start of box
 	ld hl, BoxSRAMPointerTable
 	ld a, [wCurrentBoxNum]
 	and $7f
@@ -332,12 +332,12 @@ GetBoxSRAMLocation:
 	ret
 
 BoxSRAMPointerTable:
-	dw sBox1 ; sBox7
-	dw sBox2 ; sBox8
-	dw sBox3 ; sBox9
-	dw sBox4 ; sBox10
-	dw sBox5 ; sBox11
-	dw sBox6 ; sBox12
+	dw sBox1 // sBox7
+	dw sBox2 // sBox8
+	dw sBox3 // sBox9
+	dw sBox4 // sBox10
+	dw sBox5 // sBox11
+	dw sBox6 // sBox12
 
 ChangeBox::
 	ld hl, WhenYouChangeBoxText
@@ -345,10 +345,10 @@ ChangeBox::
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	ret nz ; return if No was chosen
+	ret nz // return if No was chosen
 	ld hl, wCurrentBoxNum
-	bit 7, [hl] ; is it the first time player is changing the box?
-	call z, EmptyAllSRAMBoxes ; if so, empty all boxes in SRAM
+	bit 7, [hl] // is it the first time player is changing the box?
+	call z, EmptyAllSRAMBoxes // if so, empty all boxes in SRAM
 	call DisplayChangeBoxMenu
 	call UpdateSprites
 	ld hl, hFlags_0xFFF6
@@ -356,19 +356,19 @@ ChangeBox::
 	call HandleMenuInput
 	ld hl, hFlags_0xFFF6
 	res 1, [hl]
-	bit 1, a ; pressed b
+	bit 1, a // pressed b
 	ret nz
 	call GetBoxSRAMLocation
 	ld e, l
 	ld d, h
 	ld hl, wBoxDataStart
-	call CopyBoxToOrFromSRAM ; copy old box from WRAM to SRAM
+	call CopyBoxToOrFromSRAM // copy old box from WRAM to SRAM
 	ld a, [wCurrentMenuItem]
 	set 7, a
 	ld [wCurrentBoxNum], a
 	call GetBoxSRAMLocation
 	ld de, wBoxDataStart
-	call CopyBoxToOrFromSRAM ; copy new box from SRAM to WRAM
+	call CopyBoxToOrFromSRAM // copy new box from SRAM to WRAM
 	ld hl, wMapTextPtr
 	ld de, wChangeBoxSavedMapTextPointer
 	ld a, [hli]
@@ -390,7 +390,7 @@ WhenYouChangeBoxText:
 	db "@"
 
 CopyBoxToOrFromSRAM:
-; copy an entire box from hl to de with b as the SRAM bank
+// copy an entire box from hl to de with b as the SRAM bank
 	push hl
 	ld a, SRAM_ENABLE
 	ld [MBC1SRamEnable], a
@@ -402,16 +402,16 @@ CopyBoxToOrFromSRAM:
 	call CopyData
 	pop hl
 
-; mark the memory that the box was copied from as am empty box
+// mark the memory that the box was copied from as am empty box
 	xor a
 	ld [hli], a
 	dec a
 	ld [hl], a
 
-	ld hl, sBox1 ; sBox7
+	ld hl, sBox1 // sBox7
 	ld bc, sBank2AllBoxesChecksum - sBox1
 	call SAVCheckSum
-	ld [sBank2AllBoxesChecksum], a ; sBank3AllBoxesChecksum
+	ld [sBank2AllBoxesChecksum], a // sBank3AllBoxesChecksum
 	call CalcIndividualBoxCheckSums
 	xor a
 	ld [MBC1SRamBankingMode], a
@@ -476,9 +476,9 @@ DisplayChangeBoxMenu:
 .loop
 	push af
 	ld a, [de]
-	and a ; is the box empty?
+	and a // is the box empty?
 	jr z, .skipPlacingPokeball
-	ld [hl], $78 ; place pokeball tile next to box name if box not empty
+	ld [hl], $78 // place pokeball tile next to box name if box not empty
 .skipPlacingPokeball
 	add hl, bc
 	inc de
@@ -511,8 +511,8 @@ BoxNoText:
 	db "BOX No.@"
 
 EmptyAllSRAMBoxes:
-; marks all boxes in SRAM as empty (initialisation for the first time the
-; player changes the box)
+// marks all boxes in SRAM as empty (initialisation for the first time the
+// player changes the box)
 	ld a, SRAM_ENABLE
 	ld [MBC1SRamEnable], a
 	ld a, $1
@@ -529,23 +529,23 @@ EmptyAllSRAMBoxes:
 	ret
 
 EmptySRAMBoxesInBank:
-; marks every box in the current SRAM bank as empty
-	ld hl, sBox1 ; sBox7
+// marks every box in the current SRAM bank as empty
+	ld hl, sBox1 // sBox7
 	call EmptySRAMBox
-	ld hl, sBox2 ; sBox8
+	ld hl, sBox2 // sBox8
 	call EmptySRAMBox
-	ld hl, sBox3 ; sBox9
+	ld hl, sBox3 // sBox9
 	call EmptySRAMBox
-	ld hl, sBox4 ; sBox10
+	ld hl, sBox4 // sBox10
 	call EmptySRAMBox
-	ld hl, sBox5 ; sBox11
+	ld hl, sBox5 // sBox11
 	call EmptySRAMBox
-	ld hl, sBox6 ; sBox12
+	ld hl, sBox6 // sBox12
 	call EmptySRAMBox
-	ld hl, sBox1 ; sBox7
+	ld hl, sBox1 // sBox7
 	ld bc, sBank2AllBoxesChecksum - sBox1
 	call SAVCheckSum
-	ld [sBank2AllBoxesChecksum], a ; sBank3AllBoxesChecksum
+	ld [sBank2AllBoxesChecksum], a // sBank3AllBoxesChecksum
 	call CalcIndividualBoxCheckSums
 	ret
 
@@ -574,7 +574,7 @@ GetMonCountsForAllBoxes:
 	ld [MBC1SRamEnable], a
 	pop hl
 
-; copy the count for the current box from WRAM
+// copy the count for the current box from WRAM
 	ld a, [wCurrentBoxNum]
 	and $7f
 	ld c, a
@@ -586,23 +586,23 @@ GetMonCountsForAllBoxes:
 	ret
 
 GetMonCountsForBoxesInBank:
-	ld a, [sBox1] ; sBox7
+	ld a, [sBox1] // sBox7
 	ld [hli], a
-	ld a, [sBox2] ; sBox8
+	ld a, [sBox2] // sBox8
 	ld [hli], a
-	ld a, [sBox3] ; sBox9
+	ld a, [sBox3] // sBox9
 	ld [hli], a
-	ld a, [sBox4] ; sBox10
+	ld a, [sBox4] // sBox10
 	ld [hli], a
-	ld a, [sBox5] ; sBox11
+	ld a, [sBox5] // sBox11
 	ld [hli], a
-	ld a, [sBox6] ; sBox12
+	ld a, [sBox6] // sBox12
 	ld [hli], a
 	ret
 
 SAVCheckRandomID:
 ;checks if Sav file is the same by checking player's name 1st letter ($a598)
-; and the two random numbers generated at game beginning
+// and the two random numbers generated at game beginning
 ;(which are stored at wPlayerID)s
 	ld a,$0a
 	ld [MBC1SRamEnable],a
@@ -619,7 +619,7 @@ SAVCheckRandomID:
 	ld a,[sMainDataCheckSum]
 	cp c
 	jr nz,.next
-	ld hl,sMainData + 98 ; player ID
+	ld hl,sMainData + 98 // player ID
 	ld a,[hli]
 	ld h,[hl]
 	ld l,a
@@ -649,8 +649,8 @@ SaveHallOfFameTeams:
 	jr HallOfFame_Copy
 
 .shiftHOFTeams
-; if the space designated for HOF teams is full, then shift all HOF teams to the next slot, making space for the new HOF team
-; this deletes the last HOF team though
+// if the space designated for HOF teams is full, then shift all HOF teams to the next slot, making space for the new HOF team
+// this deletes the last HOF team though
 	ld hl, sHallOfFame + HOF_TEAM
 	ld de, sHallOfFame
 	ld bc, HOF_TEAM * (HOF_TEAM_CAPACITY - 1)
@@ -667,7 +667,7 @@ LoadHallOfFameTeams:
 	call AddNTimes
 	ld de, wHallOfFame
 	ld bc, HOF_TEAM
-	; fallthrough
+	// fallthrough
 
 HallOfFame_Copy:
 	ld a, SRAM_ENABLE

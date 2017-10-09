@@ -1,4 +1,4 @@
-; b = new colour for BG colour 0 (usually white) for 4 frames
+// b = new colour for BG colour 0 (usually white) for 4 frames
 ChangeBGPalColor0_4Frames:
 	call GetPredefRegisters
 	ld a, [rBGP]
@@ -12,8 +12,8 @@ ChangeBGPalColor0_4Frames:
 	ret
 
 PredefShakeScreenVertically:
-; Moves the window down and then back in a sequence of progressively smaller
-; numbers of pixels, starting at b.
+// Moves the window down and then back in a sequence of progressively smaller
+// numbers of pixels, starting at b.
 	call GetPredefRegisters
 	ld a, 1
 	ld [wDisableVBlankWYUpdate], a
@@ -38,8 +38,8 @@ PredefShakeScreenVertically:
 	jp DelayFrames
 
 PredefShakeScreenHorizontally:
-; Moves the window right and then back in a sequence of progressively smaller
-; numbers of pixels, starting at b.
+// Moves the window right and then back in a sequence of progressively smaller
+// numbers of pixels, starting at b.
 	call GetPredefRegisters
 	xor a
 .loop
@@ -52,7 +52,7 @@ PredefShakeScreenHorizontally:
 	ld a, b
 	jr nz, .loop
 
-; restore normal WX
+// restore normal WX
 	ld a, 7
 	ld [rWX], a
 	ret
@@ -63,7 +63,7 @@ PredefShakeScreenHorizontally:
 	ld [$ff97], a
 	bit 7, a
 	jr z, .skipZeroing
-	xor a ; zero a if it's negative
+	xor a // zero a if it's negative
 .skipZeroing
 	add 7
 	ld [rWX], a

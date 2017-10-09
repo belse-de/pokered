@@ -1,28 +1,28 @@
-; [wPartyMenuTypeOrMessageID] = menu type / message ID
-; if less than $F0, it is a menu type
-; menu types:
-; 00: normal pokemon menu (e.g. Start menu)
-; 01: use healing item on pokemon menu
-; 02: in-battle switch pokemon menu
-; 03: learn TM/HM menu
-; 04: swap pokemon positions menu
-; 05: use evolution stone on pokemon menu
-; otherwise, it is a message ID
-; f0: poison healed
-; f1: burn healed
-; f2: freeze healed
-; f3: sleep healed
-; f4: paralysis healed
-; f5: HP healed
-; f6: health returned
-; f7: revitalized
-; f8: leveled up
+// [wPartyMenuTypeOrMessageID] = menu type / message ID
+// if less than $F0, it is a menu type
+// menu types:
+// 00: normal pokemon menu (e.g. Start menu)
+// 01: use healing item on pokemon menu
+// 02: in-battle switch pokemon menu
+// 03: learn TM/HM menu
+// 04: swap pokemon positions menu
+// 05: use evolution stone on pokemon menu
+// otherwise, it is a message ID
+// f0: poison healed
+// f1: burn healed
+// f2: freeze healed
+// f3: sleep healed
+// f4: paralysis healed
+// f5: HP healed
+// f6: health returned
+// f7: revitalized
+// f8: leveled up
 DrawPartyMenu_:
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED],a
 	call ClearScreen
 	call UpdateSprites
-	callba LoadMonPartySpriteGfxWithLCDDisabled ; load pokemon icon graphics
+	callba LoadMonPartySpriteGfxWithLCDDisabled // load pokemon icon graphics
 
 RedrawPartyMenu_:
 	ld a,[wPartyMenuTypeOrMessageID]
@@ -38,7 +38,7 @@ RedrawPartyMenu_:
 	ld [wWhichPartyMenuHPBar],a
 .loop
 	ld a,[de]
-	cp a,$FF ; reached the terminator?
+	cp a,$FF // reached the terminator?
 	jp z,.afterDrawingMonEntries
 	push bc
 	push de
@@ -48,8 +48,8 @@ RedrawPartyMenu_:
 	ld hl,wPartyMonNicks
 	call GetPartyMonName
 	pop hl
-	call PlaceString ; print the pokemon's name
-	callba WriteMonPartySpriteOAMByPartyIndex ; place the appropriate pokemon icon
+	call PlaceString // print the pokemon's name
+	callba WriteMonPartySpriteOAMByPartyIndex // place the appropriate pokemon icon
 	ld a,[hPartyMonIndex]
 	ld [wWhichPokemon],a
 	inc a
@@ -58,50 +58,50 @@ RedrawPartyMenu_:
 	pop hl
 	push hl
 	ld a,[wMenuItemToSwap]
-	and a ; is the player swapping pokemon positions?
+	and a // is the player swapping pokemon positions?
 	jr z,.skipUnfilledRightArrow
-; if the player is swapping pokemon positions
+// if the player is swapping pokemon positions
 	dec a
 	ld b,a
 	ld a,[wWhichPokemon]
-	cp b ; is the player swapping the current pokemon in the list?
+	cp b // is the player swapping the current pokemon in the list?
 	jr nz,.skipUnfilledRightArrow
-; the player is swapping the current pokemon in the list
+// the player is swapping the current pokemon in the list
 	dec hl
 	dec hl
 	dec hl
-	ld a,"▷" ; unfilled right arrow menu cursor
-	ld [hli],a ; place the cursor
+	ld a,"▷" // unfilled right arrow menu cursor
+	ld [hli],a // place the cursor
 	inc hl
 	inc hl
 .skipUnfilledRightArrow
-	ld a,[wPartyMenuTypeOrMessageID] ; menu type
+	ld a,[wPartyMenuTypeOrMessageID] // menu type
 	cp a,TMHM_PARTY_MENU
 	jr z,.teachMoveMenu
 	cp a,EVO_STONE_PARTY_MENU
 	jr z,.evolutionStoneMenu
 	push hl
-	ld bc,14 ; 14 columns to the right
+	ld bc,14 // 14 columns to the right
 	add hl,bc
 	ld de,wLoadedMonStatus
 	call PrintStatusCondition
 	pop hl
 	push hl
-	ld bc,SCREEN_WIDTH + 1 ; down 1 row and right 1 column
+	ld bc,SCREEN_WIDTH + 1 // down 1 row and right 1 column
 	ld a,[hFlags_0xFFF6]
 	set 0,a
 	ld [hFlags_0xFFF6],a
 	add hl,bc
-	predef DrawHP2 ; draw HP bar and prints current / max HP
+	predef DrawHP2 // draw HP bar and prints current / max HP
 	ld a,[hFlags_0xFFF6]
 	res 0,a
 	ld [hFlags_0xFFF6],a
-	call SetPartyMenuHPBarColor ; color the HP bar (on SGB)
+	call SetPartyMenuHPBarColor // color the HP bar (on SGB)
 	pop hl
 	jr .printLevel
 .teachMoveMenu
 	push hl
-	predef CanLearnTM ; check if the pokemon can learn the move
+	predef CanLearnTM // check if the pokemon can learn the move
 	pop hl
 	ld de,.ableToLearnMoveText
 	ld a,c
@@ -109,13 +109,13 @@ RedrawPartyMenu_:
 	jr nz,.placeMoveLearnabilityString
 	ld de,.notAbleToLearnMoveText
 .placeMoveLearnabilityString
-	ld bc,20 + 9 ; down 1 row and right 9 columns
+	ld bc,20 + 9 // down 1 row and right 9 columns
 	push hl
 	add hl,bc
 	call PlaceString
 	pop hl
 .printLevel
-	ld bc,10 ; move 10 columns to the right
+	ld bc,10 // move 10 columns to the right
 	add hl,bc
 	call PrintLevel
 	pop hl
@@ -154,29 +154,29 @@ RedrawPartyMenu_:
 	call FarCopyData
 	ld hl,wcd6d
 	ld de,.notAbleToEvolveText
-; loop through the pokemon's evolution entries
+// loop through the pokemon's evolution entries
 .checkEvolutionsLoop
 	ld a,[hli]
-	and a ; reached terminator?
-	jr z,.placeEvolutionStoneString ; if so, place the "NOT ABLE" string
+	and a // reached terminator?
+	jr z,.placeEvolutionStoneString // if so, place the "NOT ABLE" string
 	inc hl
 	inc hl
 	cp a,EV_ITEM
 	jr nz,.checkEvolutionsLoop
-; if it's a stone evolution entry
+// if it's a stone evolution entry
 	dec hl
 	dec hl
 	ld b,[hl]
-	ld a,[wEvoStoneItemID] ; the stone the player used
+	ld a,[wEvoStoneItemID] // the stone the player used
 	inc hl
 	inc hl
 	inc hl
-	cp b ; does the player's stone match this evolution entry's stone?
+	cp b // does the player's stone match this evolution entry's stone?
 	jr nz,.checkEvolutionsLoop
-; if it does match
+// if it does match
 	ld de,.ableToEvolveText
 .placeEvolutionStoneString
-	ld bc,20 + 9 ; down 1 row and right 9 columns
+	ld bc,20 + 9 // down 1 row and right 9 columns
 	pop hl
 	push hl
 	add hl,bc
@@ -195,8 +195,8 @@ RedrawPartyMenu_:
 	ld a,[hl]
 	push af
 	push hl
-	set 6,[hl] ; turn off letter printing delay
-	ld a,[wPartyMenuTypeOrMessageID] ; message ID
+	set 6,[hl] // turn off letter printing delay
+	ld a,[wPartyMenuTypeOrMessageID] // message ID
 	cp a,$F0
 	jr nc,.printItemUseMessage
 	add a
@@ -307,7 +307,7 @@ ReviveText:
 
 RareCandyText:
 	TX_FAR _RareCandyText
-	TX_SFX_ITEM_1 ; probably supposed to play SFX_LEVEL_UP but the wrong music bank is loaded
+	TX_SFX_ITEM_1 // probably supposed to play SFX_LEVEL_UP but the wrong music bank is loaded
 	TX_BLINK
 	db "@"
 

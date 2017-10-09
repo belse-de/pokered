@@ -1,9 +1,9 @@
 TypeEffects:
-; format: attacking type, defending type, damage multiplier
-; the multiplier is a (decimal) fixed-point number:
-;     20 is ×2.0
-;     05 is ×0.5
-;     00 is ×0
+// format: attacking type, defending type, damage multiplier
+// the multiplier is a (decimal) fixed-point number:
+//     20 is ×2.0
+//     05 is ×0.5
+//     00 is ×0
 	db WATER,FIRE,20
 	db FIRE,GRASS,20
 	db FIRE,ICE,20

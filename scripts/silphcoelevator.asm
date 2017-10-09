@@ -41,7 +41,7 @@ SilphCoElevatorScript_457f1:
 	ret
 
 SilphCoElavatorFloors:
-	db $0B ; num elements in list
+	db $0B // num elements in list
 	db FLOOR_1F
 	db FLOOR_2F
 	db FLOOR_3F
@@ -53,12 +53,12 @@ SilphCoElavatorFloors:
 	db FLOOR_9F
 	db FLOOR_10F
 	db FLOOR_11F
-	db $FF ; terminator
+	db $FF // terminator
 
 SilphCoElevatorWarpMaps:
-; first byte is warp number
-; second byte is map number
-; These specify where the player goes after getting out of the elevator.
+// first byte is warp number
+// second byte is map number
+// These specify where the player goes after getting out of the elevator.
 	db $03, SILPH_CO_1F
 	db $02, SILPH_CO_2F
 	db $02, SILPH_CO_3F

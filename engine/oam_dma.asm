@@ -1,6 +1,6 @@
 WriteDMACodeToHRAM:
-; Since no other memory is available during OAM DMA,
-; DMARoutine is copied to HRAM and executed there.
+// Since no other memory is available during OAM DMA,
+// DMARoutine is copied to HRAM and executed there.
 	ld c, $ff80 % $100
 	ld b, DMARoutineEnd - DMARoutine
 	ld hl, DMARoutine
@@ -13,11 +13,11 @@ WriteDMACodeToHRAM:
 	ret
 
 DMARoutine:
-	; initiate DMA
+	// initiate DMA
 	ld a, wOAMBuffer / $100
 	ld [rDMA], a
 
-	; wait for DMA to finish
+	// wait for DMA to finish
 	ld a, $28
 .wait
 	dec a

@@ -156,7 +156,7 @@ OaksLabScript6:
 	ret nz
 	ld a, $5
 	ld [H_SPRITEINDEX], a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $1
@@ -200,7 +200,7 @@ OaksLabScript8:
 .Charmander
 	ld de, .MiddleBallMovement1
 	ld a, [wYCoord]
-	cp $4 ; is the player standing below the table?
+	cp $4 // is the player standing below the table?
 	jr z, .asm_1ccf3
 	ld de, .MiddleBallMovement2
 	jr .asm_1ccf3
@@ -224,7 +224,7 @@ OaksLabScript8:
 .Squirtle
 	ld de, .RightBallMovement1
 	ld a, [wYCoord]
-	cp $4 ; is the player standing below the table?
+	cp $4 // is the player standing below the table?
 	jr z, .asm_1ccf3
 	ld de, .RightBallMovement2
 	jr .asm_1ccf3
@@ -250,7 +250,7 @@ OaksLabScript8:
 .Bulbasaur
 	ld de, .LeftBallMovement1
 	ld a, [wXCoord]
-	cp $9 ; is the player standing to the right of the table?
+	cp $9 // is the player standing to the right of the table?
 	jr nz, .asm_1ccf3
 	push hl
 	ld a, $1
@@ -268,13 +268,13 @@ OaksLabScript8:
 	ld [hl], $8
 	inc hl
 	ld [hl], $9
-	ld de, .LeftBallMovement2 ; the rival is not currently onscreen, so account for that
+	ld de, .LeftBallMovement2 // the rival is not currently onscreen, so account for that
 	pop hl
 	jr .asm_1ccf3
 
 .LeftBallMovement1
 	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_RIGHT ; not yet terminated!
+	db NPC_MOVEMENT_RIGHT // not yet terminated!
 .LeftBallMovement2
 	db NPC_MOVEMENT_RIGHT
 	db $FF
@@ -345,7 +345,7 @@ OaksLabScript10:
 	ret nz
 	ld a, $1
 	ld [H_SPRITEINDEX], a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, PLAYER_DIR_UP
@@ -380,7 +380,7 @@ OaksLabScript11:
 	bit 0, a
 	ret nz
 
-	; define which team rival uses, and fight it
+	// define which team rival uses, and fight it
 	ld a, OPP_SONY1
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
@@ -425,7 +425,7 @@ OaksLabScript12:
 	call SetSpritePosition1
 	ld a, $1
 	ld [H_SPRITEINDEX], a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	predef HealParty
@@ -448,7 +448,7 @@ OaksLabScript13:
 	call MoveSprite
 	ld a, [wXCoord]
 	cp $4
-	; move left or right depending on where the player is standing
+	// move left or right depending on where the player is standing
 	jr nz, .moveLeft
 	ld a, NPC_MOVEMENT_RIGHT
 	jr .next
@@ -462,7 +462,7 @@ OaksLabScript13:
 	ret
 
 .RivalExitMovement
-	db $E0 ; change sprite facing direction
+	db $E0 // change sprite facing direction
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
@@ -479,11 +479,11 @@ OaksLabScript14:
 	predef HideObject
 	xor a
 	ld [wJoyIgnore], a
-	call PlayDefaultMusic ; reset to map music
+	call PlayDefaultMusic // reset to map music
 	ld a, $12
 	ld [wOaksLabCurScript], a
 	jr .done
-; make the player keep facing the rival as he walks away
+// make the player keep facing the rival as he walks away
 .asm_1ce8c
 	ld a, [wNPCNumScriptedSteps]
 	cp $5
@@ -501,7 +501,7 @@ OaksLabScript14:
 .asm_1cea8
 	cp $4
 	ret nz
-	xor a ; ld a, SPRITE_FACING_DOWN
+	xor a // ld a, SPRITE_FACING_DOWN
 	ld [wSpriteStateData1 + 9], a
 .done
 	ret
@@ -546,7 +546,7 @@ OaksLabScript_1cefd:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $8
 	ld [H_SPRITEINDEX], a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	jp SetSpriteFacingDirectionAndDelay
 
@@ -608,7 +608,7 @@ OaksLabScript16:
 	ld b, 0
 	ld c, a
 	ld hl, wNPCMovementDirections2
-	xor a ; NPC_MOVEMENT_DOWN
+	xor a // NPC_MOVEMENT_DOWN
 	call FillMemory
 	ld [hl], $ff
 	ld a, $ff
@@ -891,7 +891,7 @@ OaksLabMonChoiceMenu:
 	call PrintText
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	call YesNoChoice ; yes/no menu
+	call YesNoChoice // yes/no menu
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, OaksLabMonChoiceEnd
@@ -920,7 +920,7 @@ OaksLabMonChoiceMenu:
 	call PrintText
 	ld hl, OaksLabReceivedMonText
 	call PrintText
-	xor a ; PLAYER_PARTY_DATA
+	xor a // PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 	ld a, 5
 	ld [wCurEnemyLVL], a

@@ -1,5 +1,5 @@
 TradeMons:
-; givemonster, getmonster, textstring, nickname (11 bytes), 14 bytes total
+// givemonster, getmonster, textstring, nickname (11 bytes), 14 bytes total
 	db NIDORINO,  NIDORINA, 0,"TERRY@@@@@@"
 	db ABRA,      MR_MIME,  0,"MARCEL@@@@@"
 	db BUTTERFREE,BEEDRILL, 2,"CHIKUCHIKU@"

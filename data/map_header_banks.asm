@@ -1,42 +1,42 @@
-; see also MapHeaderPointers
+// see also MapHeaderPointers
 MapHeaderBanks:
 	db BANK(PalletTown_h) ;PALLET_TOWN
-	db BANK(ViridianCity_h) ; VIRIDIAN_CITY
-	db BANK(PewterCity_h) ; PEWTER_CITY
-	db BANK(CeruleanCity_h) ; CERULEAN_CITY
-	db BANK(LavenderTown_h) ; LAVENDER_TOWN
-	db BANK(VermilionCity_h) ; VERMILION_CITY
-	db BANK(CeladonCity_h) ; CELADON_CITY
-	db BANK(FuchsiaCity_h) ; FUCHSIA_CITY
-	db BANK(CinnabarIsland_h) ; CINNABAR_ISLAND
-	db BANK(IndigoPlateau_h) ; INDIGO_PLATEAU
-	db BANK(SaffronCity_h) ; SAFFRON_CITY
-	db $1 ; unused
-	db BANK(Route1_h) ; ROUTE_1
-	db BANK(Route2_h) ; ROUTE_2
-	db BANK(Route3_h) ; ROUTE_3
-	db BANK(Route4_h) ; ROUTE_4
-	db BANK(Route5_h) ; ROUTE_5
-	db BANK(Route6_h) ; ROUTE_6
-	db BANK(Route7_h) ; ROUTE_7
-	db BANK(Route8_h) ; ROUTE_8
-	db BANK(Route9_h) ; ROUTE_9
-	db BANK(Route10_h) ; ROUTE_10
-	db BANK(Route11_h) ; ROUTE_11
-	db BANK(Route12_h) ; ROUTE_12
-	db BANK(Route13_h) ; ROUTE_13
-	db BANK(Route14_h) ; ROUTE_14
-	db BANK(Route15_h) ; ROUTE_15
-	db BANK(Route16_h) ; ROUTE_16
-	db BANK(Route17_h) ; ROUTE_17
-	db BANK(Route18_h) ; ROUTE_18
-	db BANK(Route19_h) ; ROUTE_19
-	db BANK(Route20_h) ; ROUTE_20
-	db BANK(Route21_h) ; ROUTE_21
-	db BANK(Route22_h) ; ROUTE_22
-	db BANK(Route23_h) ; ROUTE_23
-	db BANK(Route24_h) ; ROUTE_24
-	db BANK(Route25_h) ; ROUTE_25
+	db BANK(ViridianCity_h) // VIRIDIAN_CITY
+	db BANK(PewterCity_h) // PEWTER_CITY
+	db BANK(CeruleanCity_h) // CERULEAN_CITY
+	db BANK(LavenderTown_h) // LAVENDER_TOWN
+	db BANK(VermilionCity_h) // VERMILION_CITY
+	db BANK(CeladonCity_h) // CELADON_CITY
+	db BANK(FuchsiaCity_h) // FUCHSIA_CITY
+	db BANK(CinnabarIsland_h) // CINNABAR_ISLAND
+	db BANK(IndigoPlateau_h) // INDIGO_PLATEAU
+	db BANK(SaffronCity_h) // SAFFRON_CITY
+	db $1 // unused
+	db BANK(Route1_h) // ROUTE_1
+	db BANK(Route2_h) // ROUTE_2
+	db BANK(Route3_h) // ROUTE_3
+	db BANK(Route4_h) // ROUTE_4
+	db BANK(Route5_h) // ROUTE_5
+	db BANK(Route6_h) // ROUTE_6
+	db BANK(Route7_h) // ROUTE_7
+	db BANK(Route8_h) // ROUTE_8
+	db BANK(Route9_h) // ROUTE_9
+	db BANK(Route10_h) // ROUTE_10
+	db BANK(Route11_h) // ROUTE_11
+	db BANK(Route12_h) // ROUTE_12
+	db BANK(Route13_h) // ROUTE_13
+	db BANK(Route14_h) // ROUTE_14
+	db BANK(Route15_h) // ROUTE_15
+	db BANK(Route16_h) // ROUTE_16
+	db BANK(Route17_h) // ROUTE_17
+	db BANK(Route18_h) // ROUTE_18
+	db BANK(Route19_h) // ROUTE_19
+	db BANK(Route20_h) // ROUTE_20
+	db BANK(Route21_h) // ROUTE_21
+	db BANK(Route22_h) // ROUTE_22
+	db BANK(Route23_h) // ROUTE_23
+	db BANK(Route24_h) // ROUTE_24
+	db BANK(Route25_h) // ROUTE_25
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
 	db BANK(BluesHouse_h)

@@ -1,5 +1,5 @@
-; super rod data
-; format: map, pointer to fishing group
+// super rod data
+// format: map, pointer to fishing group
 SuperRodData:
 	dbw PALLET_TOWN, FishingGroup1
 	dbw VIRIDIAN_CITY, FishingGroup1
@@ -36,8 +36,8 @@ SuperRodData:
 	dbw UNKNOWN_DUNGEON_1, FishingGroup9
 	db $FF
 
-; fishing groups
-; number of monsters, followed by level/monster pairs
+// fishing groups
+// number of monsters, followed by level/monster pairs
 FishingGroup1:
 	db 2
 	db 15,TENTACOOL

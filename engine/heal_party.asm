@@ -1,5 +1,5 @@
 HealParty:
-; Restore HP and PP.
+// Restore HP and PP.
 
 	ld hl, wPartySpecies
 	ld de, wPartyMon1HP
@@ -17,7 +17,7 @@ HealParty:
 	ld [hl], a
 
 	push de
-	ld b, NUM_MOVES ; A Pokémon has 4 moves
+	ld b, NUM_MOVES // A Pokémon has 4 moves
 .pp
 	ld hl, wPartyMon1Moves - wPartyMon1HP
 	add hl, de
@@ -40,7 +40,7 @@ HealParty:
 	ld de, wcd6d
 	ld a, BANK(Moves)
 	call FarCopyData
-	ld a, [wcd6d + 5] ; PP is byte 5 of move data
+	ld a, [wcd6d + 5] // PP is byte 5 of move data
 
 	pop bc
 	pop de

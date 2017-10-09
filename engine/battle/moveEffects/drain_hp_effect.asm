@@ -1,14 +1,14 @@
 DrainHPEffect_:
 	ld hl, wDamage
 	ld a, [hl]
-	srl a ; divide damage by 2
+	srl a // divide damage by 2
 	ld [hli], a
 	ld a, [hl]
 	rr a
 	ld [hld], a
-	or [hl] ; is damage 0?
+	or [hl] // is damage 0?
 	jr nz, .getAttackerHP
-; if damage is 0, increase to 1 so that the attacker gains at least 1 HP
+// if damage is 0, increase to 1 so that the attacker gains at least 1 HP
 	inc hl
 	inc [hl]
 .getAttackerHP
@@ -21,13 +21,13 @@ DrainHPEffect_:
 	ld de, wEnemyMonMaxHP
 .addDamageToAttackerHP
 	ld bc, wHPBarOldHP+1
-; copy current HP to wHPBarOldHP
+// copy current HP to wHPBarOldHP
 	ld a, [hli]
 	ld [bc], a
 	ld a, [hl]
 	dec bc
 	ld [bc], a
-; copy max HP to wHPBarMaxHP
+// copy max HP to wHPBarMaxHP
 	ld a, [de]
 	dec bc
 	ld [bc], a
@@ -35,7 +35,7 @@ DrainHPEffect_:
 	ld a, [de]
 	dec bc
 	ld [bc], a
-; add damage to attacker's HP and copy new HP to wHPBarNewHP
+// add damage to attacker's HP and copy new HP to wHPBarNewHP
 	ld a, [wDamage + 1]
 	ld b, [hl]
 	add b
@@ -46,8 +46,8 @@ DrainHPEffect_:
 	adc b
 	ld [hli], a
 	ld [wHPBarNewHP+1], a
-	jr c, .capToMaxHP ; if HP > 65,535, cap to max HP
-; compare HP with max HP
+	jr c, .capToMaxHP // if HP > 65,535, cap to max HP
+// compare HP with max HP
 	ld a, [hld]
 	ld b, a
 	ld a, [de]

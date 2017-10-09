@@ -39,7 +39,7 @@ HallofFameRoomScript2:
 	ld [hl], a
 	ld [wLanceCurScript], a
 	ld [wHallOfFameRoomCurScript], a
-	; Elite 4 events
+	// Elite 4 events
 	ResetEventRange ELITE4_EVENTS_START, ELITE4_CHAMPION_EVENTS_END, 1
 	xor a
 	ld [wHallOfFameRoomCurScript], a
@@ -87,7 +87,7 @@ HallofFameRoomScript1:
 	call Delay3
 	xor a
 	ld [wJoyIgnore], a
-	inc a ; PLAYER_DIR_RIGHT
+	inc a // PLAYER_DIR_RIGHT
 	ld [wPlayerMovingDirection], a
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a

@@ -2,24 +2,24 @@ FlagActionPredef:
 	call GetPredefRegisters
 
 FlagAction:
-; Perform action b on bit c
-; in the bitfield at hl.
-;  0: reset
-;  1: set
-;  2: read
-; Return the result in c.
+// Perform action b on bit c
+// in the bitfield at hl.
+//  0: reset
+//  1: set
+//  2: read
+// Return the result in c.
 
 	push hl
 	push de
 	push bc
 
-	; bit
+	// bit
 	ld a, c
 	ld d, a
 	and 7
 	ld e, a
 
-	; byte
+	// byte
 	ld a, d
 	srl a
 	srl a
@@ -30,7 +30,7 @@ FlagAction:
 	inc h
 .ok
 
-	; d = 1 << e (bitmask)
+	// d = 1 << e (bitmask)
 	inc e
 	ld d, 1
 .shift

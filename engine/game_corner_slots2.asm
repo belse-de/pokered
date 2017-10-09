@@ -1,7 +1,7 @@
 AbleToPlaySlotsCheck:
 	ld a, [wSpriteStateData1 + 2]
 	and $8
-	jr z, .done ; not able
+	jr z, .done // not able
 	ld b, COIN_CASE
 	predef GetQuantityOfItemInBag
 	ld a, b
@@ -11,7 +11,7 @@ AbleToPlaySlotsCheck:
 	ld hl, wPlayerCoins
 	ld a, [hli]
 	or [hl]
-	jr nz, .done ; able to play
+	jr nz, .done // able to play
 	ld b, (GameCornerNoCoinsText_id - TextPredefs) / 2 + 1
 .printCoinCaseRequired
 	call EnableAutoTextBoxDrawing

@@ -5,9 +5,9 @@ FocusEnergyEffect_:
 	jr z, .notEnemy
 	ld hl, wEnemyBattleStatus2
 .notEnemy
-	bit GettingPumped, [hl] ; is mon already using focus energy?
+	bit GettingPumped, [hl] // is mon already using focus energy?
 	jr nz, .alreadyUsing
-	set GettingPumped, [hl] ; mon is now using focus energy
+	set GettingPumped, [hl] // mon is now using focus energy
 	callab PlayCurrentMoveAnimation
 	ld hl, GettingPumpedText
 	jp PrintText

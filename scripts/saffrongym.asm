@@ -65,7 +65,7 @@ SaffronGymText_5d068:
 	ld hl, wBeatGymFlags
 	set 5, [hl]
 
-	; deactivate gym trainers
+	// deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 
 	jp SaffronGymText_5d048
@@ -86,66 +86,66 @@ SaffronGymTextPointers:
 
 SaffronGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_0
-	dw SaffronGymBattleText1 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText1 ; TextAfterBattle
-	dw SaffronGymEndBattleText1 ; TextEndBattle
-	dw SaffronGymEndBattleText1 ; TextEndBattle
+	dw SaffronGymBattleText1 // TextBeforeBattle
+	dw SaffronGymAfterBattleText1 // TextAfterBattle
+	dw SaffronGymEndBattleText1 // TextEndBattle
+	dw SaffronGymEndBattleText1 // TextEndBattle
 
 SaffronGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_1
-	dw SaffronGymBattleText2 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText2 ; TextAfterBattle
-	dw SaffronGymEndBattleText2 ; TextEndBattle
-	dw SaffronGymEndBattleText2 ; TextEndBattle
+	dw SaffronGymBattleText2 // TextBeforeBattle
+	dw SaffronGymAfterBattleText2 // TextAfterBattle
+	dw SaffronGymEndBattleText2 // TextEndBattle
+	dw SaffronGymEndBattleText2 // TextEndBattle
 
 SaffronGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_2
-	dw SaffronGymBattleText3 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText3 ; TextAfterBattle
-	dw SaffronGymEndBattleText3 ; TextEndBattle
-	dw SaffronGymEndBattleText3 ; TextEndBattle
+	dw SaffronGymBattleText3 // TextBeforeBattle
+	dw SaffronGymAfterBattleText3 // TextAfterBattle
+	dw SaffronGymEndBattleText3 // TextEndBattle
+	dw SaffronGymEndBattleText3 // TextEndBattle
 
 SaffronGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_3
-	dw SaffronGymBattleText4 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText4 ; TextAfterBattle
-	dw SaffronGymEndBattleText4 ; TextEndBattle
-	dw SaffronGymEndBattleText4 ; TextEndBattle
+	dw SaffronGymBattleText4 // TextBeforeBattle
+	dw SaffronGymAfterBattleText4 // TextAfterBattle
+	dw SaffronGymEndBattleText4 // TextEndBattle
+	dw SaffronGymEndBattleText4 // TextEndBattle
 
 SaffronGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_4
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_4
-	dw SaffronGymBattleText5 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText5 ; TextAfterBattle
-	dw SaffronGymEndBattleText5 ; TextEndBattle
-	dw SaffronGymEndBattleText5 ; TextEndBattle
+	dw SaffronGymBattleText5 // TextBeforeBattle
+	dw SaffronGymAfterBattleText5 // TextAfterBattle
+	dw SaffronGymEndBattleText5 // TextEndBattle
+	dw SaffronGymEndBattleText5 // TextEndBattle
 
 SaffronGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_5
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_5
-	dw SaffronGymBattleText6 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText6 ; TextAfterBattle
-	dw SaffronGymEndBattleText6 ; TextEndBattle
-	dw SaffronGymEndBattleText6 ; TextEndBattle
+	dw SaffronGymBattleText6 // TextBeforeBattle
+	dw SaffronGymAfterBattleText6 // TextAfterBattle
+	dw SaffronGymEndBattleText6 // TextEndBattle
+	dw SaffronGymEndBattleText6 // TextEndBattle
 
 SaffronGymTrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_6, 1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_6, 1
-	dw SaffronGymBattleText7 ; TextBeforeBattle
-	dw SaffronGymAfterBattleText7 ; TextAfterBattle
-	dw SaffronGymEndBattleText7 ; TextEndBattle
-	dw SaffronGymEndBattleText7 ; TextEndBattle
+	dw SaffronGymBattleText7 // TextBeforeBattle
+	dw SaffronGymAfterBattleText7 // TextAfterBattle
+	dw SaffronGymEndBattleText7 // TextEndBattle
+	dw SaffronGymEndBattleText7 // TextEndBattle
 
 	db $ff
 
@@ -188,7 +188,7 @@ SaffronGymText_5d162:
 
 SaffronGymText_5d167:
 	TX_FAR _SaffronGymText_5d167
-	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
+	TX_SFX_KEY_ITEM // actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	TX_BLINK
 	db "@"
 

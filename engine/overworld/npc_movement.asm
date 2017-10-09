@@ -56,9 +56,9 @@ PalletMovementScript_OakMoveLeft:
 	sub $a
 	ld [wNumStepsToTake], a
 	jr z, .playerOnLeftTile
-; The player is on the right tile of the northern path out of Pallet Town and
-; Prof. Oak is below.
-; Make Prof. Oak step to the left.
+// The player is on the right tile of the northern path out of Pallet Town and
+// Prof. Oak is below.
+// Make Prof. Oak step to the left.
 	ld b, 0
 	ld c, a
 	ld hl, wNPCMovementDirections2
@@ -72,9 +72,9 @@ PalletMovementScript_OakMoveLeft:
 	ld a, $1
 	ld [wNPCMovementScriptFunctionNum], a
 	jr .done
-; The player is on the left tile of the northern path out of Pallet Town and
-; Prof. Oak is below.
-; Prof. Oak is already where he needs to be.
+// The player is on the left tile of the northern path out of Pallet Town and
+// Prof. Oak is below.
+// Prof. Oak is already where he needs to be.
 .playerOnLeftTile
 	ld a, $3
 	ld [wNPCMovementScriptFunctionNum], a
@@ -87,8 +87,8 @@ PalletMovementScript_OakMoveLeft:
 
 PalletMovementScript_PlayerMoveLeft:
 	ld a, [wd730]
-	bit 0, a ; is an NPC being moved by a script?
-	ret nz ; return if Oak is still moving
+	bit 0, a // is an NPC being moved by a script?
+	ret nz // return if Oak is still moving
 	ld a, [wNumStepsToTake]
 	ld [wSimulatedJoypadStatesIndex], a
 	ld [hNPCMovementDirections2Index], a
@@ -100,7 +100,7 @@ PalletMovementScript_PlayerMoveLeft:
 
 PalletMovementScript_WaitAndWalkToLab:
 	ld a, [wSimulatedJoypadStatesIndex]
-	and a ; is the player done moving left yet?
+	and a // is the player done moving left yet?
 	ret nz
 
 PalletMovementScript_WalkToLab:
@@ -133,7 +133,7 @@ RLEList_ProfOakWalkToLab:
 	db NPC_MOVEMENT_DOWN, $05
 	db NPC_MOVEMENT_RIGHT, $03
 	db NPC_MOVEMENT_UP, $01
-	db $E0, $01 ; stand still
+	db $E0, $01 // stand still
 	db $FF
 
 RLEList_PlayerWalkToLab:
@@ -269,7 +269,7 @@ RLEList_PewterGymGuy:
 FreezeEnemyTrainerSprite:
 	ld a, [wCurMap]
 	cp POKEMONTOWER_7
-	ret z ; the Rockets on Pokemon Tower 7F leave after battling, so don't freeze them
+	ret z // the Rockets on Pokemon Tower 7F leave after battling, so don't freeze them
 	ld hl, RivalIDs
 	ld a, [wEngagedTrainerClass]
 	ld b, a
@@ -278,7 +278,7 @@ FreezeEnemyTrainerSprite:
 	cp $ff
 	jr z, .notRival
 	cp b
-	ret z ; the rival leaves after battling, so don't freeze him
+	ret z // the rival leaves after battling, so don't freeze him
 	jr .loop
 .notRival
 	ld a, [wSpriteIndex]

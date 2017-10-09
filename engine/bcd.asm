@@ -11,8 +11,8 @@ DivideBCD::
 	ld [hDivideBCDBuffer+2], a
 	ld d, $1
 .mulBy10Loop 
-; multiply the divisor by 10 until the leading digit is nonzero
-; to set up the standard long division algorithm
+// multiply the divisor by 10 until the leading digit is nonzero
+// to set up the standard long division algorithm
 	ld a, [hDivideBCDDivisor]
 	and $f0
 	jr nz, .next
@@ -98,7 +98,7 @@ DivideBCD::
 	ld [hDivideBCDBuffer+2], a
 .next2
 	ld a, [hDivideBCDBuffer]
-	ld [hDivideBCDQuotient], a ; the same memory location as hDivideBCDDivisor
+	ld [hDivideBCDQuotient], a // the same memory location as hDivideBCDDivisor
 	ld a, [hDivideBCDBuffer+1]
 	ld [hDivideBCDQuotient+1], a
 	ld a, [hDivideBCDBuffer+2]
@@ -144,14 +144,14 @@ DivideBCD_divDivisorBy10:
 DivideBCD_getNextDigit:
 	ld bc, $3
 .loop
-	ld de, hMoney ; the dividend
+	ld de, hMoney // the dividend
 	ld hl, hDivideBCDDivisor
 	push bc
 	call StringCmp
 	pop bc
 	ret c
 	inc b
-	ld de, hMoney+2 ; since SubBCD works starting from the least significant digit
+	ld de, hMoney+2 // since SubBCD works starting from the least significant digit
 	ld hl, hDivideBCDDivisor+2  
 	push bc
 	call SubBCD

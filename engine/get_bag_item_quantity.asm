@@ -1,6 +1,6 @@
 GetQuantityOfItemInBag:
-; In: b = item ID
-; Out: b = how many of that item are in the bag
+// In: b = item ID
+// Out: b = how many of that item are in the bag
 	call GetPredefRegisters
 	ld hl, wNumBagItems
 .loop

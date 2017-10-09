@@ -3,7 +3,7 @@ _RunPaletteCommand:
 	ld a, b
 	cp $ff
 	jr nz, .next
-	ld a, [wDefaultPaletteCommand] ; use default command if command ID is $ff
+	ld a, [wDefaultPaletteCommand] // use default command if command ID is $ff
 .next
 	cp UPDATE_PARTY_MENU_BLK_PACKET
 	jp z, UpdatePartyMenuBlkPacket
@@ -24,7 +24,7 @@ SetPal_BattleBlack:
 	ld de, BlkPacket_Battle
 	ret
 
-; uses PalPacket_Empty to build a packet based on mon IDs and health color
+// uses PalPacket_Empty to build a packet based on mon IDs and health color
 SetPal_Battle:
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
@@ -63,7 +63,7 @@ SetPal_TownMap:
 	ld de, BlkPacket_WholeScreen
 	ret
 
-; uses PalPacket_Empty to build a packet based the mon ID
+// uses PalPacket_Empty to build a packet based the mon ID
 SetPal_StatusScreen:
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
@@ -72,7 +72,7 @@ SetPal_StatusScreen:
 	ld a, [wcf91]
 	cp VICTREEBEL + 1
 	jr c, .pokemon
-	ld a, $1 ; not pokemon
+	ld a, $1 // not pokemon
 .pokemon
 	call DeterminePaletteIDOutOfBattle
 	push af
@@ -115,7 +115,7 @@ SetPal_TitleScreen:
 	ld de, BlkPacket_Titlescreen
 	ret
 
-; used mostly for menus and the Oak intro
+// used mostly for menus and the Oak intro
 SetPal_Generic:
 	ld hl, PalPacket_Generic
 	ld de, BlkPacket_WholeScreen
@@ -133,7 +133,7 @@ SetPal_GameFreakIntro:
 	ld [wDefaultPaletteCommand], a
 	ret
 
-; uses PalPacket_Empty to build a packet based on the current map
+// uses PalPacket_Empty to build a packet based on the current map
 SetPal_Overworld:
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
@@ -156,13 +156,13 @@ SetPal_Overworld:
 	cp BRUNOS_ROOM
 	jr z, .caveOrBruno
 .normalDungeonOrBuilding
-	ld a, [wLastMap] ; town or route that current dungeon or building is located
+	ld a, [wLastMap] // town or route that current dungeon or building is located
 .townOrRoute
 	cp SAFFRON_CITY + 1
 	jr c, .town
 	ld a, PAL_ROUTE - 1
 .town
-	inc a ; a town's palette ID is its map ID + 1
+	inc a // a town's palette ID is its map ID + 1
 	ld hl, wPalPacket + 1
 	ld [hld], a
 	ld de, BlkPacket_WholeScreen
@@ -179,8 +179,8 @@ SetPal_Overworld:
 	xor a
 	jr .town
 
-; used when a Pokemon is the only thing on the screen
-; such as evolution, trading and the Hall of Fame
+// used when a Pokemon is the only thing on the screen
+// such as evolution, trading and the Hall of Fame
 SetPal_PokemonWholeScreen:
 	push bc
 	ld hl, PalPacket_Empty
@@ -213,7 +213,7 @@ SetPal_TrainerCard:
 	srl a
 	push af
 	jr c, .haveBadge
-; The player doens't have the badge, so zero the badge's blk data.
+// The player doens't have the badge, so zero the badge's blk data.
 	push bc
 	ld a, [de]
 	ld c, a
@@ -225,7 +225,7 @@ SetPal_TrainerCard:
 	pop bc
 	jr .nextBadge
 .haveBadge
-; The player does have the badge, so skip past the badge's blk data.
+// The player does have the badge, so skip past the badge's blk data.
 	ld a, [de]
 .skipBadgeDataLoop
 	inc hl
@@ -256,26 +256,26 @@ SetPalFunctions:
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
 
-; The length of the blk data of each badge on the Trainer Card.
-; The Rainbow Badge has 3 entries because of its many colors.
+// The length of the blk data of each badge on the Trainer Card.
+// The Rainbow Badge has 3 entries because of its many colors.
 BadgeBlkDataLengths:
-	db 6     ; Boulder Badge
-	db 6     ; Cascade Badge
-	db 6     ; Thunder Badge
-	db 6 * 3 ; Rainbow Badge
-	db 6     ; Soul Badge
-	db 6     ; Marsh Badge
-	db 6     ; Volcano Badge
-	db 6     ; Earth Badge
+	db 6     // Boulder Badge
+	db 6     // Cascade Badge
+	db 6     // Thunder Badge
+	db 6 * 3 // Rainbow Badge
+	db 6     // Soul Badge
+	db 6     // Marsh Badge
+	db 6     // Volcano Badge
+	db 6     // Earth Badge
 
 DeterminePaletteID:
-	bit Transformed, a ; a is battle status 3
-	ld a, PAL_GREYMON  ; if the mon has used Transform, use Ditto's palette
+	bit Transformed, a // a is battle status 3
+	ld a, PAL_GREYMON  // if the mon has used Transform, use Ditto's palette
 	ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld [wd11e], a
-	and a ; is the mon index 0?
+	and a // is the mon index 0?
 	jr z, .skipDexNumConversion
 	push bc
 	predef IndexToPokedex
@@ -284,7 +284,7 @@ DeterminePaletteIDOutOfBattle:
 .skipDexNumConversion
 	ld e, a
 	ld d, 0
-	ld hl, MonsterPalettes ; not just for Pokemon, Trainers use it too
+	ld hl, MonsterPalettes // not just for Pokemon, Trainers use it too
 	add hl, de
 	ld a, [hl]
 	ret
@@ -296,8 +296,8 @@ InitPartyMenuBlkPacket:
 	jp CopyData
 
 UpdatePartyMenuBlkPacket:
-; Update the blk packet with the palette of the HP bar that is
-; specified in [wWhichPartyMenuHPBar].
+// Update the blk packet with the palette of the HP bar that is
+// specified in [wWhichPartyMenuHPBar].
 	ld hl, wPartyMenuHPBarColors
 	ld a, [wWhichPartyMenuHPBar]
 	ld e, a
@@ -307,12 +307,12 @@ UpdatePartyMenuBlkPacket:
 	ld d, h
 	ld a, [de]
 	and a
-	ld e, (1 << 2) | 1 ; green
+	ld e, (1 << 2) | 1 // green
 	jr z, .next
 	dec a
-	ld e, (2 << 2) | 2 ; yellow
+	ld e, (2 << 2) | 2 // yellow
 	jr z, .next
-	ld e, (3 << 2) | 3 ; red
+	ld e, (3 << 2) | 3 // red
 .next
 	push de
 	ld hl, wPartyMenuBlkPacket + 8 + 1
@@ -328,18 +328,18 @@ SendSGBPacket:
 	ld a,[hl]
 	and a,$07
 	ret z
-; store number of packets in B
+// store number of packets in B
 	ld b,a
 .loop2
-; save B for later use
+// save B for later use
 	push bc
-; disable ReadJoypad to prevent it from interfering with sending the packet
+// disable ReadJoypad to prevent it from interfering with sending the packet
 	ld a, 1
 	ld [hDisableJoypadPolling], a
-; send RESET signal (P14=LOW, P15=LOW)
+// send RESET signal (P14=LOW, P15=LOW)
 	xor a
 	ld [rJOYP],a
-; set P14=HIGH, P15=HIGH
+// set P14=HIGH, P15=HIGH
 	ld a,$30
 	ld [rJOYP],a
 ;load length of packets (16 bytes)
@@ -347,45 +347,45 @@ SendSGBPacket:
 .nextByte
 ;set bit counter (8 bits per byte)
 	ld e,$08
-; get next byte in the packet
+// get next byte in the packet
 	ld a,[hli]
 	ld d,a
 .nextBit0
 	bit 0,d
-; if 0th bit is not zero set P14=HIGH,P15=LOW (send bit 1)
+// if 0th bit is not zero set P14=HIGH,P15=LOW (send bit 1)
 	ld a,$10
 	jr nz,.next0
-; else (if 0th bit is zero) set P14=LOW,P15=HIGH (send bit 0)
+// else (if 0th bit is zero) set P14=LOW,P15=HIGH (send bit 0)
 	ld a,$20
 .next0
 	ld [rJOYP],a
-; must set P14=HIGH,P15=HIGH between each "pulse"
+// must set P14=HIGH,P15=HIGH between each "pulse"
 	ld a,$30
 	ld [rJOYP],a
-; rotation will put next bit in 0th position (so  we can always use command
-; "bit 0,d" to fetch the bit that has to be sent)
+// rotation will put next bit in 0th position (so  we can always use command
+// "bit 0,d" to fetch the bit that has to be sent)
 	rr d
-; decrease bit counter so we know when we have sent all 8 bits of current byte
+// decrease bit counter so we know when we have sent all 8 bits of current byte
 	dec e
 	jr nz,.nextBit0
 	dec b
 	jr nz,.nextByte
-; send bit 1 as a "stop bit" (end of parameter data)
+// send bit 1 as a "stop bit" (end of parameter data)
 	ld a,$20
 	ld [rJOYP],a
-; set P14=HIGH,P15=HIGH
+// set P14=HIGH,P15=HIGH
 	ld a,$30
 	ld [rJOYP],a
 	xor a
 	ld [hDisableJoypadPolling],a
-; wait for about 70000 cycles
+// wait for about 70000 cycles
 	call Wait7000
-; restore (previously pushed) number of packets
+// restore (previously pushed) number of packets
 	pop bc
 	dec b
-; return if there are no more packets
+// return if there are no more packets
 	ret z
-; else send 16 more bytes
+// else send 16 more bytes
 	jr .loop2
 
 LoadSGB:
@@ -440,7 +440,7 @@ PrepareSuperNintendoVRAMTransfer:
 	ret
 
 .packetPointers
-; Only the first packet is needed.
+// Only the first packet is needed.
 	dw MaskEnFreezePacket
 	dw DataSnd_72548
 	dw DataSnd_72558
@@ -452,7 +452,7 @@ PrepareSuperNintendoVRAMTransfer:
 	dw DataSnd_725b8
 
 CheckSGB:
-; Returns whether the game is running on an SGB in carry.
+// Returns whether the game is running on an SGB in carry.
 	ld hl, MltReq2Packet
 	di
 	call SendSGBPacket
@@ -548,7 +548,7 @@ CopyGfxToSuperNintendoVRAM:
 	ret
 
 Wait7000:
-; Each loop takes 9 cycles so this routine actually waits 63000 cycles.
+// Each loop takes 9 cycles so this routine actually waits 63000 cycles.
 	ld de, 7000
 .loop
 	nop
@@ -576,7 +576,7 @@ SendSGBPackets:
 	jp SendSGBPacket
 
 InitGBCPalettes:
-	ld a, $80 ; index 0 with auto-increment
+	ld a, $80 // index 0 with auto-increment
 	ld [rBGPI], a
 	inc hl
 	ld c, $20
@@ -601,16 +601,16 @@ EmptyFunc5:
 	ret
 
 CopySGBBorderTiles:
-; SGB tile data is stored in a 4BPP planar format.
-; Each tile is 32 bytes. The first 16 bytes contain bit planes 1 and 2, while
-; the second 16 bytes contain bit planes 3 and 4.
-; This function converts 2BPP planar data into this format by mapping
-; 2BPP colors 0-3 to 4BPP colors 0-3. 4BPP colors 4-15 are not used.
+// SGB tile data is stored in a 4BPP planar format.
+// Each tile is 32 bytes. The first 16 bytes contain bit planes 1 and 2, while
+// the second 16 bytes contain bit planes 3 and 4.
+// This function converts 2BPP planar data into this format by mapping
+// 2BPP colors 0-3 to 4BPP colors 0-3. 4BPP colors 4-15 are not used.
 	ld b, 128
 
 .tileLoop
 
-; Copy bit planes 1 and 2 of the tile data.
+// Copy bit planes 1 and 2 of the tile data.
 	ld c, 16
 .copyLoop
 	ld a, [hli]
@@ -619,7 +619,7 @@ CopySGBBorderTiles:
 	dec c
 	jr nz, .copyLoop
 
-; Zero bit planes 3 and 4.
+// Zero bit planes 3 and 4.
 	ld c, 16
 	xor a
 .zeroLoop
@@ -632,10 +632,10 @@ CopySGBBorderTiles:
 	jr nz, .tileLoop
 	ret
 
-INCLUDE "data/sgb_packets.asm"
+#include "data/sgb_packets.asm"
 
-INCLUDE "data/mon_palettes.asm"
+#include "data/mon_palettes.asm"
 
-INCLUDE "data/super_palettes.asm"
+#include "data/super_palettes.asm"
 
-INCLUDE "data/sgb_border.asm"
+#include "data/sgb_border.asm"

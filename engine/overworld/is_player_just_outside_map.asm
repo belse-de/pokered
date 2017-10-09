@@ -1,4 +1,4 @@
-; returns whether the player is one tile outside the map in Z
+// returns whether the player is one tile outside the map in Z
 IsPlayerJustOutsideMap:
 	ld a, [wYCoord]
 	ld b, a

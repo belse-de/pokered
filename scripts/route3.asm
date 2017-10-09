@@ -26,75 +26,75 @@ Route3TextPointers:
 
 Route3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_0
-	dw Route3BattleText1 ; TextBeforeBattle
-	dw Route3AfterBattleText1 ; TextAfterBattle
-	dw Route3EndBattleText1 ; TextEndBattle
-	dw Route3EndBattleText1 ; TextEndBattle
+	dw Route3BattleText1 // TextBeforeBattle
+	dw Route3AfterBattleText1 // TextAfterBattle
+	dw Route3EndBattleText1 // TextEndBattle
+	dw Route3EndBattleText1 // TextEndBattle
 
 Route3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_1
-	dw Route3BattleText2 ; TextBeforeBattle
-	dw Route3AfterBattleText2 ; TextAfterBattle
-	dw Route3EndBattleText2 ; TextEndBattle
-	dw Route3EndBattleText2 ; TextEndBattle
+	dw Route3BattleText2 // TextBeforeBattle
+	dw Route3AfterBattleText2 // TextAfterBattle
+	dw Route3EndBattleText2 // TextEndBattle
+	dw Route3EndBattleText2 // TextEndBattle
 
 Route3TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_2
-	dw Route3BattleText3 ; TextBeforeBattle
-	dw Route3AfterBattleText3 ; TextAfterBattle
-	dw Route3EndBattleText3 ; TextEndBattle
-	dw Route3EndBattleText3 ; TextEndBattle
+	dw Route3BattleText3 // TextBeforeBattle
+	dw Route3AfterBattleText3 // TextAfterBattle
+	dw Route3EndBattleText3 // TextEndBattle
+	dw Route3EndBattleText3 // TextEndBattle
 
 Route3TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_3
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_3
-	dw Route3BattleText4 ; TextBeforeBattle
-	dw Route3AfterBattleText4 ; TextAfterBattle
-	dw Route3EndBattleText4 ; TextEndBattle
-	dw Route3EndBattleText4 ; TextEndBattle
+	dw Route3BattleText4 // TextBeforeBattle
+	dw Route3AfterBattleText4 // TextAfterBattle
+	dw Route3EndBattleText4 // TextEndBattle
+	dw Route3EndBattleText4 // TextEndBattle
 
 Route3TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_4
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_4
-	dw Route3BattleText5 ; TextBeforeBattle
-	dw Route3AfterBattleText5 ; TextAfterBattle
-	dw Route3EndBattleText5 ; TextEndBattle
-	dw Route3EndBattleText5 ; TextEndBattle
+	dw Route3BattleText5 // TextBeforeBattle
+	dw Route3AfterBattleText5 // TextAfterBattle
+	dw Route3EndBattleText5 // TextEndBattle
+	dw Route3EndBattleText5 // TextEndBattle
 
 Route3TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_5
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_5
-	dw Route3BattleText6 ; TextBeforeBattle
-	dw Route3AfterBattleText6 ; TextAfterBattle
-	dw Route3EndBattleText6 ; TextEndBattle
-	dw Route3EndBattleText6 ; TextEndBattle
+	dw Route3BattleText6 // TextBeforeBattle
+	dw Route3AfterBattleText6 // TextAfterBattle
+	dw Route3EndBattleText6 // TextEndBattle
+	dw Route3EndBattleText6 // TextEndBattle
 
 Route3TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_6, 1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_6, 1
-	dw Route3BattleText7 ; TextBeforeBattle
-	dw Route3AfterBattleText7 ; TextAfterBattle
-	dw Route3EndBattleText7 ; TextEndBattle
-	dw Route3EndBattleText7 ; TextEndBattle
+	dw Route3BattleText7 // TextBeforeBattle
+	dw Route3AfterBattleText7 // TextAfterBattle
+	dw Route3EndBattleText7 // TextEndBattle
+	dw Route3EndBattleText7 // TextEndBattle
 
 Route3TrainerHeader7:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_7, 1
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_7, 1
-	dw Route3BattleText8 ; TextBeforeBattle
-	dw Route3AfterBattleText8 ; TextAfterBattle
-	dw Route3EndBattleText8 ; TextEndBattle
-	dw Route3EndBattleText8 ; TextEndBattle
+	dw Route3BattleText8 // TextBeforeBattle
+	dw Route3AfterBattleText8 // TextAfterBattle
+	dw Route3EndBattleText8 // TextEndBattle
+	dw Route3EndBattleText8 // TextEndBattle
 
 	db $ff
 

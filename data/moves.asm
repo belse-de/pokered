@@ -1,13 +1,13 @@
 Moves:
-; Characteristics of each move.
+// Characteristics of each move.
 
 move: macro
-	db \1 ; animation (interchangeable with move id)
-	db \2 ; effect
-	db \3 ; power
-	db \4 ; type
-	db \5 percent ; accuracy
-	db \6 ; pp
+	db \1 // animation (interchangeable with move id)
+	db \2 // effect
+	db \3 // power
+	db \4 // type
+	db \5 percent // accuracy
+	db \6 // pp
 endm
 
 	move POUND,        NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 35

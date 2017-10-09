@@ -7,7 +7,7 @@ LoadTilesetHeader:
 	add a
 	ld b, a
 	add a
-	add b ; a = tileset * 12
+	add b // a = tileset * 12
 	jr nc, .noCarry
 	inc d
 .noCarry
@@ -55,6 +55,6 @@ LoadTilesetHeader:
 .done
 	ret
 
-INCLUDE "data/dungeon_tilesets.asm"
+#include "data/dungeon_tilesets.asm"
 
-INCLUDE "data/tileset_headers.asm"
+#include "data/tileset_headers.asm"

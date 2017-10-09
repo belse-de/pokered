@@ -1,7 +1,7 @@
 AnimateHealingMachine:
 	ld de, PokeCenterFlashingMonitorAndHealBall
 	ld hl, vChars0 + $7c0
-	lb bc, BANK(PokeCenterFlashingMonitorAndHealBall), $03 ; loads one too many tiles
+	lb bc, BANK(PokeCenterFlashingMonitorAndHealBall), $03 // loads one too many tiles
 	call CopyVideoData
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
@@ -22,8 +22,8 @@ AnimateHealingMachine:
 	call PlaySound
 .waitLoop
 	ld a, [wAudioFadeOutControl]
-	and a ; is fade-out finished?
-	jr nz, .waitLoop ; if not, check again
+	and a // is fade-out finished?
+	jr nz, .waitLoop // if not, check again
 	ld a, [wPartyCount]
 	ld b, a
 .partyLoop
@@ -51,8 +51,8 @@ AnimateHealingMachine:
 	call FlashSprite8Times
 .waitLoop2
 	ld a, [wChannelSoundIDs]
-	cp MUSIC_PKMN_HEALED ; is the healed music still playing?
-	jr z, .waitLoop2 ; if so, check gain
+	cp MUSIC_PKMN_HEALED // is the healed music still playing?
+	jr z, .waitLoop2 // if so, check gain
 	ld c, 32
 	call DelayFrames
 	pop af
@@ -66,15 +66,15 @@ PokeCenterFlashingMonitorAndHealBall:
 	INCBIN "gfx/pokecenter_ball.2bpp"
 
 PokeCenterOAMData:
-	db $24,$34,$7C,$10 ; heal machine monitor
-	db $2B,$30,$7D,$10 ; pokeballs 1-6
+	db $24,$34,$7C,$10 // heal machine monitor
+	db $2B,$30,$7D,$10 // pokeballs 1-6
 	db $2B,$38,$7D,$30
 	db $30,$30,$7D,$10
 	db $30,$38,$7D,$30
 	db $35,$30,$7D,$10
 	db $35,$38,$7D,$30
 
-; d = value to xor with palette
+// d = value to xor with palette
 FlashSprite8Times:
 	ld b, 8
 .loop
@@ -88,7 +88,7 @@ FlashSprite8Times:
 	ret
 
 CopyHealingMachineOAM:
-; copy one OAM entry and advance the pointers
+// copy one OAM entry and advance the pointers
 	ld a, [de]
 	inc de
 	ld [hli], a

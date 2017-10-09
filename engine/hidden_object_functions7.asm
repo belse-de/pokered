@@ -23,7 +23,7 @@ DisplayOakLabRightPoster:
 	cp 2
 	tx_pre_id SaveOptionText
 	jr c, .ownLessThanTwo
-	; own two or more mon
+	// own two or more mon
 	tx_pre_id StrengthsAndWeaknessesText
 .ownLessThanTwo
 	jp PrintPredefTextID
@@ -37,8 +37,8 @@ StrengthsAndWeaknessesText:
 	db "@"
 
 SafariZoneCheck:
-	CheckEventHL EVENT_IN_SAFARI_ZONE ; if we are not in the Safari Zone,
-	jr z, SafariZoneGameStillGoing ; don't bother printing game over text
+	CheckEventHL EVENT_IN_SAFARI_ZONE // if we are not in the Safari Zone,
+	jr z, SafariZoneGameStillGoing // don't bother printing game over text
 	ld a, [wNumSafariBalls]
 	and a
 	jr z, SafariZoneGameOver
@@ -259,8 +259,8 @@ CinnabarGymQuizIncorrectText:
 	db "@"
 
 UpdateCinnabarGymGateTileBlocks_:
-; Update the overworld map with open floor blocks or locked gate blocks
-; depending on event flags.
+// Update the overworld map with open floor blocks or locked gate blocks
+// depending on event flags.
 	ld a, 6
 	ld [hGymGateIndex], a
 .loop
@@ -302,8 +302,8 @@ UpdateCinnabarGymGateTileBlocks_:
 	ret
 
 CinnabarGymGateCoords:
-	; format: x-coord, y-coord, direction, padding
-	; direction: $54 = horizontal gate, $5f = vertical gate
+	// format: x-coord, y-coord, direction, padding
+	// direction: $54 = horizontal gate, $5f = vertical gate
 	db $09,$03,$54,$00
 	db $06,$03,$54,$00
 	db $06,$06,$54,$00
@@ -392,7 +392,7 @@ BillsHousePokemonList:
 	ld hl, BillsHousePokemonListText1
 	call PrintText
 	xor a
-	ld [wMenuItemOffset], a ; not used
+	ld [wMenuItemOffset], a // not used
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
 	ld a, A_BUTTON | B_BUTTON
@@ -417,7 +417,7 @@ BillsHousePokemonList:
 	call PrintText
 	call SaveScreenTilesToBuffer2
 	call HandleMenuInput
-	bit 1, a ; pressed b
+	bit 1, a // pressed b
 	jr nz, .cancel
 	ld a, [wCurrentMenuItem]
 	add EEVEE

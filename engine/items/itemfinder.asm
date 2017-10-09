@@ -5,7 +5,7 @@ HiddenItemNear:
 	ld de, 3
 	ld a, [wCurMap]
 	call IsInRestOfArray
-	ret nc ; return if current map has no hidden items
+	ret nc // return if current map has no hidden items
 	push bc
 	push hl
 	ld hl, wObtainedHiddenItemsFlags
@@ -22,8 +22,8 @@ HiddenItemNear:
 	inc hl
 	ld e, [hl]
 	inc hl
-	jr nz, .loop ; if the item has already been obtained
-; check if the item is within 4-5 tiles (depending on the direction of item)
+	jr nz, .loop // if the item has already been obtained
+// check if the item is within 4-5 tiles (depending on the direction of item)
 	ld a, [wYCoord]
 	call Sub5ClampTo0
 	cp d
@@ -44,7 +44,7 @@ HiddenItemNear:
 	ret
 
 Sub5ClampTo0:
-; subtract 5 but clamp to 0
+// subtract 5 but clamp to 0
 	sub 5
 	cp $f0
 	ret c

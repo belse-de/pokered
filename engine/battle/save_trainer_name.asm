@@ -19,7 +19,7 @@ SaveTrainerName:
 	ret
 
 TrainerNamePointers:
-; what is the point of these?
+// what is the point of these?
 	dw YoungsterName
 	dw BugCatcherName
 	dw LassName

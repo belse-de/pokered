@@ -2,7 +2,7 @@ CeladonMartRoofScript:
 	jp EnableAutoTextBoxDrawing
 
 CeladonMartRoofScript_GetDrinksInBag:
-; construct a list of all drinks in the player's bag
+// construct a list of all drinks in the player's bag
 	xor a
 	ld [wFilteredBagItemsCount], a
 	ld de, wFilteredBagItems
@@ -20,7 +20,7 @@ CeladonMartRoofScript_GetDrinksInBag:
 	pop hl
 	ld a, b
 	and a
-	jr z, .loop ; if the item isn't in the bag
+	jr z, .loop // if the item isn't in the bag
 	ld a, [wd11e]
 	ld [de], a
 	inc de
@@ -71,7 +71,7 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	ld hl, wd730
 	res 6, [hl]
 	call HandleMenuInput
-	bit 1, a ; pressed b
+	bit 1, a // pressed b
 	ret nz
 	ld hl, wFilteredBagItems
 	ld a, [wCurrentMenuItem]
@@ -84,7 +84,7 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	jr z, .gaveFreshWater
 	cp SODA_POP
 	jr z, .gaveSodaPop
-; gave Lemonade
+// gave Lemonade
 	CheckEvent EVENT_GOT_TM49
 	jr nz, .alreadyGaveDrink
 	ld hl, CeladonMartRoofText_48515

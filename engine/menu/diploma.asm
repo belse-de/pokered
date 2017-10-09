@@ -38,17 +38,17 @@ DisplayDiploma:
 	call PlaceString
 	callba DrawPlayerCharacter
 
-; Move the player 33 pixels right and set the priority bit so he appears
-; behind the background layer.
+// Move the player 33 pixels right and set the priority bit so he appears
+// behind the background layer.
 	ld hl, wOAMBuffer + $01
 	lb bc, $80, $28
 .adjustPlayerGfxLoop
-	ld a, [hl] ; X
+	ld a, [hl] // X
 	add 33
 	ld [hli], a
 	inc hl
 	ld a, b
-	ld [hli], a ; attributes
+	ld [hli], a // attributes
 	inc hl
 	dec c
 	jr nz, .adjustPlayerGfxLoop
@@ -70,8 +70,8 @@ DisplayDiploma:
 	jp GBPalNormal
 
 UnusedPlayerNameLengthFunc:
-; Unused function that does a calculation involving the length of the player's
-; name.
+// Unused function that does a calculation involving the length of the player's
+// name.
 	ld hl, wPlayerName
 	ld bc, $ff00
 .loop

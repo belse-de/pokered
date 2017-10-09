@@ -1,4 +1,4 @@
-; tests if mon [wcf91] can learn move [wMoveNum]
+// tests if mon [wcf91] can learn move [wMoveNum]
 CanLearnTM:
 	ld a, [wcf91]
 	ld [wd0b5], a
@@ -20,8 +20,8 @@ CanLearnTM:
 	ld b, FLAG_TEST
 	predef_jump FlagActionPredef
 
-; converts TM/HM number in wd11e into move number
-; HMs start at 51
+// converts TM/HM number in wd11e into move number
+// HMs start at 51
 TMToMove:
 	ld a, [wd11e]
 	dec a
@@ -33,4 +33,4 @@ TMToMove:
 	ld [wd11e], a
 	ret
 
-INCLUDE "data/tms.asm"
+#include "data/tms.asm"

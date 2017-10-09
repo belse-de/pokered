@@ -1,6 +1,6 @@
 InternalClockTradeAnim:
-; Do the trading animation with the player's gameboy on the left.
-; In-game trades and internally clocked link cable trades use this.
+// Do the trading animation with the player's gameboy on the left.
+// In-game trades and internally clocked link cable trades use this.
 	ld a, [wTradedPlayerMonSpecies]
 	ld [wLeftGBMonSpecies], a
 	ld a, [wTradedEnemyMonSpecies]
@@ -9,8 +9,8 @@ InternalClockTradeAnim:
 	jr TradeAnimCommon
 
 ExternalClockTradeAnim:
-; Do the trading animation with the player's gameboy on the right.
-; Externally clocked link cable trades use this.
+// Do the trading animation with the player's gameboy on the right.
+// Externally clocked link cable trades use this.
 	ld a, [wTradedEnemyMonSpecies]
 	ld [wLeftGBMonSpecies], a
 	ld a, [wTradedPlayerMonSpecies]
@@ -46,7 +46,7 @@ TradeAnimCommon:
 	ld l, a
 	ld de, .loop
 	push de
-	jp hl ; call trade func, which will return to the top of the loop
+	jp hl // call trade func, which will return to the top of the loop
 .done
 	pop af
 	ld [hSCX], a
@@ -65,9 +65,9 @@ tradefunc: MACRO
 	db (\1TradeFunc - TradeFuncPointerTable) / 2
 	ENDM
 
-; The functions in the sequences below are executed in order by TradeFuncCommon.
-; They are from opposite perspectives. The external clock one makes use of
-; Trade_SwapNames to swap the player and enemy names for some functions.
+// The functions in the sequences below are executed in order by TradeFuncCommon.
+// They are from opposite perspectives. The external clock one makes use of
+// Trade_SwapNames to swap the player and enemy names for some functions.
 
 InternalClockTradeFuncSequence:
 	tradefunc LoadTradingGFXAndMonNames
@@ -174,12 +174,12 @@ LoadTradingGFXAndMonNames:
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
 	ld hl, wd730
-	set 6, [hl] ; turn on instant text printing
+	set 6, [hl] // turn on instant text printing
 	ld a, [wOnSGB]
 	and a
-	ld a, $e4 ; non-SGB OBP0
+	ld a, $e4 // non-SGB OBP0
 	jr z, .next
-	ld a, $f0 ; SGB OBP0
+	ld a, $f0 // SGB OBP0
 .next
 	ld [rOBP0], a
 	call EnableLCD
@@ -219,7 +219,7 @@ Trade_Cleanup:
 	xor a
 	call LoadGBPal
 	ld hl, wd730
-	res 6, [hl] ; turn off instant text printing
+	res 6, [hl] // turn off instant text printing
 	ret
 
 Trade_ShowPlayerMon:
@@ -257,7 +257,7 @@ Trade_ShowPlayerMon:
 	ld a, TRADE_BALL_POOF_ANIM
 	call Trade_ShowAnimation
 	ld a, TRADE_BALL_DROP_ANIM
-	call Trade_ShowAnimation ; clears mon pic
+	call Trade_ShowAnimation // clears mon pic
 	ld a, [wTradedPlayerMonSpecies]
 	call PlayCry
 	xor a
@@ -271,8 +271,8 @@ Trade_DrawOpenEndOfLinkCable:
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand
 
-; This function call is pointless. It just copies blank tiles to VRAM that was
-; already filled with blank tiles.
+// This function call is pointless. It just copies blank tiles to VRAM that was
+// already filled with blank tiles.
 	ld hl, vBGMap1 + $8c
 	call Trade_CopyCableTilesOffScreen
 
@@ -282,7 +282,7 @@ Trade_DrawOpenEndOfLinkCable:
 	ld a, %10001011
 	ld [rLCDC], a
 	coord hl, 6, 2
-	ld b, $7 ; open end of link cable tile ID list index
+	ld b, $7 // open end of link cable tile ID list index
 	call CopyTileIDsFromList_ZeroBaseTileID
 	call Trade_CopyTileMapToVRAM
 	ld a, SFX_HEAL_HP
@@ -376,7 +376,7 @@ Trade_ShowEnemyMon:
 	jp PrintTradeTakeCareText
 
 Trade_AnimLeftToRight:
-; Animates the mon moving from the left GB to the right one.
+// Animates the mon moving from the left GB to the right one.
 	call Trade_InitGameboyTransferGfx
 	ld a, $1
 	ld [wTradedMonMovingRight], a
@@ -410,7 +410,7 @@ Trade_AnimLeftToRight:
 	jp ClearSprites
 
 Trade_AnimRightToLeft:
-; Animates the mon moving from the right GB to the left one.
+// Animates the mon moving from the right GB to the left one.
 	call Trade_InitGameboyTransferGfx
 	xor a
 	ld [wTradedMonMovingRight], a
@@ -442,7 +442,7 @@ Trade_AnimRightToLeft:
 	jp ClearSprites
 
 Trade_InitGameboyTransferGfx:
-; Initialises the graphics for showing a mon moving between gameboys.
+// Initialises the graphics for showing a mon moving between gameboys.
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call ClearScreen
@@ -461,7 +461,7 @@ Trade_InitGameboyTransferGfx:
 Trade_DrawLeftGameboy:
 	call Trade_ClearTileMap
 
-; draw link cable
+// draw link cable
 	coord hl, 11, 4
 	ld a, $5d
 	ld [hli], a
@@ -472,12 +472,12 @@ Trade_DrawLeftGameboy:
 	dec c
 	jr nz, .loop
 
-; draw gameboy pic
+// draw gameboy pic
 	coord hl, 5, 3
 	ld b, $6
 	call CopyTileIDsFromList_ZeroBaseTileID
 
-; draw text box with player name below gameboy pic
+// draw text box with player name below gameboy pic
 	coord hl, 4, 12
 	ld b, 2
 	ld c, 7
@@ -491,7 +491,7 @@ Trade_DrawLeftGameboy:
 Trade_DrawRightGameboy:
 	call Trade_ClearTileMap
 
-; draw horizontal segment of link cable
+// draw horizontal segment of link cable
 	coord hl, 0, 4
 	ld a, $5e
 	ld c, $e
@@ -500,7 +500,7 @@ Trade_DrawRightGameboy:
 	dec c
 	jr nz, .loop
 
-; draw vertical segment of link cable
+// draw vertical segment of link cable
 	ld a, $5f
 	ld [hl], a
 	ld de, SCREEN_WIDTH
@@ -519,12 +519,12 @@ Trade_DrawRightGameboy:
 	ld a, $5d
 	ld [hl], a
 
-; draw gameboy pic
+// draw gameboy pic
 	coord hl, 7, 8
 	ld b, $6
 	call CopyTileIDsFromList_ZeroBaseTileID
 
-; draw text box with enemy name above link cable
+// draw text box with enemy name above link cable
 	coord hl, 6, 0
 	ld b, 2
 	ld c, 7
@@ -536,7 +536,7 @@ Trade_DrawRightGameboy:
 	jp DelayFrame
 
 Trade_DrawCableAcrossScreen:
-; Draws the link cable across the screen.
+// Draws the link cable across the screen.
 	call Trade_ClearTileMap
 	coord hl, 0, 4
 	ld a, $5e
@@ -548,8 +548,8 @@ Trade_DrawCableAcrossScreen:
 	ret
 
 Trade_CopyCableTilesOffScreen:
-; This is used to copy the link cable tiles off screen so that the cable
-; continues when the screen is scrolled.
+// This is used to copy the link cable tiles off screen so that the cable
+// continues when the screen is scrolled.
 	push hl
 	coord hl, 0, 4
 	call CopyToRedrawRowOrColumnSrcTiles
@@ -564,8 +564,8 @@ Trade_CopyCableTilesOffScreen:
 	jp DelayFrames
 
 Trade_AnimMonMoveHorizontal:
-; Animates the mon going through the link cable horizontally over a distance of
-; b 16-pixel units.
+// Animates the mon going through the link cable horizontally over a distance of
+// b 16-pixel units.
 	ld a, [wTradedMonMovingRight]
 	ld e, a
 	ld d, $8
@@ -573,7 +573,7 @@ Trade_AnimMonMoveHorizontal:
 	ld a, e
 	dec a
 	jr z, .movingRight
-; moving left
+// moving left
 	ld a, [hSCX]
 	sub $2
 	jr .next
@@ -591,13 +591,13 @@ Trade_AnimMonMoveHorizontal:
 	ret
 
 Trade_AnimCircledMon:
-; Cycles between the two animation frames of the mon party sprite, cycles
-; between a circle and an oval around the mon sprite, and makes the cable flash.
+// Cycles between the two animation frames of the mon party sprite, cycles
+// between a circle and an oval around the mon sprite, and makes the cable flash.
 	push de
 	push bc
 	push hl
 	ld a, [rBGP]
-	xor $3c ; make link cable flash
+	xor $3c // make link cable flash
 	ld [rBGP], a
 	ld hl, wOAMBuffer + $02
 	ld de, $4
@@ -635,26 +635,26 @@ Trade_AddOffsetsToOAMCoords:
 	ret
 
 Trade_AnimMonMoveVertical:
-; Animates the mon going through the link cable vertically as well as
-; horizontally for a bit. The last bit of horizontal movement (when moving
-; right) or the first bit of horizontal movement (when moving left) are done
-; here instead of Trade_AnimMonMoveHorizontal because this function moves the
-; sprite itself rather than scrolling the screen around the sprite. Moving the
-; sprite itself is necessary because the vertical segment of the link cable is
-; to the right of the screen position that the mon sprite has when
-; Trade_AnimMonMoveHorizontal is executing.
+// Animates the mon going through the link cable vertically as well as
+// horizontally for a bit. The last bit of horizontal movement (when moving
+// right) or the first bit of horizontal movement (when moving left) are done
+// here instead of Trade_AnimMonMoveHorizontal because this function moves the
+// sprite itself rather than scrolling the screen around the sprite. Moving the
+// sprite itself is necessary because the vertical segment of the link cable is
+// to the right of the screen position that the mon sprite has when
+// Trade_AnimMonMoveHorizontal is executing.
 	ld a, [wTradedMonMovingRight]
 	and a
 	jr z, .movingLeft
-; moving right
-	lb bc, 4, 0 ; move right
+// moving right
+	lb bc, 4, 0 // move right
 	call .doAnim
-	lb bc, 0, 10 ; move down
+	lb bc, 0, 10 // move down
 	jr .doAnim
 .movingLeft
-	lb bc, 0, -10 ; move up
+	lb bc, 0, -10 // move up
 	call .doAnim
-	lb bc, -4, 0 ; move left
+	lb bc, -4, 0 // move left
 .doAnim
 	ld a, b
 	ld [wBaseCoordX], a
@@ -671,8 +671,8 @@ Trade_AnimMonMoveVertical:
 	ret
 
 Trade_WriteCircleOAM:
-; Writes the OAM blocks for the circle around the traded mon as it passes
-; the link cable.
+// Writes the OAM blocks for the circle around the traded mon as it passes
+// the link cable.
 	ld hl, Trade_CircleOAMPointers
 	ld c, $4
 	xor a
@@ -723,7 +723,7 @@ Trade_CircleOAM3:
 	db $3B,$70,$3A,$70
 	db $39,$70,$38,$70
 
-; a = species
+// a = species
 Trade_LoadMonSprite:
 	ld [wcf91], a
 	ld [wd0b5], a
@@ -741,7 +741,7 @@ Trade_LoadMonSprite:
 	jp DelayFrames
 
 Trade_ShowClearedWindow:
-; clears the window and covers the BG entirely with the window
+// clears the window and covers the BG entirely with the window
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call ClearScreen
@@ -756,10 +756,10 @@ Trade_ShowClearedWindow:
 	ret
 
 Trade_SlideTextBoxOffScreen:
-; Slides the window right until it's off screen. The window usually just has
-; a text box at the bottom when this is called. However, when this is called
-; after Trade_ShowEnemyMon in the external clock sequence, there is a mon pic
-; above the text box and it is also scrolled off the screen.
+// Slides the window right until it's off screen. The window usually just has
+// a text box at the bottom when this is called. However, when this is called
+// after Trade_ShowEnemyMon in the external clock sequence, there is a mon pic
+// above the text box and it is also scrolled off the screen.
 	ld c, 50
 	call DelayFrames
 .loop

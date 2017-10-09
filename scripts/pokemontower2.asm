@@ -34,7 +34,7 @@ PokemonTower2Script0:
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
 	jr nz, .asm_60544
-; the rival is on the left side and the player is on the right side
+// the rival is on the left side and the player is on the right side
 	SetEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
 	ld a, PLAYER_DIR_LEFT
 	ld b, SPRITE_FACING_RIGHT
@@ -56,7 +56,7 @@ PokemonTower2Script0:
 CoordsData_6055e:
 	db $05,$0F
 	db $06,$0E
-	db $0F ; isn't this supposed to end in $ff?
+	db $0F // isn't this supposed to end in $ff?
 
 PokemonTower2Script1:
 	ld a, [wIsInBattle]
@@ -145,7 +145,7 @@ PokemonTower2Text1:
 	ld a, OPP_SONY2
 	ld [wCurOpponent], a
 
-	; select which team to use during the encounter
+	// select which team to use during the encounter
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .NotSquirtle

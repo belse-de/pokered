@@ -10,7 +10,7 @@ ShakeElevator:
 	ld d, a
 	ld e, $1
 	ld b, 100
-.shakeLoop ; scroll the BG up and down and play a sound effect
+.shakeLoop // scroll the BG up and down and play a sound effect
 	ld a, e
 	xor $fe
 	ld e, a
@@ -40,9 +40,9 @@ ShakeElevator:
 	jp PlayDefaultMusic
 
 ShakeElevatorRedrawRow:
-; This function is used to redraw certain portions of the screen, but it does
-; not appear to ever result in any visible effect, so this function seems to
-; be pointless.
+// This function is used to redraw certain portions of the screen, but it does
+// not appear to ever result in any visible effect, so this function seems to
+// be pointless.
 	ld hl, wMapViewVRAMPointer + 1
 	ld a, [hld]
 	push af

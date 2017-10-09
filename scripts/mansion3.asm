@@ -92,21 +92,21 @@ Mansion3TextPointers:
 
 Mansion3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MANSION_3_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($0 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_3_TRAINER_0
-	dw Mansion3BattleText1 ; TextBeforeBattle
-	dw Mansion3AfterBattleText1 ; TextAfterBattle
-	dw Mansion3EndBattleText1 ; TextEndBattle
-	dw Mansion3EndBattleText1 ; TextEndBattle
+	dw Mansion3BattleText1 // TextBeforeBattle
+	dw Mansion3AfterBattleText1 // TextAfterBattle
+	dw Mansion3EndBattleText1 // TextEndBattle
+	dw Mansion3EndBattleText1 // TextEndBattle
 
 Mansion3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_MANSION_3_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_3_TRAINER_1
-	dw Mansion3BattleText2 ; TextBeforeBattle
-	dw Mansion3AfterBattleText2 ; TextAfterBattle
-	dw Mansion3EndBattleText2 ; TextEndBattle
-	dw Mansion3EndBattleText2 ; TextEndBattle
+	dw Mansion3BattleText2 // TextBeforeBattle
+	dw Mansion3AfterBattleText2 // TextAfterBattle
+	dw Mansion3EndBattleText2 // TextEndBattle
+	dw Mansion3EndBattleText2 // TextEndBattle
 
 	db $ff
 

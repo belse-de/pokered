@@ -65,12 +65,12 @@ Mansion2TextPointers:
 
 Mansion2TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MANSION_2_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($0 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_2_TRAINER_0
-	dw Mansion2BattleText1 ; TextBeforeBattle
-	dw Mansion2AfterBattleText1 ; TextAfterBattle
-	dw Mansion2EndBattleText1 ; TextEndBattle
-	dw Mansion2EndBattleText1 ; TextEndBattle
+	dw Mansion2BattleText1 // TextBeforeBattle
+	dw Mansion2AfterBattleText1 // TextAfterBattle
+	dw Mansion2EndBattleText1 // TextEndBattle
+	dw Mansion2EndBattleText1 // TextEndBattle
 
 	db $ff
 

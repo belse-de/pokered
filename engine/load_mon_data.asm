@@ -1,11 +1,11 @@
 LoadMonData_:
-; Load monster [wWhichPokemon] from list [wMonDataLocation]:
-;  0: partymon
-;  1: enemymon
-;  2: boxmon
-;  3: daycaremon
-; Return monster id at wcf91 and its data at wLoadedMon.
-; Also load base stats at wMonHeader for convenience.
+// Load monster [wWhichPokemon] from list [wMonDataLocation]:
+//  0: partymon
+//  1: enemymon
+//  2: boxmon
+//  3: daycaremon
+// Return monster id at wcf91 and its data at wLoadedMon.
+// Also load base stats at wMonHeader for convenience.
 
 	ld a, [wDayCareMonSpecies]
 	ld [wcf91], a
@@ -19,7 +19,7 @@ LoadMonData_:
 
 .GetMonHeader
 	ld a, [wcf91]
-	ld [wd0b5], a ; input for GetMonHeader
+	ld [wd0b5], a // input for GetMonHeader
 	call GetMonHeader
 
 	ld hl, wPartyMons

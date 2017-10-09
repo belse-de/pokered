@@ -162,7 +162,7 @@ CinnabarGymScript3_75857:
 	ld hl, wBeatGymFlags
 	set 6, [hl]
 
-	; deactivate gym trainers
+	// deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6
 
 	ld hl, wCurrentMapScriptFlags
@@ -233,7 +233,7 @@ BlaineBattleText:
 
 BlaineEndBattleText:
 	TX_FAR _BlaineEndBattleText
-	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
+	TX_SFX_KEY_ITEM // actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	TX_WAIT
 	db "@"
 

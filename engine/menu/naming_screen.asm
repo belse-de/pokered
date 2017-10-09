@@ -7,7 +7,7 @@ AskName:
 	coord hl, 0, 0
 	ld b, 4
 	ld c, 11
-	call z, ClearScreenArea ; only if in wild battle
+	call z, ClearScreenArea // only if in wild battle
 	ld a, [wcf91]
 	ld [wd11e], a
 	call GetMonName
@@ -209,17 +209,17 @@ DisplayNamingScreen:
 
 .pressedA
 	ld a, [wCurrentMenuItem]
-	cp $5 ; "ED" row
+	cp $5 // "ED" row
 	jr nz, .didNotPressED
 	ld a, [wTopMenuItemX]
-	cp $11 ; "ED" column
+	cp $11 // "ED" column
 	jr z, .pressedStart
 .didNotPressED
 	ld a, [wCurrentMenuItem]
-	cp $6 ; case switch row
+	cp $6 // case switch row
 	jr nz, .didNotPressCaseSwtich
 	ld a, [wTopMenuItemX]
-	cp $1 ; case switch column
+	cp $1 // case switch column
 	jr z, .pressedA_changedCase
 .didNotPressCaseSwtich
 	ld hl, wMenuCursorLocation
@@ -241,11 +241,11 @@ DisplayNamingScreen:
 	cp NAME_MON_SCREEN
 	jr nc, .checkMonNameLength
 	ld a, [wNamingScreenNameLength]
-	cp $7 ; max length of player/rival names
+	cp $7 // max length of player/rival names
 	jr .checkNameLength
 .checkMonNameLength
 	ld a, [wNamingScreenNameLength]
-	cp $a ; max length of pokemon nicknames
+	cp $a // max length of pokemon nicknames
 .checkNameLength
 	jr c, .addLetter
 	ret
@@ -274,9 +274,9 @@ DisplayNamingScreen:
 .pressedRight
 	ld a, [wCurrentMenuItem]
 	cp $6
-	ret z ; can't scroll right on bottom row
+	ret z // can't scroll right on bottom row
 	ld a, [wTopMenuItemX]
-	cp $11 ; max
+	cp $11 // max
 	jp z, .wrapToFirstColumn
 	inc a
 	inc a
@@ -287,14 +287,14 @@ DisplayNamingScreen:
 .pressedLeft
 	ld a, [wCurrentMenuItem]
 	cp $6
-	ret z ; can't scroll right on bottom row
+	ret z // can't scroll right on bottom row
 	ld a, [wTopMenuItemX]
 	dec a
 	jp z, .wrapToLastColumn
 	dec a
 	jr .done
 .wrapToLastColumn
-	ld a, $11 ; max
+	ld a, $11 // max
 	jr .done
 .pressedUp
 	ld a, [wCurrentMenuItem]
@@ -302,9 +302,9 @@ DisplayNamingScreen:
 	ld [wCurrentMenuItem], a
 	and a
 	ret nz
-	ld a, $6 ; wrap to bottom row
+	ld a, $6 // wrap to bottom row
 	ld [wCurrentMenuItem], a
-	ld a, $1 ; force left column
+	ld a, $1 // force left column
 	jr .done
 .pressedDown
 	ld a, [wCurrentMenuItem]
@@ -327,7 +327,7 @@ LoadEDTile:
 	ld de, ED_Tile
 	ld hl, vFont + $700
 	ld bc, (ED_TileEnd - ED_Tile) / $8
-	; to fix the graphical bug on poor emulators
+	// to fix the graphical bug on poor emulators
 	;lb bc, BANK(ED_Tile), (ED_TileEnd - ED_Tile) / $8
 	jp CopyVideoDataDouble
 
@@ -345,7 +345,7 @@ PrintAlphabet:
 	ld de, UpperCaseAlphabet
 .lowercase
 	coord hl, 2, 5
-	lb bc, 5, 9 ; 5 rows, 9 columns
+	lb bc, 5, 9 // 5 rows, 9 columns
 .outerLoop
 	push bc
 .innerLoop
@@ -385,12 +385,12 @@ PrintNicknameAndUnderscores:
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
 	jr nc, .pokemon1
-	ld b, 7 ; player or rival max name length
+	ld b, 7 // player or rival max name length
 	jr .playerOrRival1
 .pokemon1
-	ld b, 10 ; pokemon max name length
+	ld b, 10 // pokemon max name length
 .playerOrRival1
-	ld a, $76 ; underscore tile id
+	ld a, $76 // underscore tile id
 .placeUnderscoreLoop
 	ld [hli], a
 	dec b
@@ -399,30 +399,30 @@ PrintNicknameAndUnderscores:
 	cp NAME_MON_SCREEN
 	ld a, [wNamingScreenNameLength]
 	jr nc, .pokemon2
-	cp 7 ; player or rival max name length
+	cp 7 // player or rival max name length
 	jr .playerOrRival2
 .pokemon2
-	cp 10 ; pokemon max name length
+	cp 10 // pokemon max name length
 .playerOrRival2
 	jr nz, .emptySpacesRemaining
-	; when all spaces are filled, force the cursor onto the ED tile
+	// when all spaces are filled, force the cursor onto the ED tile
 	call EraseMenuCursor
-	ld a, $11 ; "ED" x coord
+	ld a, $11 // "ED" x coord
 	ld [wTopMenuItemX], a
-	ld a, $5 ; "ED" y coord
+	ld a, $5 // "ED" y coord
 	ld [wCurrentMenuItem], a
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
-	ld a, 9 ; keep the last underscore raised
+	ld a, 9 // keep the last underscore raised
 	jr nc, .pokemon3
-	ld a, 6 ; keep the last underscore raised
+	ld a, 6 // keep the last underscore raised
 .pokemon3
 .emptySpacesRemaining
 	ld c, a
 	ld b, $0
 	coord hl, 10, 3
 	add hl, bc
-	ld [hl], $77 ; raised underscore tile id
+	ld [hl], $77 // raised underscore tile id
 	ret
 
 DakutensAndHandakutens:
@@ -455,7 +455,7 @@ Handakutens:
 	db "ハパ", "ヒピ", "フプ", "へぺ", "ホポ"
 	db $ff
 
-; calculates the length of the string at wcf4b and stores it in c
+// calculates the length of the string at wcf4b and stores it in c
 CalcStringLength:
 	ld hl, wcf4b
 	ld c, $0

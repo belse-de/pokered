@@ -7,11 +7,11 @@ Music_Pokecenter::
 Music_Gym::
 	audio Music_Gym, Ch0, Ch1, Ch2
 
-; Viridian City, Pewter City, Saffron City
+// Viridian City, Pewter City, Saffron City
 Music_Cities1::
 	audio Music_Cities1, Ch0, Ch1, Ch2, Ch3
 
-; Cerulean City, Fuchsia City
+// Cerulean City, Fuchsia City
 Music_Cities2::
 	audio Music_Cities2, Ch0, Ch1, Ch2
 
@@ -45,22 +45,22 @@ Music_SafariZone::
 Music_PkmnHealed::
 	audio Music_PkmnHealed, Ch0, Ch1, Ch2
 
-; Routes 1 and 2
+// Routes 1 and 2
 Music_Routes1::
 	audio Music_Routes1, Ch0, Ch1, Ch2, Ch3
 
-; Routes 24 and 25
+// Routes 24 and 25
 Music_Routes2::
 	audio Music_Routes2, Ch0, Ch1, Ch2, Ch3
 
-; Routes 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 18, 19, 20, 21, 22
+// Routes 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 18, 19, 20, 21, 22
 Music_Routes3::
 	audio Music_Routes3, Ch0, Ch1, Ch2, Ch3
 
-; Routes 11, 12, 13, 14, 15
+// Routes 11, 12, 13, 14, 15
 Music_Routes4::
 	audio Music_Routes4, Ch0, Ch1, Ch2, Ch3
 
-; Route 23, Indigo Plateau
+// Route 23, Indigo Plateau
 Music_IndigoPlateau::
 	audio Music_IndigoPlateau, Ch0, Ch1, Ch2, Ch3

@@ -1,5 +1,5 @@
 
-lb: MACRO ; r, hi, lo
+lb: MACRO // r, hi, lo
 	ld \1, (\2) << 8 + ((\3) & $ff)
 ENDM
 
@@ -107,12 +107,12 @@ overworldMapCoord: MACRO
 	ld \1, wOverworldMap + ((\2) + 3) + (((\3) + 3) * ((\4) + (3 * 2)))
 ENDM
 
-; macro for two nibbles
+// macro for two nibbles
 dn: MACRO
 	db (\1 << 4 | \2)
 ENDM
 
-; macro for putting a byte then a word
+// macro for putting a byte then a word
 dbw: MACRO
 	db \1
 	dw \2
@@ -136,7 +136,7 @@ dbbw: MACRO
 	dw \3
 ENDM
 
-; Predef macro.
+// Predef macro.
 predef_const: MACRO
 	const \1PredefID
 ENDM

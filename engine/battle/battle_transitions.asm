@@ -8,10 +8,10 @@ BattleTransition:
 	ld [wUpdateSpritesEnabled], a
 	call DelayFrame
 
-; Determine which OAM block is being used by the enemy trainer sprite (if there
-; is one).
+// Determine which OAM block is being used by the enemy trainer sprite (if there
+// is one).
 	ld hl, wSpriteStateData1 + 2
-	ld a, [hSpriteIndexOrTextID] ; enemy trainer sprite index (0 if wild battle)
+	ld a, [hSpriteIndexOrTextID] // enemy trainer sprite index (0 if wild battle)
 	ld c, a
 	ld b, 0
 	ld de, $10
@@ -25,14 +25,14 @@ BattleTransition:
 	dec c
 	jr nz, .loop1
 
-; Clear OAM except for the blocks used by the player and enemy trainer sprites.
+// Clear OAM except for the blocks used by the player and enemy trainer sprites.
 	ld hl, wOAMBuffer + $10
 	ld c, 9
 .loop2
 	ld a, b
 	swap a
 	cp l
-	jr z, .skip2 ; skip clearing the block if the enemy trainer is using it
+	jr z, .skip2 // skip clearing the block if the enemy trainer is using it
 	push hl
 	push bc
 	ld bc, $10
@@ -64,21 +64,21 @@ BattleTransition:
 	ld l, a
 	jp hl
 
-; the three GetBattleTransitionID functions set the first
-; three bits of c, which determines what transition animation
-; to play at the beginning of a battle
-; bit 0: set if trainer battle
-; bit 1: set if enemy is at least 3 levels higher than player
-; bit 2: set if dungeon map
+// the three GetBattleTransitionID functions set the first
+// three bits of c, which determines what transition animation
+// to play at the beginning of a battle
+// bit 0: set if trainer battle
+// bit 1: set if enemy is at least 3 levels higher than player
+// bit 2: set if dungeon map
 BattleTransitions:
-	dw BattleTransition_DoubleCircle      ; %000
-	dw BattleTransition_Spiral            ; %001
-	dw BattleTransition_Circle            ; %010
-	dw BattleTransition_Spiral            ; %011
-	dw BattleTransition_HorizontalStripes ; %100
-	dw BattleTransition_Shrink            ; %101
-	dw BattleTransition_VerticalStripes   ; %110
-	dw BattleTransition_Split             ; %111
+	dw BattleTransition_DoubleCircle      // %000
+	dw BattleTransition_Spiral            // %001
+	dw BattleTransition_Circle            // %010
+	dw BattleTransition_Spiral            // %011
+	dw BattleTransition_HorizontalStripes // %100
+	dw BattleTransition_Shrink            // %101
+	dw BattleTransition_VerticalStripes   // %110
+	dw BattleTransition_Split             // %111
 
 GetBattleTransitionID_WildOrTrainer:
 	ld a, [wCurOpponent]
@@ -118,9 +118,9 @@ GetBattleTransitionID_CompareLevels:
 	ld [wBattleTransitionSpiralDirection], a
 	ret
 
-; fails to recognize VICTORY_ROAD_2, VICTORY_ROAD_3, all ROCKET_HIDEOUT maps,
-; MANSION_1, SEAFOAM_ISLANDS_[2-5], POWER_PLANT, DIGLETTS_CAVE
-; and SILPH_CO_[9-11]F as dungeon maps
+// fails to recognize VICTORY_ROAD_2, VICTORY_ROAD_3, all ROCKET_HIDEOUT maps,
+// MANSION_1, SEAFOAM_ISLANDS_[2-5], POWER_PLANT, DIGLETTS_CAVE
+// and SILPH_CO_[9-11]F as dungeon maps
 GetBattleTransitionID_IsDungeonMap:
 	ld a, [wCurMap]
 	ld e, a
@@ -151,8 +151,8 @@ GetBattleTransitionID_IsDungeonMap:
 	res 2, c
 	ret
 
-; GetBattleTransitionID_IsDungeonMap checks if wCurMap
-; is equal to one of these maps
+// GetBattleTransitionID_IsDungeonMap checks if wCurMap
+// is equal to one of these maps
 DungeonMaps1:
 	db VIRIDIAN_FOREST
 	db ROCK_TUNNEL_1
@@ -160,23 +160,23 @@ DungeonMaps1:
 	db ROCK_TUNNEL_2
 	db $FF
 
-; GetBattleTransitionID_IsDungeonMap checks if wCurMap
-; is in between or equal to each pair of maps
+// GetBattleTransitionID_IsDungeonMap checks if wCurMap
+// is in between or equal to each pair of maps
 DungeonMaps2:
-	; all MT_MOON maps
+	// all MT_MOON maps
 	db MT_MOON_1
 	db MT_MOON_3
 
-	; all SS_ANNE maps, VICTORY_ROAD_1, LANCES_ROOM, and HALL_OF_FAME
+	// all SS_ANNE maps, VICTORY_ROAD_1, LANCES_ROOM, and HALL_OF_FAME
 	db SS_ANNE_1
 	db HALL_OF_FAME
 
-	; all POKEMONTOWER maps and Lavender Town buildings
+	// all POKEMONTOWER maps and Lavender Town buildings
 	db LAVENDER_POKECENTER
 	db LAVENDER_HOUSE_2
 
-	; SILPH_CO_[2-8]F, MANSION[2-4], SAFARI_ZONE, and UNKNOWN_DUNGEON maps,
-	; except for SILPH_CO_1F
+	// SILPH_CO_[2-8]F, MANSION[2-4], SAFARI_ZONE, and UNKNOWN_DUNGEON maps,
+	// except for SILPH_CO_1F
 	db SILPH_CO_2F
 	db UNKNOWN_DUNGEON_1
 	db $FF
@@ -198,10 +198,10 @@ BattleTransition_BlackScreen:
 	ld [rOBP1], a
 	ret
 
-; for non-dungeon trainer battles
-; called regardless of mon levels, but does an
-; outward spiral if enemy is at least 3 levels
-; higher than player and does an inward spiral otherwise
+// for non-dungeon trainer battles
+// called regardless of mon levels, but does an
+// outward spiral if enemy is at least 3 levels
+// higher than player and does an inward spiral otherwise
 BattleTransition_Spiral:
 	ld a, [wBattleTransitionSpiralDirection]
 	and a
@@ -369,9 +369,9 @@ BattleTransition_FlashScreen_:
 
 BattleTransition_FlashScreenPalettes:
 	db $F9,$FE,$FF,$FE,$F9,$E4,$90,$40,$00,$40,$90,$E4
-	db $01 ; terminator
+	db $01 // terminator
 
-; used for low level trainer dungeon battles
+// used for low level trainer dungeon battles
 BattleTransition_Shrink:
 	ld c, SCREEN_HEIGHT / 2
 .loop
@@ -405,7 +405,7 @@ BattleTransition_Shrink:
 	ld c, 10
 	jp DelayFrames
 
-; used for high level trainer dungeon battles
+// used for high level trainer dungeon battles
 BattleTransition_Split:
 	ld c, SCREEN_HEIGHT / 2
 	xor a
@@ -518,7 +518,7 @@ BattleTransition_CopyTiles2:
 	jr nz, .loop3
 	ret
 
-; used for high level wild dungeon battles
+// used for high level wild dungeon battles
 BattleTransition_VerticalStripes:
 	ld c, SCREEN_HEIGHT
 	coord hl, 0, 0
@@ -557,7 +557,7 @@ BattleTransition_VerticalStripes_:
 	jr nz, .loop
 	ret
 
-; used for low level wild dungeon battles
+// used for low level wild dungeon battles
 BattleTransition_HorizontalStripes:
 	ld c, SCREEN_WIDTH
 	coord hl, 0, 0
@@ -592,9 +592,9 @@ BattleTransition_HorizontalStripes_:
 	jr nz, .loop
 	ret
 
-; used for high level wild non-dungeon battles
-; makes one full circle around the screen
-; by animating each half circle one at a time
+// used for high level wild non-dungeon battles
+// makes one full circle around the screen
+// by animating each half circle one at a time
 BattleTransition_Circle:
 	call BattleTransition_FlashScreen
 	lb bc, 0, SCREEN_WIDTH / 2
@@ -635,9 +635,9 @@ BattleTransition_TransferDelay3:
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ret
 
-; used for low level wild non-dungeon battles
-; makes two half circles around the screen
-; by animating both half circles at the same time
+// used for low level wild non-dungeon battles
+// makes two half circles around the screen
+// by animating both half circles at the same time
 BattleTransition_DoubleCircle:
 	call BattleTransition_FlashScreen
 	ld c, SCREEN_WIDTH / 2

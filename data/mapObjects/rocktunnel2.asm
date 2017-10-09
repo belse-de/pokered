@@ -1,15 +1,15 @@
 RockTunnel2Object:
-	db $3 ; border block
+	db $3 // border block
 
-	db $4 ; warps
+	db $4 // warps
 	db $19, $21, $4, ROCK_TUNNEL_1
 	db $3, $1b, $5, ROCK_TUNNEL_1
 	db $b, $17, $6, ROCK_TUNNEL_1
 	db $3, $3, $7, ROCK_TUNNEL_1
 
-	db $0 ; signs
+	db $0 // signs
 
-	db $8 ; objects
+	db $8 // objects
 	object SPRITE_LASS, $b, $d, STAY, DOWN, $1, OPP_JR_TRAINER_F, $9
 	object SPRITE_HIKER, $6, $a, STAY, DOWN, $2, OPP_HIKER, $9
 	object SPRITE_BLACK_HAIR_BOY_2, $3, $5, STAY, DOWN, $3, OPP_POKEMANIAC, $3
@@ -19,8 +19,8 @@ RockTunnel2Object:
 	object SPRITE_HIKER, $21, $5, STAY, RIGHT, $7, OPP_HIKER, $b
 	object SPRITE_BLACK_HAIR_BOY_2, $1a, $1e, STAY, DOWN, $8, OPP_POKEMANIAC, $5
 
-	; warp-to
-	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $19, $21 ; ROCK_TUNNEL_1
-	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $3, $1b ; ROCK_TUNNEL_1
-	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $b, $17 ; ROCK_TUNNEL_1
-	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $3, $3 ; ROCK_TUNNEL_1
+	// warp-to
+	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $19, $21 // ROCK_TUNNEL_1
+	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $3, $1b // ROCK_TUNNEL_1
+	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $b, $17 // ROCK_TUNNEL_1
+	EVENT_DISP ROCK_TUNNEL_2_WIDTH, $3, $3 // ROCK_TUNNEL_1

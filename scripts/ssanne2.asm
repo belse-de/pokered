@@ -79,7 +79,7 @@ SSAnne2Script_61416:
 	ld a, SPRITE_FACING_RIGHT
 	jr .asm_61427
 .asm_61426
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 .asm_61427
 	ld [hSpriteFacingDirection], a
 	ld a, $2
@@ -100,7 +100,7 @@ SSAnne2Script1:
 	ld a, OPP_SONY2
 	ld [wCurOpponent], a
 
-	; select which team to use during the encounter
+	// select which team to use during the encounter
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .NotSquirtle

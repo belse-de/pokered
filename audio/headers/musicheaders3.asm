@@ -25,15 +25,15 @@ Music_GameCorner::
 Music_IntroBattle::
 	audio Music_IntroBattle, Ch0, Ch1, Ch2, Ch3
 
-; Power Plant, Unknown Dungeon, Rocket HQ
+// Power Plant, Unknown Dungeon, Rocket HQ
 Music_Dungeon1::
 	audio Music_Dungeon1, Ch0, Ch1, Ch2, Ch3
 
-; Viridian Forest, Seafoam Islands
+// Viridian Forest, Seafoam Islands
 Music_Dungeon2::
 	audio Music_Dungeon2, Ch0, Ch1, Ch2, Ch3
 
-; Mt. Moon, Rock Tunnel, Victory Road
+// Mt. Moon, Rock Tunnel, Victory Road
 Music_Dungeon3::
 	audio Music_Dungeon3, Ch0, Ch1, Ch2, Ch3
 

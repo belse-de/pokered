@@ -18,8 +18,8 @@ PKMNLeaguePC:
 	ld b, a
 	cp HOF_TEAM_CAPACITY + 1
 	jr c, .loop
-; If the total number of hall of fame teams is greater than the storage
-; capacity, then calculate the number of the first team that is still recorded.
+// If the total number of hall of fame teams is greater than the storage
+// capacity, then calculate the number of the first team that is still recorded.
 	ld b, HOF_TEAM_CAPACITY
 	sub b
 	ld [wHoFTeamNo], a

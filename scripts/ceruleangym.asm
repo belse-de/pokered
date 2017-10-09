@@ -65,7 +65,7 @@ CeruleanGymScript_5c70d:
 	ld hl, wBeatGymFlags
 	set 1, [hl]
 
-	; deactivate gym trainers
+	// deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 
 	jp CeruleanGymScript_5c6ed
@@ -81,21 +81,21 @@ CeruleanGymTextPointers:
 
 CeruleanGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_CERULEAN_GYM_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_CERULEAN_GYM_TRAINER_0
-	dw CeruleanGymBattleText1 ; TextBeforeBattle
-	dw CeruleanGymAfterBattleText1 ; TextAfterBattle
-	dw CeruleanGymEndBattleText1 ; TextEndBattle
-	dw CeruleanGymEndBattleText1 ; TextEndBattle
+	dw CeruleanGymBattleText1 // TextBeforeBattle
+	dw CeruleanGymAfterBattleText1 // TextAfterBattle
+	dw CeruleanGymEndBattleText1 // TextEndBattle
+	dw CeruleanGymEndBattleText1 // TextEndBattle
 
 CeruleanGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_CERULEAN_GYM_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_CERULEAN_GYM_TRAINER_1
-	dw CeruleanGymBattleText2 ; TextBeforeBattle
-	dw CeruleanGymAfterBattleText2 ; TextAfterBattle
-	dw CeruleanGymEndBattleText2 ; TextEndBattle
-	dw CeruleanGymEndBattleText2 ; TextEndBattle
+	dw CeruleanGymBattleText2 // TextBeforeBattle
+	dw CeruleanGymAfterBattleText2 // TextAfterBattle
+	dw CeruleanGymEndBattleText2 // TextEndBattle
+	dw CeruleanGymEndBattleText2 // TextEndBattle
 
 	db $ff
 
@@ -157,7 +157,7 @@ CeruleanGymText7:
 
 CeruleanGymText_5c7d8:
 	TX_FAR _CeruleanGymText_5c7d8
-	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
+	TX_SFX_KEY_ITEM // actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	TX_BLINK
 	db "@"
 

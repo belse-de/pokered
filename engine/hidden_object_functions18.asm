@@ -1,7 +1,7 @@
 GymStatues:
-; if in a gym and have the corresponding badge, a = GymStatueText2_id and jp PrintPredefTextID
-; if in a gym and don’t have the corresponding badge, a = GymStatueText1_id and jp PrintPredefTextID
-; else ret
+// if in a gym and have the corresponding badge, a = GymStatueText2_id and jp PrintPredefTextID
+// if in a gym and don’t have the corresponding badge, a = GymStatueText1_id and jp PrintPredefTextID
+// else ret
 	call EnableAutoTextBoxDrawing
 	ld a, [wSpriteStateData1 + 9]
 	cp SPRITE_FACING_UP
@@ -66,11 +66,11 @@ PrintBenchGuyText:
 	ld b, a
 	ld a, [wSpriteStateData1 + 9]
 	cp b
-	jr nz, .loop ; player isn't facing left at the bench guy
+	jr nz, .loop // player isn't facing left at the bench guy
 	ld a, [hl]
 	jp PrintPredefTextID
 
-; format: db map id, player sprite facing direction, text id of PredefTextIDPointerTable
+// format: db map id, player sprite facing direction, text id of PredefTextIDPointerTable
 BenchGuyTextPointers:
 	db VIRIDIAN_POKECENTER,   SPRITE_FACING_LEFT
 	db_tx_pre ViridianCityPokecenterBenchGuyText
@@ -187,7 +187,7 @@ BookcaseText:
 
 OpenPokemonCenterPC:
 	ld a, [wSpriteStateData1 + 9]
-	cp SPRITE_FACING_UP ; check to see if player is facing up
+	cp SPRITE_FACING_UP // check to see if player is facing up
 	ret nz
 	call EnableAutoTextBoxDrawing
 	ld a, $1

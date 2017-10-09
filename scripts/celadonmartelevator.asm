@@ -40,7 +40,7 @@ CeladonMartElevatorScript_48631:
 	jp CopyData
 
 CeladonMartElevatorFloors:
-	db 5 ; number of elements in list
+	db 5 // number of elements in list
 	db FLOOR_1F
 	db FLOOR_2F
 	db FLOOR_3F
@@ -49,9 +49,9 @@ CeladonMartElevatorFloors:
 	db $FF
 
 CeladonMartElevatorWarpMaps:
-; first byte is warp number
-; second byte is map number
-; These specify where the player goes after getting out of the elevator.
+// first byte is warp number
+// second byte is map number
+// These specify where the player goes after getting out of the elevator.
 	db $05, CELADON_MART_1
 	db $02, CELADON_MART_2
 	db $02, CELADON_MART_3

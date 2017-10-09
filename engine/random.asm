@@ -1,5 +1,5 @@
 Random_::
-; Generate a random 16-bit value.
+// Generate a random 16-bit value.
 	ld a, [rDIV]
 	ld b, a
 	ld a, [hRandomAdd]

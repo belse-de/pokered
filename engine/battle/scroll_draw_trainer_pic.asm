@@ -1,6 +1,6 @@
 _ScrollTrainerPicAfterBattle:
-; Load the enemy trainer's pic and scrolls it into
-; the screen from the right.
+// Load the enemy trainer's pic and scrolls it into
+// the screen from the right.
 	xor a
 	ld [wEnemyMonSpecies2], a
 	ld b, SET_PAL_BATTLE
@@ -31,7 +31,7 @@ _ScrollTrainerPicAfterBattle:
 	dec hl
 	jr .scrollLoop
 
-; write one 7-tile column of the trainer pic to the tilemap
+// write one 7-tile column of the trainer pic to the tilemap
 DrawTrainerPicColumn:
 	push hl
 	push de

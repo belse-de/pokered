@@ -1,5 +1,5 @@
 FarCopyData::
-; Copy bc bytes from a:hl to de.
+// Copy bc bytes from a:hl to de.
 	ld [wBuffer], a
 	ld a, [H_LOADEDROMBANK]
 	push af
@@ -13,7 +13,7 @@ FarCopyData::
 	ret
 
 CopyData::
-; Copy bc bytes from hl to de.
+// Copy bc bytes from hl to de.
 	ld a, [hli]
 	ld [de], a
 	inc de

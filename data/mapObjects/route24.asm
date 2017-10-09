@@ -1,11 +1,11 @@
 Route24Object:
-	db $2c ; border block
+	db $2c // border block
 
-	db $0 ; warps
+	db $0 // warps
 
-	db $0 ; signs
+	db $0 // signs
 
-	db $8 ; objects
+	db $8 // objects
 	object SPRITE_BLACK_HAIR_BOY_1, $b, $f, STAY, LEFT, $1, OPP_ROCKET, $6
 	object SPRITE_BLACK_HAIR_BOY_1, $5, $14, STAY, UP, $2, OPP_JR_TRAINER_M, $2
 	object SPRITE_BLACK_HAIR_BOY_1, $b, $13, STAY, LEFT, $3, OPP_JR_TRAINER_M, $3

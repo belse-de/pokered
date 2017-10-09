@@ -198,7 +198,7 @@ rest: MACRO
 	db $C0 | (\1 - 1)
 ENDM
 
-; format: notetype speed, volume, fade
+// format: notetype speed, volume, fade
 notetype: MACRO
 	db $D0 | \1
 	db (\2 << 4) | \3

@@ -1,5 +1,5 @@
 DoInGameTradeDialogue:
-; trigger the trade offer/action specified by wWhichTrade
+// trigger the trade offer/action specified by wWhichTrade
 	call SaveScreenTilesToBuffer2
 	ld hl,TradeMons
 	ld a,[wWhichTrade]
@@ -45,7 +45,7 @@ DoInGameTradeDialogue:
 	ld a,$4
 	ld [wInGameTradeTextPointerTableIndex],a
 	jr nz,.printText
-; if the trade hasn't been done yet
+// if the trade hasn't been done yet
 	xor a
 	ld [wInGameTradeTextPointerTableIndex],a
 	call .printText
@@ -61,11 +61,11 @@ DoInGameTradeDialogue:
 	call PrintText
 .printText
 	ld hl,wInGameTradeTextPointerTableIndex
-	ld a,[hld] ; wInGameTradeTextPointerTableIndex
+	ld a,[hld] // wInGameTradeTextPointerTableIndex
 	ld e,a
 	ld d,0
-	ld a,[hld] ; wInGameTradeTextPointerTablePointer + 1
-	ld l,[hl] ; wInGameTradeTextPointerTablePointer
+	ld a,[hld] // wInGameTradeTextPointerTablePointer + 1
+	ld l,[hl] // wInGameTradeTextPointerTablePointer
 	ld h,a
 	add hl,de
 	add hl,de
@@ -74,7 +74,7 @@ DoInGameTradeDialogue:
 	ld l,a
 	jp PrintText
 
-; copies name of species a to hl
+// copies name of species a to hl
 InGameTrade_GetMonName:
 	push de
 	ld [wd11e],a
@@ -84,10 +84,10 @@ InGameTrade_GetMonName:
 	ld bc, NAME_LENGTH
 	jp CopyData
 
-INCLUDE "data/trades.asm"
+#include "data/trades.asm"
 
 InGameTrade_DoTrade:
-	xor a ; NORMAL_PARTY_MENU
+	xor a // NORMAL_PARTY_MENU
 	ld [wPartyMenuTypeOrMessageID],a
 	dec a
 	ld [wUpdateSpritesEnabled],a
@@ -96,13 +96,13 @@ InGameTrade_DoTrade:
 	call InGameTrade_RestoreScreen
 	pop af
 	ld a,$1
-	jp c,.tradeFailed ; jump if the player didn't select a pokemon
+	jp c,.tradeFailed // jump if the player didn't select a pokemon
 	ld a,[wInGameTradeGiveMonSpecies]
 	ld b,a
 	ld a,[wcf91]
 	cp b
 	ld a,$2
-	jr nz,.tradeFailed ; jump if the selected mon's species is not the required one
+	jr nz,.tradeFailed // jump if the selected mon's species is not the required one
 	ld a,[wWhichPokemon]
 	ld hl,wPartyMon1Level
 	ld bc, wPartyMon2 - wPartyMon1
@@ -130,10 +130,10 @@ InGameTrade_DoTrade:
 	ld a,[wInGameTradeReceiveMonSpecies]
 	ld [wcf91],a
 	xor a
-	ld [wMonDataLocation],a ; not used
+	ld [wMonDataLocation],a // not used
 	ld [wRemoveMonFromBox],a
 	call RemovePokemon
-	ld a,$80 ; prevent the player from naming the mon
+	ld a,$80 // prevent the player from naming the mon
 	ld [wMonDataLocation],a
 	call AddPartyMon
 	call InGameTrade_CopyDataToReceivedMon
@@ -164,9 +164,9 @@ InGameTrade_RestoreScreen:
 InGameTrade_PrepareTradeData:
 	ld hl, wTradedPlayerMonSpecies
 	ld a, [wInGameTradeGiveMonSpecies]
-	ld [hli], a ; wTradedPlayerMonSpecies
+	ld [hli], a // wTradedPlayerMonSpecies
 	ld a, [wInGameTradeReceiveMonSpecies]
-	ld [hl], a ; wTradedEnemyMonSpecies
+	ld [hl], a // wTradedEnemyMonSpecies
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	ld a, [wWhichPokemon]
@@ -219,8 +219,8 @@ InGameTrade_CopyDataToReceivedMon:
 	ld bc, $2
 	jp CopyData
 
-; the received mon's index is (partyCount - 1),
-; so this adds bc to hl (partyCount - 1) times and moves the result to de
+// the received mon's index is (partyCount - 1),
+// so this adds bc to hl (partyCount - 1) times and moves the result to de
 InGameTrade_GetReceivedMonPointer:
 	ld a, [wPartyCount]
 	dec a
@@ -230,7 +230,7 @@ InGameTrade_GetReceivedMonPointer:
 	ret
 
 InGameTrade_TrainerString:
-	; "TRAINER@@@@@@@@@@"
+	// "TRAINER@@@@@@@@@@"
 	db $5d, "@@@@@@@@@@"
 
 InGameTradeTextPointers:

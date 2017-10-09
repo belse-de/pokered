@@ -1,23 +1,23 @@
 MarowakAnim:
-; animate the ghost being unveiled as a Marowak
+// animate the ghost being unveiled as a Marowak
 	ld a, $e4
 	ld [rOBP1], a
-	call CopyMonPicFromBGToSpriteVRAM ; cover the BG ghost pic with a sprite ghost pic that looks the same
-; now that the ghost pic is being displayed using sprites, clear the ghost pic from the BG tilemap
+	call CopyMonPicFromBGToSpriteVRAM // cover the BG ghost pic with a sprite ghost pic that looks the same
+// now that the ghost pic is being displayed using sprites, clear the ghost pic from the BG tilemap
 	coord hl, 12, 0
 	lb bc, 7, 7
 	call ClearScreenArea
 	call Delay3
 	xor a
-	ld [H_AUTOBGTRANSFERENABLED], a ; disable BG transfer so we don't see the Marowak too soon
-; replace ghost pic with Marowak in BG
+	ld [H_AUTOBGTRANSFERENABLED], a // disable BG transfer so we don't see the Marowak too soon
+// replace ghost pic with Marowak in BG
 	ld a, MAROWAK
 	ld [wChangeMonPicEnemyTurnSpecies], a
 	ld a, $1
 	ld [H_WHOSETURN], a
 	callab ChangeMonPic
- ; alternate between black and light grey 8 times.
- ; this makes the ghost's body appear to flash
+ // alternate between black and light grey 8 times.
+ // this makes the ghost's body appear to flash
 	ld d, $80
 	call FlashSprite8Times
 .fadeOutGhostLoop
@@ -29,7 +29,7 @@ MarowakAnim:
 	ld [rOBP1], a
 	jr nz, .fadeOutGhostLoop
 	call ClearSprites
-	call CopyMonPicFromBGToSpriteVRAM ; copy Marowak pic from BG to sprite VRAM
+	call CopyMonPicFromBGToSpriteVRAM // copy Marowak pic from BG to sprite VRAM
 	ld b, $e4
 .fadeInMarowakLoop
 	ld c, 10
@@ -44,11 +44,11 @@ MarowakAnim:
 	and a
 	jr nz, .fadeInMarowakLoop
 	ld a, $1
-	ld [H_AUTOBGTRANSFERENABLED], a ; enable BG transfer so the BG Marowak pic will be visible after the sprite one is cleared
+	ld [H_AUTOBGTRANSFERENABLED], a // enable BG transfer so the BG Marowak pic will be visible after the sprite one is cleared
 	call Delay3
 	jp ClearSprites
 
-; copies a mon pic's  from background VRAM to sprite VRAM and sets up OAM
+// copies a mon pic's  from background VRAM to sprite VRAM and sets up OAM
 CopyMonPicFromBGToSpriteVRAM:
 	ld de, vFrontPic
 	ld hl, vSprites
@@ -74,7 +74,7 @@ CopyMonPicFromBGToSpriteVRAM:
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	ld a, $10 ; use OBP1
+	ld a, $10 // use OBP1
 	ld [hli], a
 	inc d
 	dec c

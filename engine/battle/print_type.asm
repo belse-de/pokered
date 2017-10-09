@@ -1,5 +1,5 @@
-; [wd0b5] = pokemon ID
-; hl = dest addr
+// [wd0b5] = pokemon ID
+// hl = dest addr
 PrintMonType:
 	call GetPredefRegisters
 	push hl
@@ -17,13 +17,13 @@ PrintMonType:
 	ld bc, SCREEN_WIDTH * 2
 	add hl, bc
 
-; a = type
-; hl = dest addr
+// a = type
+// hl = dest addr
 PrintType:
 	push hl
 	jr PrintType_
 
-; erase "TYPE2/" if the mon only has 1 type
+// erase "TYPE2/" if the mon only has 1 type
 EraseType2Text:
 	ld a, " "
 	ld bc, $13
@@ -35,7 +35,7 @@ PrintMoveType:
 	call GetPredefRegisters
 	push hl
 	ld a, [wPlayerMoveType]
-; fall through
+// fall through
 
 PrintType_:
 	add a
@@ -49,4 +49,4 @@ PrintType_:
 	pop hl
 	jp PlaceString
 
-INCLUDE "text/type_names.asm"
+#include "text/type_names.asm"

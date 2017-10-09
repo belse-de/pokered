@@ -24,66 +24,66 @@ RockTunnel1TextPointers:
 
 RockTunnel1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_0
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_0
-	dw RockTunnel1BattleText1 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText1 ; TextAfterBattle
-	dw RockTunnel1EndBattleText1 ; TextEndBattle
-	dw RockTunnel1EndBattleText1 ; TextEndBattle
+	dw RockTunnel1BattleText1 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText1 // TextAfterBattle
+	dw RockTunnel1EndBattleText1 // TextEndBattle
+	dw RockTunnel1EndBattleText1 // TextEndBattle
 
 RockTunnel1TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_1
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_1
-	dw RockTunnel1BattleText2 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText2 ; TextAfterBattle
-	dw RockTunnel1EndBattleText2 ; TextEndBattle
-	dw RockTunnel1EndBattleText2 ; TextEndBattle
+	dw RockTunnel1BattleText2 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText2 // TextAfterBattle
+	dw RockTunnel1EndBattleText2 // TextEndBattle
+	dw RockTunnel1EndBattleText2 // TextEndBattle
 
 RockTunnel1TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_2
-	dw RockTunnel1BattleText3 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText3 ; TextAfterBattle
-	dw RockTunnel1EndBattleText3 ; TextEndBattle
-	dw RockTunnel1EndBattleText3 ; TextEndBattle
+	dw RockTunnel1BattleText3 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText3 // TextAfterBattle
+	dw RockTunnel1EndBattleText3 // TextEndBattle
+	dw RockTunnel1EndBattleText3 // TextEndBattle
 
 RockTunnel1TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_3
-	dw RockTunnel1BattleText4 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText4 ; TextAfterBattle
-	dw RockTunnel1EndBattleText4 ; TextEndBattle
-	dw RockTunnel1EndBattleText4 ; TextEndBattle
+	dw RockTunnel1BattleText4 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText4 // TextAfterBattle
+	dw RockTunnel1EndBattleText4 // TextEndBattle
+	dw RockTunnel1EndBattleText4 // TextEndBattle
 
 RockTunnel1TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_4
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_4
-	dw RockTunnel1BattleText5 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText5 ; TextAfterBattle
-	dw RockTunnel1EndBattleText5 ; TextEndBattle
-	dw RockTunnel1EndBattleText5 ; TextEndBattle
+	dw RockTunnel1BattleText5 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText5 // TextAfterBattle
+	dw RockTunnel1EndBattleText5 // TextEndBattle
+	dw RockTunnel1EndBattleText5 // TextEndBattle
 
 RockTunnel1TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_5
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_5
-	dw RockTunnel1BattleText6 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText6 ; TextAfterBattle
-	dw RockTunnel1EndBattleText6 ; TextEndBattle
-	dw RockTunnel1EndBattleText6 ; TextEndBattle
+	dw RockTunnel1BattleText6 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText6 // TextAfterBattle
+	dw RockTunnel1EndBattleText6 // TextEndBattle
+	dw RockTunnel1EndBattleText6 // TextEndBattle
 
 RockTunnel1TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_6
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_6
-	dw RockTunnel1BattleText7 ; TextBeforeBattle
-	dw RockTunnel1AfterBattleText7 ; TextAfterBattle
-	dw RockTunnel1EndBattleText7 ; TextEndBattle
-	dw RockTunnel1EndBattleText7 ; TextEndBattle
+	dw RockTunnel1BattleText7 // TextBeforeBattle
+	dw RockTunnel1AfterBattleText7 // TextAfterBattle
+	dw RockTunnel1EndBattleText7 // TextEndBattle
+	dw RockTunnel1EndBattleText7 // TextEndBattle
 
 	db $ff
 

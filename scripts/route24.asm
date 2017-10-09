@@ -87,57 +87,57 @@ Route24TextPointers:
 
 Route24TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_0
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_24_TRAINER_0
-	dw Route24BattleText1 ; TextBeforeBattle
-	dw Route24AfterBattleText1 ; TextAfterBattle
-	dw Route24EndBattleText1 ; TextEndBattle
-	dw Route24EndBattleText1 ; TextEndBattle
+	dw Route24BattleText1 // TextBeforeBattle
+	dw Route24AfterBattleText1 // TextAfterBattle
+	dw Route24EndBattleText1 // TextEndBattle
+	dw Route24EndBattleText1 // TextEndBattle
 
 Route24TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_1
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_24_TRAINER_1
-	dw Route24BattleText2 ; TextBeforeBattle
-	dw Route24AfterBattleText2 ; TextAfterBattle
-	dw Route24EndBattleText2 ; TextEndBattle
-	dw Route24EndBattleText2 ; TextEndBattle
+	dw Route24BattleText2 // TextBeforeBattle
+	dw Route24AfterBattleText2 // TextAfterBattle
+	dw Route24EndBattleText2 // TextEndBattle
+	dw Route24EndBattleText2 // TextEndBattle
 
 Route24TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_2
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_24_TRAINER_2
-	dw Route24BattleText3 ; TextBeforeBattle
-	dw Route24AfterBattleText3 ; TextAfterBattle
-	dw Route24EndBattleText3 ; TextEndBattle
-	dw Route24EndBattleText3 ; TextEndBattle
+	dw Route24BattleText3 // TextBeforeBattle
+	dw Route24AfterBattleText3 // TextAfterBattle
+	dw Route24EndBattleText3 // TextEndBattle
+	dw Route24EndBattleText3 // TextEndBattle
 
 Route24TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_3
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_24_TRAINER_3
-	dw Route24BattleText4 ; TextBeforeBattle
-	dw Route24AfterBattleText4 ; TextAfterBattle
-	dw Route24EndBattleText4 ; TextEndBattle
-	dw Route24EndBattleText4 ; TextEndBattle
+	dw Route24BattleText4 // TextBeforeBattle
+	dw Route24AfterBattleText4 // TextAfterBattle
+	dw Route24EndBattleText4 // TextEndBattle
+	dw Route24EndBattleText4 // TextEndBattle
 
 Route24TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_4
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_24_TRAINER_4
-	dw Route24BattleText5 ; TextBeforeBattle
-	dw Route24AfterBattleText5 ; TextAfterBattle
-	dw Route24EndBattleText5 ; TextEndBattle
-	dw Route24EndBattleText5 ; TextEndBattle
+	dw Route24BattleText5 // TextBeforeBattle
+	dw Route24AfterBattleText5 // TextAfterBattle
+	dw Route24EndBattleText5 // TextEndBattle
+	dw Route24EndBattleText5 // TextEndBattle
 
 Route24TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_5
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_24_TRAINER_5
-	dw Route24BattleText6 ; TextBeforeBattle
-	dw Route24AfterBattleText6 ; TextAfterBattle
-	dw Route24EndBattleText6 ; TextEndBattle
-	dw Route24EndBattleText6 ; TextEndBattle
+	dw Route24BattleText6 // TextBeforeBattle
+	dw Route24AfterBattleText6 // TextAfterBattle
+	dw Route24EndBattleText6 // TextEndBattle
+	dw Route24EndBattleText6 // TextEndBattle
 
 	db $ff
 

@@ -115,9 +115,9 @@ CeruleanCityMovement1:
 CeruleanCityScript_1955d:
 	ld a,1
 	ld [H_SPRITEINDEX],a
-	xor a ; SPRITE_FACING_DOWN
+	xor a // SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection],a
-	jp SetSpriteFacingDirectionAndDelay ; face object
+	jp SetSpriteFacingDirectionAndDelay // face object
 
 CeruleanCityScript1:
 	ld a, [wd730]
@@ -137,7 +137,7 @@ CeruleanCityScript1:
 	ld a, OPP_SONY1
 	ld [wCurOpponent], a
 
-	; select which team to use during the encounter
+	// select which team to use during the encounter
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .NotSquirtle
@@ -249,9 +249,9 @@ CeruleanCityTextPointers:
 CeruleanCityText1:
 	TX_ASM
 	CheckEvent EVENT_BEAT_CERULEAN_RIVAL
-	; do pre-battle text
+	// do pre-battle text
 	jr z, .PreBattleText
-	; or talk about bill
+	// or talk about bill
 	ld hl, CeruleanCityText_19677
 	call PrintText
 	jr .end

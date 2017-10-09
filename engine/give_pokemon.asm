@@ -1,6 +1,6 @@
 _GivePokemon:
-; returns success in carry
-; and whether the mon was added to the party in [wAddedToParty]
+// returns success in carry
+// and whether the mon was added to the party in [wAddedToParty]
 	call EnableAutoTextBoxDrawing
 	xor a
 	ld [wAddedToParty], a
@@ -10,7 +10,7 @@ _GivePokemon:
 	ld a, [wNumInBox]
 	cp MONS_PER_BOX
 	jr nc, .boxFull
-; add to box
+// add to box
 	xor a
 	ld [wEnemyBattleStatus3], a
 	ld a, [wcf91]

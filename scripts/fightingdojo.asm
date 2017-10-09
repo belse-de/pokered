@@ -92,39 +92,39 @@ FightingDojoTextPointers:
 
 FightingDojoTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_0
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_0
-	dw FightingDojoBattleText1 ; TextBeforeBattle
-	dw FightingDojoAfterBattleText1 ; TextAfterBattle
-	dw FightingDojoEndBattleText1 ; TextEndBattle
-	dw FightingDojoEndBattleText1 ; TextEndBattle
+	dw FightingDojoBattleText1 // TextBeforeBattle
+	dw FightingDojoAfterBattleText1 // TextAfterBattle
+	dw FightingDojoEndBattleText1 // TextEndBattle
+	dw FightingDojoEndBattleText1 // TextEndBattle
 
 FightingDojoTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_1
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_1
-	dw FightingDojoBattleText2 ; TextBeforeBattle
-	dw FightingDojoAfterBattleText2 ; TextAfterBattle
-	dw FightingDojoEndBattleText2 ; TextEndBattle
-	dw FightingDojoEndBattleText2 ; TextEndBattle
+	dw FightingDojoBattleText2 // TextBeforeBattle
+	dw FightingDojoAfterBattleText2 // TextAfterBattle
+	dw FightingDojoEndBattleText2 // TextEndBattle
+	dw FightingDojoEndBattleText2 // TextEndBattle
 
 FightingDojoTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
-	dw FightingDojoBattleText3 ; TextBeforeBattle
-	dw FightingDojoAfterBattleText3 ; TextAfterBattle
-	dw FightingDojoEndBattleText3 ; TextEndBattle
-	dw FightingDojoEndBattleText3 ; TextEndBattle
+	dw FightingDojoBattleText3 // TextBeforeBattle
+	dw FightingDojoAfterBattleText3 // TextAfterBattle
+	dw FightingDojoEndBattleText3 // TextEndBattle
+	dw FightingDojoEndBattleText3 // TextEndBattle
 
 FightingDojoTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
-	dw FightingDojoBattleText4 ; TextBeforeBattle
-	dw FightingDojoAfterBattleText4 ; TextAfterBattle
-	dw FightingDojoEndBattleText4 ; TextEndBattle
-	dw FightingDojoEndBattleText4 ; TextEndBattle
+	dw FightingDojoBattleText4 // TextBeforeBattle
+	dw FightingDojoAfterBattleText4 // TextAfterBattle
+	dw FightingDojoEndBattleText4 // TextEndBattle
+	dw FightingDojoEndBattleText4 // TextEndBattle
 
 	db $ff
 
@@ -249,7 +249,7 @@ FightingDojoAfterBattleText4:
 	db "@"
 
 FightingDojoText6:
-; Hitmonlee Poké Ball
+// Hitmonlee Poké Ball
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
@@ -271,7 +271,7 @@ FightingDojoText6:
 	call GivePokemon
 	jr nc, .done
 
-	; once Poké Ball is taken, hide sprite
+	// once Poké Ball is taken, hide sprite
 	ld a, HS_FIGHTING_DOJO_GIFT_1
 	ld [wMissableObjectIndex], a
 	predef HideObject
@@ -284,7 +284,7 @@ WantHitmonleeText:
 	db "@"
 
 FightingDojoText7:
-; Hitmonchan Poké Ball
+// Hitmonchan Poké Ball
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
@@ -307,7 +307,7 @@ FightingDojoText7:
 	jr nc, .done
 	SetEvents EVENT_GOT_HITMONCHAN, EVENT_DEFEATED_FIGHTING_DOJO
 
-	; once Poké Ball is taken, hide sprite
+	// once Poké Ball is taken, hide sprite
 	ld a, HS_FIGHTING_DOJO_GIFT_2
 	ld [wMissableObjectIndex], a
 	predef HideObject

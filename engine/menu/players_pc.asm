@@ -8,9 +8,9 @@ PlayerPC:
 	ld [wBagSavedMenuItem], a
 	ld [wParentMenuItem], a
 	ld a, [wFlags_0xcd60]
-	bit 3, a ; accessing player's PC through another PC?
+	bit 3, a // accessing player's PC through another PC?
 	jr nz, PlayerPCMenu
-; accessing it directly
+// accessing it directly
 	ld a, SFX_TURN_ON_PC
 	call PlaySound
 	ld hl, TurnedOnPC2Text
@@ -32,20 +32,20 @@ PlayerPCMenu:
 	call PlaceString
 	ld hl, wTopMenuItemY
 	ld a, 2
-	ld [hli], a ; wTopMenuItemY
+	ld [hli], a // wTopMenuItemY
 	dec a
-	ld [hli], a ; wTopMenuItemX
+	ld [hli], a // wTopMenuItemX
 	inc hl
 	inc hl
 	ld a, 3
-	ld [hli], a ; wMaxMenuItem
+	ld [hli], a // wMaxMenuItem
 	ld a, A_BUTTON | B_BUTTON
-	ld [hli], a ; wMenuWatchedKeys
+	ld [hli], a // wMenuWatchedKeys
 	xor a
 	ld [hl], a
 	ld hl, wListScrollOffset
-	ld [hli], a ; wListScrollOffset
-	ld [hl], a ; wMenuWatchMovingOutOfBounds
+	ld [hli], a // wListScrollOffset
+	ld [hl], a // wMenuWatchMovingOutOfBounds
 	ld [wPlayerMonNumber], a
 	ld hl, WhatDoYouWantText
 	call PrintText
@@ -64,9 +64,9 @@ PlayerPCMenu:
 
 ExitPlayerPC:
 	ld a, [wFlags_0xcd60]
-	bit 3, a ; accessing player's PC through another PC?
+	bit 3, a // accessing player's PC through another PC?
 	jr nz, .next
-; accessing it directly
+// accessing it directly
 	ld a, SFX_TURN_OFF_PC
 	call PlaySound
 	call WaitForSoundToFinish
@@ -113,7 +113,7 @@ PlayerPCDeposit:
 	ld a, [wIsKeyItem]
 	and a
 	jr nz, .next
-; if it's not a key item, there can be more than one of the item
+// if it's not a key item, there can be more than one of the item
 	ld hl, DepositHowManyText
 	call PrintText
 	call DisplayChooseQuantityMenu
@@ -167,7 +167,7 @@ PlayerPCWithdraw:
 	ld a, [wIsKeyItem]
 	and a
 	jr nz, .next
-; if it's not a key item, there can be more than one of the item
+// if it's not a key item, there can be more than one of the item
 	ld hl, WithdrawHowManyText
 	call PrintText
 	call DisplayChooseQuantityMenu
@@ -228,7 +228,7 @@ PlayerPCToss:
 	ld a, [wcf91]
 	call IsItemHM
 	jr c, .next
-; if it's not a key item, there can be more than one of the item
+// if it's not a key item, there can be more than one of the item
 	push hl
 	ld hl, TossHowManyText
 	call PrintText
@@ -237,7 +237,7 @@ PlayerPCToss:
 	cp $ff
 	jp z, .loop
 .next
-	call TossItem ; disallows tossing key items
+	call TossItem // disallows tossing key items
 	jp .loop
 
 PlayersPCMenuEntries:

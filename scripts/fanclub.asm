@@ -2,7 +2,7 @@ FanClubScript:
 	jp EnableAutoTextBoxDrawing
 
 FanClubBikeInBag:
-; check if any bike paraphernalia in bag
+// check if any bike paraphernalia in bag
 	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	ret nz
 	ld b, BICYCLE
@@ -22,7 +22,7 @@ FanClubTextPointers:
 	dw FanClubText8
 
 FanClubText1:
-; pikachu fan
+// pikachu fan
 	TX_ASM
 	CheckEvent EVENT_PIKACHU_FAN_BOAST
 	jr nz, .mineisbetter
@@ -46,7 +46,7 @@ FanClubText1:
 	db "@"
 
 FanClubText2:
-; seel fan
+// seel fan
 	TX_ASM
 	CheckEvent EVENT_SEEL_FAN_BOAST
 	jr nz, .mineisbetter
@@ -70,7 +70,7 @@ FanClubText2:
 	db "@"
 
 FanClubText3:
-; pikachu
+// pikachu
 	TX_ASM
 	ld hl, .text
 	call PrintText
@@ -84,7 +84,7 @@ FanClubText3:
 	db "@"
 
 FanClubText4:
-; seel
+// seel
 	TX_ASM
 	ld hl, .text
 	call PrintText
@@ -98,7 +98,7 @@ FanClubText4:
 	db "@"
 
 FanClubText5:
-; chair
+// chair
 	TX_ASM
 	call FanClubBikeInBag
 	jr nz, .nothingleft
@@ -110,7 +110,7 @@ FanClubText5:
 	and a
 	jr nz, .nothanks
 
-	; tell the story
+	// tell the story
 	ld hl, .storytext
 	call PrintText
 	lb bc, BIKE_VOUCHER, 1

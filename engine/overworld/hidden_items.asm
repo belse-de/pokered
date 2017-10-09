@@ -13,17 +13,17 @@ HiddenItems:
 	call EnableAutoTextBoxDrawing
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld a, [wHiddenObjectFunctionArgument] ; item ID
+	ld a, [wHiddenObjectFunctionArgument] // item ID
 	ld [wd11e], a
 	call GetItemName
 	tx_pre_jump FoundHiddenItemText
 
-INCLUDE "data/hidden_item_coords.asm"
+#include "data/hidden_item_coords.asm"
 
 FoundHiddenItemText:
 	TX_FAR _FoundHiddenItemText
 	TX_ASM
-	ld a, [wHiddenObjectFunctionArgument] ; item ID
+	ld a, [wHiddenObjectFunctionArgument] // item ID
 	ld b, a
 	ld c, 1
 	call GiveItem
@@ -38,7 +38,7 @@ FoundHiddenItemText:
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 .bagFull
-	call WaitForTextScrollButtonPress ; wait for button press
+	call WaitForTextScrollButtonPress // wait for button press
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, HiddenItemBagFullText
@@ -77,7 +77,7 @@ HiddenCoins:
 	cp 20
 	jr z, .bcd20
 	cp 40
-	jr z, .bcd20 ; should be bcd40
+	jr z, .bcd20 // should be bcd40
 	jr .bcd100
 .bcd10
 	ld a, $10
@@ -87,7 +87,7 @@ HiddenCoins:
 	ld a, $20
 	ld [hCoins + 1], a
 	jr .bcdDone
-.bcd40 ; due to a typo, this is never used
+.bcd40 // due to a typo, this is never used
 	ld a, $40
 	ld [hCoins + 1], a
 	jr .bcdDone
@@ -118,7 +118,7 @@ HiddenCoins:
 .done
 	jp PrintPredefTextID
 
-INCLUDE "data/hidden_coins.asm"
+#include "data/hidden_coins.asm"
 
 FoundHiddenCoinsText:
 	TX_FAR _FoundHiddenCoinsText
@@ -142,8 +142,8 @@ FindHiddenItemOrCoinsIndex:
 .loop
 	inc c
 	ld a, [hli]
-	cp $ff ; end of the list?
-	ret z  ; if so, we're done here
+	cp $ff // end of the list?
+	ret z  // if so, we're done here
 	cp b
 	jr nz, .next1
 	ld a, [hli]

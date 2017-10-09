@@ -114,7 +114,7 @@ AccessedMyPCText:
 	TX_FAR _AccessedMyPCText
 	db "@"
 
-; removes one of the specified item ID [hItemToRemoveID] from bag (if existent)
+// removes one of the specified item ID [hItemToRemoveID] from bag (if existent)
 RemoveItemByID:
 	ld hl, wBagItems
 	ld a, [hItemToRemoveID]
@@ -123,7 +123,7 @@ RemoveItemByID:
 	ld [hItemToRemoveIndex], a
 .loop
 	ld a, [hli]
-	cp -1 ; reached terminator?
+	cp -1 // reached terminator?
 	ret z
 	cp b
 	jr z, .foundItem

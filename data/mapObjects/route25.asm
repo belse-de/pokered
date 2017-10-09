@@ -1,13 +1,13 @@
 Route25Object:
-	db $2c ; border block
+	db $2c // border block
 
-	db $1 ; warps
+	db $1 // warps
 	db $3, $2d, $0, BILLS_HOUSE
 
-	db $1 ; signs
-	db $3, $2b, $b ; Route25Text11
+	db $1 // signs
+	db $3, $2b, $b // Route25Text11
 
-	db $a ; objects
+	db $a // objects
 	object SPRITE_BUG_CATCHER, $e, $2, STAY, DOWN, $1, OPP_YOUNGSTER, $5
 	object SPRITE_BUG_CATCHER, $12, $5, STAY, UP, $2, OPP_YOUNGSTER, $6
 	object SPRITE_BLACK_HAIR_BOY_1, $18, $4, STAY, DOWN, $3, OPP_JR_TRAINER_M, $2
@@ -19,5 +19,5 @@ Route25Object:
 	object SPRITE_HIKER, $d, $7, STAY, RIGHT, $9, OPP_HIKER, $4
 	object SPRITE_BALL, $16, $2, STAY, NONE, $a, TM_19
 
-	; warp-to
-	EVENT_DISP ROUTE_25_WIDTH, $3, $2d ; BILLS_HOUSE
+	// warp-to
+	EVENT_DISP ROUTE_25_WIDTH, $3, $2d // BILLS_HOUSE

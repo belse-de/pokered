@@ -1,14 +1,14 @@
 Route13Object:
-	db $43 ; border block
+	db $43 // border block
 
-	db $0 ; warps
+	db $0 // warps
 
-	db $3 ; signs
-	db $d, $f, $b ; Route13Text11
-	db $5, $21, $c ; Route13Text12
-	db $b, $1f, $d ; Route13Text13
+	db $3 // signs
+	db $d, $f, $b // Route13Text11
+	db $5, $21, $c // Route13Text12
+	db $b, $1f, $d // Route13Text13
 
-	db $a ; objects
+	db $a // objects
 	object SPRITE_BLACK_HAIR_BOY_1, $31, $a, STAY, RIGHT, $1, OPP_BIRD_KEEPER, $1
 	object SPRITE_LASS, $30, $a, STAY, DOWN, $2, OPP_JR_TRAINER_F, $c
 	object SPRITE_LASS, $1b, $9, STAY, DOWN, $3, OPP_JR_TRAINER_F, $d

@@ -15,7 +15,7 @@ LanceShowOrHideEntranceBlocks:
 	ret z
 	CheckEvent EVENT_LANCES_ROOM_LOCK_DOOR
 	jr nz, .closeEntrance
-	; open entrance
+	// open entrance
 	ld a, $31
 	ld b, $32
 	jp LanceSetEntranceBlocks
@@ -24,7 +24,7 @@ LanceShowOrHideEntranceBlocks:
 	ld b, $73
 
 LanceSetEntranceBlocks:
-; Replaces the tile blocks so the player can't leave.
+// Replaces the tile blocks so the player can't leave.
 	push bc
 	ld [wNewTileBlockID], a
 	lb bc, 6, 2
@@ -61,13 +61,13 @@ LanceScript0:
 	xor a
 	ld [hJoyHeld], a
 	ld a, [wCoordIndex]
-	cp $3  ; Is player standing next to Lance's sprite?
+	cp $3  // Is player standing next to Lance's sprite?
 	jr nc, .notStandingNextToLance
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 .notStandingNextToLance
-	cp $5  ; Is player standing on the entrance staircase?
+	cp $5  // Is player standing on the entrance staircase?
 	jr z, WalkToLance
 	CheckAndSetEvent EVENT_LANCES_ROOM_LOCK_DOOR
 	ret nz
@@ -95,7 +95,7 @@ LanceScript2:
 	jp DisplayTextID
 
 WalkToLance:
-; Moves the player down the hallway to Lance's room.
+// Moves the player down the hallway to Lance's room.
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld hl, wSimulatedJoypadStatesEnd
@@ -132,12 +132,12 @@ LanceTextPointers:
 
 LanceTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_LANCES_ROOM_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($0 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_LANCES_ROOM_TRAINER_0
-	dw LanceBeforeBattleText ; TextBeforeBattle
-	dw LanceAfterBattleText ; TextAfterBattle
-	dw LanceEndBattleText ; TextEndBattle
-	dw LanceEndBattleText ; TextEndBattle
+	dw LanceBeforeBattleText // TextBeforeBattle
+	dw LanceAfterBattleText // TextAfterBattle
+	dw LanceEndBattleText // TextEndBattle
+	dw LanceEndBattleText // TextEndBattle
 
 	db $ff
 

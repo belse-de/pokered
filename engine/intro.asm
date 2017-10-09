@@ -26,7 +26,7 @@ PlayIntroScene:
 	ld [rOBP1], a
 	xor a
 	ld [hSCX], a
-	ld b, $3 ; Gengar tiles
+	ld b, $3 // Gengar tiles
 	call IntroCopyTiles
 	ld a, 0
 	ld [wBaseCoordX], a
@@ -38,14 +38,14 @@ PlayIntroScene:
 	call IntroMoveMon
 	ret c
 
-; hip
+// hip
 	ld a, SFX_INTRO_HIP
 	call PlaySound
 	xor a
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation1
 	call AnimateIntroNidorino
-; hop
+// hop
 	ld a, SFX_INTRO_HOP
 	call PlaySound
 	ld de, IntroNidorinoAnimation2
@@ -54,12 +54,12 @@ PlayIntroScene:
 	call CheckForUserInterruption
 	ret c
 
-; hip
+// hip
 	ld a, SFX_INTRO_HIP
 	call PlaySound
 	ld de, IntroNidorinoAnimation1
 	call AnimateIntroNidorino
-; hop
+// hop
 	ld a, SFX_INTRO_HOP
 	call PlaySound
 	ld de, IntroNidorinoAnimation2
@@ -68,7 +68,7 @@ PlayIntroScene:
 	call CheckForUserInterruption
 	ret c
 
-; raise
+// raise
 	ld b, $4
 	call IntroCopyTiles
 	ld a, SFX_INTRO_RAISE
@@ -79,14 +79,14 @@ PlayIntroScene:
 	call CheckForUserInterruption
 	ret c
 
-; slash
+// slash
 	ld b, $5
 	call IntroCopyTiles
 	ld a, SFX_INTRO_CRASH
 	call PlaySound
 	lb de, 16 / 2, MOVE_GENGAR_RIGHT
 	call IntroMoveMon
-; hip
+// hip
 	ld a, SFX_INTRO_HIP
 	call PlaySound
 	ld a, $24
@@ -105,14 +105,14 @@ PlayIntroScene:
 	call CheckForUserInterruption
 	ret c
 
-; hip
+// hip
 	ld a, SFX_INTRO_HIP
 	call PlaySound
 	xor a
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation4
 	call AnimateIntroNidorino
-; hop
+// hop
 	ld a, SFX_INTRO_HOP
 	call PlaySound
 	ld de, IntroNidorinoAnimation5
@@ -129,7 +129,7 @@ PlayIntroScene:
 	call CheckForUserInterruption
 	ret c
 
-; lunge
+// lunge
 	ld a, SFX_INTRO_LUNGE
 	call PlaySound
 	ld a, $48
@@ -161,12 +161,12 @@ UpdateIntroNidorinoOAM:
 .loop
 	ld a, [wBaseCoordY]
 	add [hl]
-	ld [hli], a ; Y
+	ld [hli], a // Y
 	ld a, [wBaseCoordX]
 	add [hl]
-	ld [hli], a ; X
+	ld [hli], a // X
 	ld a, d
-	ld [hli], a ; tile
+	ld [hli], a // tile
 	inc hl
 	inc d
 	dec c
@@ -184,13 +184,13 @@ InitIntroNidorinoOAM:
 	ld a, e
 	add 8
 	ld e, a
-	ld [hli], a ; Y
+	ld [hli], a // Y
 	ld a, [wBaseCoordX]
-	ld [hli], a ; X
+	ld [hli], a // X
 	ld a, d
-	ld [hli], a ; tile
+	ld [hli], a // tile
 	ld a, $80
-	ld [hli], a ; attributes
+	ld [hli], a // attributes
 	inc d
 	dec c
 	jr nz, .innerLoop
@@ -208,7 +208,7 @@ IntroClearScreen:
 	jr IntroClearCommon
 
 IntroClearMiddleOfScreen:
-; clear the area of the tile map between the black bars on the top and bottom
+// clear the area of the tile map between the black bars on the top and bottom
 	coord hl, 0, 4
 	ld bc, SCREEN_WIDTH * 10
 
@@ -230,14 +230,14 @@ IntroPlaceBlackTiles:
 	ret
 
 IntroMoveMon:
-; d = number of times to move the mon (2 pixels each time)
-; e: $00 = move Gengar right, $01 = move Gengar left, $ff = move Nidorino right
+// d = number of times to move the mon (2 pixels each time)
+// e: $00 = move Gengar right, $01 = move Gengar left, $ff = move Nidorino right
 	ld a, e
 	cp $ff
 	jr z, .moveNidorinoRight
 	cp $1
 	jr z, .moveGengarLeft
-; move Gengar right
+// move Gengar right
 	ld a, [hSCX]
 	dec a
 	dec a
@@ -274,7 +274,7 @@ CopyTileIDsFromList_ZeroBaseTileID:
 	predef_jump CopyTileIDsFromList
 
 PlayMoveSoundB:
-; unused
+// unused
 	predef GetMoveSoundB
 	ld a, b
 	jp PlaySound
@@ -324,7 +324,7 @@ PlayShootingStar:
 	callba AnimateShootingStar
 	push af
 	pop af
-	jr c, .next ; skip the delay if the user interrupted the animation
+	jr c, .next // skip the delay if the user interrupted the animation
 	ld c, 40
 	call DelayFrames
 .next
@@ -339,7 +339,7 @@ PlayShootingStar:
 	jp Delay3
 
 IntroDrawBlackBars:
-; clear the screen and draw black bars on the top and bottom
+// clear the screen and draw black bars on the top and bottom
 	call IntroClearScreen
 	coord hl, 0, 0
 	ld c, SCREEN_WIDTH * 4
@@ -362,78 +362,78 @@ IntroNidorinoAnimation0:
 	db $50
 
 IntroNidorinoAnimation1:
-; This is a sequence of pixel movements for part of the Nidorino animation. This
-; list describes how Nidorino should hop.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation. This
+// list describes how Nidorino should hop.
+// First byte is y movement, second byte is x movement
 	db  0, 0
 	db -2, 2
 	db -1, 2
 	db  1, 2
 	db  2, 2
-	db $50 ; list terminator
+	db $50 // list terminator
 
 IntroNidorinoAnimation2:
-; This is a sequence of pixel movements for part of the Nidorino animation.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation.
+// First byte is y movement, second byte is x movement
 	db  0,  0
 	db -2, -2
 	db -1, -2
 	db  1, -2
 	db  2, -2
-	db $50 ; list terminator
+	db $50 // list terminator
 
 IntroNidorinoAnimation3:
-; This is a sequence of pixel movements for part of the Nidorino animation.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation.
+// First byte is y movement, second byte is x movement
 	db   0, 0
 	db -12, 6
 	db  -8, 6
 	db   8, 6
 	db  12, 6
-	db $50 ; list terminator
+	db $50 // list terminator
 
 IntroNidorinoAnimation4:
-; This is a sequence of pixel movements for part of the Nidorino animation.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation.
+// First byte is y movement, second byte is x movement
 	db  0,  0
 	db -8, -4
 	db -4, -4
 	db  4, -4
 	db  8, -4
-	db $50 ; list terminator
+	db $50 // list terminator
 
 IntroNidorinoAnimation5:
-; This is a sequence of pixel movements for part of the Nidorino animation.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation.
+// First byte is y movement, second byte is x movement
 	db  0, 0
 	db -8, 4
 	db -4, 4
 	db  4, 4
 	db  8, 4
-	db $50 ; list terminator
+	db $50 // list terminator
 
 IntroNidorinoAnimation6:
-; This is a sequence of pixel movements for part of the Nidorino animation.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation.
+// First byte is y movement, second byte is x movement
 	db 0, 0
 	db 2, 0
 	db 2, 0
 	db 0, 0
-	db $50 ; list terminator
+	db $50 // list terminator
 
 IntroNidorinoAnimation7:
-; This is a sequence of pixel movements for part of the Nidorino animation.
-; First byte is y movement, second byte is x movement
+// This is a sequence of pixel movements for part of the Nidorino animation.
+// First byte is y movement, second byte is x movement
 	db -8, -16
 	db -7, -14
 	db -6, -12
 	db -4, -10
-	db $50 ; list terminator
+	db $50 // list terminator
 
 GameFreakIntro:
 	INCBIN "gfx/gamefreak_intro.2bpp"
 	INCBIN "gfx/gamefreak_logo.2bpp"
-	ds $10 ; blank tile
+	ds $10 // blank tile
 GameFreakIntroEnd:
 
 FightIntroBackMon:
@@ -455,4 +455,4 @@ ENDC
 
 FightIntroFrontMonEnd:
 
-	ds $10 ; blank tile
+	ds $10 // blank tile

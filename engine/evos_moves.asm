@@ -1,4 +1,4 @@
-; try to evolve the mon in [wWhichPokemon]
+// try to evolve the mon in [wWhichPokemon]
 TryEvolvingMon:
 	ld hl, wCanEvolveFlags
 	xor a
@@ -8,8 +8,8 @@ TryEvolvingMon:
 	ld b, FLAG_SET
 	call Evolution_FlagAction
 
-; this is only called after battle
-; it is supposed to do level up evolutions, though there is a bug that allows item evolutions to occur
+// this is only called after battle
+// it is supposed to do level up evolutions, though there is a bug that allows item evolutions to occur
 EvolutionAfterBattle:
 	ld a, [hTilesetType]
 	push af
@@ -23,13 +23,13 @@ EvolutionAfterBattle:
 	ld hl, wPartyCount
 	push hl
 
-Evolution_PartyMonLoop: ; loop over party mons
+Evolution_PartyMonLoop: // loop over party mons
 	ld hl, wWhichPokemon
 	inc [hl]
 	pop hl
 	inc hl
 	ld a, [hl]
-	cp $ff ; have we reached the end of the party?
+	cp $ff // have we reached the end of the party?
 	jp z, .done
 	ld [wEvoOldSpecies], a
 	push hl
@@ -39,8 +39,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld b, FLAG_TEST
 	call Evolution_FlagAction
 	ld a, c
-	and a ; is the mon's bit set?
-	jp z, Evolution_PartyMonLoop ; if not, go to the next mon
+	and a // is the mon's bit set?
+	jp z, Evolution_PartyMonLoop // if not, go to the next mon
 	ld a, [wEvoOldSpecies]
 	dec a
 	ld b, 0
@@ -55,24 +55,24 @@ Evolution_PartyMonLoop: ; loop over party mons
 	push hl
 	ld a, [wcf91]
 	push af
-	xor a ; PLAYER_PARTY_DATA
+	xor a // PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 	call LoadMonData
 	pop af
 	ld [wcf91], a
 	pop hl
 
-.evoEntryLoop ; loop over evolution entries
+.evoEntryLoop // loop over evolution entries
 	ld a, [hli]
-	and a ; have we reached the end of the evolution data?
+	and a // have we reached the end of the evolution data?
 	jr z, Evolution_PartyMonLoop
-	ld b, a ; evolution type
+	ld b, a // evolution type
 	cp EV_TRADE
 	jr z, .checkTradeEvo
-; not trade evolution
+// not trade evolution
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
-	jr z, Evolution_PartyMonLoop ; if trading, go the next mon
+	jr z, Evolution_PartyMonLoop // if trading, go the next mon
 	ld a, b
 	cp EV_ITEM
 	jr z, .checkItemEvo
@@ -85,25 +85,25 @@ Evolution_PartyMonLoop: ; loop over party mons
 .checkTradeEvo
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
-	jp nz, .nextEvoEntry1 ; if not trading, go to the next evolution entry
-	ld a, [hli] ; level requirement
+	jp nz, .nextEvoEntry1 // if not trading, go to the next evolution entry
+	ld a, [hli] // level requirement
 	ld b, a
 	ld a, [wLoadedMonLevel]
-	cp b ; is the mon's level greater than the evolution requirement?
-	jp c, Evolution_PartyMonLoop ; if so, go the next mon
+	cp b // is the mon's level greater than the evolution requirement?
+	jp c, Evolution_PartyMonLoop // if so, go the next mon
 	jr .doEvolution
 .checkItemEvo
 	ld a, [hli]
-	ld b, a ; evolution item
-	ld a, [wcf91] ; this is supposed to be the last item used, but it is also used to hold species numbers
-	cp b ; was the evolution item in this entry used?
-	jp nz, .nextEvoEntry1 ; if not, go to the next evolution entry
+	ld b, a // evolution item
+	ld a, [wcf91] // this is supposed to be the last item used, but it is also used to hold species numbers
+	cp b // was the evolution item in this entry used?
+	jp nz, .nextEvoEntry1 // if not, go to the next evolution entry
 .checkLevel
-	ld a, [hli] ; level requirement
+	ld a, [hli] // level requirement
 	ld b, a
 	ld a, [wLoadedMonLevel]
-	cp b ; is the mon's level greater than the evolution requirement?
-	jp c, .nextEvoEntry2 ; if so, go the next evolution entry
+	cp b // is the mon's level greater than the evolution requirement?
+	jp c, .nextEvoEntry2 // if so, go the next evolution entry
 .doEvolution
 	ld [wCurEnemyLVL], a
 	ld a, 1
@@ -140,7 +140,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [wEvoNewSpecies], a
 	ld a, MONSTER_NAME
 	ld [wNameListType], a
-	ld a, BANK(TrainerNames) ; bank is not used for monster names
+	ld a, BANK(TrainerNames) // bank is not used for monster names
 	ld [wPredefBank], a
 	call GetName
 	push hl
@@ -258,8 +258,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ret
 
 RenameEvolvedMon:
-; Renames the mon to its new, evolved form's standard name unless it had a
-; nickname, in which case the nickname is kept.
+// Renames the mon to its new, evolved form's standard name unless it had a
+// nickname, in which case the nickname is kept.
 	ld a, [wd0b5]
 	push af
 	ld a, [wMonHIndex]
@@ -319,7 +319,7 @@ Evolution_ReloadTilesetTilePatterns:
 
 LearnMoveFromLevelUp:
 	ld hl, EvosMovesPointerTable
-	ld a, [wd11e] ; species
+	ld a, [wd11e] // species
 	ld [wcf91], a
 	dec a
 	ld bc, 0
@@ -331,37 +331,37 @@ LearnMoveFromLevelUp:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-.skipEvolutionDataLoop ; loop to skip past the evolution data, which comes before the move data
+.skipEvolutionDataLoop // loop to skip past the evolution data, which comes before the move data
 	ld a, [hli]
-	and a ; have we reached the end of the evolution data?
-	jr nz, .skipEvolutionDataLoop ; if not, jump back up
-.learnSetLoop ; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
+	and a // have we reached the end of the evolution data?
+	jr nz, .skipEvolutionDataLoop // if not, jump back up
+.learnSetLoop // loop over the learn set until we reach a move that is learnt at the current level or the end of the list
 	ld a, [hli]
-	and a ; have we reached the end of the learn set?
-	jr z, .done ; if we've reached the end of the learn set, jump
-	ld b, a ; level the move is learnt at
+	and a // have we reached the end of the learn set?
+	jr z, .done // if we've reached the end of the learn set, jump
+	ld b, a // level the move is learnt at
 	ld a, [wCurEnemyLVL]
-	cp b ; is the move learnt at the mon's current level?
-	ld a, [hli] ; move ID
+	cp b // is the move learnt at the mon's current level?
+	ld a, [hli] // move ID
 	jr nz, .learnSetLoop
-	ld d, a ; ID of move to learn
+	ld d, a // ID of move to learn
 	ld a, [wMonDataLocation]
 	and a
 	jr nz, .next
-; If [wMonDataLocation] is 0 (PLAYER_PARTY_DATA), get the address of the mon's
-; current moves in party data. Every call to this function sets
-; [wMonDataLocation] to 0 because other data locations are not supported.
-; If it is not 0, this function will not work properly.
+// If [wMonDataLocation] is 0 (PLAYER_PARTY_DATA), get the address of the mon's
+// current moves in party data. Every call to this function sets
+// [wMonDataLocation] to 0 because other data locations are not supported.
+// If it is not 0, this function will not work properly.
 	ld hl, wPartyMon1Moves
 	ld a, [wWhichPokemon]
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 .next
 	ld b, NUM_MOVES
-.checkCurrentMovesLoop ; check if the move to learn is already known
+.checkCurrentMovesLoop // check if the move to learn is already known
 	ld a, [hli]
 	cp d
-	jr z, .done ; if already known, jump
+	jr z, .done // if already known, jump
 	dec b
 	jr nz, .checkCurrentMovesLoop
 	ld a, d
@@ -375,8 +375,8 @@ LearnMoveFromLevelUp:
 	ld [wd11e], a
 	ret
 
-; writes the moves a mon has at level [wCurEnemyLVL] to [de]
-; move slots are being filled up sequentially and shifted if all slots are full
+// writes the moves a mon has at level [wCurEnemyLVL] to [de]
+// move slots are being filled up sequentially and shifted if all slots are full
 WriteMonMoves:
 	call GetPredefRegisters
 	push hl
@@ -384,7 +384,7 @@ WriteMonMoves:
 	push bc
 	ld hl, EvosMovesPointerTable
 	ld b, 0
-	ld a, [wcf91]  ; cur mon ID
+	ld a, [wcf91]  // cur mon ID
 	dec a
 	add a
 	rl b
@@ -403,23 +403,23 @@ WriteMonMoves:
 .nextMove2
 	inc hl
 .firstMove
-	ld a, [hli]       ; read level of next move in learnset
+	ld a, [hli]       // read level of next move in learnset
 	and a
-	jp z, .done       ; end of list
+	jp z, .done       // end of list
 	ld b, a
 	ld a, [wCurEnemyLVL]
 	cp b
-	jp c, .done       ; mon level < move level (assumption: learnset is sorted by level)
+	jp c, .done       // mon level < move level (assumption: learnset is sorted by level)
 	ld a, [wLearningMovesFromDayCare]
 	and a
 	jr z, .skipMinLevelCheck
 	ld a, [wDayCareStartLevel]
 	cp b
-	jr nc, .nextMove2 ; min level >= move level
+	jr nc, .nextMove2 // min level >= move level
 
 .skipMinLevelCheck
 
-; check if the move is already known
+// check if the move is already known
 	push de
 	ld c, NUM_MOVES
 .alreadyKnowsCheckLoop
@@ -430,7 +430,7 @@ WriteMonMoves:
 	dec c
 	jr nz, .alreadyKnowsCheckLoop
 
-; try to find an empty move slot
+// try to find an empty move slot
 	pop de
 	push de
 	ld c, NUM_MOVES
@@ -442,24 +442,24 @@ WriteMonMoves:
 	dec c
 	jr nz, .findEmptySlotLoop
 
-; no empty move slots found
+// no empty move slots found
 	pop de
 	push de
 	push hl
 	ld h, d
 	ld l, e
-	call WriteMonMoves_ShiftMoveData ; shift all moves one up (deleting move 1)
+	call WriteMonMoves_ShiftMoveData // shift all moves one up (deleting move 1)
 	ld a, [wLearningMovesFromDayCare]
 	and a
 	jr z, .writeMoveToSlot
 
-; shift PP as well if learning moves from day care
+// shift PP as well if learning moves from day care
 	push de
 	ld bc, wPartyMon1PP - (wPartyMon1Moves + 3)
 	add hl, bc
 	ld d, h
 	ld e, l
-	call WriteMonMoves_ShiftMoveData ; shift all move PP data one up
+	call WriteMonMoves_ShiftMoveData // shift all move PP data one up
 	pop de
 
 .writeMoveToSlot
@@ -471,7 +471,7 @@ WriteMonMoves:
 	and a
 	jr z, .nextMove
 
-; write move PP value if learning moves from day care
+// write move PP value if learning moves from day care
 	push hl
 	ld a, [hl]
 	ld hl, wPartyMon1PP - wPartyMon1Moves
@@ -496,7 +496,7 @@ WriteMonMoves:
 	pop hl
 	ret
 
-; shifts all move data one up (freeing 4th move slot)
+// shifts all move data one up (freeing 4th move slot)
 WriteMonMoves_ShiftMoveData:
 	ld c, NUM_MOVES - 1
 .loop
@@ -510,4 +510,4 @@ WriteMonMoves_ShiftMoveData:
 Evolution_FlagAction:
 	predef_jump FlagActionPredef
 
-INCLUDE "data/evos_moves.asm"
+#include "data/evos_moves.asm"

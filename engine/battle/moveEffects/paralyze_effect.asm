@@ -8,9 +8,9 @@ ParalyzeEffect_:
 	ld de, wEnemyMoveType
 .next
 	ld a, [hl]
-	and a ; does the target already have a status ailment?
+	and a // does the target already have a status ailment?
 	jr nz, .didntAffect
-; check if the target is immune due to types
+// check if the target is immune due to types
 	ld a, [de]
 	cp ELECTRIC
 	jr nz, .hitTest

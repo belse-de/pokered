@@ -84,7 +84,7 @@ VermilionGymScript_5caaa:
 	ld hl, wBeatGymFlags
 	set 2, [hl]
 
-	; deactivate gym trainers
+	// deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
 
 	jp VermilionGymScript_5ca8a
@@ -101,30 +101,30 @@ VermilionGymTextPointers:
 
 VermilionGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VERMILION_GYM_TRAINER_0
-	dw VermilionGymBattleText1 ; TextBeforeBattle
-	dw VermilionGymAfterBattleText1 ; TextAfterBattle
-	dw VermilionGymEndBattleText1 ; TextEndBattle
-	dw VermilionGymEndBattleText1 ; TextEndBattle
+	dw VermilionGymBattleText1 // TextBeforeBattle
+	dw VermilionGymAfterBattleText1 // TextAfterBattle
+	dw VermilionGymEndBattleText1 // TextEndBattle
+	dw VermilionGymEndBattleText1 // TextEndBattle
 
 VermilionGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($2 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VERMILION_GYM_TRAINER_1
-	dw VermilionGymBattleText2 ; TextBeforeBattle
-	dw VermilionGymAfterBattleText2 ; TextAfterBattle
-	dw VermilionGymEndBattleText2 ; TextEndBattle
-	dw VermilionGymEndBattleText2 ; TextEndBattle
+	dw VermilionGymBattleText2 // TextBeforeBattle
+	dw VermilionGymAfterBattleText2 // TextAfterBattle
+	dw VermilionGymEndBattleText2 // TextEndBattle
+	dw VermilionGymEndBattleText2 // TextEndBattle
 
 VermilionGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VERMILION_GYM_TRAINER_2
-	dw VermilionGymBattleText3 ; TextBeforeBattle
-	dw VermilionGymAfterBattleText3 ; TextAfterBattle
-	dw VermilionGymEndBattleText3 ; TextEndBattle
-	dw VermilionGymEndBattleText3 ; TextEndBattle
+	dw VermilionGymBattleText3 // TextBeforeBattle
+	dw VermilionGymAfterBattleText3 // TextAfterBattle
+	dw VermilionGymEndBattleText3 // TextEndBattle
+	dw VermilionGymEndBattleText3 // TextEndBattle
 
 	db $ff
 

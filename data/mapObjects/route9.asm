@@ -1,12 +1,12 @@
 Route9Object:
-	db $2c ; border block
+	db $2c // border block
 
-	db $0 ; warps
+	db $0 // warps
 
-	db $1 ; signs
-	db $7, $19, $b ; Route9Text11
+	db $1 // signs
+	db $7, $19, $b // Route9Text11
 
-	db $a ; objects
+	db $a // objects
 	object SPRITE_LASS, $d, $a, STAY, LEFT, $1, OPP_JR_TRAINER_F, $5
 	object SPRITE_BLACK_HAIR_BOY_1, $18, $7, STAY, LEFT, $2, OPP_JR_TRAINER_M, $7
 	object SPRITE_BLACK_HAIR_BOY_1, $1f, $7, STAY, RIGHT, $3, OPP_JR_TRAINER_M, $8

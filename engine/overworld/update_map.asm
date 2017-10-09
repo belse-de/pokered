@@ -1,7 +1,7 @@
-; replaces a tile block with the one specified in [wNewTileBlockID]
-; and redraws the map view if necessary
-; b = Y
-; c = X
+// replaces a tile block with the one specified in [wNewTileBlockID]
+// and redraws the map view if necessary
+// b = Y
+// c = X
 ReplaceTileBlock:
 	call GetPredefRegisters
 	ld hl, wOverworldMap
@@ -18,13 +18,13 @@ ReplaceTileBlock:
 	ld a, b
 	and a
 	jr z, .addX
-; add width * Y
+// add width * Y
 .addWidthYTimesLoop
 	add hl, de
 	dec b
 	jr nz, .addWidthYTimesLoop
 .addX
-	add hl, bc ; add X
+	add hl, bc // add X
 	ld a, [wNewTileBlockID]
 	ld [hl], a
 	ld a, [wCurrentTileBlockMapViewPointer]
@@ -32,7 +32,7 @@ ReplaceTileBlock:
 	ld a, [wCurrentTileBlockMapViewPointer + 1]
 	ld b, a
 	call CompareHLWithBC
-	ret c ; return if the replaced tile block is below the map view in memory
+	ret c // return if the replaced tile block is below the map view in memory
 	push hl
 	ld l, e
 	ld h, $0
@@ -44,7 +44,7 @@ ReplaceTileBlock:
 	add hl, bc
 	pop bc
 	call CompareHLWithBC
-	ret c ; return if the replaced tile block is above the map view in memory
+	ret c // return if the replaced tile block is above the map view in memory
 
 RedrawMapView:
 	ld a, [wIsInBattle]
@@ -56,7 +56,7 @@ RedrawMapView:
 	push af
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
-	ld [hTilesetType], a ; no flower/water BG tile animations
+	ld [hTilesetType], a // no flower/water BG tile animations
 	call LoadCurrentMapView
 	call RunDefaultPaletteCommand
 	ld hl, wMapViewVRAMPointer
@@ -71,10 +71,10 @@ RedrawMapView:
 	ld a, l
 	ld [wBuffer], a
 	ld a, h
-	ld [wBuffer + 1], a ; this copy of the address is not used
+	ld [wBuffer + 1], a // this copy of the address is not used
 	ld a, 2
 	ld [$ffbe], a
-	ld c, 9 ; number of rows of 2x2 tiles (this covers the whole screen)
+	ld c, 9 // number of rows of 2x2 tiles (this covers the whole screen)
 .redrawRowLoop
 	push bc
 	push hl

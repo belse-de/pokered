@@ -1,4 +1,4 @@
-; checks if the mon in [wWhichPokemon] already knows the move in [wMoveNum]
+// checks if the mon in [wWhichPokemon] already knows the move in [wMoveNum]
 CheckIfMoveIsKnown:
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Moves
@@ -10,7 +10,7 @@ CheckIfMoveIsKnown:
 .loop
 	ld a, [hli]
 	cp b
-	jr z, .alreadyKnown ; found a match
+	jr z, .alreadyKnown // found a match
 	dec c
 	jr nz, .loop
 	and a

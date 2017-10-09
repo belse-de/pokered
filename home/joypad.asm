@@ -1,9 +1,9 @@
 ReadJoypad::
-; Poll joypad input.
-; Unlike the hardware register, button
-; presses are indicated by a set bit.
+// Poll joypad input.
+// Unlike the hardware register, button
+// presses are indicated by a set bit.
 
-	ld a, 1 << 5 ; select direction keys
+	ld a, 1 << 5 // select direction keys
 	ld c, 0
 
 	ld [rJOYP], a
@@ -15,7 +15,7 @@ ReadJoypad::
 	swap a
 	ld b, a
 
-	ld a, 1 << 4 ; select button keys
+	ld a, 1 << 4 // select button keys
 	ld [rJOYP], a
 	rept 10
 	ld a, [rJOYP]
@@ -26,14 +26,14 @@ ReadJoypad::
 
 	ld [hJoyInput], a
 
-	ld a, 1 << 4 + 1 << 5 ; deselect keys
+	ld a, 1 << 4 + 1 << 5 // deselect keys
 	ld [rJOYP], a
 	ret
 
 Joypad::
-; Update the joypad state variables:
-; [hJoyReleased]  keys released since last time
-; [hJoyPressed]   keys pressed since last time
-; [hJoyHeld] currently pressed keys
+// Update the joypad state variables:
+// [hJoyReleased]  keys released since last time
+// [hJoyPressed]   keys pressed since last time
+// [hJoyHeld] currently pressed keys
 	homecall _Joypad
 	ret

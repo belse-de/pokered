@@ -1,9 +1,9 @@
 HandleLedges:
 	ld a, [wd736]
-	bit 6, a ; already jumping down ledge
+	bit 6, a // already jumping down ledge
 	ret nz
 	ld a, [wCurMapTileset]
-	and a ; OVERWORLD
+	and a // OVERWORLD
 	ret nz
 	predef GetTileAndCoordsInFrontOfPlayer
 	ld a, [wSpriteStateData1 + 9]
@@ -42,7 +42,7 @@ HandleLedges:
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld hl, wd736
-	set 6, [hl] ; jumping down ledge
+	set 6, [hl] // jumping down ledge
 	call StartSimulatingJoypadStates
 	ld a, e
 	ld [wSimulatedJoypadStatesEnd], a
@@ -54,7 +54,7 @@ HandleLedges:
 	call PlaySound
 	ret
 
-	; (player direction) (tile player standing on) (ledge tile) (input required)
+	// (player direction) (tile player standing on) (ledge tile) (input required)
 LedgeTiles:
 	db SPRITE_FACING_DOWN, $2C,$37,D_DOWN
 	db SPRITE_FACING_DOWN, $39,$36,D_DOWN
@@ -72,7 +72,7 @@ LoadHoppingShadowOAM:
 	lb bc, BANK(LedgeHoppingShadow), (LedgeHoppingShadowEnd - LedgeHoppingShadow) / $8
 	call CopyVideoDataDouble
 	ld a, $9
-	lb bc, $54, $48 ; b, c = y, x coordinates of shadow
+	lb bc, $54, $48 // b, c = y, x coordinates of shadow
 	ld de, LedgeHoppingShadowOAM
 	call WriteOAMBlock
 	ret

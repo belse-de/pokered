@@ -6,7 +6,7 @@ Lab4TextPointers:
 	dw Lab4Text2
 
 Lab4Script_GetFossilsInBag:
-; construct a list of all fossils in the player's bag
+// construct a list of all fossils in the player's bag
 	xor a
 	ld [wFilteredBagItemsCount], a
 	ld de, wFilteredBagItems
@@ -26,7 +26,7 @@ Lab4Script_GetFossilsInBag:
 	and a
 	jr z, .loop
 
-	; A fossil's in the bag
+	// A fossil's in the bag
 	ld a, [wd11e]
 	ld [de], a
 	inc de

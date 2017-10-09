@@ -1,8 +1,8 @@
 GetPredefPointer:
-; Store the contents of the register
-; pairs (hl, de, bc) at wPredefRegisters.
-; Then put the bank and address of predef
-; wPredefID in [wPredefBank] and hl.
+// Store the contents of the register
+// pairs (hl, de, bc) at wPredefRegisters.
+// Then put the bank and address of predef
+// wPredefID in [wPredefBank] and hl.
 
 	ld a,h
 	ld [wPredefRegisters],a
@@ -35,11 +35,11 @@ GetPredefPointer:
 	ld d,h
 	ld e,l
 
-	; get bank of predef routine
+	// get bank of predef routine
 	ld a,[de]
 	ld [wPredefBank],a
 
-	; get pointer
+	// get pointer
 	inc de
 	ld a,[de]
 	ld l,a
@@ -50,15 +50,15 @@ GetPredefPointer:
 	ret
 
 PredefPointers::
-; these are pointers to ASM routines.
-; they appear to be used in overworld map scripts.
+// these are pointers to ASM routines.
+// they appear to be used in overworld map scripts.
 	add_predef DrawPlayerHUDAndHPBar
 	add_predef CopyUncompressedPicToTilemap
 	add_predef AnimateSendingOutMon
 	add_predef ScaleSpriteByTwo
 	add_predef LoadMonBackPic
 	add_predef CopyDownscaledMonTiles
-	dbw $03,JumpMoveEffect ; wrong bank
+	dbw $03,JumpMoveEffect // wrong bank
 	add_predef HealParty
 	add_predef MoveAnimation
 	add_predef DivideBCDPredef
@@ -81,8 +81,8 @@ PredefPointers::
 	add_predef LearnMoveFromLevelUp
 	add_predef LearnMove
 	add_predef GetQuantityOfItemInBag
-	dbw $03,CheckForHiddenObjectOrBookshelfOrCardKeyDoor ; home bank
-	dbw $03,GiveItem ; home bank
+	dbw $03,CheckForHiddenObjectOrBookshelfOrCardKeyDoor // home bank
+	dbw $03,GiveItem // home bank
 	add_predef ChangeBGPalColor0_4Frames
 	add_predef FindPathToPlayer
 	add_predef PredefShakeScreenVertically
@@ -129,7 +129,7 @@ PredefPointers::
 	add_predef LoadTownMap_Nest
 	add_predef PrintMonType
 	add_predef EmotionBubble
-	add_predef EmptyFunc3; return immediately
+	add_predef EmptyFunc3// return immediately
 	add_predef AskName
 	add_predef PewterGuys
 	add_predef SaveSAVtoSRAM2
@@ -139,8 +139,8 @@ PredefPointers::
 	add_predef DoInGameTradeDialogue
 	add_predef HallOfFamePC
 	add_predef DisplayDexRating
-	dbw $1E, _LeaveMapAnim ; wrong bank
-	dbw $1E, EnterMapAnim ; wrong bank
+	dbw $1E, _LeaveMapAnim // wrong bank
+	dbw $1E, EnterMapAnim // wrong bank
 	add_predef GetTileTwoStepsInFrontOfPlayer
 	add_predef CheckForCollisionWhenPushingBoulder
 	add_predef PrintStrengthTxt

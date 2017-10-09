@@ -10,7 +10,7 @@ PromptUserToPlaySlots:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .done ; if player chose No
+	jr nz, .done // if player chose No
 	dec a
 	ld [wUpdateSpritesEnabled], a
 	ld hl, wSlotMachineRerollCounter
@@ -135,7 +135,7 @@ MainSlotMachineLoop:
 	call PrintText
 	coord hl, 14, 12
 	lb bc, 13, 15
-	xor a ; YES_NO_MENU
+	xor a // YES_NO_MENU
 	ld [wTwoOptionMenuID], a
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
@@ -180,14 +180,14 @@ SlotMachine_SetFlags:
 	jr nz, .allowMatches
 	call Random
 	and a
-	jr z, .setAllowMatchesCounter ; 1/256 (~0.4%) chance
+	jr z, .setAllowMatchesCounter // 1/256 (~0.4%) chance
 	ld b, a
 	ld a, [wSlotMachineSevenAndBarModeChance]
 	cp b
 	jr c, .allowSevenAndBarMatches
 	ld a, 210
 	cp b
-	jr c, .allowMatches ; 55/256 (~21.5%) chance
+	jr c, .allowMatches // 55/256 (~21.5%) chance
 	ld [hl], 0
 	ret
 .allowMatches
@@ -228,10 +228,10 @@ SlotMachine_SpinWheels:
 	call DelayFrames
 	jr .loop2
 
-; Note that the wheels can only stop when a symbol is centred in the wheel
-; and thus 3 full symbols rather than 2 full symbols and 2 half symbols are
-; visible. The 3 functions below ensure this by checking if the wheel offset
-; is even before stopping the wheel.
+// Note that the wheels can only stop when a symbol is centred in the wheel
+// and thus 3 full symbols rather than 2 full symbols and 2 half symbols are
+// visible. The 3 functions below ensure this by checking if the wheel offset
+// is even before stopping the wheel.
 
 SlotMachine_StopOrAnimWheel1:
 	ld a, [wStoppingWhichSlotMachineWheel]
@@ -240,7 +240,7 @@ SlotMachine_StopOrAnimWheel1:
 	ld de, wSlotMachineWheel1Offset
 	ld a, [de]
 	rra
-	jr nc, .animWheel ; check that a symbol is centred in the wheel
+	jr nc, .animWheel // check that a symbol is centred in the wheel
 	ld hl, wSlotMachineWheel1SlipCounter
 	ld a, [hl]
 	and a
@@ -258,7 +258,7 @@ SlotMachine_StopOrAnimWheel2:
 	ld de, wSlotMachineWheel2Offset
 	ld a, [de]
 	rra
-	jr nc, .animWheel ; check that a symbol is centred in the wheel
+	jr nc, .animWheel // check that a symbol is centred in the wheel
 	ld hl, wSlotMachineWheel2SlipCounter
 	ld a, [hl]
 	and a
@@ -276,8 +276,8 @@ SlotMachine_StopOrAnimWheel3:
 	ld de, wSlotMachineWheel3Offset
 	ld a, [de]
 	rra
-	jr nc, .animWheel ; check that a symbol is centred in the wheel
-; wheel 3 stops as soon as possible
+	jr nc, .animWheel // check that a symbol is centred in the wheel
+// wheel 3 stops as soon as possible
 	scf
 	ret
 .animWheel
@@ -291,20 +291,20 @@ SlotMachine_StopWheel1Early:
 	ld a, [wSlotMachineFlags]
 	and $80
 	jr nz, .sevenAndBarMode
-; Stop early if the middle symbol is not a cherry.
+// Stop early if the middle symbol is not a cherry.
 	inc hl
 	ld a, [hl]
 	cp SLOTSCHERRY >> 8
 	jr nz, .stopWheel
 	ret
-; It looks like this was intended to make the wheel stop when a 7 symbol was
-; visible, but it has a bug and so the wheel stops randomly.
+// It looks like this was intended to make the wheel stop when a 7 symbol was
+// visible, but it has a bug and so the wheel stops randomly.
 .sevenAndBarMode
 	ld c, $3
 .loop
 	ld a, [hli]
 	cp SLOTS7 >> 8
-	jr c, .stopWheel ; condition never true
+	jr c, .stopWheel // condition never true
 	dec c
 	jr nz, .loop
 	ret
@@ -319,14 +319,14 @@ SlotMachine_StopWheel2Early:
 	ld a, [wSlotMachineFlags]
 	and $80
 	jr nz, .sevenAndBarMode
-; Stop early if any symbols are lined up in the first two wheels.
+// Stop early if any symbols are lined up in the first two wheels.
 	call SlotMachine_FindWheel1Wheel2Matches
 	ret nz
 	jr .stopWheel
-; Stop early if two 7 symbols or two bar symbols are lined up in the first two
-; wheels OR if no symbols are lined up and the bottom symbol in wheel 2 is a
-; 7 symbol or bar symbol. The second part could be a bug or a way to reduce the
-; player's odds.
+// Stop early if two 7 symbols or two bar symbols are lined up in the first two
+// wheels OR if no symbols are lined up and the bottom symbol in wheel 2 is a
+// 7 symbol or bar symbol. The second part could be a bug or a way to reduce the
+// player's odds.
 .sevenAndBarMode
 	call SlotMachine_FindWheel1Wheel2Matches
 	ld a, [de]
@@ -338,26 +338,26 @@ SlotMachine_StopWheel2Early:
 	ret
 
 SlotMachine_FindWheel1Wheel2Matches:
-; return whether wheel 1 and wheel 2's current positions allow a match (given
-; that wheel 3 stops in a good position) in Z
+// return whether wheel 1 and wheel 2's current positions allow a match (given
+// that wheel 3 stops in a good position) in Z
 	ld hl, wSlotMachineWheel1BottomTile
 	ld de, wSlotMachineWheel2BottomTile
 	ld a, [de]
-	cp [hl] ; wheel 1 bottom, wheel 2 bottom
+	cp [hl] // wheel 1 bottom, wheel 2 bottom
 	ret z
 	inc de
 	ld a, [de]
-	cp [hl] ; wheel 1 bottom, wheel 2 middle
+	cp [hl] // wheel 1 bottom, wheel 2 middle
 	ret z
 	inc hl
-	cp [hl] ; wheel 1 middle, wheel 2 middle
+	cp [hl] // wheel 1 middle, wheel 2 middle
 	ret z
 	inc hl
-	cp [hl] ; wheel 1 top, wheel 2 middle
+	cp [hl] // wheel 1 top, wheel 2 middle
 	ret z
 	inc de
 	ld a, [de]
-	cp [hl] ; wheel 1 top, wheel 2 top
+	cp [hl] // wheel 1 top, wheel 2 top
 	ret z
 	dec de
 	dec de
@@ -370,7 +370,7 @@ SlotMachine_CheckForMatches:
 	jr z, .checkMatchesFor2CoinBet
 	cp 1
 	jr z, .checkMatchFor1CoinBet
-; 3 coin bet allows diagonal matches (plus the matches for 1/2 coin bets)
+// 3 coin bet allows diagonal matches (plus the matches for 1/2 coin bets)
 	ld hl, wSlotMachineWheel1BottomTile
 	ld de, wSlotMachineWheel2MiddleTile
 	ld bc, wSlotMachineWheel3TopTile
@@ -381,7 +381,7 @@ SlotMachine_CheckForMatches:
 	ld bc, wSlotMachineWheel3BottomTile
 	call SlotMachine_CheckForMatch
 	jr z, .foundMatch
-; 2 coin bet allows top/bottom horizontal matches (plus the match for a 1 coin bet)
+// 2 coin bet allows top/bottom horizontal matches (plus the match for a 1 coin bet)
 .checkMatchesFor2CoinBet
 	ld hl, wSlotMachineWheel1TopTile
 	ld de, wSlotMachineWheel2TopTile
@@ -393,7 +393,7 @@ SlotMachine_CheckForMatches:
 	ld bc, wSlotMachineWheel3BottomTile
 	call SlotMachine_CheckForMatch
 	jr z, .foundMatch
-; 1 coin bet only allows a middle horizontal match
+// 1 coin bet only allows a middle horizontal match
 .checkMatchFor1CoinBet
 	ld hl, wSlotMachineWheel1MiddleTile
 	ld de, wSlotMachineWheel2MiddleTile
@@ -422,10 +422,10 @@ SlotMachine_CheckForMatches:
 .foundMatch
 	ld a, [wSlotMachineFlags]
 	and $c0
-	jr z, .rollWheel3DownByOneSymbol ; roll wheel if player isn't allowed to win
+	jr z, .rollWheel3DownByOneSymbol // roll wheel if player isn't allowed to win
 	and $80
 	jr nz, .acceptMatch
-; if 7/bar matches aren't enabled and the match was a 7/bar symbol, roll wheel
+// if 7/bar matches aren't enabled and the match was a 7/bar symbol, roll wheel
 	ld a, [hl]
 	cp (SLOTSBAR >> 8) + 1
 	jr c, .rollWheel3DownByOneSymbol
@@ -521,7 +521,7 @@ NotThisTimeText:
 	TX_FAR _NotThisTimeText
 	db "@"
 
-; compares the slot machine tiles at bc, de, and hl
+// compares the slot machine tiles at bc, de, and hl
 SlotMachine_CheckForMatch:
 	ld a, [de]
 	cp [hl]
@@ -614,7 +614,7 @@ YeahText:
 	db "@"
 
 SlotMachine_PrintWinningSymbol:
-; prints winning symbol and down arrow in text box
+// prints winning symbol and down arrow in text box
 	coord hl, 2, 14
 	ld a, [wSlotMachineWinningSymbol]
 	add $25
@@ -650,7 +650,7 @@ SlotMachine_PrintCreditCoins:
 SlotMachine_PrintPayoutCoins:
 	coord hl, 11, 1
 	ld de, wPayoutCoins
-	lb bc, LEADING_ZEROES | 2, 4 ; 2 bytes, 4 digits
+	lb bc, LEADING_ZEROES | 2, 4 // 2 bytes, 4 digits
 	jp PrintNumber
 
 SlotMachine_PayCoinsToPlayer:
@@ -658,8 +658,8 @@ SlotMachine_PayCoinsToPlayer:
 	ld [wMuteAudioAndPauseMusic], a
 	call WaitForSoundToFinish
 
-; Put 1 in the temp coins variable. This value is added to the player's coins
-; repeatedly so the player can watch the value go up 1 coin at a time.
+// Put 1 in the temp coins variable. This value is added to the player's coins
+// repeatedly so the player can watch the value go up 1 coin at a time.
 	ld hl, wTempCoins1
 	xor a
 	ld [hli], a
@@ -669,8 +669,8 @@ SlotMachine_PayCoinsToPlayer:
 	ld a, 5
 	ld [wAnimCounter], a
 
-; Subtract 1 from the payout amount and add 1 to the player's coins each
-; iteration until the payout amount reaches 0.
+// Subtract 1 from the payout amount and add 1 to the player's coins each
+// iteration until the payout amount reaches 0.
 .loop
 	ld a, [wPayoutCoins + 1]
 	ld l, a
@@ -696,7 +696,7 @@ SlotMachine_PayCoinsToPlayer:
 	dec a
 	jr nz, .skip1
 	ld a, [rOBP0]
-	xor $40 ; make the slot wheel symbols flash
+	xor $40 // make the slot wheel symbols flash
 	ld [rOBP0], a
 	ld a, 5
 .skip1
@@ -705,7 +705,7 @@ SlotMachine_PayCoinsToPlayer:
 	cp (SLOTSBAR >> 8) + 1
 	ld c, 8
 	jr nc, .skip2
-	srl c ; c = 4 (make the the coins transfer faster if the symbol was 7 or bar)
+	srl c // c = 4 (make the the coins transfer faster if the symbol was 7 or bar)
 .skip2
 	call DelayFrames
 	jr .loop
@@ -814,10 +814,10 @@ SlotMachine_AnimWheel:
 	jr nz, .loop
 	pop de
 	ld a, [de]
-	inc a ; advance the offset so that the wheel animates
+	inc a // advance the offset so that the wheel animates
 	cp 30
 	jr nz, .skip
-	xor a ; wrap around to 0 when the offset reaches 30
+	xor a // wrap around to 0 when the offset reaches 30
 .skip
 	ld [de], a
 	ret
@@ -881,7 +881,7 @@ SlotMachineMap:
 	INCBIN "gfx/tilemaps/slotmachine.map"
 SlotMachineMapEnd:
 
-INCLUDE "data/slot_machine_wheels.asm"
+#include "data/slot_machine_wheels.asm"
 
 SlotMachineTiles1:
 IF DEF(_RED)

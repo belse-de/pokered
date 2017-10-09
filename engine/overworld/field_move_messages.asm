@@ -19,9 +19,9 @@ CanMoveBouldersText:
 	db "@"
 
 IsSurfingAllowed:
-; Returns whether surfing is allowed in bit 1 of wd728.
-; Surfing isn't allowed on the Cycling Road or in the lowest level of the
-; Seafoam Islands before the current has been slowed with boulders.
+// Returns whether surfing is allowed in bit 1 of wd728.
+// Surfing isn't allowed on the Cycling Road or in the lowest level of the
+// Seafoam Islands before the current has been slowed with boulders.
 	ld hl, wd728
 	set 1, [hl]
 	ld a, [wd732]

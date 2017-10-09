@@ -81,32 +81,32 @@ CardKeyFailText:
 	TX_FAR _CardKeyFailText
 	db "@"
 
-; d = Y
-; e = X
+// d = Y
+// e = X
 GetCoordsInFrontOfPlayer:
 	ld a, [wYCoord]
 	ld d, a
 	ld a, [wXCoord]
 	ld e, a
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
 	and a
 	jr nz, .notFacingDown
-; facing down
+// facing down
 	inc d
 	ret
 .notFacingDown
 	cp SPRITE_FACING_UP
 	jr nz, .notFacingUp
-; facing up
+// facing up
 	dec d
 	ret
 .notFacingUp
 	cp SPRITE_FACING_LEFT
 	jr nz, .notFacingLeft
-; facing left
+// facing left
 	dec e
 	ret
 .notFacingLeft
-; facing right
+// facing right
 	inc e
 	ret

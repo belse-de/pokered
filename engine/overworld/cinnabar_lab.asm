@@ -27,7 +27,7 @@ GiveFossilToCinnabarLab:
 	ld hl, wd730
 	res 6, [hl]
 	call HandleMenuInput
-	bit 1, a ; pressed B?
+	bit 1, a // pressed B?
 	jr nz, .cancelledGivingFossil
 	ld hl, wFilteredBagItems
 	ld a, [wCurrentMenuItem]
@@ -89,7 +89,7 @@ LabFossil_610bd:
 	db "@"
 
 PrintFossilsInBag:
-; Prints each fossil in the player's bag on a separate line in the menu.
+// Prints each fossil in the player's bag on a separate line in the menu.
 	ld hl, wFilteredBagItems
 	xor a
 	ld [hItemCounter], a
@@ -111,7 +111,7 @@ PrintFossilsInBag:
 	pop hl
 	jr .loop
 
-; loads the names of the fossil item and the resulting mon
+// loads the names of the fossil item and the resulting mon
 LoadFossilItemAndMonName:
 	ld a, [wFossilMon]
 	ld [wd11e], a

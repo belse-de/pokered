@@ -53,8 +53,8 @@ KabutopsFossilText:
 	db "@"
 
 DisplayMonFrontSpriteInBox:
-; Displays a pokemon's front sprite in a pop-up window.
-; [wcf91] = pokemon internal id number
+// Displays a pokemon's front sprite in a pop-up window.
+// [wcf91] = pokemon internal id number
 	ld a, 1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call Delay3
@@ -95,7 +95,7 @@ LinkCableHelp:
 	ld hl, LinkCableHelpText1
 	call PrintText
 	xor a
-	ld [wMenuItemOffset], a ; not used
+	ld [wMenuItemOffset], a // not used
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
 	ld a, A_BUTTON | B_BUTTON
@@ -119,10 +119,10 @@ LinkCableHelp:
 	ld hl, LinkCableHelpText2
 	call PrintText
 	call HandleMenuInput
-	bit 1, a ; pressed b
+	bit 1, a // pressed b
 	jr nz, .exit
 	ld a, [wCurrentMenuItem]
-	cp 3 ; pressed a on "STOP READING"
+	cp 3 // pressed a on "STOP READING"
 	jr z, .exit
 	ld hl, wd730
 	res 6, [hl]
@@ -204,25 +204,25 @@ ViridianSchoolBlackboard:
 	call PlaceString
 	ld hl, ViridianSchoolBlackboardText2
 	call PrintText
-	call HandleMenuInput ; pressing up and down is handled in here
-	bit 1, a ; pressed b
+	call HandleMenuInput // pressing up and down is handled in here
+	bit 1, a // pressed b
 	jr nz, .exitBlackboard
-	bit 4, a ; pressed right
+	bit 4, a // pressed right
 	jr z, .didNotPressRight
-	; move cursor to right column
+	// move cursor to right column
 	ld a, 2
 	ld [wMaxMenuItem], a
 	ld a, 2
 	ld [wTopMenuItemY], a
 	ld a, 6
 	ld [wTopMenuItemX], a
-	ld a, 3 ; in the the right column, use an offset to prevent overlap
+	ld a, 3 // in the the right column, use an offset to prevent overlap
 	ld [wMenuItemOffset], a
 	jr .blackboardLoop
 .didNotPressRight
-	bit 5, a ; pressed left
+	bit 5, a // pressed left
 	jr z, .didNotPressLeftOrRight
-	; move cursor to left column
+	// move cursor to left column
 	ld a, 2
 	ld [wMaxMenuItem], a
 	ld a, 2
@@ -237,10 +237,10 @@ ViridianSchoolBlackboard:
 	ld b, a
 	ld a, [wMenuItemOffset]
 	add b
-	cp 5 ; cursor is pointing to "QUIT"
+	cp 5 // cursor is pointing to "QUIT"
 	jr z, .exitBlackboard
-	; we must have pressed a on a status condition
-	; so print the text
+	// we must have pressed a on a status condition
+	// so print the text
 	ld hl, wd730
 	res 6, [hl]
 	ld hl, ViridianBlackboardStatusPointers
@@ -317,7 +317,7 @@ GymTrashScript:
 	ld a, [wHiddenObjectFunctionArgument]
 	ld [wGymTrashCanIndex], a
 
-; Don't do the trash can puzzle if it's already been done.
+// Don't do the trash can puzzle if it's already been done.
 	CheckEvent EVENT_2ND_LOCK_OPENED
 	jr z, .ok
 
@@ -337,12 +337,12 @@ GymTrashScript:
 	jr .done
 
 .openFirstLock
-; Next can is trying for the second switch.
+// Next can is trying for the second switch.
 	SetEvent EVENT_1ST_LOCK_OPENED
 
 	ld hl, GymTrashCans
 	ld a, [wGymTrashCanIndex]
-	; * 5
+	// * 5
 	ld b, a
 	add a
 	add a
@@ -353,14 +353,14 @@ GymTrashScript:
 	add hl, de
 	ld a, [hli]
 
-; There is a bug in this code. It should calculate a value in the range [0, 3]
-; but if the mask and random number don't have any 1 bits in common, then
-; the result of the AND will be 0. When 1 is subtracted from that, the value
-; will become $ff. This will result in 255 being added to hl, which will cause
-; hl to point to one of the zero bytes that pad the end of the ROM bank.
-; Trash can 0 was intended to be able to have the second lock only when the
-; first lock was in trash can 1 or 3. However, due to this bug, trash can 0 can
-; have the second lock regardless of which trash can had the first lock.
+// There is a bug in this code. It should calculate a value in the range [0, 3]
+// but if the mask and random number don't have any 1 bits in common, then
+// the result of the AND will be 0. When 1 is subtracted from that, the value
+// will become $ff. This will result in 255 being added to hl, which will cause
+// hl to point to one of the zero bytes that pad the end of the ROM bank.
+// Trash can 0 was intended to be able to have the second lock only when the
+// first lock was in trash can 1 or 3. However, due to this bug, trash can 0 can
+// have the second lock regardless of which trash can had the first lock.
 
 	ld [hGymTrashCanRandNumMask], a
 	push hl
@@ -389,7 +389,7 @@ GymTrashScript:
 	cp b
 	jr z, .openSecondLock
 
-; Reset the cans.
+// Reset the cans.
 	ResetEvent EVENT_1ST_LOCK_OPENED
 	call Random
 
@@ -400,7 +400,7 @@ GymTrashScript:
 	jr .done
 
 .openSecondLock
-; Completed the trash can puzzle.
+// Completed the trash can puzzle.
 	SetEvent EVENT_2ND_LOCK_OPENED
 	ld hl, wCurrentMapScriptFlags
 	set 6, [hl]
@@ -411,27 +411,27 @@ GymTrashScript:
 	jp PrintPredefTextID
 
 GymTrashCans:
-; byte 0: mask for random number
-; bytes 1-4: indices of the trash cans that can have the second lock
-;            (but see the comment above explaining a bug regarding this)
-; Note that the mask is simply the number of valid trash can indices that
-; follow. The remaining bytes are filled with 0 to pad the length of each entry
-; to 5 bytes.
-	db 2,  1,  3,  0,  0 ; 0
-	db 3,  0,  2,  4,  0 ; 1
-	db 2,  1,  5,  0,  0 ; 2
-	db 3,  0,  4,  6,  0 ; 3
-	db 4,  1,  3,  5,  7 ; 4
-	db 3,  2,  4,  8,  0 ; 5
-	db 3,  3,  7,  9,  0 ; 6
-	db 4,  4,  6,  8, 10 ; 7
-	db 3,  5,  7, 11,  0 ; 8
-	db 3,  6, 10, 12,  0 ; 9
-	db 4,  7,  9, 11, 13 ; 10
-	db 3,  8, 10, 14,  0 ; 11
-	db 2,  9, 13,  0,  0 ; 12
-	db 3, 10, 12, 14,  0 ; 13
-	db 2, 11, 13,  0,  0 ; 14
+// byte 0: mask for random number
+// bytes 1-4: indices of the trash cans that can have the second lock
+//            (but see the comment above explaining a bug regarding this)
+// Note that the mask is simply the number of valid trash can indices that
+// follow. The remaining bytes are filled with 0 to pad the length of each entry
+// to 5 bytes.
+	db 2,  1,  3,  0,  0 // 0
+	db 3,  0,  2,  4,  0 // 1
+	db 2,  1,  5,  0,  0 // 2
+	db 3,  0,  4,  6,  0 // 3
+	db 4,  1,  3,  5,  7 // 4
+	db 3,  2,  4,  8,  0 // 5
+	db 3,  3,  7,  9,  0 // 6
+	db 4,  4,  6,  8, 10 // 7
+	db 3,  5,  7, 11,  0 // 8
+	db 3,  6, 10, 12,  0 // 9
+	db 4,  7,  9, 11, 13 // 10
+	db 3,  8, 10, 14,  0 // 11
+	db 2,  9, 13,  0,  0 // 12
+	db 3, 10, 12, 14,  0 // 13
+	db 2, 11, 13,  0,  0 // 14
 
 VermilionGymTrashSuccessText1:
 	TX_FAR _VermilionGymTrashSuccessText1
@@ -442,12 +442,12 @@ VermilionGymTrashSuccessText1:
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
-; unused
+// unused
 VermilionGymTrashSuccessText2:
 	TX_FAR _VermilionGymTrashSuccessText2
 	db "@"
 
-; unused
+// unused
 VermilionGymTrashSuccesPlaySfx:
 	TX_ASM
 	call WaitForSoundToFinish

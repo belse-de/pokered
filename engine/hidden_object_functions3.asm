@@ -1,9 +1,9 @@
-; prints text for bookshelves in buildings without sign events
+// prints text for bookshelves in buildings without sign events
 PrintBookshelfText:
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
 	cp SPRITE_FACING_UP
 	jr nz, .noMatch
-; facing up
+// facing up
 	ld a, [wCurMapTileset]
 	ld b, a
 	aCoord 8, 7
@@ -36,7 +36,7 @@ PrintBookshelfText:
 	ld [$ffdb], a
 	jpba PrintCardKeyText
 
-; format: db tileset id, bookshelf tile id, text id
+// format: db tileset id, bookshelf tile id, text id
 BookshelfTileIDs:
 	db PLATEAU,      $30
 	db_tx_pre IndigoPlateauStatues
@@ -103,7 +103,7 @@ BookOrSculptureText:
 	TX_ASM
 	ld hl, PokemonBooksText
 	ld a, [wCurMapTileset]
-	cp MANSION ; Celadon Mansion tileset
+	cp MANSION // Celadon Mansion tileset
 	jr nz, .ok
 	aCoord 8, 6
 	cp $38

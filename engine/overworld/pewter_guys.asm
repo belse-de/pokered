@@ -1,7 +1,7 @@
 PewterGuys:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld a, [wSimulatedJoypadStatesIndex]
-	dec a ; this decrement causes it to overwrite the last byte before $FF in the list
+	dec a // this decrement causes it to overwrite the last byte before $FF in the list
 	ld [wSimulatedJoypadStatesIndex], a
 	ld d, 0
 	ld e, a
@@ -52,9 +52,9 @@ PointerTable_37ce6:
 	dw PewterMuseumGuyCoords
 	dw PewterGymGuyCoords
 
-; these are the four coordinates of the spaces below, above, to the left and
-; to the right of the museum guy, and pointers to different movements for
-; the player to make to get positioned before the main movement.
+// these are the four coordinates of the spaces below, above, to the left and
+// to the right of the museum guy, and pointers to different movements for
+// the player to make to get positioned before the main movement.
 PewterMuseumGuyCoords:
 	db 18, 27
 	dw .down
@@ -74,10 +74,10 @@ PewterMuseumGuyCoords:
 .right
 	db D_UP, D_LEFT, $ff
 
-; these are the five coordinates which trigger the gym guy and pointers to
-; different movements for the player to make to get positioned before the
-; main movement
-; $00 is a pause
+// these are the five coordinates which trigger the gym guy and pointers to
+// different movements for the player to make to get positioned before the
+// main movement
+// $00 is a pause
 PewterGymGuyCoords:
 	db 16, 34
 	dw .one

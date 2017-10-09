@@ -100,39 +100,39 @@ SilphCo2TextPointers:
 
 SilphCo2TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_0
-	dw SilphCo2BattleText1 ; TextBeforeBattle
-	dw SilphCo2AfterBattleText1 ; TextAfterBattle
-	dw SilphCo2EndBattleText1 ; TextEndBattle
-	dw SilphCo2EndBattleText1 ; TextEndBattle
+	dw SilphCo2BattleText1 // TextBeforeBattle
+	dw SilphCo2AfterBattleText1 // TextAfterBattle
+	dw SilphCo2EndBattleText1 // TextEndBattle
+	dw SilphCo2EndBattleText1 // TextEndBattle
 
 SilphCo2TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_1
-	db ($4 << 4) ; trainer's view range
+	db ($4 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_1
-	dw SilphCo2BattleText2 ; TextBeforeBattle
-	dw SilphCo2AfterBattleText2 ; TextAfterBattle
-	dw SilphCo2EndBattleText2 ; TextEndBattle
-	dw SilphCo2EndBattleText2 ; TextEndBattle
+	dw SilphCo2BattleText2 // TextBeforeBattle
+	dw SilphCo2AfterBattleText2 // TextAfterBattle
+	dw SilphCo2EndBattleText2 // TextEndBattle
+	dw SilphCo2EndBattleText2 // TextEndBattle
 
 SilphCo2TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_2
-	dw SilphCo2BattleText3 ; TextBeforeBattle
-	dw SilphCo2AfterBattleText3 ; TextAfterBattle
-	dw SilphCo2EndBattleText3 ; TextEndBattle
-	dw SilphCo2EndBattleText3 ; TextEndBattle
+	dw SilphCo2BattleText3 // TextBeforeBattle
+	dw SilphCo2AfterBattleText3 // TextAfterBattle
+	dw SilphCo2EndBattleText3 // TextEndBattle
+	dw SilphCo2EndBattleText3 // TextEndBattle
 
 SilphCo2TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($3 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_3
-	dw SilphCo2BattleText4 ; TextBeforeBattle
-	dw SilphCo2AfterBattleText4 ; TextAfterBattle
-	dw SilphCo2EndBattleText4 ; TextEndBattle
-	dw SilphCo2EndBattleText4 ; TextEndBattle
+	dw SilphCo2BattleText4 // TextBeforeBattle
+	dw SilphCo2AfterBattleText4 // TextAfterBattle
+	dw SilphCo2EndBattleText4 // TextEndBattle
+	dw SilphCo2EndBattleText4 // TextEndBattle
 
 	db $ff
 

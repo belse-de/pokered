@@ -17,15 +17,15 @@ InitBattleVariables:
 	ld [wEscapedFromBattle], a
 	ld [wMapPalOffset], a
 	ld hl, wPlayerHPBarColor
-	ld [hli], a ; wPlayerHPBarColor
-	ld [hl], a ; wEnemyHPBarColor
+	ld [hli], a // wPlayerHPBarColor
+	ld [hl], a // wEnemyHPBarColor
 	ld hl, wCanEvolveFlags
 	ld b, $3c
 .loop
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	inc a ; POUND
+	inc a // POUND
 	ld [wTestBattlePlayerSelectedMove], a
 	ld a, [wCurMap]
 	cp SAFARI_ZONE_EAST

@@ -1,6 +1,6 @@
-; this function seems to be used only once
-; it store the address of a row and column of the VRAM background map in hl
-; INPUT: h - row, l - column, b - high byte of background tile map address in VRAM
+// this function seems to be used only once
+// it store the address of a row and column of the VRAM background map in hl
+// INPUT: h - row, l - column, b - high byte of background tile map address in VRAM
 GetRowColAddressBgMap::
 	xor a
 	srl h
@@ -16,14 +16,14 @@ GetRowColAddressBgMap::
 	ld h,a
 	ret
 
-; clears a VRAM background map with blank space tiles
-; INPUT: h - high byte of background tile map address in VRAM
+// clears a VRAM background map with blank space tiles
+// INPUT: h - high byte of background tile map address in VRAM
 ClearBgMap::
 	ld a," "
 	jr .next
 	ld a,l
 .next
-	ld de,$400 ; size of VRAM background map
+	ld de,$400 // size of VRAM background map
 	ld l,e
 .loop
 	ld [hli],a
@@ -33,12 +33,12 @@ ClearBgMap::
 	jr nz,.loop
 	ret
 
-; This function redraws a BG row of height 2 or a BG column of width 2.
-; One of its main uses is redrawing the row or column that will be exposed upon
-; scrolling the BG when the player takes a step. Redrawing only the exposed
-; row or column is more efficient than redrawing the entire screen.
-; However, this function is also called repeatedly to redraw the whole screen
-; when necessary. It is also used in trade animation and elevator code.
+// This function redraws a BG row of height 2 or a BG column of width 2.
+// One of its main uses is redrawing the row or column that will be exposed upon
+// scrolling the BG when the player takes a step. Redrawing only the exposed
+// row or column is more efficient than redrawing the entire screen.
+// However, this function is also called repeatedly to redraw the whole screen
+// when necessary. It is also used in trade animation and elevator code.
 RedrawRowOrColumn::
 	ld a,[hRedrawRowOrColumnMode]
 	and a
@@ -67,7 +67,7 @@ RedrawRowOrColumn::
 	jr nc,.noCarry
 	inc d
 .noCarry
-; the following 4 lines wrap us from bottom to top if necessary
+// the following 4 lines wrap us from bottom to top if necessary
 	ld a,d
 	and a,$03
 	or a,$98
@@ -84,12 +84,12 @@ RedrawRowOrColumn::
 	ld a,[hRedrawRowOrColumnDest + 1]
 	ld d,a
 	push de
-	call .DrawHalf ; draw upper half
+	call .DrawHalf // draw upper half
 	pop de
-	ld a,BG_MAP_WIDTH ; width of VRAM background map
+	ld a,BG_MAP_WIDTH // width of VRAM background map
 	add e
 	ld e,a
-	; fall through and draw lower half
+	// fall through and draw lower half
 
 .DrawHalf
 	ld c,SCREEN_WIDTH / 2
@@ -101,7 +101,7 @@ RedrawRowOrColumn::
 	ld [de],a
 	ld a,e
 	inc a
-; the following 6 lines wrap us from the right edge to the left edge if necessary
+// the following 6 lines wrap us from the right edge to the left edge if necessary
 	and a,$1f
 	ld b,a
 	ld a,e
@@ -112,13 +112,13 @@ RedrawRowOrColumn::
 	jr nz,.loop2
 	ret
 
-; This function automatically transfers tile number data from the tile map at
-; wTileMap to VRAM during V-blank. Note that it only transfers one third of the
-; background per V-blank. It cycles through which third it draws.
-; This transfer is turned off when walking around the map, but is turned
-; on when talking to sprites, battling, using menus, etc. This is because
-; the above function, RedrawRowOrColumn, is used when walking to
-; improve efficiency.
+// This function automatically transfers tile number data from the tile map at
+// wTileMap to VRAM during V-blank. Note that it only transfers one third of the
+// background per V-blank. It cycles through which third it draws.
+// This transfer is turned off when walking around the map, but is turned
+// on when talking to sprites, battling, using menus, etc. This is because
+// the above function, RedrawRowOrColumn, is used when walking to
+// improve efficiency.
 AutoBgMapTransfer::
 	ld a,[H_AUTOBGTRANSFERENABLED]
 	and a
@@ -127,7 +127,7 @@ AutoBgMapTransfer::
 	ld a,h
 	ld [H_SPTEMP],a
 	ld a,l
-	ld [H_SPTEMP + 1],a ; save stack pinter
+	ld [H_SPTEMP + 1],a // save stack pinter
 	ld a,[H_AUTOBGTRANSFERPORTION]
 	and a
 	jr z,.transferTopThird
@@ -142,7 +142,7 @@ AutoBgMapTransfer::
 	ld l,a
 	ld de,(12 * 32)
 	add hl,de
-	xor a ; TRANSFERTOP
+	xor a // TRANSFERTOP
 	jr .doTransfer
 .transferTopThird
 	coord hl, 0, 0
@@ -164,11 +164,11 @@ AutoBgMapTransfer::
 	add hl,de
 	ld a,TRANSFERBOTTOM
 .doTransfer
-	ld [H_AUTOBGTRANSFERPORTION],a ; store next portion
+	ld [H_AUTOBGTRANSFERPORTION],a // store next portion
 	ld b,6
 
 TransferBgRows::
-; unrolled loop and using pop for speed
+// unrolled loop and using pop for speed
 
 	rept 20 / 2 - 1
 	pop de
@@ -199,17 +199,17 @@ TransferBgRows::
 	ld sp, hl
 	ret
 
-; Copies [H_VBCOPYBGNUMROWS] rows from H_VBCOPYBGSRC to H_VBCOPYBGDEST.
-; If H_VBCOPYBGSRC is XX00, the transfer is disabled.
+// Copies [H_VBCOPYBGNUMROWS] rows from H_VBCOPYBGSRC to H_VBCOPYBGDEST.
+// If H_VBCOPYBGSRC is XX00, the transfer is disabled.
 VBlankCopyBgMap::
-	ld a,[H_VBCOPYBGSRC] ; doubles as enabling byte
+	ld a,[H_VBCOPYBGSRC] // doubles as enabling byte
 	and a
 	ret z
 	ld hl,sp + 0
 	ld a,h
 	ld [H_SPTEMP],a
 	ld a,l
-	ld [H_SPTEMP + 1],a ; save stack pointer
+	ld [H_SPTEMP + 1],a // save stack pointer
 	ld a,[H_VBCOPYBGSRC]
 	ld l,a
 	ld a,[H_VBCOPYBGSRC + 1]
@@ -222,17 +222,17 @@ VBlankCopyBgMap::
 	ld a,[H_VBCOPYBGNUMROWS]
 	ld b,a
 	xor a
-	ld [H_VBCOPYBGSRC],a ; disable transfer so it doesn't continue next V-blank
+	ld [H_VBCOPYBGSRC],a // disable transfer so it doesn't continue next V-blank
 	jr TransferBgRows
 
 
 VBlankCopyDouble::
-; Copy [H_VBCOPYDOUBLESIZE] 1bpp tiles
-; from H_VBCOPYDOUBLESRC to H_VBCOPYDOUBLEDEST.
+// Copy [H_VBCOPYDOUBLESIZE] 1bpp tiles
+// from H_VBCOPYDOUBLESRC to H_VBCOPYDOUBLEDEST.
 
-; While we're here, convert to 2bpp.
-; The process is straightforward:
-; copy each byte twice.
+// While we're here, convert to 2bpp.
+// The process is straightforward:
+// copy each byte twice.
 
 	ld a, [H_VBCOPYDOUBLESIZE]
 	and a
@@ -257,7 +257,7 @@ VBlankCopyDouble::
 
 	ld a, [H_VBCOPYDOUBLESIZE]
 	ld b, a
-	xor a ; transferred
+	xor a // transferred
 	ld [H_VBCOPYDOUBLESIZE], a
 
 .loop
@@ -306,11 +306,11 @@ VBlankCopyDouble::
 
 
 VBlankCopy::
-; Copy [H_VBCOPYSIZE] 2bpp tiles (or 16 * [H_VBCOPYSIZE] tile map entries)
-; from H_VBCOPYSRC to H_VBCOPYDEST.
+// Copy [H_VBCOPYSIZE] 2bpp tiles (or 16 * [H_VBCOPYSIZE] tile map entries)
+// from H_VBCOPYSRC to H_VBCOPYDEST.
 
-; Source and destination addresses are updated,
-; so transfer can continue in subsequent calls.
+// Source and destination addresses are updated,
+// so transfer can continue in subsequent calls.
 
 	ld a, [H_VBCOPYSIZE]
 	and a
@@ -335,7 +335,7 @@ VBlankCopy::
 
 	ld a, [H_VBCOPYSIZE]
 	ld b, a
-	xor a ; transferred
+	xor a // transferred
 	ld [H_VBCOPYSIZE], a
 
 .loop
@@ -376,12 +376,12 @@ VBlankCopy::
 
 
 UpdateMovingBgTiles::
-; Animate water and flower
-; tiles in the overworld.
+// Animate water and flower
+// tiles in the overworld.
 
 	ld a, [hTilesetType]
 	and a
-	ret z ; no animations if indoors (or if a menu set this to 0)
+	ret z // no animations if indoors (or if a menu set this to 0)
 
 	ld a, [hMovingBGTilesCounter1]
 	inc a
@@ -391,7 +391,7 @@ UpdateMovingBgTiles::
 	cp 21
 	jr z, .flower
 
-; water
+// water
 
 	ld hl, vTileset + $14 * $10
 	ld c, $10
@@ -420,7 +420,7 @@ UpdateMovingBgTiles::
 	ld a, [hTilesetType]
 	rrca
 	ret nc
-; if in a cave, no flower animations
+// if in a cave, no flower animations
 	xor a
 	ld [hMovingBGTilesCounter1], a
 	ret

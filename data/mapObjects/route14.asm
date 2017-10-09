@@ -1,12 +1,12 @@
 Route14Object:
-	db $43 ; border block
+	db $43 // border block
 
-	db $0 ; warps
+	db $0 // warps
 
-	db $1 ; signs
-	db $d, $11, $b ; Route14Text11
+	db $1 // signs
+	db $d, $11, $b // Route14Text11
 
-	db $a ; objects
+	db $a // objects
 	object SPRITE_BLACK_HAIR_BOY_1, $4, $4, STAY, DOWN, $1, OPP_BIRD_KEEPER, $e
 	object SPRITE_BLACK_HAIR_BOY_1, $f, $6, STAY, DOWN, $2, OPP_BIRD_KEEPER, $f
 	object SPRITE_BLACK_HAIR_BOY_1, $c, $b, STAY, DOWN, $3, OPP_BIRD_KEEPER, $10

@@ -31,10 +31,10 @@ VendingMachineMenu:
 	ld hl, wd730
 	res 6, [hl]
 	call HandleMenuInput
-	bit 1, a ; pressed B?
+	bit 1, a // pressed B?
 	jr nz, .notThirsty
 	ld a, [wCurrentMenuItem]
-	cp 3 ; chose Cancel?
+	cp 3 // chose Cancel?
 	jr z, .notThirsty
 	xor a
 	ld [hMoney], a
@@ -53,7 +53,7 @@ VendingMachineMenu:
 	call GiveItem
 	jr nc, .BagFull
 
-	ld b, 60 ; number of times to play the "brrrrr" sound
+	ld b, 60 // number of times to play the "brrrrr" sound
 .playDeliverySound
 	ld c, 2
 	call DelayFrames

@@ -26,7 +26,7 @@ WriterText:
 DirectorText:
 	TX_ASM
 
-	; check pokédex
+	// check pokédex
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits

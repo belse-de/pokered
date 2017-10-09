@@ -1,4 +1,4 @@
-; copy text of fixed length NAME_LENGTH (like player name, rival name, mon names, ...)
+// copy text of fixed length NAME_LENGTH (like player name, rival name, mon names, ...)
 CopyFixedLengthText:
 	ld bc, NAME_LENGTH
 	jp CopyData
@@ -49,12 +49,12 @@ DisplayTitleScreen:
 	ld de, vTitleLogo
 	ld bc, $600
 	ld a, BANK(PokemonLogoGraphics)
-	call FarCopyData2          ; first chunk
+	call FarCopyData2          // first chunk
 	ld hl, PokemonLogoGraphics+$600
 	ld de, vTitleLogo2
 	ld bc, $100
 	ld a, BANK(PokemonLogoGraphics)
-	call FarCopyData2          ; second chunk
+	call FarCopyData2          // second chunk
 	ld hl, Version_GFX
 	ld de,vChars2 + $600 - (Version_GFXEnd - Version_GFX - $50)
 	ld bc, Version_GFXEnd - Version_GFX
@@ -62,7 +62,7 @@ DisplayTitleScreen:
 	call FarCopyDataDouble
 	call ClearBothBGMaps
 
-; place tiles for pokemon logo (except for the last row)
+// place tiles for pokemon logo (except for the last row)
 	coord hl, 2, 1
 	ld a, $80
 	ld de, SCREEN_WIDTH
@@ -70,7 +70,7 @@ DisplayTitleScreen:
 .pokemonLogoTileLoop
 	ld b, $10
 	push hl
-.pokemonLogoTileRowLoop ; place tiles for one row
+.pokemonLogoTileRowLoop // place tiles for one row
 	ld [hli], a
 	inc a
 	dec b
@@ -80,7 +80,7 @@ DisplayTitleScreen:
 	dec c
 	jr nz, .pokemonLogoTileLoop
 
-; place tiles for the last row of the pokemon logo
+// place tiles for the last row of the pokemon logo
 	coord hl, 2, 7
 	ld a, $31
 	ld b, $10
@@ -92,12 +92,12 @@ DisplayTitleScreen:
 
 	call DrawPlayerCharacter
 
-; put a pokeball in the player's hand
+// put a pokeball in the player's hand
 	ld hl, wOAMBuffer + $28
 	ld a, $74
 	ld [hl], a
 
-; place tiles for title screen copyright
+// place tiles for title screen copyright
 	coord hl, 2, 17
 	ld de, .tileScreenCopyrightTiles
 	ld b, $10
@@ -111,17 +111,17 @@ DisplayTitleScreen:
 	jr .next
 
 .tileScreenCopyrightTiles
-	db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
+	db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E // ©'95.'96.'98 GAME FREAK inc.
 
 .next
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
 IF DEF(_RED)
-	ld a,CHARMANDER ; which Pokemon to show first on the title screen
+	ld a,CHARMANDER // which Pokemon to show first on the title screen
 ENDC
 IF DEF(_BLUE)
-	ld a,SQUIRTLE ; which Pokemon to show first on the title screen
+	ld a,SQUIRTLE // which Pokemon to show first on the title screen
 ENDC
 
 	ld [wTitleMonSpecies], a
@@ -140,8 +140,8 @@ ENDC
 	ld a, %11100100
 	ld [rOBP0], a
 
-; make pokemon logo bounce up and down
-	ld bc, hSCY ; background scroll Y
+// make pokemon logo bounce up and down
+	ld bc, hSCY // background scroll Y
 	ld hl, .TitleScreenPokemonLogoYScrolls
 .bouncePokemonLogoLoop
 	ld a, [hli]
@@ -159,21 +159,21 @@ ENDC
 	jr .bouncePokemonLogoLoop
 
 .TitleScreenPokemonLogoYScrolls:
-; Controls the bouncing effect of the Pokemon logo on the title screen
-	db -4,16  ; y scroll amount, number of times to scroll
+// Controls the bouncing effect of the Pokemon logo on the title screen
+	db -4,16  // y scroll amount, number of times to scroll
 	db 3,4
 	db -3,4
 	db 2,2
 	db -2,2
 	db 1,2
 	db -1,2
-	db 0      ; terminate list with 0
+	db 0      // terminate list with 0
 
 .ScrollTitleScreenPokemonLogo:
-; Scrolls the Pokemon logo on the title screen to create the bouncing effect
-; Scrolls d pixels e times
+// Scrolls the Pokemon logo on the title screen to create the bouncing effect
+// Scrolls d pixels e times
 	call DelayFrame
-	ld a, [bc] ; background scroll Y
+	ld a, [bc] // background scroll Y
 	add d
 	ld [bc], a
 	dec e
@@ -187,7 +187,7 @@ ENDC
 	ld a, SFX_INTRO_WHOOSH
 	call PlaySound
 
-; scroll game version in from the right
+// scroll game version in from the right
 	call PrintGameVersionOnTitleScreen
 	ld a, SCREEN_HEIGHT_PIXELS
 	ld [hWY], a
@@ -217,7 +217,7 @@ ENDC
 	xor a
 	ld [wUnusedCC5B], a
 
-; Keep scrolling in new mons indefinitely until the user performs input.
+// Keep scrolling in new mons indefinitely until the user performs input.
 .awaitUserInterruptionLoop
 	ld c, 200
 	call CheckForUserInterruption
@@ -262,7 +262,7 @@ TitleScreenPickNewMon:
 	call TitleScreenCopyTileMapToVRAM
 
 .loop
-; Keep looping until a mon different from the current one is picked.
+// Keep looping until a mon different from the current one is picked.
 	call Random
 	and $f
 	ld c, a
@@ -272,7 +272,7 @@ TitleScreenPickNewMon:
 	ld a, [hl]
 	ld hl, wTitleMonSpecies
 
-; Can't be the same as before.
+// Can't be the same as before.
 	cp [hl]
 	jr z, .loop
 
@@ -281,12 +281,12 @@ TitleScreenPickNewMon:
 
 	ld a, $90
 	ld [hWY], a
-	ld d, 1 ; scroll out
+	ld d, 1 // scroll out
 	callba TitleScroll
 	ret
 
 TitleScreenScrollInMon:
-	ld d, 0 ; scroll in
+	ld d, 0 // scroll in
 	callba TitleScroll
 	xor a
 	ld [hWY], a
@@ -324,13 +324,13 @@ DrawPlayerCharacter:
 	ld c, 5
 .innerLoop
 	ld a, d
-	ld [hli], a ; Y
+	ld [hli], a // Y
 	ld a, e
-	ld [hli], a ; X
+	ld [hli], a // X
 	add 8
 	ld e, a
 	ld a, [wPlayerCharacterOAMTile]
-	ld [hli], a ; tile
+	ld [hli], a // tile
 	inc a
 	ld [wPlayerCharacterOAMTile], a
 	inc hl
@@ -377,26 +377,26 @@ LoadCopyrightTiles:
 	jp PlaceString
 
 CopyrightTextString:
-	db   $60,$61,$62,$61,$63,$61,$64,$7F,$65,$66,$67,$68,$69,$6A             ; ©'95.'96.'98 Nintendo
-	next $60,$61,$62,$61,$63,$61,$64,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©'95.'96.'98 Creatures inc.
-	next $60,$61,$62,$61,$63,$61,$64,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©'95.'96.'98 GAME FREAK inc.
+	db   $60,$61,$62,$61,$63,$61,$64,$7F,$65,$66,$67,$68,$69,$6A             // ©'95.'96.'98 Nintendo
+	next $60,$61,$62,$61,$63,$61,$64,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     // ©'95.'96.'98 Creatures inc.
+	next $60,$61,$62,$61,$63,$61,$64,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B // ©'95.'96.'98 GAME FREAK inc.
 	db   "@"
 
-INCLUDE "data/title_mons.asm"
+#include "data/title_mons.asm"
 
-; prints version text (red, blue)
+// prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
 	coord hl, 7, 8
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
 
-; these point to special tiles specifically loaded for that purpose and are not usual text
+// these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
 IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
+	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" // "Red Version"
 ENDC
 IF DEF(_BLUE)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@" // "Blue Version"
 ENDC
 
 NintenText: db "NINTEN@"

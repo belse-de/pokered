@@ -1,5 +1,5 @@
 SFX_Headers_1::
-	db $ff, $ff, $ff ; padding
+	db $ff, $ff, $ff // padding
 
 SFX_Snare1_1::
 	audio SFX_Snare1_1, Ch7
@@ -280,7 +280,7 @@ SFX_Go_Outside_1::
 SFX_Save_1::
 	audio SFX_Save_1, Ch4, Ch5
 
-; the Pokeflute sound effect directly hijacks channel 2
+// the Pokeflute sound effect directly hijacks channel 2
 SFX_Pokeflute::
 	audio SFX_Pokeflute, Ch2
 

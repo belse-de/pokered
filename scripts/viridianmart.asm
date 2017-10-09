@@ -11,7 +11,7 @@ ViridianMartScript_1d47d:
 	ld hl, ViridianMartTextPointers
 	jr .asm_1d48c
 .asm_1d489
-	ld hl, ViridianMartTextPointers + $a ; starts at ViridianMartText6
+	ld hl, ViridianMartTextPointers + $a // starts at ViridianMartText6
 .asm_1d48c
 	ld a, l
 	ld [wMapTextPtr], a
@@ -57,7 +57,7 @@ ViridianMartScript1:
 	SetEvent EVENT_GOT_OAKS_PARCEL
 	ld a, $2
 	ld [wViridianMarketCurScript], a
-	; fallthrough
+	// fallthrough
 ViridianMartScript2:
 	ret
 

@@ -4,7 +4,7 @@ MarkTownVisitedAndLoadMissableObjects:
 	jr nc, .notInTown
 	ld c, a
 	ld b, FLAG_SET
-	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	ld hl, wTownVisitedFlag   // mark town as visited (for flying)
 	predef FlagActionPredef
 .notInTown
 	ld hl, MapHSPointers
@@ -13,14 +13,14 @@ MarkTownVisitedAndLoadMissableObjects:
 	ld c, a
 	add hl, bc
 	add hl, bc
-	ld a, [hli]                ; load missable objects pointer in hl
+	ld a, [hli]                // load missable objects pointer in hl
 	ld h, [hl]
-	; fall through
+	// fall through
 
 LoadMissableObjects:
 	ld l, a
 	push hl
-	ld de, MapHS00             ; calculate difference between out pointer and the base pointer
+	ld de, MapHS00             // calculate difference between out pointer and the base pointer
 	ld a, l
 	sub e
 	jr nc, .asm_f13c
@@ -40,44 +40,44 @@ LoadMissableObjects:
 	ld a, $3
 	ld [H_DIVISOR], a
 	ld b, $2
-	call Divide                ; divide difference by 3, resulting in the global offset (number of missable items before ours)
+	call Divide                // divide difference by 3, resulting in the global offset (number of missable items before ours)
 	ld a, [wCurMap]
 	ld b, a
 	ld a, [H_DIVIDEND+3]
-	ld c, a                    ; store global offset in c
+	ld c, a                    // store global offset in c
 	ld de, wMissableObjectList
 	pop hl
 .writeMissableObjectsListLoop
 	ld a, [hli]
 	cp $ff
-	jr z, .done     ; end of list
+	jr z, .done     // end of list
 	cp b
-	jr nz, .done    ; not for current map anymore
+	jr nz, .done    // not for current map anymore
 	ld a, [hli]
 	inc hl
-	ld [de], a                 ; write (map-local) sprite ID
+	ld [de], a                 // write (map-local) sprite ID
 	inc de
 	ld a, c
 	inc c
-	ld [de], a                 ; write (global) missable object index
+	ld [de], a                 // write (global) missable object index
 	inc de
 	jr .writeMissableObjectsListLoop
 .done
 	ld a, $ff
-	ld [de], a                 ; write sentinel
+	ld [de], a                 // write sentinel
 	ret
 
 InitializeMissableObjectsFlags:
 	ld hl, wMissableObjectFlags
 	ld bc, wMissableObjectFlagsEnd - wMissableObjectFlags
 	xor a
-	call FillMemory ; clear missable objects flags
+	call FillMemory // clear missable objects flags
 	ld hl, MapHS00
 	xor a
 	ld [wMissableObjectCounter], a
 .missableObjectsLoop
 	ld a, [hli]
-	cp $ff          ; end of list
+	cp $ff          // end of list
 	ret z
 	push hl
 	inc hl
@@ -88,7 +88,7 @@ InitializeMissableObjectsFlags:
 	ld a, [wMissableObjectCounter]
 	ld c, a
 	ld b, FLAG_SET
-	call MissableObjectFlagAction ; set flag if Item is hidden
+	call MissableObjectFlagAction // set flag if Item is hidden
 .skip
 	ld hl, wMissableObjectCounter
 	inc [hl]
@@ -97,7 +97,7 @@ InitializeMissableObjectsFlags:
 	inc hl
 	jr .missableObjectsLoop
 
-; tests if current sprite is a missable object that is hidden/has been removed
+// tests if current sprite is a missable object that is hidden/has been removed
 IsObjectHidden:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	swap a
@@ -106,7 +106,7 @@ IsObjectHidden:
 .loop
 	ld a, [hli]
 	cp $ff
-	jr z, .notHidden ; not missable -> not hidden
+	jr z, .notHidden // not missable -> not hidden
 	cp b
 	ld a, [hli]
 	jr nz, .loop
@@ -123,41 +123,41 @@ IsObjectHidden:
 	ld [$ffe5], a
 	ret
 
-; adds missable object (items, leg. pokemon, etc.) to the map
-; [wMissableObjectIndex]: index of the missable object to be added (global index)
+// adds missable object (items, leg. pokemon, etc.) to the map
+// [wMissableObjectIndex]: index of the missable object to be added (global index)
 ShowObject:
 ShowObject2:
 	ld hl, wMissableObjectFlags
 	ld a, [wMissableObjectIndex]
 	ld c, a
 	ld b, FLAG_RESET
-	call MissableObjectFlagAction   ; reset "removed" flag
+	call MissableObjectFlagAction   // reset "removed" flag
 	jp UpdateSprites
 
-; removes missable object (items, leg. pokemon, etc.) from the map
-; [wMissableObjectIndex]: index of the missable object to be removed (global index)
+// removes missable object (items, leg. pokemon, etc.) from the map
+// [wMissableObjectIndex]: index of the missable object to be removed (global index)
 HideObject:
 	ld hl, wMissableObjectFlags
 	ld a, [wMissableObjectIndex]
 	ld c, a
 	ld b, FLAG_SET
-	call MissableObjectFlagAction   ; set "removed" flag
+	call MissableObjectFlagAction   // set "removed" flag
 	jp UpdateSprites
 
 MissableObjectFlagAction:
-; identical to FlagAction
+// identical to FlagAction
 
 	push hl
 	push de
 	push bc
 
-	; bit
+	// bit
 	ld a, c
 	ld d, a
 	and 7
 	ld e, a
 
-	; byte
+	// byte
 	ld a, d
 	srl a
 	srl a
@@ -168,7 +168,7 @@ MissableObjectFlagAction:
 	inc h
 .ok
 
-	; d = 1 << e (bitmask)
+	// d = 1 << e (bitmask)
 	inc e
 	ld d, 1
 .shift

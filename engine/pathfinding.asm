@@ -1,44 +1,44 @@
 FindPathToPlayer:
 	xor a
 	ld hl, hFindPathNumSteps
-	ld [hli], a ; hFindPathNumSteps
-	ld [hli], a ; hFindPathFlags
-	ld [hli], a ; hFindPathYProgress
-	ld [hl], a  ; hFindPathXProgress
+	ld [hli], a // hFindPathNumSteps
+	ld [hli], a // hFindPathFlags
+	ld [hli], a // hFindPathYProgress
+	ld [hl], a  // hFindPathXProgress
 	ld hl, wNPCMovementDirections2
 	ld de, $0
 .loop
 	ld a, [hFindPathYProgress]
 	ld b, a
-	ld a, [hNPCPlayerYDistance] ; Y distance in steps
+	ld a, [hNPCPlayerYDistance] // Y distance in steps
 	call CalcDifference
 	ld d, a
 	and a
 	jr nz, .asm_f8da
 	ld a, [hFindPathFlags]
-	set 0, a ; current end of path matches the player's Y coordinate
+	set 0, a // current end of path matches the player's Y coordinate
 	ld [hFindPathFlags], a
 .asm_f8da
 	ld a, [hFindPathXProgress]
 	ld b, a
-	ld a, [hNPCPlayerXDistance] ; X distance in steps
+	ld a, [hNPCPlayerXDistance] // X distance in steps
 	call CalcDifference
 	ld e, a
 	and a
 	jr nz, .asm_f8ec
 	ld a, [hFindPathFlags]
-	set 1, a ; current end of path matches the player's X coordinate
+	set 1, a // current end of path matches the player's X coordinate
 	ld [hFindPathFlags], a
 .asm_f8ec
 	ld a, [hFindPathFlags]
-	cp $3 ; has the end of the path reached the player's position?
+	cp $3 // has the end of the path reached the player's position?
 	jr z, .done
-; Compare whether the X distance between the player and the current of the path
-; is greater or if the Y distance is. Then, try to reduce whichever is greater.
+// Compare whether the X distance between the player and the current of the path
+// is greater or if the Y distance is. Then, try to reduce whichever is greater.
 	ld a, e
 	cp d
 	jr c, .yDistanceGreater
-; x distance is greater
+// x distance is greater
 	ld a, [hNPCPlayerRelativePosFlags]
 	bit 1, a
 	jr nz, .playerIsLeftOfNPC
@@ -77,9 +77,9 @@ FindPathToPlayer:
 CalcPositionOfPlayerRelativeToNPC:
 	xor a
 	ld [hNPCPlayerRelativePosFlags], a
-	ld a, [wSpriteStateData1 + 4] ; player's sprite screen Y position in pixels
+	ld a, [wSpriteStateData1 + 4] // player's sprite screen Y position in pixels
 	ld d, a
-	ld a, [wSpriteStateData1 + 6] ; player's sprite screen X position in pixels
+	ld a, [wSpriteStateData1 + 6] // player's sprite screen X position in pixels
 	ld e, a
 	ld hl, wSpriteStateData1
 	ld a, [hNPCSpriteOffset]
@@ -91,7 +91,7 @@ CalcPositionOfPlayerRelativeToNPC:
 .noCarry
 	ld a, d
 	ld b, a
-	ld a, [hli] ; NPC sprite screen Y position in pixels
+	ld a, [hli] // NPC sprite screen Y position in pixels
 	call CalcDifference
 	jr nc, .NPCSouthOfOrAlignedWithPlayer
 .NPCNorthOfPlayer
@@ -113,13 +113,13 @@ CalcPositionOfPlayerRelativeToNPC:
 	ld [hli], a
 	ld a, 16
 	ld [hli], a
-	call DivideBytes ; divide Y absolute distance by 16
-	ld a, [hl] ; quotient
+	call DivideBytes // divide Y absolute distance by 16
+	ld a, [hl] // quotient
 	ld [hNPCPlayerYDistance], a
 	pop hl
 	inc hl
 	ld b, e
-	ld a, [hl] ; NPC sprite screen X position in pixels
+	ld a, [hl] // NPC sprite screen X position in pixels
 	call CalcDifference
 	jr nc, .NPCEastOfOrAlignedWithPlayer
 .NPCWestOfPlayer
@@ -139,7 +139,7 @@ CalcPositionOfPlayerRelativeToNPC:
 	ld [hDividend2], a
 	ld a, 16
 	ld [hDivisor2], a
-	call DivideBytes ; divide X absolute distance by 16
+	call DivideBytes // divide X absolute distance by 16
 	ld a, [hQuotient2]
 	ld [hNPCPlayerXDistance], a
 	ld a, [hNPCPlayerRelativePosPerspective]
@@ -197,5 +197,5 @@ NPCMovementDirectionsToJoypadMasksTable:
 	db NPC_MOVEMENT_RIGHT, D_RIGHT
 	db $ff
 
-; unreferenced
+// unreferenced
 	ret

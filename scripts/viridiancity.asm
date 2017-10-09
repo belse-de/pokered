@@ -70,7 +70,7 @@ ViridianCityScript1:
 	xor a
 	ld [wListScrollOffset], a
 
-	; set up battle for Old Man
+	// set up battle for Old Man
 	ld a, BATTLE_TYPE_OLD_MAN
 	ld [wBattleType], a
 	ld a, 5

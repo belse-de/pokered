@@ -21,14 +21,14 @@ AnimateHallOfFame:
 	ld [wUpdateSpritesEnabled], a
 	ld [hTilesetType], a
 	ld [wSpriteFlipped], a
-	ld [wLetterPrintingDelayFlags], a ; no delay
-	ld [wHoFMonOrPlayer], a ; mon
+	ld [wLetterPrintingDelayFlags], a // no delay
+	ld [wHoFMonOrPlayer], a // mon
 	inc a
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld hl, wNumHoFTeams
 	ld a, [hl]
 	inc a
-	jr z, .skipInc ; don't wrap around to 0
+	jr z, .skipInc // don't wrap around to 0
 	inc [hl]
 .skipInc
 	ld a, $90
@@ -81,7 +81,7 @@ AnimateHallOfFame:
 	xor a
 	ld [wHoFMonSpecies], a
 	inc a
-	ld [wHoFMonOrPlayer], a ; player
+	ld [wHoFMonOrPlayer], a // player
 	call HoFShowMonOrPlayer
 	call HoFDisplayPlayerStats
 	call HoFFadeOutScreenAndMusic
@@ -108,7 +108,7 @@ HoFShowMonOrPlayer:
 	ld a, [wHoFMonOrPlayer]
 	and a
 	jr z, .showMon
-; show player
+// show player
 	call HoFLoadPlayerPics
 	jr .next1
 .showMon
@@ -122,23 +122,23 @@ HoFShowMonOrPlayer:
 	call RunPaletteCommand
 	ld a, %11100100
 	ld [rBGP], a
-	ld c, $31 ; back pic
+	ld c, $31 // back pic
 	call HoFLoadMonPlayerPicTileIDs
 	ld d, $a0
 	ld e, 4
 	ld a, [wOnSGB]
 	and a
 	jr z, .next2
-	sla e ; scroll more slowly on SGB
+	sla e // scroll more slowly on SGB
 .next2
-	call .ScrollPic ; scroll back pic left
+	call .ScrollPic // scroll back pic left
 	xor a
 	ld [hSCY], a
-	ld c, a ; front pic
+	ld c, a // front pic
 	call HoFLoadMonPlayerPicTileIDs
 	ld d, 0
 	ld e, -4
-; scroll front pic right
+// scroll front pic right
 
 .ScrollPic
 	call DelayFrame
@@ -201,7 +201,7 @@ HoFLoadPlayerPics:
 	ld c, $1
 
 HoFLoadMonPlayerPicTileIDs:
-; c = base tile ID
+// c = base tile ID
 	ld b, 0
 	coord hl, 12, 5
 	predef_jump CopyTileIDsFromList

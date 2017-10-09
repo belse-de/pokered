@@ -49,7 +49,7 @@ DontAbandonLearning:
 	ld de, wBuffer
 	ld a, BANK(Moves)
 	call FarCopyData
-	ld a, [wBuffer + 5] ; a = move's max PP
+	ld a, [wBuffer + 5] // a = move's max PP
 	pop de
 	pop hl
 	ld [hl], a
@@ -80,7 +80,7 @@ AbandonLearning:
 	lb bc, 8, 15
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
-	call DisplayTextBoxID ; yes/no menu
+	call DisplayTextBoxID // yes/no menu
 	ld a, [wCurrentMenuItem]
 	and a
 	jp nz, DontAbandonLearning
@@ -103,7 +103,7 @@ TryingToLearn:
 	lb bc, 8, 15
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
-	call DisplayTextBoxID ; yes/no menu
+	call DisplayTextBoxID // yes/no menu
 	pop hl
 	ld a, [wCurrentMenuItem]
 	rra
@@ -135,17 +135,17 @@ TryingToLearn:
 	ld [hFlags_0xFFF6], a
 	ld hl, wTopMenuItemY
 	ld a, 8
-	ld [hli], a ; wTopMenuItemY
+	ld [hli], a // wTopMenuItemY
 	ld a, 5
-	ld [hli], a ; wTopMenuItemX
+	ld [hli], a // wTopMenuItemX
 	xor a
-	ld [hli], a ; wCurrentMenuItem
+	ld [hli], a // wCurrentMenuItem
 	inc hl
 	ld a, [wNumMovesMinusOne]
-	ld [hli], a ; wMaxMenuItem
+	ld [hli], a // wMaxMenuItem
 	ld a, A_BUTTON | B_BUTTON
-	ld [hli], a ; wMenuWatchedKeys
-	ld [hl], 0 ; wLastMenuItem
+	ld [hli], a // wMenuWatchedKeys
+	ld [hl], 0 // wLastMenuItem
 	ld hl, hFlags_0xFFF6
 	set 1, [hl]
 	call HandleMenuInput
@@ -155,7 +155,7 @@ TryingToLearn:
 	call LoadScreenTilesFromBuffer1
 	pop af
 	pop hl
-	bit 1, a ; pressed b
+	bit 1, a // pressed b
 	jr nz, .cancel
 	push hl
 	ld a, [wCurrentMenuItem]
@@ -185,7 +185,7 @@ TryingToLearn:
 
 LearnedMove1Text:
 	TX_FAR _LearnedMove1Text
-	TX_SFX_ITEM_1 ; plays SFX_GET_ITEM_1 in the party menu (rare candy) and plays SFX_LEVEL_UP in battle
+	TX_SFX_ITEM_1 // plays SFX_GET_ITEM_1 in the party menu (rare candy) and plays SFX_LEVEL_UP in battle
 	TX_BLINK
 	db "@"
 

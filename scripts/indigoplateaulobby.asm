@@ -10,7 +10,7 @@ IndigoPlateauLobbyScript:
 	bit 1, [hl]
 	res 1, [hl]
 	ret z
-	; Elite 4 events
+	// Elite 4 events
 	ResetEventRange ELITE4_EVENTS_START, EVENT_LANCES_ROOM_LOCK_DOOR
 	ret
 

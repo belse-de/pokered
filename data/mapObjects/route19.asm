@@ -1,12 +1,12 @@
 Route19Object:
-	db $43 ; border block
+	db $43 // border block
 
-	db $0 ; warps
+	db $0 // warps
 
-	db $1 ; signs
-	db $9, $b, $b ; Route19Text11
+	db $1 // signs
+	db $9, $b, $b // Route19Text11
 
-	db $a ; objects
+	db $a // objects
 	object SPRITE_BLACK_HAIR_BOY_1, $8, $7, STAY, LEFT, 1, OPP_SWIMMER, 2
 	object SPRITE_BLACK_HAIR_BOY_1, $d, $7, STAY, LEFT, 2, OPP_SWIMMER, 3
 	object SPRITE_SWIMMER, $d, $19, STAY, LEFT, $3, OPP_SWIMMER, $4
@@ -18,4 +18,4 @@ Route19Object:
 	object SPRITE_SWIMMER, $9, $2a, STAY, UP, $9, OPP_SWIMMER, $8
 	object SPRITE_SWIMMER, $a, $2c, STAY, DOWN, $a, OPP_BEAUTY, $e
 
-	; warp-to
+	// warp-to

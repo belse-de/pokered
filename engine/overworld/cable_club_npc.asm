@@ -3,7 +3,7 @@ CableClubNPC:
 	call PrintText
 	CheckEvent EVENT_GOT_POKEDEX
 	jp nz, .receivedPokedex
-; if the player hasn't received the pokedex
+// if the player hasn't received the pokedex
 	ld c, 60
 	call DelayFrames
 	ld hl, CableClubNPCMakingPreparationsText

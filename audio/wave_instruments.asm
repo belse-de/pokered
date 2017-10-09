@@ -3,15 +3,15 @@
 	dw .wave2
 	dw .wave3
 	dw .wave4
-	dw .wave5 ; used in the Lavender Town and Pokemon Tower themes
-	dw .wave5 ; unused
-	dw .wave5 ; unused
-	dw .wave5 ; unused
+	dw .wave5 // used in the Lavender Town and Pokemon Tower themes
+	dw .wave5 // unused
+	dw .wave5 // unused
+	dw .wave5 // unused
 
-; these are the definitions for the channel 3 instruments
-; each instrument definition is made up of 32 points (nibbles) that form
-; the graph of the wave
-; the current instrument is copied to $FF30
+// these are the definitions for the channel 3 instruments
+// each instrument definition is made up of 32 points (nibbles) that form
+// the graph of the wave
+// the current instrument is copied to $FF30
 .wave0
 	db $02,$46,$8A,$CE,$FF,$FE,$ED,$DC,$CB,$A9,$87,$65,$44,$33,$22,$11
 
@@ -27,6 +27,6 @@
 .wave4
 	db $01,$23,$45,$67,$8A,$CD,$EE,$F7,$7F,$EE,$DC,$A8,$76,$54,$32,$10
 
-; duty 5 reads from sfx data
+// duty 5 reads from sfx data
 .wave5
 

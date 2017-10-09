@@ -1,16 +1,16 @@
-; HW sound channel register base addresses
+// HW sound channel register base addresses
 HW_CH1_BASE EQU (rNR10 % $100)
 HW_CH2_BASE EQU ((rNR21 % $100) - 1)
 HW_CH3_BASE EQU (rNR30 % $100)
 HW_CH4_BASE EQU ((rNR41 % $100) - 1)
 
-; HW sound channel enable bit masks
+// HW sound channel enable bit masks
 HW_CH1_ENABLE_MASK EQU %00010001
 HW_CH2_ENABLE_MASK EQU %00100010
 HW_CH3_ENABLE_MASK EQU %01000100
 HW_CH4_ENABLE_MASK EQU %10001000
 
-; HW sound channel disable bit masks
+// HW sound channel disable bit masks
 HW_CH1_DISABLE_MASK EQU (~HW_CH1_ENABLE_MASK & $ff)
 HW_CH2_DISABLE_MASK EQU (~HW_CH2_ENABLE_MASK & $ff)
 HW_CH3_DISABLE_MASK EQU (~HW_CH3_ENABLE_MASK & $ff)
@@ -25,25 +25,25 @@ MAX_SFX_ID EQU $B9
 CRY_SFX_START EQU $14
 CRY_SFX_END   EQU $86
 
-; wChannelFlags1 constants
-BIT_PERFECT_PITCH         EQU 0 ; controlled by toggleperfectpitch command
-BIT_CHANNEL_CALL          EQU 1 ; if in channel call
-BIT_NOISE_OR_SFX          EQU 2 ; if channel is the music noise channel or an SFX channel
-BIT_VIBRATO_DIRECTION     EQU 3 ; if the pitch is above or below normal (cycles)
-BIT_PITCH_BEND_ON         EQU 4 ; if pitch bend is active
-BIT_PITCH_BEND_DECREASING EQU 5 ; if the pitch bend frequency is decreasing (instead of increasing)
-BIT_ROTATE_DUTY           EQU 6 ; if rotating duty
+// wChannelFlags1 constants
+BIT_PERFECT_PITCH         EQU 0 // controlled by toggleperfectpitch command
+BIT_CHANNEL_CALL          EQU 1 // if in channel call
+BIT_NOISE_OR_SFX          EQU 2 // if channel is the music noise channel or an SFX channel
+BIT_VIBRATO_DIRECTION     EQU 3 // if the pitch is above or below normal (cycles)
+BIT_PITCH_BEND_ON         EQU 4 // if pitch bend is active
+BIT_PITCH_BEND_DECREASING EQU 5 // if the pitch bend frequency is decreasing (instead of increasing)
+BIT_ROTATE_DUTY           EQU 6 // if rotating duty
 
-; wChannelFlags2 constant (only has one flag)
-BIT_EXECUTE_MUSIC EQU 0 ; if in execute music
+// wChannelFlags2 constant (only has one flag)
+BIT_EXECUTE_MUSIC EQU 0 // if in execute music
 
-; Song ids are calculated by address to save space.
+// Song ids are calculated by address to save space.
 
 music_const: MACRO
 \1 EQUS "((\2 - SFX_Headers_1) / 3)"
 ENDM
 
-	; AUDIO_1
+	// AUDIO_1
 	music_const MUSIC_PALLET_TOWN,         Music_PalletTown
 	music_const MUSIC_POKECENTER,          Music_Pokecenter
 	music_const MUSIC_GYM,                 Music_Gym
@@ -65,7 +65,7 @@ ENDM
 	music_const MUSIC_ROUTES4,             Music_Routes4
 	music_const MUSIC_INDIGO_PLATEAU,      Music_IndigoPlateau
 
-	; AUDIO_2
+	// AUDIO_2
 	music_const MUSIC_GYM_LEADER_BATTLE,   Music_GymLeaderBattle
 	music_const MUSIC_TRAINER_BATTLE,      Music_TrainerBattle
 	music_const MUSIC_WILD_BATTLE,         Music_WildBattle
@@ -74,7 +74,7 @@ ENDM
 	music_const MUSIC_DEFEATED_WILD_MON,   Music_DefeatedWildMon
 	music_const MUSIC_DEFEATED_GYM_LEADER, Music_DefeatedGymLeader
 
-	; AUDIO_3
+	// AUDIO_3
 	music_const MUSIC_TITLE_SCREEN,        Music_TitleScreen
 	music_const MUSIC_CREDITS,             Music_Credits
 	music_const MUSIC_HALL_OF_FAME,        Music_HallOfFame
@@ -94,7 +94,7 @@ ENDM
 	music_const MUSIC_MEET_FEMALE_TRAINER, Music_MeetFemaleTrainer
 	music_const MUSIC_MEET_MALE_TRAINER,   Music_MeetMaleTrainer
 
-	; AUDIO_1 AUDIO_2 AUDIO_3
+	// AUDIO_1 AUDIO_2 AUDIO_3
 	music_const SFX_SNARE_1,            SFX_Snare1_1
 	music_const SFX_SNARE_2,            SFX_Snare2_1
 	music_const SFX_SNARE_3,            SFX_Snare3_1
@@ -160,7 +160,7 @@ ENDM
 	music_const SFX_START_MENU,         SFX_Start_Menu_1
 	music_const SFX_PRESS_AB,           SFX_Press_AB_1
 
-	; AUDIO_1 AUDIO_3
+	// AUDIO_1 AUDIO_3
 	music_const SFX_GET_ITEM_1,         SFX_Get_Item1_1
 
 	music_const SFX_POKEDEX_RATING,     SFX_Pokedex_Rating_1
@@ -187,17 +187,17 @@ ENDM
 	music_const SFX_CUT,                SFX_Cut_1
 	music_const SFX_GO_INSIDE,          SFX_Go_Inside_1
 	music_const SFX_SWAP,               SFX_Swap_1
-	music_const SFX_59,                 SFX_59_1 ; unused, sounds similar to SFX_SLOTS_STOP_WHEEL
+	music_const SFX_59,                 SFX_59_1 // unused, sounds similar to SFX_SLOTS_STOP_WHEEL
 	music_const SFX_PURCHASE,           SFX_Purchase_1
 	music_const SFX_COLLISION,          SFX_Collision_1
 	music_const SFX_GO_OUTSIDE,         SFX_Go_Outside_1
 	music_const SFX_SAVE,               SFX_Save_1
 
-	; AUDIO_1
+	// AUDIO_1
 	music_const SFX_POKEFLUTE,           SFX_Pokeflute
 	music_const SFX_SAFARI_ZONE_PA,     SFX_Safari_Zone_PA
 
-	; AUDIO_2
+	// AUDIO_2
 	music_const SFX_LEVEL_UP,           SFX_Level_Up
 
 	music_const SFX_BALL_TOSS,          SFX_Ball_Toss
@@ -221,7 +221,7 @@ ENDM
 	music_const SFX_BATTLE_13,          SFX_Battle_13
 	music_const SFX_BATTLE_14,          SFX_Battle_14
 	music_const SFX_VINE_WHIP,          SFX_Vine_Whip
-	music_const SFX_BATTLE_16,          SFX_Battle_16 ; unused?
+	music_const SFX_BATTLE_16,          SFX_Battle_16 // unused?
 	music_const SFX_BATTLE_17,          SFX_Battle_17
 	music_const SFX_BATTLE_18,          SFX_Battle_18
 	music_const SFX_BATTLE_19,          SFX_Battle_19
@@ -256,7 +256,7 @@ ENDM
 	music_const SFX_BATTLE_36,          SFX_Battle_36
 	music_const SFX_SILPH_SCOPE,        SFX_Silph_Scope
 
-	; AUDIO_3
+	// AUDIO_3
 	music_const SFX_INTRO_LUNGE,        SFX_Intro_Lunge
 	music_const SFX_INTRO_HIP,          SFX_Intro_Hip
 	music_const SFX_INTRO_HOP,          SFX_Intro_Hop

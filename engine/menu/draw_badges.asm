@@ -1,23 +1,23 @@
 DrawBadges:
-; Draw 4x2 gym leader faces, with the faces replaced by
-; badges if they are owned. Used in the player status screen.
+// Draw 4x2 gym leader faces, with the faces replaced by
+// badges if they are owned. Used in the player status screen.
 
-; In Japanese versions, names are displayed above faces.
-; Instead of removing relevant code, the name graphics were erased.
+// In Japanese versions, names are displayed above faces.
+// Instead of removing relevant code, the name graphics were erased.
 
-; Tile ids for face/badge graphics.
+// Tile ids for face/badge graphics.
 	ld de, wBadgeOrFaceTiles
 	ld hl, .FaceBadgeTiles
 	ld bc, 8
 	call CopyData
 
-; Booleans for each badge.
+// Booleans for each badge.
 	ld hl, wTempObtainedBadgesBooleans
 	ld bc, 8
 	xor a
 	call FillMemory
 
-; Alter these based on owned badges.
+// Alter these based on owned badges.
 	ld de, wTempObtainedBadgesBooleans
 	ld hl, wBadgeOrFaceTiles
 	ld a, [wObtainedBadges]
@@ -27,7 +27,7 @@ DrawBadges:
 	srl b
 	jr nc, .NextBadge
 	ld a, [hl]
-	add 4 ; Badge graphics are after each face
+	add 4 // Badge graphics are after each face
 	ld [hl], a
 	ld a, 1
 	ld [de], a
@@ -37,11 +37,11 @@ DrawBadges:
 	dec c
 	jr nz, .CheckBadge
 
-; Draw two rows of badges.
+// Draw two rows of badges.
 	ld hl, wBadgeNumberTile
-	ld a, $d8 ; [1]
+	ld a, $d8 // [1]
 	ld [hli], a
-	ld [hl], $60 ; First name
+	ld [hl], $60 // First name
 
 	coord hl, 2, 11
 	ld de, wTempObtainedBadgesBooleans
@@ -53,20 +53,20 @@ DrawBadges:
 ;	ret
 
 .DrawBadgeRow
-; Draw 4 badges.
+// Draw 4 badges.
 
 	ld c, 4
 .DrawBadge
 	push de
 	push hl
 
-; Badge no.
+// Badge no.
 	ld a, [wBadgeNumberTile]
 	ld [hli], a
 	inc a
 	ld [wBadgeNumberTile], a
 
-; Names aren't printed if the badge is owned.
+// Names aren't printed if the badge is owned.
 	ld a, [de]
 	and a
 	ld a, [wBadgeNameTile]
@@ -88,7 +88,7 @@ DrawBadges:
 	add hl, de
 	call .PlaceTiles
 
-; Shift badge array back one byte.
+// Shift badge array back one byte.
 	push bc
 	ld hl, wBadgeOrFaceTiles + 1
 	ld de, wBadgeOrFaceTiles

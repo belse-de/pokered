@@ -1,5 +1,5 @@
 ForcedBikeOrSurfMaps:
-; map id, y, x
+// map id, y, x
 	db ROUTE_16,$0A,$11
 	db ROUTE_16,$0B,$11
 	db ROUTE_18,$08,$21

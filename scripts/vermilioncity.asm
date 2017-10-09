@@ -39,7 +39,7 @@ VermilionCityScriptPointers:
 
 VermilionCityScript0:
 	ld a, [wSpriteStateData1 + 9]
-	and a ; cp SPRITE_FACING_DOWN
+	and a // cp SPRITE_FACING_DOWN
 	ret nz
 	ld hl, CoordsData_19823
 	call ArePlayerCoordsInArray

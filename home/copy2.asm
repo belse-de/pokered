@@ -1,6 +1,6 @@
 FarCopyData2::
-; Identical to FarCopyData, but uses hROMBankTemp
-; as temp space instead of wBuffer.
+// Identical to FarCopyData, but uses hROMBankTemp
+// as temp space instead of wBuffer.
 	ld [hROMBankTemp],a
 	ld a,[H_LOADEDROMBANK]
 	push af
@@ -14,7 +14,7 @@ FarCopyData2::
 	ret
 
 FarCopyData3::
-; Copy bc bytes from a:de to hl.
+// Copy bc bytes from a:de to hl.
 	ld [hROMBankTemp],a
 	ld a,[H_LOADEDROMBANK]
 	push af
@@ -36,8 +36,8 @@ FarCopyData3::
 	ret
 
 FarCopyDataDouble::
-; Expand bc bytes of 1bpp image data
-; from a:hl to 2bpp data at de.
+// Expand bc bytes of 1bpp image data
+// from a:hl to 2bpp data at de.
 	ld [hROMBankTemp],a
 	ld a,[H_LOADEDROMBANK]
 	push af
@@ -60,13 +60,13 @@ FarCopyDataDouble::
 	ret
 
 CopyVideoData::
-; Wait for the next VBlank, then copy c 2bpp
-; tiles from b:de to hl, 8 tiles at a time.
-; This takes c/8 frames.
+// Wait for the next VBlank, then copy c 2bpp
+// tiles from b:de to hl, 8 tiles at a time.
+// This takes c/8 frames.
 
 	ld a, [H_AUTOBGTRANSFERENABLED]
 	push af
-	xor a ; disable auto-transfer while copying
+	xor a // disable auto-transfer while copying
 	ld [H_AUTOBGTRANSFERENABLED], a
 
 	ld a, [H_LOADEDROMBANK]
@@ -111,12 +111,12 @@ CopyVideoData::
 	jr .loop
 
 CopyVideoDataDouble::
-; Wait for the next VBlank, then copy c 1bpp
-; tiles from b:de to hl, 8 tiles at a time.
-; This takes c/8 frames.
+// Wait for the next VBlank, then copy c 1bpp
+// tiles from b:de to hl, 8 tiles at a time.
+// This takes c/8 frames.
 	ld a, [H_AUTOBGTRANSFERENABLED]
 	push af
-	xor a ; disable auto-transfer while copying
+	xor a // disable auto-transfer while copying
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld a, [H_LOADEDROMBANK]
 	ld [hROMBankTemp], a
@@ -160,9 +160,9 @@ CopyVideoDataDouble::
 	jr .loop
 
 ClearScreenArea::
-; Clear tilemap area cxb at hl.
-	ld a, " " ; blank tile
-	ld de, 20 ; screen width
+// Clear tilemap area cxb at hl.
+	ld a, " " // blank tile
+	ld de, 20 // screen width
 .y
 	push hl
 	push bc
@@ -178,8 +178,8 @@ ClearScreenArea::
 	ret
 
 CopyScreenTileBufferToVRAM::
-; Copy wTileMap to the BG Map starting at b * $100.
-; This is done in thirds of 6 rows, so it takes 3 frames.
+// Copy wTileMap to the BG Map starting at b * $100.
+// This is done in thirds of 6 rows, so it takes 3 frames.
 
 	ld c, 6
 
@@ -213,8 +213,8 @@ CopyScreenTileBufferToVRAM::
 	ret
 
 ClearScreen::
-; Clear wTileMap, then wait
-; for the bg map to update.
+// Clear wTileMap, then wait
+// for the bg map to update.
 	ld bc, 20 * 18
 	inc b
 	coord hl, 0, 0

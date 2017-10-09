@@ -184,7 +184,7 @@ DayCareMText1:
 	pop bc
 	pop af
 
-; set mon's HP to max
+// set mon's HP to max
 	ld hl, wPartyMon1HP
 	call AddNTimes
 	ld d, h

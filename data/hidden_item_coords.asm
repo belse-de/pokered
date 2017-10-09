@@ -1,5 +1,5 @@
 HiddenItemCoords:
-; map ID, then coords
+// map ID, then coords
 	db VIRIDIAN_FOREST,$12,$01
 	db VIRIDIAN_FOREST,$2a,$10
 	db MT_MOON_3,$0c,$12

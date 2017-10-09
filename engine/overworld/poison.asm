@@ -1,43 +1,43 @@
 ApplyOutOfBattlePoisonDamage:
 	ld a, [wd730]
 	add a
-	jp c, .noBlackOut ; no black out if joypad states are being simulated
+	jp c, .noBlackOut // no black out if joypad states are being simulated
 	ld a, [wPartyCount]
 	and a
 	jp z, .noBlackOut
 	call IncrementDayCareMonExp
 	ld a, [wStepCounter]
-	and $3 ; is the counter a multiple of 4?
-	jp nz, .noBlackOut ; only apply poison damage every fourth step
+	and $3 // is the counter a multiple of 4?
+	jp nz, .noBlackOut // only apply poison damage every fourth step
 	ld [wWhichPokemon], a
 	ld hl, wPartyMon1Status
 	ld de, wPartySpecies
 .applyDamageLoop
 	ld a, [hl]
 	and (1 << PSN)
-	jr z, .nextMon2 ; not poisoned
+	jr z, .nextMon2 // not poisoned
 	dec hl
 	dec hl
 	ld a, [hld]
 	ld b, a
 	ld a, [hli]
 	or b
-	jr z, .nextMon ; already fainted
-; subtract 1 from HP
+	jr z, .nextMon // already fainted
+// subtract 1 from HP
 	ld a, [hl]
 	dec a
 	ld [hld], a
 	inc a
 	jr nz, .noBorrow
-; borrow 1 from upper byte of HP
+// borrow 1 from upper byte of HP
 	dec [hl]
 	inc hl
 	jr .nextMon
 .noBorrow
 	ld a, [hli]
 	or [hl]
-	jr nz, .nextMon ; didn't faint from damage
-; the mon fainted from the damage
+	jr nz, .nextMon // didn't faint from damage
+// the mon fainted from the damage
 	push hl
 	inc hl
 	inc hl
@@ -86,10 +86,10 @@ ApplyOutOfBattlePoisonDamage:
 	dec d
 	jr nz, .countPoisonedLoop
 	ld a, e
-	and a ; are any party members poisoned?
+	and a // are any party members poisoned?
 	jr z, .skipPoisonEffectAndSound
 	ld b, $2
-	predef ChangeBGPalColor0_4Frames ; change BG white to dark grey for 4 frames
+	predef ChangeBGPalColor0_4Frames // change BG white to dark grey for 4 frames
 	ld a, SFX_POISONED
 	call PlaySound
 .skipPoisonEffectAndSound

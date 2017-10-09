@@ -2,10 +2,10 @@ SpecialWarpIn:
 	call LoadSpecialWarpData
 	predef LoadTilesetHeader
 	ld hl,wd732
-	bit 2,[hl] ; dungeon warp or fly warp?
+	bit 2,[hl] // dungeon warp or fly warp?
 	res 2,[hl]
 	jr z,.next
-; if dungeon warp or fly warp
+// if dungeon warp or fly warp
 	ld a,[wDestinationMap]
 	jr .next2
 .next
@@ -22,20 +22,20 @@ SpecialWarpIn:
 	ld a,b
 .next4
 	ld hl,wd732
-	bit 4,[hl] ; dungeon warp?
+	bit 4,[hl] // dungeon warp?
 	ret nz
-; if not dungeon warp
+// if not dungeon warp
 	ld [wLastMap],a
 	ret
 
-; gets the map ID, tile block map view pointer, tileset, and coordinates
+// gets the map ID, tile block map view pointer, tileset, and coordinates
 LoadSpecialWarpData:
 	ld a, [wd72d]
 	cp TRADE_CENTER
 	jr nz, .notTradeCenter
 	ld hl, TradeCenterSpec1
 	ld a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK ; which gameboy is clocking determines who is on the left and who is on the right
+	cp USING_INTERNAL_CLOCK // which gameboy is clocking determines who is on the left and who is on the right
 	jr z, .copyWarpData
 	ld hl, TradeCenterSpec2
 	jr .copyWarpData
@@ -69,14 +69,14 @@ LoadSpecialWarpData:
 	xor a
 	jr .done
 .notFirstMap
-	ld a, [wLastMap] ; this value is overwritten before it's ever read
+	ld a, [wLastMap] // this value is overwritten before it's ever read
 	ld hl, wd732
-	bit 4, [hl] ; used dungeon warp (jumped down hole/waterfall)?
+	bit 4, [hl] // used dungeon warp (jumped down hole/waterfall)?
 	jr nz, .usedDunegonWarp
-	bit 6, [hl] ; return to last pokemon center (or player's house)?
+	bit 6, [hl] // return to last pokemon center (or player's house)?
 	res 6, [hl]
 	jr z, .otherDestination
-; return to last pokemon center or player's house
+// return to last pokemon center or player's house
 	ld a, [wLastBlackoutMap]
 	jr .usedFlyWarp
 .usedDunegonWarp
@@ -137,13 +137,13 @@ LoadSpecialWarpData:
 	inc de
 	dec c
 	jr nz, .copyWarpDataLoop2
-	xor a ; OVERWORLD
+	xor a // OVERWORLD
 	ld [wCurMapTileset], a
 .done
 	ld [wYOffsetSinceLastSpecialWarp], a
 	ld [wXOffsetSinceLastSpecialWarp], a
-	ld a, $ff ; the player's coordinates have already been updated using a special warp, so don't use any of the normal warps
+	ld a, $ff // the player's coordinates have already been updated using a special warp, so don't use any of the normal warps
 	ld [wDestinationWarpID], a
 	ret
 
-INCLUDE "data/special_warps.asm"
+#include "data/special_warps.asm"

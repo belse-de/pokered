@@ -54,7 +54,7 @@ VermilionDock_1db9b:
 	call CopyScreenTileBufferToVRAM
 	coord hl, 0, 10
 	ld bc, SCREEN_WIDTH * 6
-	ld a, $14 ; water tile
+	ld a, $14 // water tile
 	call FillMemory
 	ld a, 1
 	ld [H_AUTOBGTRANSFERENABLED], a
@@ -140,12 +140,12 @@ VermilionDock_AnimSmokePuffDriftRight:
 	ret
 
 VermilionDock_EmitSmokePuff:
-; new smoke puff above the S.S. Anne's front smokestack
+// new smoke puff above the S.S. Anne's front smokestack
 	ld a, [wSSAnneSmokeX]
 	sub 16
 	ld [wSSAnneSmokeX], a
 	ld c, a
-	ld b, 100 ; Y
+	ld b, 100 // Y
 	ld a, [wSSAnneSmokeDriftAmount]
 	inc a
 	ld [wSSAnneSmokeDriftAmount], a
@@ -179,23 +179,23 @@ VermilionDock_1dc7c:
 	ret
 
 VermilionDock_EraseSSAnne:
-; Fill the area the S.S. Anne occupies in BG map 0 with water tiles.
+// Fill the area the S.S. Anne occupies in BG map 0 with water tiles.
 	ld hl, wVermilionDockTileMapBuffer
 	ld bc, (5 * BG_MAP_WIDTH) + SCREEN_WIDTH
-	ld a, $14 ; water tile
+	ld a, $14 // water tile
 	call FillMemory
 	ld hl, vBGMap0 + 10 * BG_MAP_WIDTH
 	ld de, wVermilionDockTileMapBuffer
 	ld bc, (6 * BG_MAP_WIDTH) / 16
 	call CopyVideoData
 
-; Replace the blocks of the lower half of the ship with water blocks. This
-; leaves the upper half alone, but that doesn't matter because replacing any of
-; the blocks is unnecessary because the blocks the ship occupies are south of
-; the player and won't be redrawn when the player automatically walks north and
-; exits the map. This code could be removed without affecting anything.
+// Replace the blocks of the lower half of the ship with water blocks. This
+// leaves the upper half alone, but that doesn't matter because replacing any of
+// the blocks is unnecessary because the blocks the ship occupies are south of
+// the player and won't be redrawn when the player automatically walks north and
+// exits the map. This code could be removed without affecting anything.
 	overworldMapCoord hl, 5, 2, VERMILION_DOCK_WIDTH
-	ld a, $d ; water block
+	ld a, $d // water block
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a

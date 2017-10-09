@@ -1,9 +1,9 @@
 TryPushingBoulder:
 	ld a, [wd728]
-	bit 0, a ; using Strength?
+	bit 0, a // using Strength?
 	ret z
 	ld a, [wFlags_0xcd60]
-	bit 1, a ; has boulder dust animation from previous push played yet?
+	bit 1, a // has boulder dust animation from previous push played yet?
 	ret nz
 	xor a
 	ld [hSpriteIndexOrTextID], a
@@ -25,18 +25,18 @@ TryPushingBoulder:
 	jp nz, ResetBoulderPushFlags
 	ld hl, wFlags_0xcd60
 	bit 6, [hl]
-	set 6, [hl] ; indicate that the player has tried pushing
-	ret z ; the player must try pushing twice before the boulder will move
+	set 6, [hl] // indicate that the player has tried pushing
+	ret z // the player must try pushing twice before the boulder will move
 	ld a, [hJoyHeld]
 	and D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ret z
 	predef CheckForCollisionWhenPushingBoulder
 	ld a, [wTileInFrontOfBoulderAndBoulderCollisionResult]
-	and a ; was there a collision?
+	and a // was there a collision?
 	jp nz, ResetBoulderPushFlags
 	ld a, [hJoyHeld]
 	ld b, a
-	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
+	ld a, [wSpriteStateData1 + 9] // player's sprite facing direction
 	cp SPRITE_FACING_UP
 	jr z, .pushBoulderUp
 	cp SPRITE_FACING_LEFT

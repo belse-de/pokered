@@ -1,10 +1,10 @@
-; special text IDs
+// special text IDs
 TEXT_MON_FAINTED      EQU $d0
 TEXT_BLACKED_OUT      EQU $d1
 TEXT_REPEL_WORE_OFF   EQU $d2
 TEXT_SAFARI_GAME_OVER EQU $d3
 
-; PrintNumber
+// PrintNumber
 BIT_MONEY_SIGN     EQU 5
 BIT_LEFT_ALIGN     EQU 6
 BIT_LEADING_ZEROES EQU 7

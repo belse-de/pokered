@@ -121,19 +121,19 @@ PrintSendOutMonMessage:
 	rr b
 	ld a, b
 	ld b, 4
-	ld [H_DIVISOR], a ; enemy mon max HP divided by 4
+	ld [H_DIVISOR], a // enemy mon max HP divided by 4
 	call Divide
-	ld a, [H_QUOTIENT + 3] ; a = (enemy mon current HP * 25) / (enemy max HP / 4); this approximates the current percentage of max HP
-	ld hl, GoText ; 70% or greater
+	ld a, [H_QUOTIENT + 3] // a = (enemy mon current HP * 25) / (enemy max HP / 4)// this approximates the current percentage of max HP
+	ld hl, GoText // 70% or greater
 	cp 70
 	jr nc, .printText
-	ld hl, DoItText ; 40% - 69%
+	ld hl, DoItText // 40% - 69%
 	cp 40
 	jr nc, .printText
-	ld hl, GetmText ; 10% - 39%
+	ld hl, GetmText // 10% - 39%
 	cp 10
 	jr nc, .printText
-	ld hl, EnemysWeakText ; 0% - 9%
+	ld hl, EnemysWeakText // 0% - 9%
 .printText
 	jp PrintText
 
@@ -201,22 +201,22 @@ PlayerMon2Text:
 	call Divide
 	pop bc
 	pop de
-	ld a, [H_QUOTIENT + 3] ; a = ((LastSwitchInEnemyMonHP - CurrentEnemyMonHP) / 25) / (EnemyMonMaxHP / 4)
-; Assuming that the enemy mon hasn't gained HP since the last switch in,
-; a approximates the percentage that the enemy mon's total HP has decreased
-; since the last switch in.
-; If the enemy mon has gained HP, then a is garbage due to wrap-around and
-; can fall in any of the ranges below.
-	ld hl, EnoughText ; HP stayed the same
+	ld a, [H_QUOTIENT + 3] // a = ((LastSwitchInEnemyMonHP - CurrentEnemyMonHP) / 25) / (EnemyMonMaxHP / 4)
+// Assuming that the enemy mon hasn't gained HP since the last switch in,
+// a approximates the percentage that the enemy mon's total HP has decreased
+// since the last switch in.
+// If the enemy mon has gained HP, then a is garbage due to wrap-around and
+// can fall in any of the ranges below.
+	ld hl, EnoughText // HP stayed the same
 	and a
 	ret z
-	ld hl, ComeBackText ; HP went down 1% - 29%
+	ld hl, ComeBackText // HP went down 1% - 29%
 	cp 30
 	ret c
-	ld hl, OKExclamationText ; HP went down 30% - 69%
+	ld hl, OKExclamationText // HP went down 30% - 69%
 	cp 70
 	ret c
-	ld hl, GoodText ; HP went down 70% or more
+	ld hl, GoodText // HP went down 70% or more
 	ret
 
 EnoughText:

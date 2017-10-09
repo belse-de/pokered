@@ -29,7 +29,7 @@ HallOfFamePC:
 	ld c, 128
 	call DelayFrames
 	xor a
-	ld [wUnusedCD3D], a ; not read
+	ld [wUnusedCD3D], a // not read
 	ld [wNumCreditsMonsDisplayed], a
 	jp Credits
 
@@ -51,13 +51,13 @@ DisplayCreditsMon:
 	call SaveScreenTilesToBuffer1
 	call FillMiddleOfScreenWithWhite
 
-	; display the next monster from CreditsMons
+	// display the next monster from CreditsMons
 	ld hl,wNumCreditsMonsDisplayed
-	ld c,[hl] ; how many monsters have we displayed so far?
+	ld c,[hl] // how many monsters have we displayed so far?
 	inc [hl]
 	ld b,0
 	ld hl,CreditsMons
-	add hl,bc ; go that far in the list of monsters and get the next one
+	add hl,bc // go that far in the list of monsters and get the next one
 	ld a,[hl]
 	ld [wcf91],a
 	ld [wd0b5],a
@@ -76,19 +76,19 @@ DisplayCreditsMon:
 	ld hl,vBGMap1
 	call CreditsCopyTileMapToVRAM
 	call FillMiddleOfScreenWithWhite
-	ld a,%11111100 ; make the mon a black silhouette
+	ld a,%11111100 // make the mon a black silhouette
 	ld [rBGP],a
 
-; scroll the mon left by one tile 7 times
+// scroll the mon left by one tile 7 times
 	ld bc,7
 .scrollLoop1
 	call ScrollCreditsMonLeft
 	dec c
 	jr nz,.scrollLoop1
 
-; scroll the mon left by one tile 20 times
-; This time, we have to move the window left too in order to hide the text that
-; is wrapping around to the right side of the screen.
+// scroll the mon left by one tile 20 times
+// This time, we have to move the window left too in order to hide the text that
+// is wrapping around to the right side of the screen.
 	ld c,20
 .scrollLoop2
 	call ScrollCreditsMonLeft
@@ -104,7 +104,7 @@ DisplayCreditsMon:
 	ld [rBGP],a
 	ret
 
-INCLUDE "data/credit_mons.asm"
+#include "data/credit_mons.asm"
 
 ScrollCreditsMonLeft:
 	ld h, b
@@ -146,7 +146,7 @@ CreditsCopyTileMapToVRAM:
 	jp Delay3
 
 ZeroMemory:
-; zero bc bytes at hl
+// zero bc bytes at hl
 	ld [hl], 0
 	inc hl
 	inc hl
@@ -257,13 +257,13 @@ Credits:
 	jp FadeInCreditsText
 
 TheEndTextString:
-; "T H E  E N D"
+// "T H E  E N D"
 	db $60," ",$62," ",$64,"  ",$64," ",$66," ",$68,"@"
 	db $61," ",$63," ",$65,"  ",$65," ",$67," ",$69,"@"
 
-INCLUDE "data/credits_order.asm"
+#include "data/credits_order.asm"
 
-INCLUDE "text/credits_text.asm"
+#include "text/credits_text.asm"
 
 TheEndGfx:
 	INCBIN "gfx/theend.interleave.2bpp"

@@ -46,7 +46,7 @@ EvolveMon:
 	call PlayMusic
 	ld c, 80
 	call DelayFrames
-	ld c, 1 ; set PAL_BLACK instead of mon palette
+	ld c, 1 // set PAL_BLACK instead of mon palette
 	call EvolutionSetWholeScreenPalette
 	lb bc, $1, $10
 .animLoop
@@ -63,7 +63,7 @@ EvolveMon:
 	ld [wEvoCancelled], a
 	ld a, $31
 	ld [wEvoMonTileOffset], a
-	call Evolution_ChangeMonPic ; show the new species pic
+	call Evolution_ChangeMonPic // show the new species pic
 	ld a, [wEvoNewSpecies]
 .done
 	ld [wWholeScreenPaletteMonSpecies], a
@@ -103,7 +103,7 @@ Evolution_LoadPic:
 	jp LoadFlippedFrontSpriteByMonIndex
 
 Evolution_BackAndForthAnim:
-; show the mon change back and forth between the new and old species b times
+// show the mon change back and forth between the new and old species b times
 	ld a, $31
 	ld [wEvoMonTileOffset], a
 	call Evolution_ChangeMonPic

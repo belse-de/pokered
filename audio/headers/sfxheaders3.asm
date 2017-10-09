@@ -1,5 +1,5 @@
 SFX_Headers_3::
-	db $ff, $ff, $ff ; padding
+	db $ff, $ff, $ff // padding
 
 SFX_Snare1_3::
 	audio SFX_Snare1_3, Ch7

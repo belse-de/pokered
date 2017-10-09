@@ -12,7 +12,7 @@ TransformEffect_:
 	ld [wPlayerMoveListIndex], a
 	ld a, [wPlayerBattleStatus1]
 .hitTest
-	bit Invulnerable, a ; is mon invulnerable to typical attacks? (fly/dig)
+	bit Invulnerable, a // is mon invulnerable to typical attacks? (fly/dig)
 	jp nz, .failed
 	push hl
 	push de
@@ -23,7 +23,7 @@ TransformEffect_:
 	jr z, .transformEffect
 	ld hl, wEnemyBattleStatus2
 .transformEffect
-; animation(s) played are different if target has Substitute up
+// animation(s) played are different if target has Substitute up
 	bit HasSubstituteUp, [hl]
 	push af
 	ld hl, HideSubstituteShowMonAnim
@@ -44,16 +44,16 @@ TransformEffect_:
 	call nz, Bankswitch
 	pop bc
 	ld a, [bc]
-	set Transformed, a ; mon is now Transformed
+	set Transformed, a // mon is now Transformed
 	ld [bc], a
 	pop de
 	pop hl
 	push hl
-; transform user into opposing Pokemon
-; species
+// transform user into opposing Pokemon
+// species
 	ld a, [hl]
 	ld [de], a
-; type 1, type 2, catch rate, and moves
+// type 1, type 2, catch rate, and moves
 	ld bc, $5
 	add hl, bc
 	inc de
@@ -67,7 +67,7 @@ TransformEffect_:
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .next
-; save enemy mon DVs at wTransformedEnemyMonOriginalDVs
+// save enemy mon DVs at wTransformedEnemyMonOriginalDVs
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs], a
 	inc de
@@ -75,14 +75,14 @@ TransformEffect_:
 	ld [wTransformedEnemyMonOriginalDVs + 1], a
 	dec de
 .next
-; DVs
+// DVs
 	ld a, [hli]
 	ld [de], a
 	inc de
 	ld a, [hli]
 	ld [de], a
 	inc de
-; Attack, Defense, Speed, and Special stats
+// Attack, Defense, Speed, and Special stats
 	inc hl
 	inc hl
 	inc hl
@@ -92,10 +92,10 @@ TransformEffect_:
 	ld bc, $8
 	call CopyData
 	ld bc, wBattleMonMoves - wBattleMonPP
-	add hl, bc ; ld hl, wBattleMonMoves
+	add hl, bc // ld hl, wBattleMonMoves
 	ld b, NUM_MOVES
 .copyPPLoop
-; 5 PP for all moves
+// 5 PP for all moves
 	ld a, [hli]
 	and a
 	jr z, .lessThanFourMoves
@@ -106,24 +106,24 @@ TransformEffect_:
 	jr nz, .copyPPLoop
 	jr .copyStats
 .lessThanFourMoves
-; 0 PP for blank moves
+// 0 PP for blank moves
 	xor a
 	ld [de], a
 	inc de
 	dec b
 	jr nz, .lessThanFourMoves
 .copyStats
-; original (unmodified) stats and stat mods
+// original (unmodified) stats and stat mods
 	pop hl
 	ld a, [hl]
 	ld [wd11e], a
 	call GetMonName
 	ld hl, wEnemyMonUnmodifiedAttack
 	ld de, wPlayerMonUnmodifiedAttack
-	call .copyBasedOnTurn ; original (unmodified) stats
+	call .copyBasedOnTurn // original (unmodified) stats
 	ld hl, wEnemyMonStatMods
 	ld de, wPlayerMonStatMods
-	call .copyBasedOnTurn ; stat mods
+	call .copyBasedOnTurn // stat mods
 	ld hl, TransformedText
 	jp PrintText
 

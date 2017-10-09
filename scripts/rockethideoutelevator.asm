@@ -41,16 +41,16 @@ RocketHideoutElevatorScript_45741:
 	ret
 
 RocketHideoutElavatorFloors:
-	db $03 ; num elements in list
+	db $03 // num elements in list
 	db FLOOR_B1F
 	db FLOOR_B2F
 	db FLOOR_B4F
-	db $FF ; terminator
+	db $FF // terminator
 
 RocketHideoutElevatorWarpMaps:
-; first byte is warp number
-; second byte is map number
-; These specify where the player goes after getting out of the elevator.
+// first byte is warp number
+// second byte is map number
+// These specify where the player goes after getting out of the elevator.
 	db $04, ROCKET_HIDEOUT_1
 	db $04, ROCKET_HIDEOUT_2
 	db $02, ROCKET_HIDEOUT_4

@@ -15,7 +15,7 @@ RecoilEffect_:
 	srl b
 	rr c
 	ld a, d
-	cp STRUGGLE ; struggle deals 50% recoil damage
+	cp STRUGGLE // struggle deals 50% recoil damage
 	jr z, .gotRecoilDamage
 	srl b
 	rr c
@@ -23,9 +23,9 @@ RecoilEffect_:
 	ld a, b
 	or c
 	jr nz, .updateHP
-	inc c ; minimum recoil damage is 1
+	inc c // minimum recoil damage is 1
 .updateHP
-; subtract HP from user due to the recoil damage
+// subtract HP from user due to the recoil damage
 	ld a, [hli]
 	ld [wHPBarMaxHP+1], a
 	ld a, [hl]
@@ -45,7 +45,7 @@ RecoilEffect_:
 	ld [hl], a
 	ld [wHPBarNewHP+1], a
 	jr nc, .getHPBarCoords
-; if recoil damage is higher than the Pokemon's HP, set its HP to 0
+// if recoil damage is higher than the Pokemon's HP, set its HP to 0
 	xor a
 	ld [hli], a
 	ld [hl], a

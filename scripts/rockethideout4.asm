@@ -86,30 +86,30 @@ RocketHideout4TextPointers:
 
 RocketHideout4TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($0 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0
-	dw RocketHideout4BattleText2 ; TextBeforeBattle
-	dw RocketHideout4AfterBattleText2 ; TextAfterBattle
-	dw RocketHideout4EndBattleText2 ; TextEndBattle
-	dw RocketHideout4EndBattleText2 ; TextEndBattle
+	dw RocketHideout4BattleText2 // TextBeforeBattle
+	dw RocketHideout4AfterBattleText2 // TextAfterBattle
+	dw RocketHideout4EndBattleText2 // TextEndBattle
+	dw RocketHideout4EndBattleText2 // TextEndBattle
 
 RocketHideout4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1
-	db ($0 << 4) ; trainer's view range
+	db ($0 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1
-	dw RocketHideout4BattleText3 ; TextBeforeBattle
-	dw RocketHideout4AfterBattleText3 ; TextAfterBattle
-	dw RocketHideout4EndBattleText3 ; TextEndBattle
-	dw RocketHideout4EndBattleText3 ; TextEndBattle
+	dw RocketHideout4BattleText3 // TextBeforeBattle
+	dw RocketHideout4AfterBattleText3 // TextAfterBattle
+	dw RocketHideout4EndBattleText3 // TextEndBattle
+	dw RocketHideout4EndBattleText3 // TextEndBattle
 
 RocketHideout4TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2
-	db ($1 << 4) ; trainer's view range
+	db ($1 << 4) // trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2
-	dw RocketHideout4BattleText4 ; TextBeforeBattle
-	dw RocketHideout4AfterBattleText4 ; TextAfterBattle
-	dw RocketHideout4EndBattleText4 ; TextEndBattle
-	dw RocketHideout4EndBattleText4 ; TextEndBattle
+	dw RocketHideout4BattleText4 // TextBeforeBattle
+	dw RocketHideout4AfterBattleText4 // TextAfterBattle
+	dw RocketHideout4EndBattleText4 // TextEndBattle
+	dw RocketHideout4EndBattleText4 // TextEndBattle
 
 	db $ff
 
