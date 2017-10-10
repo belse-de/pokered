@@ -1,11 +1,12 @@
-SoftReset::
-	call StopAllSounds
-	call GBPalWhiteOut
-	ld c, 32
-	call DelayFrames
+void SoftReset(){
+	StopAllSounds();
+	GBPalWhiteOut();
+	DelayFrames(32);
 	// fallthrough
+	Init();
+}
 
-Init::
+void Init(){
 //  Program init.
 
 const uint8_t rLCDC_DEFAULT = 0b11100011;
@@ -18,7 +19,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 // * OBJ display enabled
 // * BG display enabled
 
-	di
+	disableInterrupt();
 
 	a = 0;
 	*rIF = 0;
@@ -85,7 +86,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	*hSoftReset = 16;
 	call StopAllSounds
 
-	ei
+	enableInterrupt();
 
 	predef LoadSGB
 
@@ -101,23 +102,24 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 
 	predef PlayIntro
 
-	call DisableLCD
-	call ClearVram
-	call GBPalNormal
-	call ClearSprites
-	ld a, rLCDC_DEFAULT
-	ld [rLCDC], a
+	DisableLCD();
+	ClearVram();
+	GBPalNormal();
+	ClearSprites();
+	*rLCDC = rLCDC_DEFAULT;
 
 	jp SetDefaultNamesBeforeTitlescreen
+}
 
-ClearVram:
+void ClearVram(){
 	ld hl, $8000
 	ld bc, $2000
 	xor a
 	jp FillMemory
+}
 
 
-StopAllSounds::
+void StopAllSounds(){
 	ld a, BANK(Audio1_UpdateMusic)
 	ld [wAudioROMBank], a
 	ld [wAudioSavedROMBank], a
@@ -127,3 +129,4 @@ StopAllSounds::
 	ld [wLastMusicSoundID], a
 	dec a
 	jp PlaySound
+}
