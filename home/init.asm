@@ -50,27 +50,25 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	or c
 	jr nz, .loop
 
-	call ClearVram
+	ClearVram()
 
 	ld hl, $ff80
 	ld bc, $ffff - $ff80
 	call FillMemory
 
-	call ClearSprites
+	ClearSprites()
 
 	ld a, Bank(WriteDMACodeToHRAM)
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 	call WriteDMACodeToHRAM
 
-	xor a
-	ld [hTilesetType], a
-	ld [rSTAT], a
-	ld [hSCX], a
-	ld [hSCY], a
-	ld [rIF], a
-	ld a, 1 << VBLANK + 1 << TIMER + 1 << SERIAL
-	ld [rIE], a
+	*hTilesetType = 0;
+	*rSTAT = 0;
+	*hSCX = 0;
+	*hSCY = 0;
+	*rIF = 0;
+	*rIE = 1 << VBLANK + 1 << TIMER + 1 << SERIAL
 
 	ld a, 144 // move the window off-screen
 	ld [hWY], a
@@ -78,8 +76,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	ld a, 7
 	ld [rWX], a
 
-	ld a, CONNECTION_NOT_ESTABLISHED
-	ld [hSerialConnectionStatus], a
+	*hSerialConnectionStatus = CONNECTION_NOT_ESTABLISHED
 
 	ld h, vBGMap0 / $100
 	call ClearBgMap
