@@ -302,7 +302,7 @@ StatusScreen2:
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld bc, NUM_MOVES + 1
 	ld hl, wMoves
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld hl, wLoadedMonMoves
 	ld de, wMoves
 	ld bc, NUM_MOVES
@@ -469,7 +469,7 @@ StatusScreenExpText:
 StatusScreen_ClearName:
 	ld bc, 10
 	ld a, " "
-	jp FillMemory
+	FillMemory(hl, bc, a);
 
 StatusScreen_PrintPP:
 // print PP or -- c times, going down two rows each time

@@ -55,7 +55,7 @@ VermilionDock_1db9b:
 	coord hl, 0, 10
 	ld bc, SCREEN_WIDTH * 6
 	ld a, $14 // water tile
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld a, 1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call Delay3
@@ -183,7 +183,7 @@ VermilionDock_EraseSSAnne:
 	ld hl, wVermilionDockTileMapBuffer
 	ld bc, (5 * BG_MAP_WIDTH) + SCREEN_WIDTH
 	ld a, $14 // water tile
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld hl, vBGMap0 + 10 * BG_MAP_WIDTH
 	ld de, wVermilionDockTileMapBuffer
 	ld bc, (6 * BG_MAP_WIDTH) / 16

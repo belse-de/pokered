@@ -37,7 +37,7 @@ BattleTransition:
 	push bc
 	ld bc, $10
 	xor a
-	call FillMemory
+	FillMemory(hl, bc, a);
 	pop bc
 	pop hl
 .skip2

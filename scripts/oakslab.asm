@@ -527,7 +527,7 @@ OaksLabScript15:
 	ld c, a
 	ld hl, wNPCMovementDirections2
 	ld a, NPC_MOVEMENT_UP
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld [hl], $ff
 	ld a, $1
 	ld [H_SPRITEINDEX], a
@@ -609,7 +609,7 @@ OaksLabScript16:
 	ld c, a
 	ld hl, wNPCMovementDirections2
 	xor a // NPC_MOVEMENT_DOWN
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld [hl], $ff
 	ld a, $ff
 	ld [wNewSoundID], a

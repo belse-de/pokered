@@ -13,7 +13,7 @@ HallOfFamePC:
 	ld hl, vChars2 + $7e0
 	ld bc, $10
 	ld a, $ff
-	call FillMemory
+	FillMemory(hl, bc, a);
 	coord hl, 0, 0
 	call FillFourRowsWithBlack
 	coord hl, 0, 14
@@ -159,13 +159,13 @@ ZeroMemory:
 FillFourRowsWithBlack:
 	ld bc, SCREEN_WIDTH * 4
 	ld a, $7e
-	jp FillMemory
+	FillMemory(hl, bc, a);
 
 FillMiddleOfScreenWithWhite:
 	coord hl, 0, 4
 	ld bc, SCREEN_WIDTH * 10
 	ld a, " "
-	jp FillMemory
+	FillMemory(hl, bc, a);
 
 Credits:
 	ld de, CreditsOrder

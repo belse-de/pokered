@@ -71,7 +71,7 @@ InitializeMissableObjectsFlags:
 	ld hl, wMissableObjectFlags
 	ld bc, wMissableObjectFlagsEnd - wMissableObjectFlags
 	xor a
-	call FillMemory // clear missable objects flags
+	FillMemory(hl, bc, a); // clear missable objects flags
 	ld hl, MapHS00
 	xor a
 	ld [wMissableObjectCounter], a

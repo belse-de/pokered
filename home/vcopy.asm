@@ -18,7 +18,7 @@ GetRowColAddressBgMap::
 
 // clears a VRAM background map with blank space tiles
 // INPUT: h - high byte of background tile map address in VRAM
-ClearBgMap::
+void ClearBgMap(uint8_t h){
 	ld a," "
 	jr .next
 	ld a,l
@@ -32,6 +32,7 @@ ClearBgMap::
 	dec d
 	jr nz,.loop
 	ret
+}
 
 // This function redraws a BG row of height 2 or a BG column of width 2.
 // One of its main uses is redrawing the row or column that will be exposed upon

@@ -9,14 +9,14 @@ AnimateHallOfFame:
 	ld hl,vBGMap0
 	ld bc, $800
 	ld a, " "
-	call FillMemory
+	FillMemory(hl, bc, a);
 	EnableLCD()
 	ld hl, rLCDC
 	set 3, [hl]
 	xor a
 	ld hl, wHallOfFame
 	ld bc, HOF_TEAM
-	call FillMemory
+	FillMemory(hl, bc, a);
 	xor a
 	ld [wUpdateSpritesEnabled], a
 	ld [hTilesetType], a

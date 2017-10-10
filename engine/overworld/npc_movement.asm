@@ -63,7 +63,7 @@ PalletMovementScript_OakMoveLeft:
 	ld c, a
 	ld hl, wNPCMovementDirections2
 	ld a, NPC_MOVEMENT_LEFT
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld [hl], $ff
 	ld a, [wSpriteIndex]
 	ld [H_SPRITEINDEX], a

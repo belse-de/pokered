@@ -599,7 +599,7 @@ TradeCenter_DrawCancelBox:
 	coord hl, 11, 15
 	ld a, $7e
 	ld bc, 2 * SCREEN_WIDTH + 9
-	call FillMemory
+	FillMemory(hl, bc, a);
 	coord hl, 0, 15
 	ld b, 1
 	ld c, 9

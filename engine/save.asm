@@ -705,4 +705,4 @@ PadSRAM_FF:
 	ld hl, $a000
 	ld bc, $2000
 	ld a, $ff
-	jp FillMemory
+	FillMemory(hl, bc, a);

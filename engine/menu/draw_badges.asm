@@ -15,7 +15,7 @@ DrawBadges:
 	ld hl, wTempObtainedBadgesBooleans
 	ld bc, 8
 	xor a
-	call FillMemory
+	FillMemory(hl, bc, a);
 
 // Alter these based on owned badges.
 	ld de, wTempObtainedBadgesBooleans

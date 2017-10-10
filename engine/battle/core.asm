@@ -2414,7 +2414,7 @@ PartyMenuOrRockOrRun:
 	coord hl, 11, 11
 	ld bc, 6 * SCREEN_WIDTH + 9
 	ld a, " "
-	call FillMemory
+	FillMemory(hl, bc, a);
 	xor a // NORMAL_PARTY_MENU
 	ld [wPartyMenuTypeOrMessageID], a
 	call GoBackToPartyMenu

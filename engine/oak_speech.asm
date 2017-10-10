@@ -8,11 +8,11 @@ SetDefaultNames:
 	ld hl, wPlayerName
 	ld bc, wBoxDataEnd - wPlayerName
 	xor a
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld hl, wSpriteStateData1
 	ld bc, $200
 	xor a
-	call FillMemory
+	FillMemory(hl, bc, a);
 	pop af
 	ld [wd732], a
 	pop af

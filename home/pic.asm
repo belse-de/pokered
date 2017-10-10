@@ -23,7 +23,7 @@ _UncompressSpriteData::
 	ld c, (2*SPRITEBUFFERSIZE) % $100
 	ld b, (2*SPRITEBUFFERSIZE) / $100
 	xor a
-	call FillMemory           // clear sprite buffer 1 and 2
+	FillMemory(hl, bc, a);           // clear sprite buffer 1 and 2
 	ld a, $1
 	ld [wSpriteInputBitCounter], a
 	ld a, $3

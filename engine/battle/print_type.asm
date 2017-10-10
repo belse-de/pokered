@@ -29,7 +29,7 @@ EraseType2Text:
 	ld bc, $13
 	add hl, bc
 	ld bc, $6
-	jp FillMemory
+	FillMemory(hl, bc, a);
 
 PrintMoveType:
 	call GetPredefRegisters

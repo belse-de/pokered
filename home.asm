@@ -937,7 +937,7 @@ ResetPlayerSpriteData::
 ResetPlayerSpriteData_ClearSpriteData::
 	ld bc, $10
 	xor a
-	jp FillMemory
+	FillMemory(hl, bc, a);
 
 FadeOutAudio::
 	ld a, [wAudioFadeOutControl]
@@ -2776,7 +2776,7 @@ DecodeRLEList::
 	add c
 	ld [wRLEByteCount], a     // update total number of written bytes
 	ld a, [hRLEByteValue]
-	call FillMemory              // write a c-times to output
+	FillMemory(hl, bc, a);              // write a c-times to output
 	inc de
 	jr .listLoop
 .endOfList
@@ -3075,7 +3075,7 @@ LoadHpBarAndStatusTilePatterns::
 	jp CopyVideoData // if LCD is on, transfer during V-blank
 
 
-FillMemory::
+void FillMemory(uint8_t* hl, uint16_t bc, uint8_t a){
 // Fill bc bytes at hl with a.
 	push de
 	ld d, a
@@ -3088,7 +3088,7 @@ FillMemory::
 	jr nz, .loop
 	pop de
 	ret
-
+}
 
 UncompressSpriteFromDE::
 // Decompress pic at a:de.

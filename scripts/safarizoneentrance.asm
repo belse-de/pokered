@@ -122,7 +122,7 @@ SafariZoneEntranceAutoWalk:
 	ld [wSimulatedJoypadStatesIndex],a
 	ld hl,wSimulatedJoypadStatesEnd
 	pop af
-	call FillMemory
+	FillMemory(hl, bc, a);
 	jp StartSimulatingJoypadStates
 
 SafariZoneEntranceScript_752b4:

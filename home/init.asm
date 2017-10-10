@@ -51,13 +51,13 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	or c
 	jr nz, .loop
 
-	ClearVram()
+	ClearVram();
 
 	ld hl, $ff80
 	ld bc, $ffff - $ff80
-	call FillMemory
+	FillMemory(hl, bc, a);
 
-	ClearSprites()
+	ClearSprites();
 
 	ld a, Bank(WriteDMACodeToHRAM)
 	ld [H_LOADEDROMBANK], a
@@ -72,33 +72,30 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	*rIE = 1 << VBLANK + 1 << TIMER + 1 << SERIAL
 
 	// move the window off-screen
-	*rWY = *hWY = 144
+	*rWY = *hWY = 144;
 	*rWX = 7;
 
 	*hSerialConnectionStatus = CONNECTION_NOT_ESTABLISHED
 
-	ld h, vBGMap0 / $100
-	call ClearBgMap
-	ld h, vBGMap1 / $100
-	call ClearBgMap
+	ClearBgMap(vBGMap0 / 0x100);
+	ClearBgMap(vBGMap1 / 0x100);
 
 	*rLCDC = rLCDC_DEFAULT;
 	*hSoftReset = 16;
-	call StopAllSounds
+	StopAllSounds();
 
 	enableInterrupt();
-
+  
+  // SuperGameBoy Feature 
 	predef LoadSGB
 
 	ld a, BANK(SFX_Shooting_Star)
 	ld [wAudioROMBank], a
 	ld [wAudioSavedROMBank], a
-	ld a, $9c
-	ld [H_AUTOBGTRANSFERDEST + 1], a
-	xor a
-	ld [H_AUTOBGTRANSFERDEST], a
-	dec a
-	ld [wUpdateSpritesEnabled], a
+
+	H_AUTOBGTRANSFERDEST[1] = 0x9C;
+	*H_AUTOBGTRANSFERDEST = 0;
+	*wUpdateSpritesEnabled = 0xFF;
 
 	predef PlayIntro
 
@@ -115,7 +112,7 @@ void ClearVram(){
 	ld hl, $8000
 	ld bc, $2000
 	xor a
-	jp FillMemory
+	FillMemory(hl, bc, a);
 }
 
 

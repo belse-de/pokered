@@ -33,7 +33,7 @@ Route16GateScript0:
 	ld c, a
 	ld a, D_UP
 	ld hl, wSimulatedJoypadStatesEnd
-	call FillMemory
+	FillMemory(hl, bc, a);
 	call StartSimulatingJoypadStates
 	ld a, $1
 	ld [wRoute16GateCurScript], a

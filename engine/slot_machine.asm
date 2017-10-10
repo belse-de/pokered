@@ -32,7 +32,7 @@ PromptUserToPlaySlots:
 	ld [wSlotMachineAllowMatchesCounter], a
 	ld hl, wStoppingWhichSlotMachineWheel
 	ld bc, $0014
-	call FillMemory
+	FillMemory(hl, bc, a);
 	call MainSlotMachineLoop
 	ld hl, wd730
 	res 6, [hl]

@@ -6,8 +6,13 @@ grep --include="*.asm" -rn "INCLUDE" .
 find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/INCLUDE "/#include "/g'
 
 grep --include="*.asm" -rn "call EnableLCD" .
-find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call EnableLCD"/EnableLCD()"/g'
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call EnableLCD/EnableLCD\(\);/g'
 
 grep --include="*.asm" -rn "call DisableLCD" .
-find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call DisableLCD"/DisableLCD()"/g'
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call DisableLCD/DisableLCD\(\);/g'
 
+grep --include="*.asm" -rn "call FillMemory"
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call FillMemory/FillMemory\(hl, bc, a\);/g'
+
+grep --include="*.asm" -rn "jp FillMemory"
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/jp FillMemory/FillMemory\(hl, bc, a\);/g'

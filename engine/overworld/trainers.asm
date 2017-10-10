@@ -141,7 +141,7 @@ TrainerWalkUpToPlayer:
 .writeWalkScript
 	ld hl, wNPCMovementDirections2
 	ld de, wNPCMovementDirections2
-	call FillMemory     // write the necessary steps to reach player
+	FillMemory(hl, bc, a);     // write the necessary steps to reach player
 	ld [hl], $ff        // write end of list sentinel
 	ld a, [wSpriteIndex]
 	ld [H_SPRITEINDEX], a

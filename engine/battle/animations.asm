@@ -1846,7 +1846,7 @@ AnimationMinimizeMon:
 	push hl
 	xor a
 	ld bc, 7 * 7 * $10
-	call FillMemory
+	FillMemory(hl, bc, a);
 	pop hl
 	ld de, $194
 	add hl, de
@@ -1891,7 +1891,7 @@ AnimationSlideMonDownAndHide:
 	ld hl, wTempPic
 	ld bc, $0310
 	xor a
-	call FillMemory
+	FillMemory(hl, bc, a);
 	jp CopyTempPicToMonPic
 
 _AnimationSlideMonOff:
@@ -2051,7 +2051,7 @@ AnimationSubstitute:
 	ld hl, wTempPic
 	xor a
 	ld bc, $0310
-	call FillMemory
+	FillMemory(hl, bc, a);
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .playerTurn

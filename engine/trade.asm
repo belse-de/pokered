@@ -151,7 +151,7 @@ Trade_ClearTileMap:
 	coord hl, 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
-	jp FillMemory
+	FillMemory(hl, bc, a);
 
 LoadTradingGFXAndMonNames:
 	call Trade_ClearTileMap
@@ -169,7 +169,7 @@ LoadTradingGFXAndMonNames:
 	ld hl, vBGMap0
 	ld bc, $800
 	ld a, " "
-	call FillMemory
+	FillMemory(hl, bc, a);
 	call ClearSprites
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
