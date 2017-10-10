@@ -29,11 +29,11 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	*rSC = 0;
 	*rWX = 0;
 	*rWY = 0;
-	ld [rTMA], a
-	ld [rTAC], a
-	ld [rBGP], a
-	ld [rOBP0], a
-	ld [rOBP1], a
+	*rTMA = 0;
+  *rTAC = 0;
+	*rBGP = 0;
+	*rOBP0 = 0;
+	*rOBP1 = 0
 
 	ld a, rLCDC_ENABLE_MASK
 	ld [rLCDC], a
