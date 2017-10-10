@@ -81,10 +81,8 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	ld h, vBGMap1 / $100
 	call ClearBgMap
 
-	ld a, rLCDC_DEFAULT
-	ld [rLCDC], a
-	ld a, 16
-	ld [hSoftReset], a
+	*rLCDC = rLCDC_DEFAULT;
+	*hSoftReset = 16;
 	call StopAllSounds
 
 	ei
