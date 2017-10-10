@@ -25,10 +25,10 @@ rLCDC_DEFAULT EQU %11100011
 	*rIE = 0;
 	*rSCX = 0;
 	*rSCY = 0;
-	ld [rSB], a
-	ld [rSC], a
-	ld [rWX], a
-	ld [rWY], a
+	*rSB = 0;
+	*rSC = 0;
+	*rWX = 0;
+	*rWY = 0;
 	ld [rTMA], a
 	ld [rTAC], a
 	ld [rBGP], a
