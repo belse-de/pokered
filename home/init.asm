@@ -33,13 +33,12 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
   *rTAC = 0;
 	*rBGP = 0;
 	*rOBP0 = 0;
-	*rOBP1 = 0
+	*rOBP1 = 0;
 
-	ld a, rLCDC_ENABLE_MASK
-	ld [rLCDC], a
-	call DisableLCD
+	*rLCDC = rLCDC_ENABLE_MASK;
+	DisableLCD();
 
-	ld sp, wStack
+	sp = wStack;
 
 	ld hl, $c000 // start of WRAM
 	ld bc, $2000 // size of WRAM
