@@ -6,7 +6,7 @@ DisplayDiploma:
 	ld [wUpdateSpritesEnabled], a
 	ld hl, wd730
 	set 6, [hl]
-	call DisableLCD
+	DisableLCD()
 	ld hl, CircleTile
 	ld de, vChars2 + $700
 	ld bc, $0010
@@ -53,7 +53,7 @@ DisplayDiploma:
 	dec c
 	jr nz, .adjustPlayerGfxLoop
 
-	call EnableLCD
+	EnableLCD()
 	callba LoadTrainerInfoTextBoxTiles
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand

@@ -128,7 +128,7 @@ LoadAnimSpriteGfx:
 LoadMonPartySpriteGfxWithLCDDisabled:
 // Load mon party sprite tile patterns into VRAM immediately by disabling the
 // LCD.
-	call DisableLCD
+	DisableLCD()
 	ld hl, MonPartySpritePointers
 	ld a, $1c
 	ld bc, $0

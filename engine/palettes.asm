@@ -511,7 +511,7 @@ SendMltReq1Packet:
 CopyGfxToSuperNintendoVRAM:
 	di
 	push de
-	call DisableLCD
+	DisableLCD()
 	ld a, $e4
 	ld [rBGP], a
 	ld de, vChars1

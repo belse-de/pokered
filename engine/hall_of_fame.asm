@@ -5,12 +5,12 @@ AnimateHallOfFame:
 	call DelayFrames
 	call LoadFontTilePatterns
 	call LoadTextBoxTilePatterns
-	call DisableLCD
+	DisableLCD()
 	ld hl,vBGMap0
 	ld bc, $800
 	ld a, " "
 	call FillMemory
-	call EnableLCD
+	EnableLCD()
 	ld hl, rLCDC
 	set 3, [hl]
 	xor a

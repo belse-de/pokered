@@ -104,7 +104,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	coord hl, 1, 5
 	lb bc, 3, 7
 	call ClearScreenArea
-	call DisableLCD
+	DisableLCD()
 	call LoadFontTilePatterns
 	call LoadHudAndHpBarAndStatusTilePatterns
 	ld hl, vBGMap0
@@ -136,7 +136,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 .noCarry
 	dec b
 	jr nz, .copyRowLoop
-	call EnableLCD
+	EnableLCD()
 	ld a, $90
 	ld [hWY], a
 	ld [rWY], a

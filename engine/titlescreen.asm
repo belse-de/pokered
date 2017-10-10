@@ -33,7 +33,7 @@ DisplayTitleScreen:
 	ld a, $90
 	ld [hWY], a
 	call ClearScreen
-	call DisableLCD
+	DisableLCD()
 	call LoadFontTilePatterns
 	ld hl, NintendoCopyrightLogoGraphics
 	ld de, vTitleLogo2 + $100
@@ -116,7 +116,7 @@ DisplayTitleScreen:
 .next
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
-	call EnableLCD
+	EnableLCD()
 IF DEF(_RED)
 	ld a,CHARMANDER // which Pokemon to show first on the title screen
 ENDC

@@ -155,7 +155,7 @@ Trade_ClearTileMap:
 
 LoadTradingGFXAndMonNames:
 	call Trade_ClearTileMap
-	call DisableLCD
+	DisableLCD()
 	ld hl, TradingAnimationGraphics
 	ld de, vChars2 + $310
 	ld bc, TradingAnimationGraphicsEnd - TradingAnimationGraphics
@@ -182,7 +182,7 @@ LoadTradingGFXAndMonNames:
 	ld a, $f0 // SGB OBP0
 .next
 	ld [rOBP0], a
-	call EnableLCD
+	EnableLCD()
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld a, [wTradedPlayerMonSpecies]

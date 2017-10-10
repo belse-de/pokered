@@ -2324,7 +2324,7 @@ CopyMapConnectionHeader::
 LoadMapData::
 	ld a,[H_LOADEDROMBANK]
 	push af
-	call DisableLCD
+	DisableLCD()
 	ld a,$98
 	ld [wMapViewVRAMPointer + 1],a
 	xor a
@@ -2363,7 +2363,7 @@ LoadMapData::
 	jr nz,.vramCopyLoop
 	ld a,$01
 	ld [wUpdateSpritesEnabled],a
-	call EnableLCD
+	EnableLCD()
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
 	call LoadPlayerSpriteGraphics

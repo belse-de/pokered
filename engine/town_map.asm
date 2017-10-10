@@ -282,7 +282,7 @@ LoadTownMap:
 	ld b, $12
 	ld c, $12
 	call TextBoxBorder
-	call DisableLCD
+	DisableLCD()
 	ld hl, WorldMapTileGraphics
 	ld de, vChars2 + $600
 	ld bc, WorldMapTileGraphicsEnd - WorldMapTileGraphics
@@ -313,7 +313,7 @@ LoadTownMap:
 	inc de
 	jr .nextTile
 .done
-	call EnableLCD
+	EnableLCD()
 	ld b, SET_PAL_TOWN_MAP
 	call RunPaletteCommand
 	call Delay3

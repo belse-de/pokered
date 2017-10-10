@@ -1985,11 +1985,11 @@ ReloadMapData::
 	push af
 	ld a,[wCurMap]
 	call SwitchToMapRomBank
-	call DisableLCD
+	DisableLCD()
 	call LoadTextBoxTilePatterns
 	call LoadCurrentMapView
 	call LoadTilesetTilePatternData
-	call EnableLCD
+	EnableLCD()
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
@@ -2001,9 +2001,9 @@ ReloadTilesetTilePatterns::
 	push af
 	ld a,[wCurMap]
 	call SwitchToMapRomBank
-	call DisableLCD
+	DisableLCD()
 	call LoadTilesetTilePatternData
-	call EnableLCD
+	EnableLCD()
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
@@ -4471,9 +4471,9 @@ ReloadMapSpriteTilePatterns::
 	push hl
 	xor a
 	ld [wSpriteSetID], a
-	call DisableLCD
+	DisableLCD()
 	callba InitMapSprites
-	call EnableLCD
+	EnableLCD()
 	pop hl
 	pop af
 	ld [hl], a

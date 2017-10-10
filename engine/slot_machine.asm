@@ -847,7 +847,7 @@ SlotMachine_HandleInputWhileWheelsSpin:
 	jr .loop
 
 LoadSlotMachineTiles:
-	call DisableLCD
+	DisableLCD()
 	ld hl, SlotMachineTiles2
 	ld de, vChars0
 	ld bc, $1c0
@@ -867,7 +867,7 @@ LoadSlotMachineTiles:
 	coord de, 0, 0
 	ld bc, SlotMachineMapEnd - SlotMachineMap
 	call CopyData
-	call EnableLCD
+	EnableLCD()
 	ld hl, wSlotMachineWheel1Offset
 	ld a, $1c
 	ld [hli], a

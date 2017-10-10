@@ -310,12 +310,12 @@ PlayShootingStar:
 	ld c, 180
 	call DelayFrames
 	call ClearScreen
-	call DisableLCD
+	DisableLCD()
 	xor a
 	ld [wCurOpponent], a
 	call IntroDrawBlackBars
 	call LoadIntroGraphics
-	call EnableLCD
+	EnableLCD()
 	ld hl, rLCDC
 	res 5, [hl]
 	set 3, [hl]

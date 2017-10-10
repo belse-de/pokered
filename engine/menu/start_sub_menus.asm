@@ -525,7 +525,7 @@ DrawTrainerInfo:
 	ld de,RedPicFront
 	lb bc, BANK(RedPicFront), $01
 	predef DisplayPicCenteredOrUpperRight
-	call DisableLCD
+	DisableLCD()
 	coord hl, 0, 2
 	ld a," "
 	call TrainerInfo_DrawVerticalLine
@@ -565,7 +565,7 @@ DrawTrainerInfo:
 	ld hl,TrainerInfoTextBoxTileGraphics + $80  // background tile pattern
 	ld de,vChars1 + $570
 	call TrainerInfo_FarCopyData
-	call EnableLCD
+	EnableLCD()
 	ld hl,wTrainerInfoTextBoxWidthPlus1
 	ld a,18 + 1
 	ld [hli],a

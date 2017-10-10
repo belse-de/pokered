@@ -3,7 +3,7 @@ HallOfFamePC:
 	call ClearScreen
 	ld c, 100
 	call DelayFrames
-	call DisableLCD
+	DisableLCD()
 	ld hl, vFont
 	ld bc, $800 / 2
 	call ZeroMemory
@@ -20,7 +20,7 @@ HallOfFamePC:
 	call FillFourRowsWithBlack
 	ld a, %11000000
 	ld [rBGP], a
-	call EnableLCD
+	EnableLCD()
 	ld a, $ff
 	call PlaySoundWaitForCurrent
 	ld c, BANK(Music_Credits)

@@ -4,3 +4,10 @@ find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/;/\/\/ /g'
 
 grep --include="*.asm" -rn "INCLUDE" .
 find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/INCLUDE "/#include "/g'
+
+grep --include="*.asm" -rn "call EnableLCD" .
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call EnableLCD"/EnableLCD()"/g'
+
+grep --include="*.asm" -rn "call DisableLCD" .
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call DisableLCD"/DisableLCD()"/g'
+
