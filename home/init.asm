@@ -41,8 +41,8 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 
 	sp = wStack;
 
-	ld hl, $c000 // start of WRAM
-	ld bc, $2000 // size of WRAM
+  uint8_t* wramStart = 0xc000; // start of WRAM
+  uint16_t wramSize  = 0x2000; // size of WRAM
 .loop
 	ld [hl], 0
 	inc hl
@@ -53,9 +53,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 
 	ClearVram();
 
-	ld hl, $ff80
-	ld bc, $ffff - $ff80
-	FillMemory(hl, bc, a);
+	FillMemory(0xff80, 0xffff - 0xff80, 0);
 
 	ClearSprites();
 
@@ -109,10 +107,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 }
 
 void ClearVram(){
-	ld hl, $8000
-	ld bc, $2000
-	xor a
-	FillMemory(hl, bc, a);
+	FillMemory(0x8000, 0x2000, 0);
 }
 
 
@@ -120,10 +115,10 @@ void StopAllSounds(){
 	ld a, BANK(Audio1_UpdateMusic)
 	ld [wAudioROMBank], a
 	ld [wAudioSavedROMBank], a
-	xor a
-	ld [wAudioFadeOutControl], a
-	ld [wNewSoundID], a
-	ld [wLastMusicSoundID], a
+
+	*wAudioFadeOutControl = 0;
+	*wNewSoundID = 0;
+	*wLastMusicSoundID = 0;
 	dec a
 	jp PlaySound
 }
