@@ -71,10 +71,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	*rIE = 1 << VBLANK + 1 << TIMER + 1 << SERIAL
 
 	// move the window off-screen
-	ld a, 144
-	ld [hWY], a
-	ld [rWY], a
-	ld a, 7
+	*rWY = *hWY = 144
 	*rWX = 7;
 
 	*hSerialConnectionStatus = CONNECTION_NOT_ESTABLISHED
