@@ -43,13 +43,9 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 
   uint8_t* wramStart = 0xc000; // start of WRAM
   uint16_t wramSize  = 0x2000; // size of WRAM
-.loop
-	ld [hl], 0
-	inc hl
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
+  for(;wramSize>0;wramSize--){
+    *wramStart++ = 0;
+  }
 
 	ClearVram();
 
