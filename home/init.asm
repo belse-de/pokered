@@ -75,7 +75,7 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	ld [hWY], a
 	ld [rWY], a
 	ld a, 7
-	ld [rWX], a
+	*rWX = 7;
 
 	*hSerialConnectionStatus = CONNECTION_NOT_ESTABLISHED
 
