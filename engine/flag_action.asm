@@ -1,5 +1,5 @@
 FlagActionPredef:
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 FlagAction:
 // Perform action b on bit c

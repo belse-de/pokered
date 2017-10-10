@@ -1,5 +1,5 @@
 LoadTilesetHeader:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	push hl
 	ld d, 0
 	ld a, [wCurMapTileset]

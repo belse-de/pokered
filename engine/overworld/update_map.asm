@@ -3,7 +3,7 @@
 // b = Y
 // c = X
 ReplaceTileBlock:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld hl, wOverworldMap
 	ld a, [wCurMapWidth]
 	add $6

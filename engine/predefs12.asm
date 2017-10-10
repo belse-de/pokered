@@ -1,6 +1,6 @@
 // b = new colour for BG colour 0 (usually white) for 4 frames
 ChangeBGPalColor0_4Frames:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, [rBGP]
 	or b
 	ld [rBGP], a
@@ -14,7 +14,7 @@ ChangeBGPalColor0_4Frames:
 PredefShakeScreenVertically:
 // Moves the window down and then back in a sequence of progressively smaller
 // numbers of pixels, starting at b.
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, 1
 	ld [wDisableVBlankWYUpdate], a
 	xor a
@@ -40,7 +40,7 @@ PredefShakeScreenVertically:
 PredefShakeScreenHorizontally:
 // Moves the window right and then back in a sequence of progressively smaller
 // numbers of pixels, starting at b.
-	call GetPredefRegisters
+	GetPredefRegisters();
 	xor a
 .loop
 	ld [$ff97], a

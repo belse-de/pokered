@@ -207,7 +207,7 @@ MovePicLeft:
 	jr .next
 
 DisplayPicCenteredOrUpperRight:
-	call GetPredefRegisters
+	GetPredefRegisters();
 IntroDisplayPicCenteredOrUpperRight:
 // b = bank
 // de = address of compressed pic

@@ -2544,7 +2544,7 @@ CopyPicTiles:
 
 // copy the tiles used when a mon is being sent out of or into a pokeball
 CopyDownscaledMonTiles:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, [wDownscaledMonSize]
 	and a
 	jr nz, .smallerSize
@@ -2914,7 +2914,7 @@ AnimationShakeEnemyHUD:
 // b = tile ID list index
 // c = base tile ID
 CopyTileIDsFromList:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, c
 	ld [hBaseTileID], a
 	ld a, b

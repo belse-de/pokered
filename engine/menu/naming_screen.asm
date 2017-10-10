@@ -1,6 +1,6 @@
 AskName:
 	call SaveScreenTilesToBuffer1
-	call GetPredefRegisters
+	GetPredefRegisters();
 	push hl
 	ld a, [wIsInBattle]
 	dec a

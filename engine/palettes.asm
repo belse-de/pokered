@@ -1,5 +1,5 @@
 _RunPaletteCommand:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, b
 	cp $ff
 	jr nz, .next

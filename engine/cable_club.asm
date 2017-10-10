@@ -927,7 +927,7 @@ EmptyFunc3:
 	ret
 
 Diploma_TextBoxBorder:
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 // b = height
 // c = width

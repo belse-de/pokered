@@ -2,7 +2,7 @@ DivideBCDPredef::
 DivideBCDPredef2::
 DivideBCDPredef3::
 DivideBCDPredef4::
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 DivideBCD::
 	xor a
@@ -160,7 +160,7 @@ DivideBCD_getNextDigit:
 
 
 AddBCDPredef::
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 AddBCD::
 	and a
@@ -187,7 +187,7 @@ AddBCD::
 
 
 SubBCDPredef::
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 SubBCD::
 	and a

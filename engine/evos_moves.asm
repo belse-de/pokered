@@ -378,7 +378,7 @@ LearnMoveFromLevelUp:
 // writes the moves a mon has at level [wCurEnemyLVL] to [de]
 // move slots are being filled up sequentially and shifted if all slots are full
 WriteMonMoves:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	push hl
 	push de
 	push bc

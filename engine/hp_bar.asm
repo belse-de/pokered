@@ -1,5 +1,5 @@
 HPBarLength:
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 // calculates bc * 48 / de, the number of pixels the HP bar has
 // the result is always at least 1
@@ -73,7 +73,7 @@ UpdateHPBar2:
 	ld a, $1
 .HPdecrease
 	ld [wHPBarDelta], a
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, [wHPBarNewHP]
 	ld e, a
 	ld a, [wHPBarNewHP+1]

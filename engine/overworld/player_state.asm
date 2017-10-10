@@ -272,7 +272,7 @@ SafariBallText:
 	db "BALL×× @"
 
 GetTileAndCoordsInFrontOfPlayer:
-	call GetPredefRegisters
+	GetPredefRegisters();
 
 _GetTileAndCoordsInFrontOfPlayer:
 	ld a, [wYCoord]

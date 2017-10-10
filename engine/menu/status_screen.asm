@@ -1,12 +1,12 @@
 DrawHP:
 // Draws the HP bar in the stats screen
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, $1
 	jr DrawHP_
 
 DrawHP2:
 // Draws the HP bar in the party screen
-	call GetPredefRegisters
+	GetPredefRegisters();
 	ld a, $2
 
 DrawHP_:

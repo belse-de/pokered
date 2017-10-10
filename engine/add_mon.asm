@@ -246,7 +246,7 @@ _AddPartyMon:
 	ret
 
 LoadMovePPs:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	// fallthrough
 AddPartyMon_WriteMovePP:
 	ld b, NUM_MOVES

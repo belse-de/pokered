@@ -61,7 +61,7 @@ void Start(){
 #include "data/map_header_pointers.asm"
 #include "home/overworld.asm"
 
-void CheckForUserInterruption()
+void CheckForUserInterruption(){
 // Return carry if Up+Select+B, Start or A are pressed in c frames.
 // Used only in the intro and title screen.
 	call DelayFrame
@@ -87,6 +87,7 @@ void CheckForUserInterruption()
 .input
 	scf
 	ret
+}
 
 // function to load position data for destination warp when switching maps
 // INPUT:

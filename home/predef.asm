@@ -1,7 +1,7 @@
 Predef::
 // Call predefined function a.
 // To preserve other registers, have the
-// destination call GetPredefRegisters.
+// destination GetPredefRegisters();.
 
 	// Save the predef id for GetPredefPointer.
 	ld [wPredefID], a
@@ -32,19 +32,13 @@ Predef::
 	ld [MBC1RomBank], a
 	ret
 
-GetPredefRegisters::
+void GetPredefRegisters(){
 // Restore the contents of register pairs
 // when GetPredefPointer was called.
-	ld a, [wPredefRegisters + 0]
-	ld h, a
-	ld a, [wPredefRegisters + 1]
-	ld l, a
-	ld a, [wPredefRegisters + 2]
-	ld d, a
-	ld a, [wPredefRegisters + 3]
-	ld e, a
-	ld a, [wPredefRegisters + 4]
-	ld b, a
-	ld a, [wPredefRegisters + 5]
-	ld c, a
-	ret
+	h = wPredefRegisters[0];
+	l = wPredefRegisters[1];
+	d = wPredefRegisters[2];
+	e = wPredefRegisters[3];
+	b = wPredefRegisters[4];
+	c = wPredefRegisters[5];
+}

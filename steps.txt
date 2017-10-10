@@ -24,3 +24,7 @@ find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call \bPlaySound\b/Pla
 
 grep --include="*.asm" -rn "jp \bPlaySound\b"
 find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/jp \bPlaySound\b/PlaySound\(a\);/g'
+
+GetPredefRegisters
+grep --include="*.asm" -rn "call \bGetPredefRegisters\b"
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call \bGetPredefRegisters\b/GetPredefRegisters\(\);/g'

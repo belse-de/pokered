@@ -1,7 +1,7 @@
 // [wd0b5] = pokemon ID
 // hl = dest addr
 PrintMonType:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	push hl
 	call GetMonHeader
 	pop hl
@@ -32,7 +32,7 @@ EraseType2Text:
 	FillMemory(hl, bc, a);
 
 PrintMoveType:
-	call GetPredefRegisters
+	GetPredefRegisters();
 	push hl
 	ld a, [wPlayerMoveType]
 // fall through
