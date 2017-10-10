@@ -70,7 +70,8 @@ const uint8_t rLCDC_DEFAULT = 0b11100011;
 	*rIF = 0;
 	*rIE = 1 << VBLANK + 1 << TIMER + 1 << SERIAL
 
-	ld a, 144 // move the window off-screen
+	// move the window off-screen
+	ld a, 144
 	ld [hWY], a
 	ld [rWY], a
 	ld a, 7
