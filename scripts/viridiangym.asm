@@ -42,7 +42,7 @@ ViridianGymScript0:
 	ld hl, wd736
 	set 7, [hl]
 	ld a, SFX_ARROW_TILES
-	call PlaySound
+	PlaySound(a);
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld a, $4

@@ -696,7 +696,7 @@ PlayMapChangeSound::
 .didNotGoThroughDoor
 	ld a,SFX_GO_OUTSIDE
 .playSound
-	call PlaySound
+	PlaySound(a);
 	ld a,[wMapPalOffset]
 	and a
 	ret nz
@@ -774,7 +774,7 @@ StopMusic::
 	ld [wAudioFadeOutControl], a
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 .wait
 	ld a, [wAudioFadeOutControl]
 	and a
@@ -1248,7 +1248,7 @@ CollisionCheckOnLand::
 	cp SFX_COLLISION // check if collision sound is already playing
 	jr z,.setCarry
 	ld a,SFX_COLLISION
-	call PlaySound // play collision sound (if it's not already playing)
+	PlaySound(a); // play collision sound (if it's not already playing)
 .setCarry
 	scf
 	ret
@@ -1952,7 +1952,7 @@ CollisionCheckOnWater::
 	cp SFX_COLLISION // check if collision sound is already playing
 	jr z,.setCarry
 	ld a,SFX_COLLISION
-	call PlaySound // play collision sound (if it's not already playing)
+	PlaySound(a); // play collision sound (if it's not already playing)
 .setCarry
 	scf
 	jr .done

@@ -1310,7 +1310,7 @@ ItemUseMedicine:
 	ld bc,10
 	call CopyData // copy the stat's name to wcf4b
 	ld a,SFX_HEAL_AILMENT
-	call PlaySound
+	PlaySound(a);
 	ld hl,VitaminStatRoseText
 	call PrintText
 	jp RemoveUsedItem
@@ -1845,7 +1845,7 @@ PlayedFluteHadEffectText:
 	jr nz,.done
 // play out-of-battle pokeflute music
 	ld a,$ff
-	call PlaySound // turn off music
+	PlaySound(a); // turn off music
 	ld a, SFX_POKEFLUTE
 	ld c, BANK(SFX_Pokeflute)
 	call PlayMusic
@@ -1951,7 +1951,7 @@ FishingInit:
 	ld hl,ItemUseText00
 	call PrintText
 	ld a,SFX_HEAL_AILMENT
-	call PlaySound
+	PlaySound(a);
 	ld c,80
 	call DelayFrames
 	and a
@@ -2078,7 +2078,7 @@ ItemUsePPRestore:
 	call CopyData // copy party data to in-battle data
 .skipUpdatingInBattleData
 	ld a,SFX_HEAL_AILMENT
-	call PlaySound
+	PlaySound(a);
 	ld hl,PPRestoredText
 	call PrintText
 	jr .done
@@ -2313,7 +2313,7 @@ PrintItemUseTextAndRemoveItem:
 	ld hl,ItemUseText00
 	call PrintText
 	ld a,SFX_HEAL_AILMENT
-	call PlaySound
+	PlaySound(a);
 	call WaitForTextScrollButtonPress // wait for button press
 
 RemoveUsedItem:

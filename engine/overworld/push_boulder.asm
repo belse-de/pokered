@@ -65,7 +65,7 @@ TryPushingBoulder:
 .done
 	call MoveSprite
 	ld a, SFX_PUSH_BOULDER
-	call PlaySound
+	PlaySound(a);
 	ld hl, wFlags_0xcd60
 	set 1, [hl]
 	ret
@@ -96,7 +96,7 @@ DoBoulderDustAnimation:
 	call GetSpriteMovementByte2Pointer
 	ld [hl], $10
 	ld a, SFX_CUT
-	jp PlaySound
+	PlaySound(a);
 
 ResetBoulderPushFlags:
 	ld hl, wFlags_0xcd60

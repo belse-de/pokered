@@ -33,7 +33,7 @@ SetDefaultNames:
 
 OakSpeech:
 	ld a,$FF
-	call PlaySound // stop music
+	PlaySound(a); // stop music
 	ld a, BANK(Music_Routes2)
 	ld c,a
 	ld a, MUSIC_ROUTES2
@@ -107,7 +107,7 @@ OakSpeech:
 	ld a,[H_LOADEDROMBANK]
 	push af
 	ld a,SFX_SHRINK
-	call PlaySound
+	PlaySound(a);
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
@@ -135,7 +135,7 @@ OakSpeech:
 	ld [wAudioFadeOutControl],a
 	ld a,$FF
 	ld [wNewSoundID],a
-	call PlaySound // stop music
+	PlaySound(a); // stop music
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a

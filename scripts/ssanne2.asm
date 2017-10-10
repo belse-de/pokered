@@ -26,7 +26,7 @@ SSAnne2Script0:
 	ret nc
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
@@ -147,7 +147,7 @@ SSAnne2Script2:
 	call MoveSprite
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStart
 	ld a, $3
 	ld [wSSAnne2CurScript], a

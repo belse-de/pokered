@@ -30,7 +30,7 @@ DisplayPokemonCenterDialogue_:
 	ld a, [wMapMusicSoundID]
 	ld [wLastMusicSoundID], a
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld hl, PokemonFightingFitText
 	call PrintText
 	ld a, $14

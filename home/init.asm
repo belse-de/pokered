@@ -115,6 +115,5 @@ void StopAllSounds(){
 	*wAudioFadeOutControl = 0;
 	*wNewSoundID = 0;
 	*wLastMusicSoundID = 0;
-	dec a
-	jp PlaySound
+	PlaySound(0xff); // stop sound playback
 }

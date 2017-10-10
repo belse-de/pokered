@@ -1,7 +1,7 @@
 
 StopAllMusic: MACRO
 	ld a, $ff
-	call PlaySound
+	PlaySound(a);
 ENDM
 
 Ch0    EQU 0

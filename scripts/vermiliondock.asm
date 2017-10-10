@@ -41,7 +41,7 @@ VermilionDock_1db9b:
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld c, BANK(Music_Surfing)
 	ld a, MUSIC_SURFING
 	call PlayMusic
@@ -202,7 +202,7 @@ VermilionDock_EraseSSAnne:
 	ld [hl], a
 
 	ld a, SFX_SS_ANNE_HORN
-	call PlaySound
+	PlaySound(a);
 	ld c, 120
 	call DelayFrames
 	ret

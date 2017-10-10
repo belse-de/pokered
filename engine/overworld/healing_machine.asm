@@ -19,7 +19,7 @@ AnimateHealingMachine:
 	ld [wAudioFadeOutControl], a
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 .waitLoop
 	ld a, [wAudioFadeOutControl]
 	and a // is fade-out finished?
@@ -29,7 +29,7 @@ AnimateHealingMachine:
 .partyLoop
 	call CopyHealingMachineOAM
 	ld a, SFX_HEALING_MACHINE
-	call PlaySound
+	PlaySound(a);
 	ld c, 30
 	call DelayFrames
 	dec b
@@ -40,13 +40,13 @@ AnimateHealingMachine:
 	jr nz, .next
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld a, BANK(Music_PkmnHealed)
 	ld [wAudioROMBank], a
 .next
 	ld a, MUSIC_PKMN_HEALED
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld d, $28
 	call FlashSprite8Times
 .waitLoop2

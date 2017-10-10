@@ -90,7 +90,7 @@ Route22Script0:
 	jr z, .asm_50f4e
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 .asm_50f4e
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
@@ -169,7 +169,7 @@ Route22Script2:
 	call DisplayTextID
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStart
 	ld a, [wcf0d]
 	cp $1
@@ -243,11 +243,11 @@ Route22Script_5104e:
 	jr z, .skipYVisibilityTesta
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 .skipYVisibilityTesta
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateTempo
 	ld a, $2
 	ld [H_SPRITEINDEX], a
@@ -328,7 +328,7 @@ Route22Script5:
 	call DisplayTextID
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStartAndTempo
 	ld a, [wcf0d]
 	cp $1

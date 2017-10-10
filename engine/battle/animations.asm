@@ -200,7 +200,7 @@ PlayAnimation:
 	push hl
 	push de
 	call GetMoveSound
-	call PlaySound
+	PlaySound(a);
 	pop de
 	pop hl
 .skipPlayingSound
@@ -551,7 +551,7 @@ PlaySubanimation:
 	cp a,$FF
 	jr z,.skipPlayingSound
 	call GetMoveSound
-	call PlaySound
+	PlaySound(a);
 .skipPlayingSound
 	ld hl,wOAMBuffer // base address of OAM buffer
 	ld a,l
@@ -739,7 +739,7 @@ DoBallTossSpecialEffects:
 	jr nz,.skipPlayingSound
 // if it is the beginning of the subanimation, play a sound
 	ld a,SFX_BALL_TOSS
-	call PlaySound
+	PlaySound(a);
 .skipPlayingSound
 	ld a,[wIsInBattle]
 	cp a,02 // is it a trainer battle?
@@ -785,7 +785,7 @@ DoBallShakeSpecialEffects:
 	jr nz,.skipPlayingSound
 // if it is the beginning of a shake, play a sound and wait 2/3 of a second
 	ld a,SFX_TINK
-	call PlaySound
+	PlaySound(a);
 	ld c,40
 	call DelayFrames
 .skipPlayingSound
@@ -818,7 +818,7 @@ DoPoofSpecialEffects:
 	cp a,5
 	ret nz
 	ld a,SFX_BALL_POOF
-	jp PlaySound
+	PlaySound(a);
 
 DoRockSlideSpecialEffects:
 	ld a,[wSubAnimCounter]
@@ -919,7 +919,7 @@ TradeShakePokeball:
 .done
 	call AnimationCleanOAM
 	ld a,SFX_TRADE_MACHINE
-	jp PlaySound
+	PlaySound(a);
 
 BallMoveDistances1:
 	db -12,-12,-8
@@ -950,7 +950,7 @@ TradeJumpPokeball:
 	jr nz,.skipPlayingSound
 .playSound // play sound if next move distance is 12 or this is the last one
 	ld a,SFX_BATTLE_18
-	call PlaySound
+	PlaySound(a);
 .skipPlayingSound
 	push bc
 	ld c,5
@@ -3002,7 +3002,7 @@ TossBallAnimation:
 	ld [wAnimationID],a
 	call PlayAnimation
 	ld a,SFX_FAINT_THUD
-	call PlaySound
+	PlaySound(a);
 	ld a,BLOCKBALL_ANIM
 	ld [wAnimationID],a
 	jp PlayAnimation
@@ -3031,4 +3031,4 @@ PlayApplyingAttackSound:
 	ld a, b
 	ld [wTempoModifier], a
 	ld a, c
-	jp PlaySound
+	PlaySound(a);

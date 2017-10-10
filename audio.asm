@@ -368,7 +368,7 @@ PlayBattleMusic::
 	ld [wLowHealthAlarm], a
 	dec a
 	ld [wNewSoundID], a
-	call PlaySound // stop music
+	PlaySound(a); // stop music
 	call DelayFrame
 	ld c, BANK(Music_GymLeaderBattle)
 	ld a, [wGymLeaderNo]

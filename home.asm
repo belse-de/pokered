@@ -256,7 +256,7 @@ LoadFrontSpriteByMonIndex::
 PlayCry::
 // Play monster a's cry.
 	call GetCryData
-	call PlaySound
+	PlaySound(a);
 	jp WaitForSoundToFinish
 
 GetCryData::
@@ -981,12 +981,12 @@ FadeOutAudio::
 	ld [wAudioFadeOutControl], a
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld a, [wAudioSavedROMBank]
 	ld [wAudioROMBank], a
 	ld a, b
 	ld [wNewSoundID], a
-	jp PlaySound
+	PlaySound(a);
 
 // this function is used to display sign messages, sprite dialog, etc.
 // INPUT: [hSpriteIndexOrTextID] = sprite ID or text ID
@@ -2547,7 +2547,7 @@ PlayTrainerMusic::
 	xor a
 	ld [wAudioFadeOutControl], a
 	ld a, $ff
-	call PlaySound
+	PlaySound(a);
 	ld a, BANK(Music_MeetEvilTrainer)
 	ld [wAudioROMBank], a
 	ld [wAudioSavedROMBank], a
@@ -2576,7 +2576,7 @@ PlayTrainerMusic::
 	ld a, MUSIC_MEET_MALE_TRAINER
 .PlaySound
 	ld [wNewSoundID], a
-	jp PlaySound
+	PlaySound(a);
 
 #include "data/trainer_types.asm"
 
@@ -3149,7 +3149,7 @@ PlaySoundWaitForCurrent::
 	push af
 	call WaitForSoundToFinish
 	pop af
-	jp PlaySound
+	PlaySound(a);
 
 // Wait for sound to finish playing
 WaitForSoundToFinish::
@@ -3414,7 +3414,7 @@ ManualTextScroll::
 	jr z, .inLinkBattle
 	call WaitForTextScrollButtonPress
 	ld a, SFX_PRESS_AB
-	jp PlaySound
+	PlaySound(a);
 .inLinkBattle
 	ld c, 65
 	jp DelayFrames
@@ -3938,7 +3938,7 @@ HandleMenuInput_::
 	pop hl
 	jr nz,.skipPlayingSound
 	ld a,SFX_PRESS_AB
-	call PlaySound
+	PlaySound(a);
 .skipPlayingSound
 	pop af
 	ld [H_DOWNARROWBLINKCNT2],a

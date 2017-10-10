@@ -11,11 +11,11 @@ EvolveMon:
 	ld [wChannelSoundIDs + Ch4], a
 	dec a
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld a, SFX_TINK
-	call PlaySound
+	PlaySound(a);
 	call Delay3
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
@@ -69,7 +69,7 @@ EvolveMon:
 	ld [wWholeScreenPaletteMonSpecies], a
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld a, [wWholeScreenPaletteMonSpecies]
 	call PlayCry
 	ld c, 0

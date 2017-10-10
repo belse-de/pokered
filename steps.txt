@@ -16,3 +16,11 @@ find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call FillMemory/FillMe
 
 grep --include="*.asm" -rn "jp FillMemory"
 find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/jp FillMemory/FillMemory\(hl, bc, a\);/g'
+
+
+PlaySound(uint8_t a)
+grep --include="*.asm" -rn "call \bPlaySound\b"
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/call \bPlaySound\b/PlaySound\(a\);/g'
+
+grep --include="*.asm" -rn "jp \bPlaySound\b"
+find . -type f -name "*.asm" -print0 | xargs -0 sed -i 's/jp \bPlaySound\b/PlaySound\(a\);/g'

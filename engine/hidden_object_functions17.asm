@@ -438,7 +438,7 @@ VermilionGymTrashSuccessText1:
 	TX_ASM
 	call WaitForSoundToFinish
 	ld a, SFX_SWITCH
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
@@ -452,7 +452,7 @@ VermilionGymTrashSuccesPlaySfx:
 	TX_ASM
 	call WaitForSoundToFinish
 	ld a, SFX_SWITCH
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
@@ -461,7 +461,7 @@ VermilionGymTrashSuccessText3:
 	TX_ASM
 	call WaitForSoundToFinish
 	ld a, SFX_GO_INSIDE
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
@@ -470,6 +470,6 @@ VermilionGymTrashFailText:
 	TX_ASM
 	call WaitForSoundToFinish
 	ld a, SFX_DENIED
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	jp TextScriptEnd

@@ -61,7 +61,7 @@ UsedCut:
 	ld a, $1
 	ld [wUpdateSpritesEnabled], a
 	ld a, SFX_CUT
-	call PlaySound
+	PlaySound(a);
 	ld a, $90
 	ld [hWY], a
 	call UpdateSprites

@@ -40,14 +40,14 @@ PlayIntroScene:
 
 // hip
 	ld a, SFX_INTRO_HIP
-	call PlaySound
+	PlaySound(a);
 	xor a
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation1
 	call AnimateIntroNidorino
 // hop
 	ld a, SFX_INTRO_HOP
-	call PlaySound
+	PlaySound(a);
 	ld de, IntroNidorinoAnimation2
 	call AnimateIntroNidorino
 	ld c, $a
@@ -56,12 +56,12 @@ PlayIntroScene:
 
 // hip
 	ld a, SFX_INTRO_HIP
-	call PlaySound
+	PlaySound(a);
 	ld de, IntroNidorinoAnimation1
 	call AnimateIntroNidorino
 // hop
 	ld a, SFX_INTRO_HOP
-	call PlaySound
+	PlaySound(a);
 	ld de, IntroNidorinoAnimation2
 	call AnimateIntroNidorino
 	ld c, $1e
@@ -72,7 +72,7 @@ PlayIntroScene:
 	ld b, $4
 	call IntroCopyTiles
 	ld a, SFX_INTRO_RAISE
-	call PlaySound
+	PlaySound(a);
 	lb de, 8 / 2, MOVE_GENGAR_LEFT
 	call IntroMoveMon
 	ld c, $1e
@@ -83,12 +83,12 @@ PlayIntroScene:
 	ld b, $5
 	call IntroCopyTiles
 	ld a, SFX_INTRO_CRASH
-	call PlaySound
+	PlaySound(a);
 	lb de, 16 / 2, MOVE_GENGAR_RIGHT
 	call IntroMoveMon
 // hip
 	ld a, SFX_INTRO_HIP
-	call PlaySound
+	PlaySound(a);
 	ld a, $24
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation3
@@ -107,14 +107,14 @@ PlayIntroScene:
 
 // hip
 	ld a, SFX_INTRO_HIP
-	call PlaySound
+	PlaySound(a);
 	xor a
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation4
 	call AnimateIntroNidorino
 // hop
 	ld a, SFX_INTRO_HOP
-	call PlaySound
+	PlaySound(a);
 	ld de, IntroNidorinoAnimation5
 	call AnimateIntroNidorino
 	ld c, $14
@@ -131,7 +131,7 @@ PlayIntroScene:
 
 // lunge
 	ld a, SFX_INTRO_LUNGE
-	call PlaySound
+	PlaySound(a);
 	ld a, $48
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation7
@@ -277,7 +277,7 @@ PlayMoveSoundB:
 // unused
 	predef GetMoveSoundB
 	ld a, b
-	jp PlaySound
+	PlaySound(a);
 
 LoadIntroGraphics:
 	ld hl, FightIntroBackMon
@@ -333,7 +333,7 @@ PlayShootingStar:
 	ld [wAudioSavedROMBank], a
 	ld a, MUSIC_INTRO_BATTLE
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	call IntroClearMiddleOfScreen
 	call ClearSprites
 	jp Delay3

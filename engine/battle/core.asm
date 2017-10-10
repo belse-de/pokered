@@ -876,7 +876,7 @@ FaintEnemyPokemon:
 	cp SFX_FAINT_FALL
 	jr z, .sfxwait
 	ld a, SFX_FAINT_THUD
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	jr .sfxplayed
 .wild_win
@@ -7001,7 +7001,7 @@ ResetCryModifiers:
 	xor a
 	ld [wFrequencyModifier], a
 	ld [wTempoModifier], a
-	jp PlaySound
+	PlaySound(a);
 
 // animates the mon "growing" out of the pokeball
 AnimateSendingOutMon:

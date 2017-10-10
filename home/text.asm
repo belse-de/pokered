@@ -603,7 +603,7 @@ TextCommand0B::
 	cp a,$16
 	jr z,.pokemonCry
 	ld a,[hl]
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	pop hl
 	pop bc

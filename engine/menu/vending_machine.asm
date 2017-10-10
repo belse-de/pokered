@@ -59,7 +59,7 @@ VendingMachineMenu:
 	call DelayFrames
 	push bc
 	ld a, SFX_PUSH_BOULDER
-	call PlaySound
+	PlaySound(a);
 	pop bc
 	dec b
 	jr nz, .playDeliverySound

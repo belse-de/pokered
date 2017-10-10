@@ -28,7 +28,7 @@ PalletTownScript0:
 	ld a,PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection],a
 	ld a,$FF
-	call PlaySound // stop music
+	PlaySound(a); // stop music
 	ld a, BANK(Music_MeetProfOak)
 	ld c,a
 	ld a, MUSIC_MEET_PROF_OAK // “oak appears” music

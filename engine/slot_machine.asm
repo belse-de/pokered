@@ -117,7 +117,7 @@ MainSlotMachineLoop:
 	ld [hl], a
 	call WaitForSoundToFinish
 	ld a, SFX_SLOTS_NEW_SPIN
-	call PlaySound
+	PlaySound(a);
 	ld hl, StartSlotMachineText
 	call PrintText
 	call SlotMachine_SpinWheels
@@ -585,7 +585,7 @@ SlotReward15Func:
 
 SlotReward100Func:
 	ld a, SFX_GET_KEY_ITEM
-	call PlaySound
+	PlaySound(a);
 	xor a
 	ld [wSlotMachineFlags], a
 	ld b, $8
@@ -596,7 +596,7 @@ SlotReward300Func:
 	ld hl, YeahText
 	call PrintText
 	ld a, SFX_GET_ITEM_2
-	call PlaySound
+	PlaySound(a);
 	call Random
 	cp $80
 	ld a, $0
@@ -691,7 +691,7 @@ SlotMachine_PayCoinsToPlayer:
 	call SlotMachine_PrintCreditCoins
 	call SlotMachine_PrintPayoutCoins
 	ld a, SFX_SLOTS_REWARD
-	call PlaySound
+	PlaySound(a);
 	ld a, [wAnimCounter]
 	dec a
 	jr nz, .skip1
@@ -839,7 +839,7 @@ SlotMachine_HandleInputWhileWheelsSpin:
 .loop
 	inc [hl]
 	ld a, SFX_SLOTS_STOP_WHEEL
-	jp PlaySound
+	PlaySound(a);
 .skip
 	ld a, [de]
 	and a

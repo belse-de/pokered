@@ -107,7 +107,7 @@ CinnabarGymScript2:
 	jr nz, .asm_7581b
 	call WaitForSoundToFinish
 	ld a, SFX_GO_INSIDE
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 .asm_7581b
 	ld a, [wTrainerHeaderFlagBit]

@@ -52,7 +52,7 @@ PrintCardKeyText:
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 	ld a, SFX_GO_INSIDE
-	jp PlaySound
+	PlaySound(a);
 .noCardKey
 	tx_pre_id CardKeyFailText
 	ld [hSpriteIndexOrTextID], a

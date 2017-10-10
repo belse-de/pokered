@@ -34,7 +34,7 @@ VermilionGymScript_5ca6d:
 	jr .asm_5ca7f
 .asm_5ca78
 	ld a, SFX_GO_INSIDE
-	call PlaySound
+	PlaySound(a);
 	ld a, $5
 .asm_5ca7f
 	ld [wNewTileBlockID], a

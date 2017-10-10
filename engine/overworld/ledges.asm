@@ -51,7 +51,7 @@ HandleLedges:
 	ld [wSimulatedJoypadStatesIndex], a
 	call LoadHoppingShadowOAM
 	ld a, SFX_LEDGE
-	call PlaySound
+	PlaySound(a);
 	ret
 
 	// (player direction) (tile player standing on) (ledge tile) (input required)

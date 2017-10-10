@@ -66,7 +66,7 @@ CeruleanCityScript0:
 	jr z, .asm_19512
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 .asm_19512
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
@@ -173,7 +173,7 @@ CeruleanCityScript2:
 	call DisplayTextID
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStart
 	ld a, $1
 	ld [H_SPRITEINDEX], a

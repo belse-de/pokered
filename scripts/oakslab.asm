@@ -512,7 +512,7 @@ OaksLabScript15:
 	call EnableAutoTextBoxDrawing
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStart
 	ld a, $15
 	ld [hSpriteIndexOrTextID], a
@@ -613,7 +613,7 @@ OaksLabScript16:
 	ld [hl], $ff
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStart
 	ld a, $1
 	ld [H_SPRITEINDEX], a

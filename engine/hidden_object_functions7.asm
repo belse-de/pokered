@@ -66,7 +66,7 @@ SafariZoneGameOver:
 	xor a
 	ld [wAudioFadeOutControl], a
 	dec a
-	call PlaySound
+	PlaySound(a);
 	ld c, BANK(SFX_Safari_Zone_PA)
 	ld a, SFX_SAFARI_ZONE_PA
 	call PlayMusic
@@ -215,7 +215,7 @@ CinnabarGymQuiz_1ea92:
 .wrongAnswer
 	call WaitForSoundToFinish
 	ld a, SFX_DENIED
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	ld hl, CinnabarGymQuizIncorrectText
 	call PrintText
@@ -250,7 +250,7 @@ CinnabarGymQuizCorrectText:
 	jp nz, TextScriptEnd
 	call WaitForSoundToFinish
 	ld a, SFX_GO_INSIDE
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
@@ -340,22 +340,22 @@ BillsHousePC:
 	ld c, 32
 	call DelayFrames
 	ld a, SFX_TINK
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	ld c, 80
 	call DelayFrames
 	ld a, SFX_SHRINK
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	ld c, 48
 	call DelayFrames
 	ld a, SFX_TINK
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	ld c, 32
 	call DelayFrames
 	ld a, SFX_GET_ITEM_1
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	call PlayDefaultMusic
 	SetEvent EVENT_USED_CELL_SEPARATOR_ON_BILL
@@ -376,11 +376,11 @@ BillsHouseInitiatedText:
 	TX_ASM
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld c, 16
 	call DelayFrames
 	ld a, SFX_SWITCH
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 	ld c, 60
 	call DelayFrames

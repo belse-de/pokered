@@ -107,7 +107,7 @@ BillsPC_::
 	jr nz, BillsPCMenu
 // accessing it directly
 	ld a, $99
-	call PlaySound
+	PlaySound(a);
 	ld hl, SwitchOnText
 	call PrintText
 
@@ -192,7 +192,7 @@ ExitBillsPC:
 // accessing it directly
 	call LoadTextBoxTilePatterns
 	ld a, $9a
-	call PlaySound
+	PlaySound(a);
 	call WaitForSoundToFinish
 .next
 	ld hl, wFlags_0xcd60

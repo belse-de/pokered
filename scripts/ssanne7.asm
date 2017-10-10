@@ -50,13 +50,13 @@ SSAnne7RubText:
 	jr nz, .asm_61908
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld a, Bank(Music_PkmnHealed)
 	ld [wAudioROMBank], a
 .asm_61908
 	ld a, MUSIC_PKMN_HEALED
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 .asm_61910
 	ld a, [wChannelSoundIDs]
 	cp MUSIC_PKMN_HEALED

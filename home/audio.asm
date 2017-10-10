@@ -64,7 +64,7 @@ PlayDefaultMusicCommon::
 	ld a, b
 	ld [wLastMusicSoundID], a
 	ld [wNewSoundID], a
-	jp PlaySound
+	PlaySound(a);
 
 UpdateMusic6Times::
 // This is called when entering a map, before fading out the current music and
@@ -139,7 +139,7 @@ PlayMusic::
 	ld a, b
 
 // plays music specified by a. If value is $ff, music is stopped
-PlaySound::
+void PlaySound(uint8_t a){
 	push hl
 	push de
 	push bc
@@ -216,3 +216,4 @@ PlaySound::
 	pop de
 	pop hl
 	ret
+}

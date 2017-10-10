@@ -5,7 +5,7 @@ ShakeElevator:
 	call ShakeElevatorRedrawRow
 	call Delay3
 	ld a, $ff
-	call PlaySound
+	PlaySound(a);
 	ld a, [hSCY]
 	ld d, a
 	ld e, $1
@@ -28,7 +28,7 @@ ShakeElevator:
 	ld a, d
 	ld [hSCY], a
 	ld a, $ff
-	call PlaySound
+	PlaySound(a);
 	ld c, BANK(SFX_Safari_Zone_PA)
 	ld a, SFX_SAFARI_ZONE_PA
 	call PlayMusic

@@ -132,7 +132,7 @@ SilphCo7Script0:
 	ld [wPlayerMovingDirection], a
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
@@ -221,7 +221,7 @@ SilphCo7Script4:
 	call DisplayTextID
 	ld a, $ff
 	ld [wNewSoundID], a
-	call PlaySound
+	PlaySound(a);
 	callba Music_RivalAlternateStart
 	ld de, MovementData_51d1d
 	ld a, [wcf0d]
